@@ -1,0 +1,14 @@
+This mod is basically RLCraft for Terraria. Ever played RLCraft? No?? Good.
+You can find more info about the mod and what to do on the homepage button below.
+This mod is best enjoyed on medium character difficulty, small world, non-expert world.
+Currently in hardcore development, if you're reading this then it should always work then.
+Quick download questions (what we have and if it's good for you)
+We are currently working on prehardmode, and we move up adding stuff slowly. As of update 1.5 we are on skeletron, there is NO new stuff past that point.
+we like to make the game hard for a challenging experience.
+We currently have:
+1. Flint tools and armour
+2.inability to mine with copper tools, forcing to take the long route and use flint.
+3.small custom generated ores, and a lot of prehardmode stuff.
+custom boss soon maybe? (still being worked on...)
+What we plan on adding soon:
+1. bring the expert mode AI into any difficulty.
