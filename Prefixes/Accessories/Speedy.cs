@@ -3,11 +3,11 @@ using Terraria.ModLoader;
 
 namespace yourtale.Prefixes.Accessories
 {
-	public class Weighted : ModPrefix
+	public class Speedy : ModPrefix
 	{
 		public virtual float Power => 1f;
 
-		public override PrefixCategory Category => PrefixCategory.Accessory;
+		public override PrefixCategory Category => PrefixCategory.Ranged;
 
 		public override float RollChance(Item item)
 		{
@@ -21,7 +21,7 @@ namespace yourtale.Prefixes.Accessories
 
 		public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
 		{
-			Player.jumpSpeed -= 1f + 100f * Power;
+			shootSpeedMult *= 2f + 5f * Power;
 		}
 
 		public override void ModifyValue(ref float valueMult)
