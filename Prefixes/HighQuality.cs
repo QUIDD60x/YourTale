@@ -18,7 +18,7 @@ namespace yourtale.Prefixes
 		// Note: if you use PrefixCategory.Custom, actually use ModItem.ChoosePrefix instead.
 		public override float RollChance(Item item)
 		{
-			return 3f;
+			return 1f;
 		}
 
 		// Determines if it can roll at all.
