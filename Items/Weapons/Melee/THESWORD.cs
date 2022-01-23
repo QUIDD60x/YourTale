@@ -18,14 +18,14 @@ namespace yourtale.Items.Weapons.Melee
 			item.melee = true;
 			item.width = 1000;
 			item.height = 1000;
-			item.useTime = 1000;
-			item.useAnimation = 1000;
+			item.useTime = 1;
+			item.useAnimation = 1;
 			item.useStyle = 3;
 			item.knockBack = 0;
 			item.value = -1;
 			item.rare = 13;
-			item.UseSound = 8;
-			item.autoReuse = false;
+			item.UseSound = SoundID.Item8;
+			item.autoReuse = true;
 		}
 
 		public override void AddRecipes() 
