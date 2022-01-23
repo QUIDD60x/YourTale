@@ -24,7 +24,7 @@ namespace yourtale.Items.Weapons.Melee
 			item.knockBack = 0;
 			item.value = -1;
 			item.rare = 13;
-			item.UseSound = SoundID.Item117;
+			item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Assets/Music/ChaoticTest-1");
 			item.autoReuse = true;
 		}
 

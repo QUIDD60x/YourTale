@@ -33,7 +33,7 @@ namespace yourtale.Prefixes
 		public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
 		{
 			damageMult *= 1f + .30f * Power;
-			knockbackMult *= 3f + .50f * Power;
+			knockbackMult *= 1.5f + .50f * Power;
 		}
 
 		// Modify the cost of items with this modifier with this function.

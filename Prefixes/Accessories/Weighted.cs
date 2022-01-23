@@ -21,7 +21,7 @@ namespace yourtale.Prefixes.Accessories
 
 		public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
 		{
-			Player.jumpSpeed -= 1f + 100f * Power;
+			useTimeMult /= 1f + 100f * Power;
 		}
 
 		public override void ModifyValue(ref float valueMult)
