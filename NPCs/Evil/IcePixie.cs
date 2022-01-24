@@ -2,6 +2,8 @@
 using yourtale.Dusts;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader.Audio;
 using yourtale.Items.Placeables;
 using yourtale.Items.Accessories;
 
@@ -26,7 +28,7 @@ namespace yourtale.NPCs.Evil
             npc.defense = 6;
             npc.lifeMax = 85;
             npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath2;
+            npc.DeathSound = SoundID.NPCDeath7;
             npc.value = 388f; //how much money is dropped (why is it a float? Change soon please)
             npc.knockBackResist = 0.4f;
             npc.aiStyle = 22; //basic walker AI
@@ -36,6 +38,7 @@ namespace yourtale.NPCs.Evil
             banner = Item.NPCtoBanner(NPCID.Pixie); //Gets NPC to banner
             bannerItem = Item.BannerToItem(banner);
             npc.noGravity = true;
+            //npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/NPCHit/Spacey"); EXTRMELY USEFUL
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -80,19 +83,6 @@ namespace yourtale.NPCs.Evil
             {
                 Item.NewItem(npc.getRect(), mod.ItemType("IceHeart"));
             }
-            if (Main.rand.Next(10) == 0)
-            {
-                Item.NewItem(npc.getRect(), mod.ItemType("CryoliteBreastplate"), 1);
-            }
-            if (Main.rand.Next(10) == 0)
-            {
-                Item.NewItem(npc.getRect(), mod.ItemType("CryoliteHelmet"), 1);
-            }
-            if (Main.rand.Next(10) == 0)
-            {
-                Item.NewItem(npc.getRect(), mod.ItemType("CryoliteLeggings"), 1);
-            }
-            
         }
     }
 }

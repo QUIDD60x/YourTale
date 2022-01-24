@@ -31,7 +31,7 @@ namespace yourtale.Items.Armor.Cryolite
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("CryoliteBar"), 7);
+            recipe.AddIngredient(mod.ItemType("CryoliteBar"), 9);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

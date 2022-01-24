@@ -13,7 +13,7 @@ namespace yourtale.Items.Accessories
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Cold as ice... a small demo for the Cryolite armor.\ndecreases melee speed but protects you.");
+            Tooltip.SetDefault("Cold as ice... \ndecreases melee but protects you.");
         }
 
         public override void SetDefaults()
@@ -36,7 +36,7 @@ namespace yourtale.Items.Accessories
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.LifeCrystal, 2);
+            recipe.AddIngredient(ItemID.LifeCrystal, 1);
             recipe.AddIngredient(ItemID.ManaCrystal, 2);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
