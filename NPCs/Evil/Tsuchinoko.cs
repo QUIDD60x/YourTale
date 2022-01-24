@@ -75,20 +75,18 @@ namespace yourtale.NPCs.Evil
 		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-			return (Main.tile[spawnInfo.playerFloorX, spawnInfo.playerFloorY].type == TileID.Stone).ToInt() * 2f;
-
-			float chance = 3f;
-            if (spawnInfo.player.ZoneRockLayerHeight)
-			{
-                chance += 3f;
-
+			if (spawnInfo.player.ZoneRockLayerHeight)
+            {
+				return 1.1f;
             }
-            return chance;
 			if (NPC.AnyNPCs(mod.NPCType("Tsuchinoko")))
 			{
-				chance -= 10f;
+				return 0;
             }
-			return chance;
+			else 
+            {
+                return 0.001f;
+            }
         }
     }
 

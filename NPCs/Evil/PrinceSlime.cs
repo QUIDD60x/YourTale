@@ -45,7 +45,7 @@ namespace yourtale.NPCs.Evil
         {
             if (Main.dayTime && Main.time < 18000.0)
             {
-                return 4f;
+                return 0.5f;
             }
             else 
             {

@@ -39,9 +39,10 @@ namespace yourtale.Buffs.Debuffs
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            player.lifeRegen -= 2;
+            player.lifeRegen /= 2;
             player.meleeDamage -= 0.5f;
-            player.thrownDamage -= 0.5f;
+            player.moveSpeed -= 1f;
+            player.statLifeMax2 -=20;
         }
 
 
