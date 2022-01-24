@@ -22,9 +22,9 @@ namespace yourtale.NPCs.Evil
             */
             npc.width = 18;
             npc.height = 40;
-            npc.damage = 12;
+            npc.damage = 7;
             npc.defense = 6;
-            npc.lifeMax = 200;
+            npc.lifeMax = 85;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath2;
             npc.value = 388f; //how much money is dropped (why is it a float? Change soon please)
@@ -35,6 +35,7 @@ namespace yourtale.NPCs.Evil
             animationType = NPCID.Pixie; // animationType = 3;
             banner = Item.NPCtoBanner(NPCID.Pixie); //Gets NPC to banner
             bannerItem = Item.BannerToItem(banner);
+            npc.noGravity = true;
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

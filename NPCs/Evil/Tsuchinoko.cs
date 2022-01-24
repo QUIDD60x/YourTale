@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using yourtale.Projectiles.Misc;
 
 namespace yourtale.NPCs.Evil
 {
@@ -21,7 +22,7 @@ namespace yourtale.NPCs.Evil
 
 			npc.CloneDefaults(NPCID.DiggerHead);
 			npc.aiStyle = -1;
-			npc.lifeMax = Main.rand.Next(200, 750);
+			npc.lifeMax = Main.rand.Next(120, 330);
 			npc.damage = 65;
 			npc.defense = 15;
 			npc.value = 50000;
@@ -74,15 +75,20 @@ namespace yourtale.NPCs.Evil
 		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-			return (Main.tile[spawnInfo.playerFloorX, spawnInfo.playerFloorY].type == TileID.Silt).ToInt() * 2f;
+			return (Main.tile[spawnInfo.playerFloorX, spawnInfo.playerFloorY].type == TileID.Stone).ToInt() * 2f;
 
 			float chance = 3f;
-            if (spawnInfo.spawnTileY <= Main.maxTilesY - 200 && spawnInfo.spawnTileY > (Main.rockLayer + (double)Main.maxTilesY) / 2.0)
+            if (spawnInfo.player.ZoneRockLayerHeight)
 			{
-                chance += 2f;
+                chance += 3f;
 
             }
             return chance;
+			if (NPC.AnyNPCs(mod.NPCType("Tsuchinoko")))
+			{
+				chance -= 10f;
+            }
+			return chance;
         }
     }
 
@@ -94,7 +100,7 @@ namespace yourtale.NPCs.Evil
 		{
 			npc.CloneDefaults(NPCID.DiggerBody);
 			npc.aiStyle = -1;
-			npc.lifeMax = Main.rand.Next(200, 800);
+			npc.lifeMax = Main.rand.Next(100, 300);
 			npc.damage = 12;
 			npc.defense = 12;
             npc.HitSound = SoundID.NPCHit13;

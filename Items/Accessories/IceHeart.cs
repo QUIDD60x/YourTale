@@ -29,7 +29,8 @@ namespace yourtale.Items.Accessories
         {
             player.AddBuff(BuffID.IceBarrier, 2);
             player.meleeSpeed -= 0.2f;
-            player.moveSpeed /= 0.8f;
+            player.moveSpeed *= 0.8f;
+            player.maxRunSpeed *= 0.2f;
         }
 
         public override void AddRecipes()

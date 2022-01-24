@@ -14,6 +14,8 @@ namespace yourtale.Items.Armor.Cryolite
     [AutoloadEquip(EquipType.Head)]
     public class CryoliteHelmet : ModItem
     {
+        public virtual int Speed => 1;
+
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
@@ -27,7 +29,7 @@ namespace yourtale.Items.Armor.Cryolite
             item.height = 700;
             item.value = Item.sellPrice(silver: -1);
             item.rare = ItemRarityID.White;
-            item.defense = 9;
+            item.defense = 7;
         }
 
         public override void AddRecipes()
@@ -46,8 +48,9 @@ namespace yourtale.Items.Armor.Cryolite
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "You're chilled out! More life regen and you apply frostburn to enemies.";
-            player.lifeRegen += 5;
+            player.setBonus = "You're chilled out! life regen starts faster and more defense.";
+            player.lifeRegenTime += 1000;
+            player.endurance += 0.3f;
             player.AddBuff(BuffID.IceBarrier, 2);
             player.AddBuff(BuffID.Warmth, 2);
         }

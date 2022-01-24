@@ -25,7 +25,7 @@ namespace yourtale.Items.Armor.Cryolite
             item.height = 700;
             item.value = Item.sellPrice(silver: -1);
             item.rare = ItemRarityID.White;
-            item.defense = 11;
+            item.defense = 8;
         }
 
         public override void AddRecipes()
