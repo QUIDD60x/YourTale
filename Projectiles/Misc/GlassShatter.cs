@@ -20,7 +20,6 @@ namespace yourtale.Projectiles.Misc
 
         }
         public override void OnHitNPC(NPC target, int damage, float knockBack, bool crit)
-
         {
             
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y + Main.rand.Next(-5, 5), ProjectileID.CrystalShard, projectile.damage, projectile.knockBack, Main.myPlayer);

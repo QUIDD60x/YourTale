@@ -57,7 +57,7 @@ namespace yourtale.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.FallenStar, 1); //currently uncraftable, will implement recipe later.
+            recipe.AddIngredient(ItemID.FallenStar, 1);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this, 5); //can add recipe.SetResult(this, number here) for making multiple
             recipe.AddRecipe();

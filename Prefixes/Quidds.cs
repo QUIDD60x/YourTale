@@ -7,11 +7,11 @@ namespace yourtale.Prefixes
 	{
 		public virtual float Power => 100f;
 
-		public override PrefixCategory Category => PrefixCategory.AnyWeapon;
+		public override PrefixCategory Category => PrefixCategory.Melee;
 
 		public override float RollChance(Item item)
 		{
-			return 0.001f;
+			return 100f;
 		}
 
 		public override bool CanRoll(Item item)

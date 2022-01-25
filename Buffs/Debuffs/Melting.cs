@@ -41,7 +41,7 @@ namespace yourtale.Buffs.Debuffs
         {
             player.lifeRegen /= 2;
             player.meleeDamage -= 0.5f;
-            player.moveSpeed -= 1f;
+            player.moveSpeed -= 0.7f;
             player.statLifeMax2 -=20;
         }
 

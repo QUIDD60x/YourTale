@@ -27,7 +27,7 @@ namespace yourtale.NPCs.Evil
 			npc.defense = 15;
 			npc.value = 50000;
             npc.HitSound = SoundID.NPCHit13;
-            npc.DeathSound = SoundID.NPCDeath8;
+            npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/NPCKilled/BoneCrush1");
 
         }
 

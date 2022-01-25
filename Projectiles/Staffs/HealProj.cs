@@ -4,9 +4,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace yourtale.Projectiles.Misc
+namespace yourtale.Projectiles.Staffs
 {
-    public class SparklingBall : ModProjectile
+    public class HealProj : ModProjectile
     {
         public override void SetDefaults()
         {
@@ -23,7 +23,7 @@ namespace yourtale.Projectiles.Misc
             projectile.velocity.Y += projectile.ai[0];
             if (Main.rand.NextBool(3))
             {
-                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, ModContent.DustType<Sparkle>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, ModContent.DustType<LifeStaffDust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
             }
         }
 
@@ -62,8 +62,7 @@ namespace yourtale.Projectiles.Misc
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            projectile.ai[0] += 0.1f;
-            projectile.velocity *= 0.75f;
+           
         }
     }
 }
