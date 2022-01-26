@@ -1,367 +1,658 @@
-﻿/*using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.Modules;
-using Terraria.ModLoader;
-using Terraria.ID;
+﻿using System.IO;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Runtime.InteropServices;
-using System.IO;
-using yourtale.Projectiles.Misc;
-using yourtale.Items.Placeables;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace yourtale.NPCs.Evil.Boss
 {
-    [AutoloadBossHead]
-    public class Cryolisis : ModNPC
-    {
-        private Player player;
+	public class Cryolisis : ModNPC
+	{
+		private static int hellLayer
+		{
+			get
+			{
+				return Main.maxTilesY - 200;
+			}
+		}
 
-        private const int CryolisisProj = 80;
-        private Vector2 MoveTo;
+		private const int sphereRadius = 300;
 
+		private int subCool
+		{
+			get
+			{
+				return (int)npc.ai[0];
+			}
+			set
+			{
+				npc.ai[0] = (float)value;
+			}
+		}
 
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Cryocthulhu");
-            Main.npcFrameCount[npc.type] = 16;
-        }
-        public override void SetDefaults()
-        {
+		private float coolDown
+		{
+			get
+			{
+				return npc.ai[1];
+			}
+			set
+			{
+				npc.ai[1] = value;
+			}
+		}
 
-            npc.height = 120;
-            npc.width = 320;
-            npc.aiStyle = -1;
-            npc.lifeMax = 6700;
-            npc.damage = 20;
-            npc.defense = 15;
+		private float rotationSpeed
+		{
+			get
+			{
+				return npc.ai[2];
+			}
+			set
+			{
+				npc.ai[2] = value;
+			}
+		}
 
-            npc.value = 10000;
-            npc.knockBackResist = 0f;
-            npc.noTileCollide = true;
-            npc.netAlways = true;
-            npc.netUpdate = true;
-            npc.noGravity = true;
-            npc.boss = true;
-            npc.lavaImmune = true;
-            npc.ai[0] = 0;
-            npc.localAI[2] = 0;
-            npc.ai[2] = 0;
-            npc.ai[1] = 0;
-            //bossBag = mod.ItemType("");
-        }
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            return;
-        }
-        public override void SendExtraAI(BinaryWriter writer)
-        {
+		private float currentMove
+		{
+			get
+			{
+				return npc.ai[3];
+			}
+			set
+			{
+				npc.ai[3] = value;
+			}
+		}
 
+		private int moveTime = 300;
+		private int moveTimer = 60;
+		private bool currentlyImmune = false;
+		private int lastStage = 0;
+		internal int laserTimer = 0;
+		internal int laser1 = -1;
+		internal int laser2 = -1;
+		private Vector2 targetPos;
+		private int stage;
+		private int[] receivedDamage = new int[5];
 
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Cryolisis");
+		}
 
-            writer.Write((int)MoveTo.X);
-            writer.Write((int)MoveTo.Y);
-        }
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
+		public override void SetDefaults()
+		{
+			npc.aiStyle = -1;
+			npc.lifeMax = 3000;
+			npc.damage = 30;
+			npc.defense = 12;
+			npc.knockBackResist = 0f;
+			npc.width = 180;
+			npc.height = 180;
+			Main.npcFrameCount[npc.type] = 1;
+			npc.value = Item.buyPrice(0, 20, 0, 0);
+			npc.npcSlots = 15f;
+			npc.boss = true;
+			npc.lavaImmune = false;
+			npc.noGravity = true;
+			npc.noTileCollide = true;
+			npc.HitSound = SoundID.NPCHit3;
+			npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/NPCKilled/NPCKilled").WithPitchVariance(12f);
+			npc.buffImmune[24] = true;
+			music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/MultiMelody");
+		}
 
+		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+		{
+			bossLifeScale = 1.2f;
+			npc.lifeMax = 8000;
+			npc.damage = 100;
+		}
 
+		public override void AI()
+		{
+			if(Main.netMode != 1 && npc.localAI[0] == 0f)
+			{
+				npc.netUpdate = true;
+				npc.localAI[0] = 1f;
+			}
+			coolDown--;
+			Player player = Main.player[npc.target];
 
-            MoveTo.X = reader.ReadInt32();
-            MoveTo.Y = reader.ReadInt32();
+			if(coolDown <= 0)
+			{
+				if(!currentlyImmune)
+				{
+					currentlyImmune = true;
+					currentMove = 0;
+					coolDown = 120;
+					if(ClearNebula(player))
+					{
+						int a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("CryoDust"), 0f, 0f, 0, default(Color), 1f);
+						Main.dust[a].velocity = new Vector2(-2f, -2f);
+						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("Sparkle"), 0f, 0f, 0, default(Color), 1f);
+						Main.dust[a].velocity = new Vector2(-2f, 2f);
+						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("CryoDust"), 0f, 0f, 0, default(Color), 1f);
+						Main.dust[a].velocity = new Vector2(2f, -2f);
+						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("Sparkle"), 0f, 0f, 0, default(Color), 1f);
+						Main.dust[a].velocity = new Vector2(2f, 2f);
 
-        }
+						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("CryoDust"), 0f, 0f, 0, default(Color), 1f);
+						Main.dust[a].velocity = new Vector2(0f, 2f);
+						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("Sparkle"), 0f, 0f, 0, default(Color), 1f);
+						Main.dust[a].velocity = new Vector2(0f, -2f);
+						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("CryoDust"), 0f, 0f, 0, default(Color), 1f);
+						Main.dust[a].velocity = new Vector2(2f, 0f);
+						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("Sparkle"), 0f, 0f, 0, default(Color), 1f);
+						Main.dust[a].velocity = new Vector2(-2f, 0f);
+						player.statMana = player.statManaMax2 / 2;
+					}
+				}
+				else
+				{
+					currentlyImmune = false;
+					getNextMove();
+					subCool = 60;
+				}
+			}
+			npc.rotation += rotationSpeed;
+			if(!player.active || player.dead || player.position.Y < hellLayer)
+			{
+				npc.TargetClosest(false);
+				player = Main.player[npc.target];
+				if(!player.active || player.dead || player.position.Y < hellLayer)
+				{
+					npc.velocity = new Vector2(0f, 10f);
+					if(npc.timeLeft > 10)
+					{
+						npc.timeLeft = 10;
+					}
+					return;
+				}
+			}
+			if(player.name != "Quidd")
+			{
+				Main.NewText("You're dealing too much damage!", 255, 32, 32);
+				player.statDefense = 0;
+				player.endurance = 0;
+				player.Hurt(PlayerDeathReason.ByCustomReason(player.name + " was frostbitten."), 9999, -player.direction,
+					false, false, true, -1);
+				BitLightning(player.Center);
+			}
 
+			if(currentlyImmune)
+			{
+				if(rotationSpeed > 0f)
+				{
+					rotationSpeed += 0.4f;
+				}
+				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 100, (player.Center.Y - npc.Center.Y) / 100);
+			}
+			else
+			{
+				if(rotationSpeed < 0.1f)
+				{
+					rotationSpeed += 0.5f;
+				}
+			}
 
-        private void Target()
-        {
+			UpdateStage();
 
-            npc.TargetClosest(true);
-            player = Main.player[npc.target];
+			if(stage == 1 && lastStage == 0)
+			{
+				Main.NewText("The air is getting colder around you", 255, 32, 32);
+				music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Chaotic");
+			}
+			if(stage == 2 && lastStage != 2)
+			{
+				Main.NewText("It's begining to melt!", 255, 0, 0);
+				npc.damage += 12;
+				npc.defense += 8;
+			}
+			// -------------------------------------------------------------------------- ATTACKS
+			subCool--;
+			if(currentMove == 1)
+			{
+				rotationSpeed = 0.7f;
+				if(subCool <= 0 && stage >= 2)
+				{
+					npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 30, (player.Center.Y - npc.Center.Y) / 30);
+				}
+			}
+			if(currentMove == 2)
+			{
+				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 200, (player.Center.Y - npc.Center.Y) / 200);
+				BitStorm(player.Center);
+			}
+			if(currentMove == 3)
+			{
+				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 150, (player.Center.Y - npc.Center.Y) / 150);
+				BitBeam(player.Center);
+			}
+			if(currentMove == 4)
+			{
+				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 300, (player.Center.Y - npc.Center.Y) / 300);
+				rotationSpeed = 0.1f;
+				if(subCool <= 0)
+				{
+					BitExplosion(player.Center);
+				}
+			}
+			if(currentMove == 5)
+			{
+				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 250, (player.Center.Y - npc.Center.Y) / 250);
+				rotationSpeed = 0.5f;
+				if(subCool == 25)
+				{
+					targetPos = player.Center;
+					for(int i = 0; i < 20; i++)
+					{
+						int dust = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("CryoDust"), 0f, 0f, 0, default(Color), 1f);
+						int x = 0;
+						int y = 0;
+						while(x == 0 && y == 0)
+						{
+							x = Main.rand.Next(-6, 6);
+							y = Main.rand.Next(-6, 6);
+						}
+						Main.dust[dust].velocity = new Vector2(x, y);
+						Main.dust[dust].color = new Color(0, 255, 255);
+					}
+				}
+				if(subCool <= 0)
+				{
+					Vector2 sum = Vector2.Zero;
+					sum.X = Main.rand.Next(-120, 121);
+					BitLightning(targetPos + sum);
+					subCool = 30;
+				}
+			}
+			if(subCool <= 0)
+			{
+				subCool = 60;
+			}
+			// -------------------------------------------------------------------------- ATTACKS
 
-        }
-        public override void AI()
-        {
+			if(Main.netMode != 1)
+			{
+				npc.TargetClosest(false);
+				player = Main.player[npc.target];
+				npc.netUpdate = true;
+			}
+			lastStage = stage;
+		}
 
-            Target();
+		private bool ClearNebula(Player player)
+		{
+			bool cleared = false;
+			for(int i = 0; i < 22; i++)
+			{
+				int t = player.buffType[i];
+				if(t == BuffID.NebulaUpLife1 || t == BuffID.NebulaUpLife2 || t == BuffID.NebulaUpLife3 || t == BuffID.NebulaUpDmg1 || t == BuffID.NebulaUpDmg2 || t == BuffID.NebulaUpDmg3)
+				{
+					player.DelBuff(i);
+					cleared = true;
+				}
+			}
+			return cleared;
+		}
 
-            if (player.dead) { if (npc.timeLeft > 10) { npc.timeLeft = 10; } }
-            else { npc.timeLeft = 600; }
-            npc.spriteDirection = npc.direction;
-            int Max = Main.expertMode ? 75 : 100;
-            if (npc.ai[0] == 0)
+		private void BitLightning(Vector2 pos)
+		{
+			int damage = (int)(npc.damage);
+			if(Main.expertMode)
+			{
+				damage = (int)(damage * 1.5f);
+			}
+			for(int i = 0; i < 3; i++)
+			{
+				int a2 = Projectile.NewProjectile(pos.X + Main.rand.Next(-12, 13), 50, 0, 10, mod.ProjectileType("CryolisisProj"), damage, 0, 0);
+			}
+		}
+
+		private void BitStorm(Vector2 pos)
+		{
+			for(int i = -5; i <= 5; i++)
+			{										//was 15
+				Dust.NewDust(new Vector2(pos.X - (i * 6f), pos.Y - 300f + Main.rand.Next(-16, 17)), 12, 16, mod.DustType("CryoDust"));
+			}
+			int fallSpeed = 10;
+			if(Main.expertMode)
+			{
+				fallSpeed = 15;
+			}
+			int a2 = Projectile.NewProjectile(pos.X - (Main.rand.Next(-5, 6)*15f), pos.Y-300f+Main.rand.Next(-16,17), 0, fallSpeed, mod.ProjectileType("CryolisisProj"), (int)(npc.damage * 0.3f), 0, 0);
+			Main.projectile[a2].timeLeft = 45;
+		}
+
+		private void BitBeam(Vector2 pos)
+		{
+			Vector2 vector2 = npc.Center;
+			float num200 = (float)pos.X - vector2.X;
+			float num201 = (float)pos.Y - vector2.Y;
+			num200 += (float)Main.rand.Next(-40, 41) * 1.5f;
+			num201 += (float)Main.rand.Next(-32, 33) * 1.5f;
+			Vector2 vector12 = vector2 + Vector2.Normalize(new Vector2(num200, num201).RotatedBy((double)(-1.5f * (float)npc.direction), default(Vector2))) * 3f;
+			int a2 = Projectile.NewProjectile(vector12.X, vector12.Y, num200, num201, mod.ProjectileType("CryolisisProj"), (int)(npc.damage * 0.3f), 0, 0);
+			Main.projectile[a2].tileCollide = true;
+			Main.projectile[a2].timeLeft = 90;
+		}
+
+		private void BitExplosion(Vector2 pos)
+		{
+			int range = 9, count = 25;
+			if(Main.expertMode)
+			{
+				range = 24;
+				count = 70;
+			}
+			for(int i = 0; i < count; i++)
+			{
+				int a2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Main.rand.Next(-range, range+1), Main.rand.Next(-range, range+1), mod.ProjectileType("CryolisisProj"), (int)(npc.damage * 0.6f), 0, 0);
+				Main.projectile[a2].tileCollide = true;
+				Main.projectile[a2].timeLeft = 100;
+			}
+		}
+
+		private Vector2 getAttackPosition()
+		{
+			Player player = Main.player[npc.target];
+			return new Vector2(player.Center.X, player.Center.Y);
+		}
+
+		private void getNextMove()
+		{
+			targetPos = Main.player[npc.target].Center;
+			int nextAtk = Main.rand.Next(0, 101);
+			if(nextAtk <= 30 || stage == 0)
+			{
+				currentMove = 1;
+				coolDown = 120;
+				int divisor = 45;
+				if(stage >= 1)
+				{
+					divisor = 30;
+					coolDown = 90;
+				}
+				npc.velocity = new Vector2((targetPos.X - npc.Center.X) / divisor, (targetPos.Y - npc.Center.Y) / divisor);
+			}
+			else if(nextAtk > 30 && nextAtk <= 50)
+			{
+				currentMove = 2;
+				coolDown = 240;
+			}
+			else if(nextAtk > 50 && nextAtk <= 70)
+			{
+				currentMove = 3;
+				coolDown = 120;
+			}
+			else if(nextAtk > 70)
+			{
+				if(stage == 2 && nextAtk > 85)
+				{
+					currentMove = 5;
+					coolDown = 185;
+				}
+				else
+				{
+					currentMove = 4;
+					coolDown = 180;
+				}
+			}
+		}
+
+		public override bool CheckDead()
+		{
+			if(!npc.lavaImmune)
+			{
+				npc.lavaImmune = true;
+				npc.life = npc.lifeMax;
+				return false;
+			}
+			return true;
+		}
+
+		public override void SendExtraAI(BinaryWriter writer)
+		{
+			writer.Write((short)moveTime);
+			writer.Write((short)moveTimer);
+			if(Main.expertMode)
+			{
+				//
+			}
+		}
+
+		public override void ReceiveExtraAI(BinaryReader reader)
+		{
+			moveTime = reader.ReadInt16();
+			moveTimer = reader.ReadInt16();
+			if(Main.expertMode)
+			{
+				//
+			}
+		}
+
+		public override void FindFrame(int frameHeight)
+		{
+			npc.frame.Y = 0;
+		}
+
+		private void UpdateStage()
+		{
+			float hp = (float)(npc.life);
+			float hpM = (float)(npc.lifeMax);
+			float hpP = hp/hpM;
+			if(!npc.lavaImmune)
+			{
+				stage = 0;
+			}
+			else if(npc.lavaImmune && hpP > 0.8f)
+			{
+				stage = 1;
+			}
+			else
+			{
+				stage = 2;
+			}
+		}
+
+		public override Color? GetAlpha(Color drawColor)
+		{
+			if(currentlyImmune)
+			{
+				return Color.White;
+			}
+			if(stage == 2)
+			{
+				return Color.MidnightBlue;
+			}
+			/*if(stage == 1)
+			{
+				return Color.MidnightBlue;
+			}*/
+			return null;
+		}
+
+		public override void HitEffect(int hitDirection, double damage)
+		{
+			for(int k = 0; k < damage / npc.lifeMax * 50.0; k++)
+			{
+				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CryoDust"), hitDirection, -1f, 0, default(Color), 1f);
+			}
+		}
+
+		public override void OnHitPlayer(Player player, int damage, bool crit)
+		{
+			if(Main.expertMode || Main.rand.Next(2) == 0)
+			{
+				player.AddBuff(BuffID.Chilled, 60);
+			}
+		}
+
+		public override void NPCLoot()
+		{
+			if (Main.rand.Next(6) == 0)
             {
-                if (npc.ai[1] == 0)
-                { MoveTo = player.Center + new Vector2((Main.rand.NextBool() ? -1 : 1) * 600, 0); npc.ai[1] = 1; }
-                else if (npc.ai[1] == 1)
-                { Move(Main.expertMode ? 13f : 10f); }
-                else if (npc.ai[1] == 2)
-                {
-                    SpinAndShoot(Main.expertMode ? 2 : 1);
-                }
-                else
-                {
-                    npc.ai[0] = 1; npc.localAI[2] += 5f; npc.ai[1] = 0; npc.ai[2] = 0;
-                    if (Main.netMode != 1)
-                    {
-                        npc.netUpdate = true;
-                    }
-                }
-
+                Item.NewItem(npc.getRect(), mod.ItemType("CryoliteBar"), Main.rand.Next(9, 15));
             }
-            if (npc.ai[0] == 1)
+			if (Main.rand.Next(4) == 0)
             {
-                if (npc.ai[1] == 0)
-                { MoveTo = player.Center + new Vector2((npc.Center.X > player.Center.X ? -1 : 1) * 600, 0); npc.ai[1] = 1; }
-                else if (npc.ai[1] == 1)
-                { Move(Main.expertMode ? 13f : 10f); }
-                else if (npc.ai[1] == 2)
-                {
-                    SpinAndShoot(Main.expertMode ? 2 : 1);
-                }
-                else if (npc.ai[2] < 4)
-                { npc.ai[2] += 1; npc.ai[1] = 0; }
-                /*else
-                {
-                    npc.ai[0] = 2; npc.localAI[2] += 5f; npc.ai[1] = 0; npc.ai[2] = 0; if (Main.netMode != NetmodeID.MultiplayerClient)
-                    {
-                        int projid = Projectile.NewProjectile1(player.Center.X, player.Center.Y - 1000, 0, 5, ModContent.ProjectileType<CryolisisProj>(), 0f);
-                        NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, projid);
-                        npc.netUpdate = true;
-                    }
-                }*/
-
-            /*} 
-            if (npc.ai[0] == 2)
-            {
-                if (npc.ai[1] == 0)
-                { MoveTo = player.Center + new Vector2((npc.Center.X > player.Center.X ? 1 : -1) * 600, -100); npc.ai[1] = 1; }
-                else if (npc.ai[1] == 1)
-                { MoveandDropIcicles(Main.expertMode ? 9f : 8f); }
-                else if (npc.ai[1] == 2)
-                {
-                    SpinAndShoot(Main.expertMode ? 3 : 2);
-                }
-                else
-                {
-                    npc.ai[0] = 3; npc.ai[1] = 0; npc.ai[2] = 0; npc.localAI[2] += 5f;
-                    if (Main.netMode != 1)
-                    {
-                        npc.netUpdate = true;
-                    }
-                }
-
+                Item.NewItem(npc.getRect(), mod.ItemType("IceHeart"), 1);
             }
-            if (npc.ai[0] == 3)
+			if (Main.rand.Next(2) == 0)
             {
-                if (npc.ai[1] == 0)
-                { MoveTo = player.Center + new Vector2((npc.Center.X > player.Center.X ? -1 : 1) * 600, -100); npc.ai[1] = 1; npc.localAI[0] = 0; }
-                else if (npc.ai[1] == 1)
-                { MoveandDropIcicles(Main.expertMode ? 9f : 8f); }
-                else if (npc.ai[1] == 2)
-                {
-                    SpinAndShoot(Main.expertMode ? 3 : 2);
-                }
-                else if (npc.ai[2] < 4)
-                { npc.ai[2] += 1; npc.ai[1] = 0; }
-                else
-                {
-                    npc.ai[0] = 4; npc.ai[1] = 0; npc.ai[2] = 0; npc.localAI[2] += 5f;
-                    if (Main.netMode != 1)
-                    {
-                        npc.netUpdate = true;
-                    }
-                }
-
+                Item.NewItem(npc.getRect(), mod.ItemType("CryoliteHelmet"), 1);
             }
-            if (npc.ai[0] == 4)
+			if (Main.rand.Next(2) == 0)
             {
-                if (npc.ai[1] == 0)
-                {
-
-                    if (Main.netMode != NetmodeID.MultiplayerClient)
-                    {
-                        int projid = Projectile.NewProjectile(player.Center.X, player.Center.Y - 1000, 0, 5, ModContent.ProjectileType<CryolisisProj>(), CryolisisProj, 0f);
-                        NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, projid);
-                    }
-
-                    MoveTo = player.Center + new Vector2(0, -300);
-                    npc.ai[1] = 1;
-                }
-                else if (npc.ai[1] == 1)
-                {
-                    MoveandDropIcicles(Main.expertMode ? 9f : 8f);
-                }
-
-
-                else if (npc.ai[1] == 2)
-                {
-                    SpinAndShoot(Main.expertMode ? 4 : 3);
-                }
-                else
-                {
-                    npc.ai[0] = 0; npc.ai[1] = 0; npc.ai[2] = 0; npc.localAI[2] += 20;
-                    if (Main.netMode != 1)
-                    {
-                        npc.netUpdate = true;
-                    }
-                }
-
+                Item.NewItem(npc.getRect(), mod.ItemType("CryoliteBreastplate"), 1);
             }
-            if (npc.localAI[1] > 0) { npc.localAI[1] -= 1; }
-            else { npc.localAI[2] -= 0.5f; }
-            if (npc.localAI[2] < 0f) { npc.localAI[2] = 0f; }
-            else if (npc.localAI[2] > Max) { npc.localAI[2] = Max; }
-
-        }
-        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
-        {
-            if (npc.localAI[1] >= 40) { npc.localAI[2] += 1.2f; }
-            npc.localAI[2] += 0.3f;
-            npc.localAI[1] = 60;
-        }
-
-
-
-        public override void FindFrame(int frameHeight)
-        {
-            int Max = Main.expertMode ? 75 : 100;
-            npc.frameCounter += 1;
-            npc.frameCounter %= 56;
-            int frame;
-            if (npc.localAI[2] >= Max)
+			if (Main.rand.Next(2) == 0)
             {
-                // number of frames * tick count
-                frame = (int)(npc.frameCounter / 7.0) + 8;  // only change frame every second tick
-                if (frame >= Main.npcFrameCount[npc.type]) frame = 0;  // check for final frame
-
+                Item.NewItem(npc.getRect(), mod.ItemType("CryoliteLeggings"), 1);
             }
-            else
+			if (Main.rand.Next(4) == 0)
             {
-                // number of frames * tick count
-                frame = (int)(npc.frameCounter / 7.0);  // only change frame every second tick
-                if (frame >= Main.npcFrameCount[npc.type] / 2) frame = 0;  // check for final frame
-
+                Item.NewItem(npc.getRect(), mod.ItemType("IceStaff"), 1);
             }
-            npc.frame.Y = frame * frameHeight;
+		}
 
-        }
-        public override void NPCLoot()
-        {
-            if (!Main.expertMode)
-            {
-                Item.NewItem(npc.getRect(), mod.ItemType("Cryolite"), Main.rand.Next(10, 22));
-                Item.NewItem(npc.getRect(), mod.ItemType("CryoliteBar"), Main.rand.Next(5, 12));
-                int rand = Main.rand.Next(1, 8);
-            }
-            else { npc.DropBossBags(); }
-        }
-        public override void BossLoot(ref string name, ref int potionType)
-        {
-            potionType = ItemID.GreaterHealingPotion;
-        }
+		public int GetHighestDamage()
+		{
+			int max = receivedDamage[0];
+			int bestType = 0;
+			for(int i = 1; i < 5; i++)
+			{
+				if(receivedDamage[i] > max)
+				{
+					max = receivedDamage[i];
+					bestType = i;
+				}
+			}
+			return bestType;
+		}
 
+		/*public override void BossLoot(ref string name, ref int potionType)
+		{
+			name = "The " + npc.TypeName;
+			potionType = ItemID.HealingPotion;
+			if (choice == 0)
+			{
+					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CryoliteBar", 12));
+			}
+			else if (choice == 1)
+		}*/
 
-        private void Move(float moveSpeed)
-        {
-            int Max = Main.expertMode ? 75 : 100;
-            // Sets the max speed of the npc.
-            if (npc.localAI[2] >= Max) { moveSpeed *= 2; }
-            Vector2 moveTo2 = MoveTo - npc.Bottom;
-            float magnitude = Magnitude(moveTo2);
-            if (magnitude > moveSpeed * 2)
-            {
-                moveTo2 *= moveSpeed / magnitude;
-            }
-            else { npc.ai[1] = 2; npc.localAI[0] = 0; }
+		private int DropLoot(int x, int y, int w, int h, int itemId, int stack = 1, bool broadcast = false, int prefix = 0, bool nodelay = false)
+		{
+			return Item.NewItem(x, y, w, h, itemId, stack, broadcast, prefix, nodelay);
+		}
 
-            npc.velocity.X = (npc.velocity.X * 50f + moveTo2.X) / 51f;
-            npc.velocity.Y = (npc.velocity.Y * 50f + moveTo2.Y) / 51f;
-        }
-        private void MoveandDropIcicles(float moveSpeed)
-        {
-            int Max = Main.expertMode ? 75 : 100;
-            // Sets the max speed of the npc.
-            if (npc.localAI[0] > 0) { npc.localAI[0] -= 1; if (npc.localAI[2] >= Max) { npc.localAI[0] -= 2; } }
-            Vector2 moveTo2 = MoveTo - npc.Bottom;
-            float magnitude = Magnitude(moveTo2);
-            if (magnitude > moveSpeed * 2)
-            {
-                if (npc.localAI[0] <= 0)
-                {
-                    npc.localAI[0] = (Main.expertMode ? 35 : 50); if (Main.netMode != NetmodeID.MultiplayerClient)
-                    {
-                        int projid = Projectile.NewProjectile(npc.Center, Vector2.Zero, (Main.expertMode ? ModContent.ProjectileType<CryolisisProj>() : ModContent.ProjectileType<CryolisisProj>() : ModContent.ProjectileType<CryolisisProj>() : ModContent.ProjectileType<CryolisisProj>()), 0f);
-                        NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, projid);
-                    }
-                }
-                moveTo2 *= moveSpeed / magnitude;
-            }
-            else { npc.ai[1] = 2; npc.localAI[0] = 0; }
+		public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit)
+		{
+			float mult = 1f;
+			if(item.melee)
+			{
+				receivedDamage[0] += damage;
+				mult = 0.75f;
+			}
+			else if(item.magic)
+			{
+				receivedDamage[1] += damage;
+				mult = 0.6f;
+			}
+			else if(item.ranged)
+			{
+				receivedDamage[2] += damage;
+				mult = 0.75f;
+			}
+			else if(item.summon)
+			{
+				receivedDamage[3] += damage;
+				mult = 0.75f;
+			}
+			else if(item.thrown)
+			{
+				receivedDamage[4] += damage;
+				mult = 1.2f;
+			}
+			if(damage >= 5000)
+			{
+				Main.NewText("You're dealing too much damage!", 255, 32, 32);
+				player.statDefense = 0;
+				player.endurance = 0;
+				player.Hurt(PlayerDeathReason.ByCustomReason(player.name + " was frostbitten."), 9999, -player.direction,
+					false, false, true, -1);
+				BitLightning(player.Center);
+				mult = 0f;
+			}
+			damage = (int)(damage * mult);
+		}
 
-            npc.velocity.X = (npc.velocity.X * 50f + moveTo2.X) / 51f;
-            npc.velocity.Y = (npc.velocity.Y * 50f + moveTo2.Y) / 51f;
-        }
-        private void SpinAndShoot(int numTurns)
-        {
-            int Max = Main.expertMode ? 75 : 100;
-            if (npc.localAI[2] >= Max) { numTurns *= 4; }
+		public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		{
+			Player player = Main.player[projectile.owner];
+			float mult = 1f;
+			if(projectile.melee)
+			{
+				receivedDamage[0] += damage;
+				mult = 0.75f;
+			}
+			else if(projectile.magic)
+			{
+				receivedDamage[1] += damage;
+				mult = 0.6f;
+			}
+			else if(projectile.ranged)
+			{
+				receivedDamage[2] += damage;
+				mult = 0.75f;
+			}
+			else if(projectile.minion)
+			{
+				receivedDamage[3] += damage;
+				mult = 0.75f;
+			}
+			else if(projectile.thrown)
+			{
+				receivedDamage[4] += damage;
+				mult = 1.2f;
+			}
+			if(damage >= 5000)
+			{
+				Main.NewText("You're dealing too much damage!", 255, 32, 32);
+				player.statDefense = 0;
+				player.endurance = 0;
+				player.Hurt(PlayerDeathReason.ByCustomReason(player.name + " was frostbitten"), 9999, -player.direction,
+					false, false, true, -1);
+				BitLightning(player.Center);
+				mult = 0f;
+			}
+			damage = (int)(damage * mult);
+		}
 
+		public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+		{
+			if(currentlyImmune)
+			{
+				damage *= 0.1f;
+				Main.PlaySound(3, (int)npc.position.X, (int)npc.position.Y, npc.HitSound.SoundId);
+				return false;
+			}
+			if(stage == 0)
+			{
+				damage *= 4f;
+			}
+			return true;
+		}
 
-            npc.rotation += 0.1f;
-            npc.velocity *= 0.9f;
-            npc.position.X += (float)Math.Cos(npc.rotation) * 10f * npc.direction;
-            npc.position.Y += (float)Math.Sin(npc.rotation) * 10f * npc.direction;
-            npc.localAI[0] += 0.1f;
-            if (npc.localAI[2] >= Max) { npc.rotation += 0.25f; npc.localAI[0] += 0.25f; }
-            if (npc.rotation >= numTurns * 6)
-            { npc.ai[1] = 3; npc.rotation = 0; npc.localAI[0] = 0; }
-            if (npc.localAI[0] >= 2.5f)
-            {
-                if (Main.netMode != NetmodeID.MultiplayerClient)
-                {
-                    int projid = Projectile.NewProjectile(npc.Center, ShootAtPlayer(Main.expertMode ? 9f : 6f), (Main.expertMode ? ModContent.ProjectileType<CryolisisProj>() : ModContent.ProjectileType<CryolisisProj>()), 0f);
-                    NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, projid);
-                }
-                npc.localAI[0] = 0;
-            }
-        }
-        private float Magnitude(Vector2 mag)// does funky pythagoras to find distance between two points
-        {
-            return (float)Math.Sqrt(mag.X * mag.X + mag.Y * mag.Y);
-        }
-        private Vector2 ShootAtPlayer(float moveSpeed)
-        {
-            // Sets the max speed of the npc.
-            Vector2 moveTo2 = player.Top - npc.Bottom;
-            float magnitude = Magnitude(moveTo2);
-
-            moveTo2 *= moveSpeed / magnitude;
-            return moveTo2;
-
-
-
-        }
-        private void DespawnHandler()
-        {
-            if (!player.active || player.dead)
-            {
-                npc.TargetClosest(false);
-                player = Main.player[npc.target];
-                if (!player.active || player.dead)
-                {
-                    npc.velocity = new Vector2(0f, -10f);
-                    if (npc.timeLeft > 2)
-                    {
-                        npc.timeLeft = 2;
-                    }
-                    return;
-                }
-            }
-        }
-    }
-} */
+		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+		{
+			scale = 0f;
+			return false;
+		}
+	}
+}

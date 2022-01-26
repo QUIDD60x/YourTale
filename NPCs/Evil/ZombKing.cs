@@ -68,16 +68,16 @@ namespace yourtale.NPCs.Evil
         {
             /*Will make NPC always drop entered loot
             Item.NewItem(npc.position, ItemID.Gel, 100);*/
-            if (Main.rand.Next(6) == 0)
+            if (Main.rand.Next(2) == 0)
             {
                 Item.NewItem(npc.position, ItemID.ZombieArm, 1);
             }
-            if (Main.rand.Next(6) == 0)
+            if (Main.rand.Next(2) == 0)
             {
                 Item.NewItem(npc.position, ItemID.Shackle, 1);
             }
             //will only drop 25% of the time based on integer added
-            if (Main.rand.Next(4) == 0)
+            if (Main.rand.Next(3) == 0)
             {
                 Item.NewItem(npc.position, ItemID.GoldCrown, 1);
             }

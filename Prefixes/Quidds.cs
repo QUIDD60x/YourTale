@@ -11,7 +11,7 @@ namespace yourtale.Prefixes
 
 		public override float RollChance(Item item)
 		{
-			return 100f;
+			return 0.0001f;
 		}
 
 		public override bool CanRoll(Item item)
