@@ -9,6 +9,19 @@ namespace yourtale.NPCs.Evil.Boss
 {
 	public class Cryolisis : ModNPC
 	{
+		 /*public override void PostSetupContent()
+         {
+            Mod bossChecklist = ModLoader.GetMod("BossChecklist");
+            if(bossChecklist != null)
+            {
+                // AddBoss, bossname, order or value in terms of vanilla bosses, inline method for retrieving downed value.
+                bossChecklist.Call("AddBoss", "Cryolisis", 5.5f, (Func<bool>)(() => yourtale.downedCryolisis));
+                //bossChecklist.Call(....
+                // To include a description:
+                bossChecklist.Call("AddBossWithInfo", "Cryolisis", 5.5f, (Func<bool>)(() => yourtale.downedCryolisis), "Use a [i:" + ItemType("StrongFlareGun") + "] at night in the Example Biome");
+            }
+         }*/
+
 		private static int hellLayer
 		{
 			get
