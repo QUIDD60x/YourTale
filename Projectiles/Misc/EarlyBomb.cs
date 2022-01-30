@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.GameContent.Achievements;
 using Terraria.ID;
 using Terraria.ModLoader;
+using yourtale.Items;
 
 namespace yourtale.Projectiles.Misc
 {
@@ -25,6 +26,16 @@ namespace yourtale.Projectiles.Misc
             drawOffsetX = 5;
             drawOriginOffsetY = 5;
         }
+
+        /*public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("CorExito"), 2);
+			recipe.AddIngredient(ItemID.Bomb, 10);
+			recipe.AddTile(TileID.Anvils);
+			recipe.SetResult(this, 10);
+			recipe.AddRecipe();
+		}*/
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
