@@ -14,6 +14,7 @@ using static Terraria.ModLoader.ModContent;
 using System.IO;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
+using yourtale.Tiles.Ores;
 
 namespace yourtale
 {
@@ -418,7 +419,7 @@ namespace yourtale
 
         private void OreGeneration(GenerationProgress progress)
         {   //code running message
-            progress.Message = "adding in YourTale ores...";
+            progress.Message = "adding in Your Tale ores";
             // 6E-05 = 0.00006
             // So (Main.maxTilesX * Main.maxTilesY) * 0.00006
             // (4200 * 1200) * 0.00006 = 302.4
@@ -427,6 +428,7 @@ namespace yourtale
                 int x = WorldGen.genRand.Next(0, Main.maxTilesX);
                 int y = WorldGen.genRand.Next((int)WorldGen.worldSurfaceLow, Main.maxTilesY);
 
+                //Higher numbers mean more, for some reason overlapping TileIDs will cause a lower chance ore to just not spawn, idk why atm. 
                 Tile tile = Framing.GetTileSafely(x, y);
                 if (tile.active() && (tile.type == TileID.Sand || tile.type == TileID.Dirt || tile.type == TileID.Mud))
                 {
@@ -439,6 +441,14 @@ namespace yourtale
                 if (tile.active() && (tile.type == TileID.Stone || tile.type == TileID.ClayBlock || tile.type == TileID.Iron))
                 {
                     WorldGen.TileRunner(x, y, WorldGen.genRand.Next(2, 15), WorldGen.genRand.Next(15, 40), TileType<Tiles.Ores.Dolomite>());
+                }
+                if (tile.type == TileID.Emerald || tile.type == TileID.Amethyst || tile.type == TileID.Diamond || tile.type == TileID.Sapphire || tile.type == TileID.Topaz || tile.type == TileID.Ruby || tile.type == TileID.Gold || tile.type == TileID.Platinum || tile.type == TileID.Lead)
+                {
+                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(80, 100), WorldGen.genRand.Next(80, 100), TileType<Tiles.Ores.Vigore>());
+                }
+                if (tile.type == TileID.Stone)
+                {
+                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(5, 10), WorldGen.genRand.Next(6, 12), TileType<Tiles.Ores.Vigore>());
                 }
             }
         }

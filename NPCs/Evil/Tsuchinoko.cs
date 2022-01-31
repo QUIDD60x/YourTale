@@ -77,7 +77,7 @@ namespace yourtale.NPCs.Evil
         {
 			if (spawnInfo.player.ZoneRockLayerHeight)
             {
-				return 1.1f;
+				return 0.09f;
             }
 			if (NPC.AnyNPCs(mod.NPCType("Tsuchinoko")))
 			{

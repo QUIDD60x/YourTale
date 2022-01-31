@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using yourtale.Dusts;
 
 namespace yourtale.Items
 {
@@ -16,8 +15,8 @@ namespace yourtale.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Life Shard");
-            Tooltip.SetDefault("Very unpure, how could I filter it?"); // \n = new line
+            DisplayName.SetDefault("Shard Of Life");
+            Tooltip.SetDefault("An unpurified shard of vigor and vitality. \nmaybe I could purify this somehow?"); // \n = new line
         }
 
         public override void SetDefaults()
@@ -25,21 +24,14 @@ namespace yourtale.Items
             item.width = 1;
             item.height = 1;
             item.maxStack = 999;
-            item.useStyle = 2;
+            item.useStyle = 1;
             item.useTime = 10;
             item.useAnimation = 10;
             item.useTurn = true;
             item.autoReuse = true;
-            item.UseSound = SoundID.Item25;
-            item.rare = ItemRarityID.Blue;
-            item.flame = true;
-        }
-        public override void HoldItem(Player player)
-        {
-            if (Main.rand.Next(player.itemAnimation > 0 ? 40 : 80) == 0)
-            {
-                Dust.NewDust(new Vector2(player.itemLocation.X + 1f * player.direction, player.itemLocation.Y - 1f * player.gravDir), 1, 1, ModContent.DustType<LifeStaffDust>());
-            }
+            item.UseSound = SoundID.Item1;
+            item.rare = ItemRarityID.Orange;
+            item.createTile = TileType<Tiles.Ores.Vigore>();
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -53,14 +45,6 @@ namespace yourtale.Items
             if (Main.rand.Next(3) == 0)
                 Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.Hitbox.Width, player.Hitbox.Height, mod.DustType("LifeStaffDust"));
             return base.UseItem(player);
-        }
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.FallenStar, 1);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this, 5); //can add recipe.SetResult(this, number here) for making multiple
-            recipe.AddRecipe();
         }
     }
 }
