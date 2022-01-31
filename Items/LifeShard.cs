@@ -12,12 +12,12 @@ using yourtale.Dusts;
 
 namespace yourtale.Items
 {
-    public class StarShard : ModItem
+    public class LifeShard : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Star Shard");
-            Tooltip.SetDefault("It radiates a small amount of warm energy..."); // \n = new line
+            DisplayName.SetDefault("Life Shard");
+            Tooltip.SetDefault("Very unpure, how could I filter it?"); // \n = new line
         }
 
         public override void SetDefaults()
@@ -38,20 +38,20 @@ namespace yourtale.Items
         {
             if (Main.rand.Next(player.itemAnimation > 0 ? 40 : 80) == 0)
             {
-                Dust.NewDust(new Vector2(player.itemLocation.X + 1f * player.direction, player.itemLocation.Y - 1f * player.gravDir), 4, 4, ModContent.DustType<StarShine>());
+                Dust.NewDust(new Vector2(player.itemLocation.X + 1f * player.direction, player.itemLocation.Y - 1f * player.gravDir), 1, 1, ModContent.DustType<LifeStaffDust>());
             }
         }
-                
-                public override void MeleeEffects(Player player, Rectangle hitbox)
-                {
-                    if (Main.rand.Next(3) == 0)
-                    Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("StarShine"));
-                }
+
+        public override void MeleeEffects(Player player, Rectangle hitbox)
+        {
+            if (Main.rand.Next(3) == 0)
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("LifeStaffDust"));
+        }
 
         public override bool UseItem(Player player)
         {
             if (Main.rand.Next(3) == 0)
-                Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.Hitbox.Width, player.Hitbox.Height, mod.DustType("StarShine"));
+                Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.Hitbox.Width, player.Hitbox.Height, mod.DustType("LifeStaffDust"));
             return base.UseItem(player);
         }
         public override void AddRecipes()

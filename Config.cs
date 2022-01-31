@@ -12,7 +12,7 @@ using Terraria.ModLoader.Config;
 namespace yourtale
 {
     [Label("Your Tale Gameconfig [CURRENTLY USELESS]")]
-    class TestConfig : ModConfig
+    class Config : ModConfig
     {
         [JsonIgnore]
         public const string ConfigName = "Game";
@@ -27,7 +27,7 @@ namespace yourtale
 
         public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref string message)
         {
-            message = Language.GetTextValue("Mods.VanillaTweaks.Config.ServerBlocked");
+            message = Language.GetTextValue("ServerBlocked");
             return false;
         }
         [Label("$ToolTweaks")]

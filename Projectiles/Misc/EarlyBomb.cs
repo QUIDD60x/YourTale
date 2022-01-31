@@ -27,16 +27,6 @@ namespace yourtale.Projectiles.Misc
             drawOriginOffsetY = 5;
         }
 
-        /*public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("CorExito"), 2);
-			recipe.AddIngredient(ItemID.Bomb, 10);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this, 10);
-			recipe.AddRecipe();
-		}*/
-
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
             // Vanilla explosions do less damage to Eater of Worlds in expert mode, so we will too.

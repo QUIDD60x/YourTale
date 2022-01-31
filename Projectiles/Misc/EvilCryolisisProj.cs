@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace yourtale.Projectiles.Misc
 {
-	public class CryolisisProj : ModProjectile
+	public class EvilCryolisisProj : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -67,9 +67,13 @@ namespace yourtale.Projectiles.Misc
 			projectile.frameCounter++;
 			if (projectile.frameCounter % 2 == 0)
 			{
-				int dust = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType("Neon"), 0f, 0f, 0, default(Color), 1f);
-				Main.dust[dust].velocity = Vector2.Zero;
-				Main.dust[dust].color = new Color(0, 255, 255);
+					Dust dust;
+				// You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+				Vector2 position = Main.LocalPlayer.Center;
+				dust = Main.dust[Terraria.Dust.NewDust(projectile.position + projectile.velocity, 30, 30, 76, 0f, 0.6976748f, 0, new Color(255,255,255), 0.8f)];
+				dust.noLight = true;
+				dust.fadeIn = 0.5232558f;
+
 			}
 		}
 
@@ -77,10 +81,12 @@ namespace yourtale.Projectiles.Misc
 		{
 			for (int i = 0; i < 5; i++)
 			{
-				int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("Neon"), 0f, 0f, 0, default(Color), 1f);
-				Main.dust[dust].velocity.X = (int)(Main.rand.Next(-8, 9));
-				Main.dust[dust].velocity.Y = (int)(Main.rand.Next(-8, 9));
-				Main.dust[dust].color = new Color(0, 255, 255);
+				Dust dust;
+				// You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+				Vector2 position = Main.LocalPlayer.Center;
+				dust = Main.dust[Terraria.Dust.NewDust(projectile.position + projectile.velocity, 30, 30, 76, 0f, 0.6976748f, 0, new Color(255,255,255), 0.8f)];
+				dust.noLight = true;
+				dust.fadeIn = 0.5232558f;
 			}
 			projectile.type = 0;
 			return true;

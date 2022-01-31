@@ -13,7 +13,7 @@ namespace yourtale.Items.Accessories
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Cold as ice... \ndecreases melee but protects you.");
+            Tooltip.SetDefault("Cold as ice... \ndecreases overall speed but protects you.");
         }
 
         public override void SetDefaults()

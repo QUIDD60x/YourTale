@@ -47,7 +47,7 @@ namespace yourtale.Items.Armor.Flint
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = "Increased Mining speed";
-            player.pickSpeed += 3f;
+            player.pickSpeed -= 0.35f;
         }
     }
 }

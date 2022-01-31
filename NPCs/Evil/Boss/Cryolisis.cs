@@ -208,7 +208,7 @@ namespace yourtale.NPCs.Evil.Boss
 			{
 				if(rotationSpeed < 0.1f)
 				{
-					rotationSpeed += 0.5f;
+					rotationSpeed += 2f;
 				}
 			}
 
@@ -216,7 +216,7 @@ namespace yourtale.NPCs.Evil.Boss
 
 			if(stage == 1 && lastStage == 0)
 			{
-				Main.NewText("The air is getting colder around you", 255, 32, 32);
+				Main.NewText("The air is getting colder around you...", 255, 32, 32);
 				music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Chaotic");
 			}
 			if(stage == 2 && lastStage != 2)
@@ -322,22 +322,22 @@ namespace yourtale.NPCs.Evil.Boss
 			}
 			for(int i = 0; i < 3; i++)
 			{
-				int a2 = Projectile.NewProjectile(pos.X + Main.rand.Next(-12, 13), 50, 0, 10, mod.ProjectileType("CryolisisProj"), damage, 0, 0);
+				int a2 = Projectile.NewProjectile(pos.X + Main.rand.Next(-12, 13), 50, 0, 10, mod.ProjectileType("EvilCryolisisProj"), damage, 0, 0);
 			}
 		}
 
 		private void BitStorm(Vector2 pos)
 		{
 			for(int i = -5; i <= 5; i++)
-			{										//was 15
-				Dust.NewDust(new Vector2(pos.X - (i * 6f), pos.Y - 300f + Main.rand.Next(-16, 17)), 12, 16, mod.DustType("CryoDust"));
+			{										//was 6
+				Dust.NewDust(new Vector2(pos.X - (i * 15f), pos.Y - 300f + Main.rand.Next(-16, 17)), 12, 16, mod.DustType("CryoDust"));
 			}
-			int fallSpeed = 10;
+			int fallSpeed = 2;
 			if(Main.expertMode)
 			{
-				fallSpeed = 15;
+				fallSpeed = 2;
 			}
-			int a2 = Projectile.NewProjectile(pos.X - (Main.rand.Next(-5, 6)*15f), pos.Y-300f+Main.rand.Next(-16,17), 0, fallSpeed, mod.ProjectileType("CryolisisProj"), (int)(npc.damage * 0.3f), 0, 0);
+			int a2 = Projectile.NewProjectile(pos.X - (Main.rand.Next(-5, 6)*15f), pos.Y-300f+Main.rand.Next(-16,17), 0, fallSpeed, mod.ProjectileType("EvilCryolisisProj"), (int)(npc.damage * 0.3f), 0, 0);
 			Main.projectile[a2].timeLeft = 45;
 		}
 
@@ -346,10 +346,10 @@ namespace yourtale.NPCs.Evil.Boss
 			Vector2 vector2 = npc.Center;
 			float num200 = (float)pos.X - vector2.X;
 			float num201 = (float)pos.Y - vector2.Y;
-			num200 += (float)Main.rand.Next(-40, 41) * 1.5f;
-			num201 += (float)Main.rand.Next(-32, 33) * 1.5f;
+			num200 += (float)Main.rand.Next(-40, 41) * 2f;
+			num201 += (float)Main.rand.Next(-32, 33) * 2f;
 			Vector2 vector12 = vector2 + Vector2.Normalize(new Vector2(num200, num201).RotatedBy((double)(-1.5f * (float)npc.direction), default(Vector2))) * 3f;
-			int a2 = Projectile.NewProjectile(vector12.X, vector12.Y, num200, num201, mod.ProjectileType("CryolisisProj"), (int)(npc.damage * 0.3f), 0, 0);
+			int a2 = Projectile.NewProjectile(vector12.X, vector12.Y, num200, num201, mod.ProjectileType("EvilCryolisisProj"), (int)(npc.damage * 0.3f), 0, 0);
 			Main.projectile[a2].tileCollide = true;
 			Main.projectile[a2].timeLeft = 90;
 		}
@@ -364,7 +364,7 @@ namespace yourtale.NPCs.Evil.Boss
 			}
 			for(int i = 0; i < count; i++)
 			{
-				int a2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Main.rand.Next(-range, range+1), Main.rand.Next(-range, range+1), mod.ProjectileType("CryolisisProj"), (int)(npc.damage * 0.6f), 0, 0);
+				int a2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Main.rand.Next(-range, range+1), Main.rand.Next(-range, range+1), mod.ProjectileType("EvilCryolisisProj"), (int)(npc.damage * 0.6f), 0, 0);
 				Main.projectile[a2].tileCollide = true;
 				Main.projectile[a2].timeLeft = 100;
 			}

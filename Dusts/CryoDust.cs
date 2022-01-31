@@ -1,20 +1,28 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace yourtale.Dusts
 {
-	public class CryoDust : ModDust
-	{
-		public override void OnSpawn(Dust dust)
-		{
-			//Dust dust;
-			// You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-			Vector2 position = Main.LocalPlayer.Center;
-			dust = Terraria.Dust.NewDustDirect(position, 9, 4, 10, 0f, 0f, 0, new Color(255, 255, 255), 1.162791f);
-			dust.noLight = true;
-			dust.fadeIn = 0.9767442f;
+    public class CryoDust : ModDust
+    {
+        public override void OnSpawn(Dust dust)
+        {
+            dust.velocity *= 0.2f;
+            dust.noGravity = false;
+            dust.noLight = true;
+            dust.scale *= 1.5f;
+        }
 
-		}
-	}
+        public override bool Update(Dust dust)
+        {
+            dust.position += dust.velocity;
+            dust.rotation += dust.velocity.X * 3f;
+            dust.scale *= 0.60f;
+            if (dust.scale < 0.5f)
+            {
+                dust.active = false;
+            }
+            return false;
+        }
+    }
 }
