@@ -1,4 +1,4 @@
-﻿using yourtale.Projectiles.Misc;
+﻿using yourtale.Projectiles.Staffs;
 using yourtale.Tiles;
 using Terraria;
 using Terraria.ID;
