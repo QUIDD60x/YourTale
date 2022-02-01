@@ -11,7 +11,7 @@ namespace yourtale.Items.Weapons.Mana
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Life Sceptre");
-            Tooltip.SetDefault("Smells nice!/n very bouncy and fast, as it is full of life.");
+            Tooltip.SetDefault("Smells nice!\n very bouncy and fast, as it is full of life.");
             Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
         }
 
@@ -41,6 +41,7 @@ namespace yourtale.Items.Weapons.Mana
             recipe.AddIngredient(ItemID.Wood, 12);
             recipe.AddIngredient(ItemID.Acorn, 3);
             recipe.AddIngredient(mod.ItemType("StarShard"), 5);
+            recipe.AddIngredient(mod.ItemType("LifeShard"), 3);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

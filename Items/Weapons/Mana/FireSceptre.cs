@@ -19,7 +19,7 @@ namespace yourtale.Items.Weapons.Mana
         {
             item.damage = 25;
             item.magic = true;
-            item.mana = 25;
+            item.mana = 20;
             item.width = 40;
             item.height = 40;
             item.useTime = 3;

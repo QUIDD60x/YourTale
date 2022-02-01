@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using yourtale.Projectiles.Misc;
+using yourtale.Projectiles.Evil;
 
 namespace yourtale.NPCs.Evil
 {

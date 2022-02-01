@@ -17,7 +17,7 @@ namespace yourtale.Items.Weapons.Explosives
         {
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.shootSpeed = 4f;
-            item.shoot = ModContent.ProjectileType<Projectiles.Misc.EarlyBomb>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Staffs.EarlyBomb>();
             item.width = 8;
             item.height = 28;
             item.maxStack = 30;
@@ -34,10 +34,10 @@ namespace yourtale.Items.Weapons.Explosives
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Dynamite, 3);
+            recipe.AddIngredient(ItemID.Grenade, 3);
             recipe.AddIngredient(mod.ItemType("CorExitio"), 1);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this, 3);
             recipe.AddRecipe();
         }
     }

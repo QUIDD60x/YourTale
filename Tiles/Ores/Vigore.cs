@@ -18,7 +18,8 @@ namespace yourtale.Tiles.Ores
             Main.tileSolid[Type] = true; 
             Main.tileMergeDirt[Type] = true; 
             Main.tileBlockLight[Type] = true; 
-            Main.tileLavaDeath[Type] = true; 
+            Main.tileLavaDeath[Type] = true;
+            Main.tileShine[Type] = 95;
 
             drop = ItemType<Items.LifeShard>(); //drop = Item.itemhere for vanilla drops
 
@@ -31,9 +32,9 @@ namespace yourtale.Tiles.Ores
         // Will let you modify the light level and colour, RGB variables are obviously RBG colours.
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
-            r = 0.5f;
-            g = 0.75f;
-            b = 1f;
+            r = 13f;
+            g = 195f;
+            b = 4f;
         }
         //will let you generate particles for it, don't quite understand this bit yet.
         public override void NumDust(int i, int j, bool fail, ref int num)

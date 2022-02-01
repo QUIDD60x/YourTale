@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace yourtale.Projectiles.Misc
+namespace yourtale.Projectiles.Evil
 {
 	public class EvilCryolisisProj : ModProjectile
 	{

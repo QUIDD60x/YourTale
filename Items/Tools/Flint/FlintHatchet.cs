@@ -2,7 +2,7 @@
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace yourtale.Items.Tools
+namespace yourtale.Items.Tools.Flint
 {
     public class FlintHatchet : ModItem
     {

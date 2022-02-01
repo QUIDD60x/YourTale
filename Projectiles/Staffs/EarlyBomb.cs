@@ -1,12 +1,14 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
+using System.IO;
+using Terraria.DataStructures;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Achievements;
 using Terraria.ID;
 using Terraria.ModLoader;
 using yourtale.Items;
 
-namespace yourtale.Projectiles.Misc
+namespace yourtale.Projectiles.Staffs
 {
     // to investigate: Projectile.Damage, (8843)
     internal class EarlyBomb : ModProjectile
@@ -35,6 +37,7 @@ namespace yourtale.Projectiles.Misc
                 if (target.type >= NPCID.EaterofWorldsHead && target.type <= NPCID.EaterofWorldsTail)
                 {
                     damage /= 5;
+                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Item/Explosion1"));
                 }
             }
         }
@@ -53,7 +56,6 @@ namespace yourtale.Projectiles.Misc
                 //Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/BananaImpact").WithVolume(.7f).WithPitchVariance(.5f));
             //}
             projectile.soundDelay = 10;
-
             // This code makes the projectile very bouncy.
             if (projectile.velocity.X != oldVelocity.X && Math.Abs(oldVelocity.X) > 1f)
             {
@@ -139,7 +141,7 @@ namespace yourtale.Projectiles.Misc
                 }
             }
             // Play explosion sound
-            Main.PlaySound(SoundID.Item15, projectile.position);
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Item/Explosion1"));
             // Smoke Dust spawn
             for (int i = 0; i < 50; i++)
             {
