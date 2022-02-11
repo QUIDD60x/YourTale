@@ -42,6 +42,7 @@ namespace yourtale.Items.Weapons.Mana
             recipe.AddIngredient(ItemID.Shiverthorn, 3);
             recipe.AddIngredient(ItemID.IceBlock, 15);
             recipe.AddIngredient(mod.ItemType("Cryolite"), 10);
+            recipe.AddIngredient(mod.ItemType("StarShard"), 5);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -38,10 +38,10 @@ namespace yourtale.Items.Weapons.Mana
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.SnowBlock, 12);
-            recipe.AddIngredient(ItemID.Shiverthorn, 3);
-            recipe.AddIngredient(ItemID.IceBlock, 15);
-            recipe.AddIngredient(mod.ItemType("Cryolite"), 10);
+            recipe.AddIngredient(ItemID.DirtBlock, 50);
+            recipe.AddIngredient(ItemID.MudBlock, 10);
+            //recipe.AddIngredient(mod.ItemType("LifeShard"), 10);
+            recipe.AddIngredient(mod.ItemType("StarShard"), 5);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

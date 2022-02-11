@@ -41,10 +41,11 @@ namespace yourtale.Items.Weapons.Mana
             recipe.AddIngredient(ItemID.Wood, 12);
             recipe.AddIngredient(ItemID.Acorn, 3);
             recipe.AddIngredient(mod.ItemType("StarShard"), 5);
-            recipe.AddIngredient(mod.ItemType("LifeShard"), 3);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
+            recipe.AddIngredient(mod.ItemType("LifeShard"), 3);
+            recipe.AddIngredient(mod.ItemType("StarShard"), 5);
         }
     }
 }

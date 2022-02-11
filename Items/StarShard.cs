@@ -59,7 +59,7 @@ namespace yourtale.Items
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.FallenStar, 1);
             recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this, 5); //can add recipe.SetResult(this, number here) for making multiple
+            recipe.SetResult(this, 10); //can add recipe.SetResult(this, number here) for making multiple
             recipe.AddRecipe();
         }
     }
