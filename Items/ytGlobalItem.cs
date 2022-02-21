@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +11,7 @@ namespace yourtale.Items
 {
     public class ytGlobalItem : GlobalItem
     {
-        /*public override void SetDefaults(Item item)
+        public override void SetDefaults(Item item)
         {
             ItemID.Sets.ExtractinatorMode[ItemID.Cloud] = ItemID.Cloud;
         }
@@ -19,11 +19,11 @@ namespace yourtale.Items
         public override void ExtractinatorUse(int extractType, ref int resultType, ref int resultStack)
         {
             Main.NewText(extractType);
-            if (extractType == ItemID.JungleSpores)
+            if (extractType == ItemID.IronOre)
             {
                 resultType = ItemID.PlatinumCoin;
                 resultStack = 1;
             }
         }
     }
-}*/
+}
