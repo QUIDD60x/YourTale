@@ -14,6 +14,7 @@ namespace yourtale.Items
         public override void SetDefaults(Item item)
         {
             ItemID.Sets.ExtractinatorMode[ItemID.Cloud] = ItemID.Cloud;
+            ItemID.Sets.IsAMaterial[ItemID.ManaCrystal] = true;
         }
 
         public override void ExtractinatorUse(int extractType, ref int resultType, ref int resultStack)
