@@ -11,11 +11,11 @@ using Terraria.ModLoader.Config;
 
 namespace yourtale
 {
-    [Label("Your Tale Gameconfig [CURRENTLY USELESS]")]
-    class Config : ModConfig
+    [Label("Yourtale's game configuration.")]
+    class ServerConfig : ModConfig
     {
         [JsonIgnore]
-        public const string ConfigName = "Game";
+        public const string ConfigName = "sapo asop samslapmsa polm";
 
         public override bool Autoload(ref string name)
         {
@@ -41,8 +41,8 @@ namespace yourtale
         [DefaultValue(5f)]
         public float ExtractSpeedMultiplier;
 
-        [Label("$Difficulty button")]
-        [Tooltip("$Go ahead, turn it down.")]
+        [Label("$Function Button")]
+        [Tooltip("$Displays a function, at the moment it does something with molotov cocktails?")]
         [ReloadRequired]
         [Range(0, 100)]
         [DefaultValue(69f)]

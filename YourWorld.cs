@@ -21,85 +21,10 @@ namespace yourtale
 {
     public class YourWorld : ModWorld
     {
-        public static int StartPositionX = 0;
-        public static int StartPositionY = 0;
-        public static int Bed = 0;
-        public static int Table = 0;
-        public static int Wood = TileID.WoodBlock;
-        public static int WoodWall = 4;
-        public static int StoneWall = 5;
-        public static int Brick = 38;
-        public static int WoodTile = 106;
-        public static int Door = 0;
-        public static int Platform = 0;
-        public static int Stone = TileID.Stone;
-        public static int LivingWoodWall = 78;
-        public static int PlankedWall = 27;
-        public static int StoneSlab = 273;
-        public static int StoneSlabWall = 147;
-        public static int Fence = 106;
-        public static int Grass = 2;
-        public static int Chair = 0;
-        private static bool GenerateHouse = false;
         public static bool downedCryolisis;
-
-              //0=air, 1=dirt/snow/ice, 2=wood, 3=stone brick, 4=stone, 5=platform, 6=stone slab, 7=grass		
-        static readonly byte[,] GuideHouse =
-        {
-			{1,1,4,4,4,1,3,3,3,3,3,3,3,3,3,1,1,1,1,1,1,1,1,1},
-			{1,1,4,4,1,1,3,6,6,6,6,6,6,6,3,4,4,4,1,1,4,4,1,1},
-            {1,1,1,1,1,1,3,6,0,0,0,0,0,6,3,1,4,4,1,4,4,1,1,4},
-            {1,1,1,1,1,4,3,6,0,0,0,0,0,6,3,1,1,1,4,4,1,1,4,4},
-            {7,7,7,3,3,3,3,6,0,0,6,6,6,6,3,3,3,3,3,3,3,1,1,4},
-            {0,0,0,2,2,2,2,1,0,0,2,2,2,2,2,2,1,1,1,2,2,7,7,7},
-            {8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8},
-            {8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8},
-            {8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8},
-            {8,8,8,8,8,8,8,5,5,5,5,8,8,8,8,8,8,8,8,2,8,8,8,8},
-            {8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,2,8,8,8,8},
-            {8,8,8,8,2,2,8,8,8,8,8,8,8,8,8,8,8,8,2,2,8,8,8,8},
-            {0,0,0,0,2,2,2,5,5,5,5,2,2,2,2,2,2,2,2,2,3,3,0,0},
-			{0,0,0,0,3,2,2,0,0,0,0,0,0,0,0,0,0,2,2,3,3,3,0,0},
-			{0,0,0,0,3,3,2,2,0,0,0,0,0,0,0,0,0,0,3,3,3,0,0,0},
-			{0,0,0,0,0,3,3,2,2,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0},
-			{0,0,0,0,0,3,3,3,2,2,0,0,0,0,2,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,3,3,3,2,2,0,0,2,2,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,3,3,3,2,2,2,2,3,3,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,3,3,3,2,2,3,3,3,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,3,3,3,3,0,0,0,0,0,0,0,0,0,0}
-		};
-
-        //0=air, 1=stone wall, 2=wooden wall, 3=living wood wall, 4=planked wall, 5=stone slab wall, 6=fence
-        static readonly byte[,] GuideHouseWall =
-        {
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,5,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,5,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,5,5,5,5,5,0,0,0,0,0,0,0,0,0,0,0},
-			{6,6,6,6,6,0,0,2,5,5,2,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{6,0,6,6,6,2,3,2,2,2,2,0,0,0,0,0,2,3,2,6,6,6,6,6},
-			{0,0,6,0,6,0,0,2,2,2,2,0,0,0,2,2,2,3,2,6,0,6,6,0},
-			{0,0,6,0,0,0,0,0,2,2,2,2,0,0,2,2,2,3,2,0,0,0,6,0},
-			{0,0,0,0,0,0,0,0,2,2,2,2,3,2,2,2,2,3,2,0,0,0,0,0},
-			{0,0,0,0,0,0,3,2,2,2,2,2,3,2,2,2,2,3,2,0,0,0,0,0},
-			{0,0,0,0,0,2,3,2,2,2,2,2,3,2,2,2,2,3,2,0,0,0,0,0},
-			{0,0,0,0,0,0,4,3,4,4,3,4,4,3,4,4,3,4,0,0,0,0,0,0},
-			{0,0,0,0,0,0,4,3,4,4,3,4,4,3,4,4,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,3,4,4,3,4,4,3,4,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,3,4,4,3,4,4,3,4,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,4,4,4,3,4,4,3,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,4,4,3,4,4,3,4,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,4,3,4,4,3,4,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-		};
 
         public override void Initialize()
         {
-            GenerateHouse = false;
             downedCryolisis = false;
         }
        
@@ -155,33 +80,6 @@ namespace yourtale
             downedCryolisis = flags[0];
         }
 
-        /*//0=none, 1=bottom-left, 2=bottom-right, 3=top-left, 4=top-right, 5=half
-        static readonly byte[,] GuideHouseSlopes =
-        {
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-			{0,0,2,0,0,0,3,0,0,0,0,0,0,0,0,0,0,4,0,0,0,1,0,0},
-			{0,0,0,2,0,0,0,3,0,0,0,0,0,0,0,0,4,0,0,0,1,0,0,0},
-			{0,0,0,0,2,0,0,0,3,0,0,0,0,0,0,4,0,0,0,1,0,0,0,0},
-			{0,0,0,0,0,2,0,0,0,3,0,0,0,0,4,0,0,0,1,0,0,0,0,0},
-			{0,0,0,0,0,0,2,0,0,0,3,0,0,4,0,0,0,1,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,2,0,0,0,3,4,0,0,0,1,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,2,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
-			{0,0,0,0,0,0,0,0,0,0,2,0,0,1,0,0,0,0,0,0,0,0,0,0}
-		};*/
-
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight) //each task has a different name/stage,
         {
             int shiniesIndex = tasks.FindIndex(x => x.Name.Equals("Shinies"));
@@ -227,7 +125,7 @@ namespace yourtale
                 }
                 if (tile.type == TileID.Stone)
                 {
-                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(5, 10), WorldGen.genRand.Next(6, 12), TileType<Tiles.Ores.Vigore>());
+                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(1, 1), WorldGen.genRand.Next(1, 1), TileType<Tiles.Ores.Vigore>());
                 }
             }
         }
@@ -235,7 +133,7 @@ namespace yourtale
         private void ChestGeneration(GenerationProgress progress)
         {
             progress.Message = "Adding YourTale loot into chests";
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 0; i++)
             {
                 bool placeSuccessful = true;
                 ushort tileToPlace = (ushort)TileType<Tiles.Furniture.TestChest>();
@@ -243,8 +141,8 @@ namespace yourtale
                 int chestId = -1;
                 while (!placeSuccessful)
                 {
-                    int x = WorldGen.genRand.Next(0, Main.maxTilesX);
-                    int y = WorldGen.genRand.Next(0, Main.maxTilesY);
+                    int x = WorldGen.genRand.Next(1, Main.maxTilesX);
+                    int y = WorldGen.genRand.Next(1, Main.maxTilesY);
                     oldChestId = chestId;
                     chestId = WorldGen.PlaceChest(x, y, tileToPlace, true, 1);
                     if (chestId != -1)
@@ -253,19 +151,19 @@ namespace yourtale
                         Chest chest = Main.chest[chestId];
                         chest.item[1].SetDefaults(ItemType<Items.flint>());
                         chest.item[1].stack = WorldGen.genRand.Next(1, 1);
-                        chest.item[1].SetDefaults(ItemType<Items.Weapons.Melee.THESWORD>());
-                        chest.item[1].stack = WorldGen.genRand.Next(1, 1);
+                        chest.item[2].SetDefaults(ItemType<Items.Weapons.Melee.THESWORD>());
+                        chest.item[2].stack = WorldGen.genRand.Next(1, 1);
                         int index = 3;
                         switch (i)
                         {
                             case 0:
-                                chest.item[2].SetDefaults(ItemID.BandofRegeneration);
+                                chest.item[3].SetDefaults(ItemID.BandofRegeneration);
                                 break;
                             case 1:
-                                chest.item[2].SetDefaults(ItemID.HermesBoots);
+                                chest.item[4].SetDefaults(ItemID.HermesBoots);
                                 break;
                             default:
-                                chest.item[2].SetDefaults(ItemID.MagicMirror);
+                                chest.item[5].SetDefaults(ItemID.MagicMirror);
                                 break;
                         }
 

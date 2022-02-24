@@ -5,7 +5,7 @@ using Terraria.Localization;
 
 namespace yourtale
 {
-    public class Monet : CustomCurrencySingleCoin
+    public class Monet : CustomCurrencySingleCoin //a custom currency, not yet implemented.
     {
         public Color ExampleCustomCurrencyTextColor = Color.BlueViolet;
 
