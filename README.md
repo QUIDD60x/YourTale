@@ -2,19 +2,21 @@
 ![broken image link](https://github.com/QUIDD60x/Your-Tale/blob/master/icon.png?raw=true)
 [![Build Status](https://travis-ci.org/tModLoader/tModLoader.svg?branch=master)](https://quiddcorp.net) 
 
-**Your Tale**- A Terraria mod thing I make when I'm bored.
-Check my profile for more stuff.
-This might be broken sometimes so i would get this from the official Tmod site so you can update it a lot easier, untill version 1.5 official release it will not work a lot.
-## Things we currently have:
-1. 2 New armour sets with unique buffs
-2. 6 new enemies
-3. 28 new items
-4. a unique starting point where you mine for flint first and then make flint tools 
+**Your Tale**- A Terraria mod thing I update weekly-ish, and completely open for you to use!
+This might be broken sometimes so i would get this from the official Tmod site so you can update it a lot easier, untill version 1.5 official release it might not work a lot.
+## This currently includes:
+1. Custom world generation, currently supports ore generation and will soon support custom structures and loot placement.
+2. A couple weapon types, such as lots of different staffs and whatnot.
+3. a couple custom mobs and 1 boss, all with varying AIs to mess around with.
+4. Custom prefixes, obtainable in normal play.
+5. LOTS of custom projectiles.
 
+This mod is not really meant to be played normally, as there are probably unbalanced features and not a lot of time worth playing with.
 
-## Things we are adding:
-1. Hardmode stuff
-2. nerfing many overpowered weapons and tools.
-3. making enemy AI better, and adding in almost OP mobs.
-4. every time you die NPCs have a chance to higher their prices
-5. and other basic mod stuff like more weapons, bosses, etc.
+Lots of love to:
+* Tmodloader, and their example mod for helping me grasp the basics of modding terraria.
+* FoolsLynx, for getting me intrested in this whole mess.
+* The DRGN mod developer/s for providing an open sourced mod with lots of neat content aswell, that really helped me through harder coding times.
+* And you, for reading this much!
+
+I hope you can enjoy this mod as much as I enjoyed coding it. -Quidd
