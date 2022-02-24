@@ -12,6 +12,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using static Terraria.ModLoader.ModContent;
+using yourtale.Items.Placeables;
 
 namespace yourtale.Tiles.Furniture
 {
@@ -47,7 +48,7 @@ namespace yourtale.Tiles.Furniture
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.Containers };
             chest = "TestChest";
-            chestDrop = ItemType<Items.Placeables.TestChest>();
+            chestDrop = ItemType<Items.Placeables.Furniture.TestChest>();
         }
 
         public override ushort GetMapOption(int i, int j) => (ushort)(Main.tile[i, j].frameX / 36);
@@ -182,7 +183,7 @@ namespace yourtale.Tiles.Furniture
                 player.showItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : Language.GetTextValue("");
                 if (player.showItemIconText == Language.GetTextValue(""))
                 {
-                    player.showItemIcon2 = ItemType<Items.Placeables.TestChest>();
+                    player.showItemIcon2 = ItemType<Items.Placeables.Furniture.TestChest>();
                     if (Main.tile[left, top].frameX / 36 == 1)
                         player.showItemIcon2 = ItemType<Items.Misc.TestKey>();
                     player.showItemIconText = "";

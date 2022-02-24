@@ -1,9 +1,9 @@
-displayName = [c/8b0000:Your] [c/9d0000:Tale]- The [c/0110AA:Painful] side of Terraria.
+displayName = [c/8b0000:Your] [c/9d0000:Tale]- For [c/0110AA:your] creativity!
 author = QUIDD60x
-version = 0.9
+version = 1.0
 homepage = https://quiddcorp.net/your-tale
 includePDB = true
 buildIgnore = .git\*, referenceImages\*, .gitignore, .gitattributes, *.MD, *.csproj, *.user, obj\*, bin\*, dllReferences\*
 hideCode = false
 hideResources = false
-includeSource = false
+includeSource = true

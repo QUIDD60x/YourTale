@@ -11,7 +11,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace yourtale.Items.Armor.Cryolite
 {
-    [AutoloadEquip(EquipType.Legs)]
+    [AutoloadEquip(EquipType.Legs)] //this doesn't really have anything worth mentioning in it.
     public class CryoliteLeggings : ModItem
     {
         public override void SetStaticDefaults()
@@ -24,7 +24,7 @@ namespace yourtale.Items.Armor.Cryolite
             item.width = 25;
             item.height = 700;
             item.value = Item.sellPrice(silver: -1);
-            item.rare = ItemRarityID.White;
+            item.rare = ItemRarityID.Blue;
             item.defense = 8;
         }
 

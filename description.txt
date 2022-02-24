@@ -1,14 +1,25 @@
-This mod is basically RLCraft for Terraria. Ever played RLCraft? No?? Good.
-You can find more info about the mod and what to do on the homepage button below.
-This mod is best enjoyed on medium character difficulty, small world, non-expert world.
-Currently in hardcore development, if you're reading this then it should always work then.
-Quick download questions (what we have and if it's good for you)
-We are currently working on prehardmode, and we move up adding stuff slowly. As of update 1.5 we are on skeletron, there is NO new stuff past that point.
-we like to make the game hard for a challenging experience.
-We currently have:
-1. Flint tools and armour
-2.inability to mine with copper tools, forcing to take the long route and use flint.
-3.small custom generated ores, and a lot of prehardmode stuff.
-custom boss soon maybe? (still being worked on...)
-What we plan on adding soon:
-1. bring the expert mode AI into any difficulty.
+Hello and welcome to YourTale! Yourtale (Your Tale, yourtale) is a modded experience for Terraria's modloader, meant to be tinkered with by others and myself.
+All of the source code is completely open, and totally open for share. All I ask in return is a simple "Thanks" in the description or the code itself.
+Make sure to hit me up on Discord (Quidd#7638) and tell me about what you're making, I'd love to hear about it! Or if you have any comments, credits, or suggestions i'm open for that aswell.
+I hope you enjoy this code, as no matter what level of skill you are I've tried to include something helpful.
+This is open release 1.0, a pretty barebones mod structure i've been working on as a hobby project for a couple months, I'll be updating it regularly though so check back weekly!
+
+This currently includes:
+-Custom world generation, currently supports ore generation and will soon support custom structures and loot placement.
+-A couple weapon types, such as lots of different staffs and whatnot.
+-a couple custom mobs and 1 boss, all with varying AIs to mess around with.
+-Custom prefixes, obtainable in normal play.
+-LOTS of custom projectiles.
+And of course weekly/bi-weekly updates to improve the code and add new custom things!
+
+Check the github for more info, and to get notified upon a new release! (https://github.com/QUIDD60x/Your-Tale)
+
+This mod is not really meant to be played normally, as there are probably unbalanced features and not a lot of time worth playing with.
+
+Lots of love to:
+Tmodloader, and their example mod for helping me grasp the basics of modding terraria.
+FoolsLynx, for getting me intrested in this whole mess.
+The DRGN mod developer/s for providing an open sourced mod with lots of neat content aswell, that really helped me through harder coding times.
+And you, for reading this much!
+
+I hope you can enjoy this mod as much as I enjoyed coding it. -Quidd

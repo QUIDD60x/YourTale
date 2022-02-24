@@ -5,6 +5,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using yourtale.Projectiles.Evil;
+using yourtale;
 
 namespace yourtale.NPCs.Evil.Boss
 {
@@ -508,6 +509,7 @@ namespace yourtale.NPCs.Evil.Boss
 
 		public override void NPCLoot()
 		{
+			YourWorld.downedCryolisis = true;
 			if (Main.rand.Next(6) == 0)
             {
                 Item.NewItem(npc.getRect(), mod.ItemType("CryoliteBar"), Main.rand.Next(9, 15));

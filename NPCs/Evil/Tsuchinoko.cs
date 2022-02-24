@@ -27,7 +27,7 @@ namespace yourtale.NPCs.Evil
 			npc.defense = 15;
 			npc.value = 50000;
             npc.HitSound = SoundID.NPCHit13;
-            npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/NPCKilled/BoneCrush1");
+            npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/NPCKilled/BoneCrush1"); //will go into sounds in a youtube video probably, not explaining those in a text file.
 
         }
 
@@ -75,11 +75,11 @@ namespace yourtale.NPCs.Evil
 		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-			if (spawnInfo.player.ZoneRockLayerHeight)
+			if (spawnInfo.player.ZoneRockLayerHeight) //these are also specified on the tmodloader's spawning github. They are important so your mob doesn't spawn anywhere or all over the place.
             {
 				return 0.09f;
             }
-			if (NPC.AnyNPCs(mod.NPCType("Tsuchinoko")))
+			if (NPC.AnyNPCs(mod.NPCType("Tsuchinoko"))) //this makes it to where if 1 already exists, another won't spawn
 			{
 				return 0;
             }

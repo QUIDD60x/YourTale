@@ -10,6 +10,7 @@ using static Terraria.ModLoader.ModContent;
 namespace yourtale.NPCs
 {
 	// This abstract class can be used for non splitting worm type NPC.
+	// CALL TO THIS IF YOU NEED TO MAKE A WORM.
 	public abstract class Worm : ModNPC
 	{
 		/* ai[0] = follower

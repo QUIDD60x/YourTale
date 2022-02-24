@@ -10,23 +10,23 @@ namespace yourtale.Items.Weapons.Explosives
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("exitium incarnatus est");
-            ItemID.Sets.ItemsThatCountAsBombsForDemolitionistToSpawn[item.type] = true;
+            ItemID.Sets.ItemsThatCountAsBombsForDemolitionistToSpawn[item.type] = true; //basically means this in inventory=demolitionist will spawn.
         }
 
         public override void SetDefaults()
         {
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.shootSpeed = 4f;
-            item.shoot = ModContent.ProjectileType<Projectiles.Staffs.EarlyBomb>();
+            item.useStyle = ItemUseStyleID.SwingThrow; //makes it look more like a throw.
+            item.shootSpeed = 4f; //the velocity at which is goes flying out at.
+            item.shoot = ModContent.ProjectileType<Projectiles.Staffs.EarlyBomb>(); //the actual projectile.
             item.width = 8;
             item.height = 28;
             item.maxStack = 30;
-            item.consumable = true;
+            item.consumable = true; //VERY IMPORTANT as without this it will be infinite.
             item.UseSound = SoundID.Item1;
             item.useAnimation = 40;
             item.useTime = 40;
             item.noUseGraphic = true;
-            item.noMelee = true;
+            item.noMelee = true; //will stop it from dealing damage as a melee hit.
             item.value = Item.buyPrice(0, 0, 20, 0);
             item.rare = ItemRarityID.Pink;
         }

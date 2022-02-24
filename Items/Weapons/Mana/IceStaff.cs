@@ -18,7 +18,7 @@ namespace yourtale.Items.Weapons.Mana
         public override void SetDefaults()
         {
             item.damage = 14;
-            item.magic = true;
+            item.magic = true; //important to set the weapon to a class.
             item.mana = 5;
             item.width = 40;
             item.height = 40;
@@ -31,12 +31,12 @@ namespace yourtale.Items.Weapons.Mana
             item.rare = ItemRarityID.Green;
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;
-            item.shoot = ModContent.ProjectileType<SparklingBall>();
-            item.shootSpeed = 16f;
+            item.shoot = ModContent.ProjectileType<SparklingBall>(); //the projectile it shoots
+            item.shootSpeed = 16f; //the speed at which the projectile goes flying out.
         }
 
         public override void AddRecipes()
-        {
+        { //this recipe is good as it contains all the things you would need, modded or not.
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.SnowBlock, 12);
             recipe.AddIngredient(ItemID.Shiverthorn, 3);

@@ -15,6 +15,7 @@ using System.IO;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
 using yourtale.Tiles.Ores;
+using yourtale.NPCs.Evil.Boss;
 
 namespace yourtale
 {
@@ -40,6 +41,7 @@ namespace yourtale
         public static int Grass = 2;
         public static int Chair = 0;
         private static bool GenerateHouse = false;
+        public static bool downedCryolisis;
 
               //0=air, 1=dirt/snow/ice, 2=wood, 3=stone brick, 4=stone, 5=platform, 6=stone slab, 7=grass		
         static readonly byte[,] GuideHouse =
@@ -98,81 +100,62 @@ namespace yourtale
         public override void Initialize()
         {
             GenerateHouse = false;
+            downedCryolisis = false;
         }
-
-        public override TagCompound Save()
-        {
-            var Generated = new BitsByte();
-            Generated[0] = GenerateHouse;
-			var Downed = new List<string>();
-            return new TagCompound
-            {
-                {
-                    "StartPositionX",
-                    (object)StartPositionX
-                },
-                {
-                    "StartPositionY",
-                    (object)StartPositionY
-                },
-                {
-                    "Generated",
-                    (byte)Generated
-                },
-				{
-                    "Misc",
-                    (byte)Generated
-                },
-                {
-                    "Version", 0
-                },
-				{
-                    "Downed", Downed
-                }
-            };
-        }
-
+       
         public override void Load(TagCompound tag)
         {
-            var Generated = (BitsByte)tag.GetByte("Generated");
-            GenerateHouse = Generated[0];
-            StartPositionX = tag.GetInt("StartPositionX");
-            StartPositionY = tag.GetInt("StartPositionY");
-            var Downed = tag.GetList<string>("Downed");
+            var downed = tag.GetList<string>("downed");
+            downedCryolisis = downed.Contains("Cryolisis");
         }
 
-        public override void LoadLegacy(BinaryReader reader)
+        /*public override TagCompound Save()
+        {
+			var Downed = new List<string>();
+            /*if (downedCryolisis) { downed.Add("Cryolisis"); }
+            
+            return new TagCompound
+            {
+                ["downed"] = downed,
+            };
+        }*/
+
+        
+
+        /*public override void LoadLegacy(BinaryReader reader)
         {
             int loadVersion = reader.ReadInt32();
+            
             if (loadVersion == 0)
             {
                 BitsByte Flags1 = reader.ReadByte();
-                StartPositionX = reader.ReadInt32();
-                StartPositionY = reader.ReadInt32();
+                downedCryolisis = flags[0];
+                //BitsByte flags2 = reader.ReadByte();
+                //BitsByte flags3 = reader.ReadByte();
+                //BitsByte flags4 = reader.ReadByte();
+                //BitsByte flags5 = reader.ReadByte();
             }
-        }
+
+            /*else
+            {
+                mod.Logger.WarnFormat("yourtale: Unknown loadVersion: {0}", loadVersion);
+            }
+        }*/
 
         public override void NetSend(BinaryWriter writer)
         {
-            BitsByte Flags1 = new BitsByte();
-			BitsByte Flags2 = new BitsByte();
-            Flags1[0] = GenerateHouse;
-            writer.Write(Flags1);
-			writer.Write(Flags2);
-            writer.Write(StartPositionX);
-            writer.Write(StartPositionY);
+            var flags = new BitsByte();
+            flags[0] = downedCryolisis;
+            writer.Write(flags);
         }
 
         public override void NetReceive(BinaryReader reader)
         {
-            BitsByte Flags1 = reader.ReadByte();
-            BitsByte Flags2 = reader.ReadByte();
-            GenerateHouse = Flags1[0];
-            StartPositionX = reader.ReadInt32();
-            StartPositionY = reader.ReadInt32();
+            BitsByte flags = reader.ReadByte();
+            downedCryolisis = flags[0];
         }
 
-        //0=none, 1=bottom-left, 2=bottom-right, 3=top-left, 4=top-right, 5=half
+        /*//0=none, 1=bottom-left, 2=bottom-right, 3=top-left, 4=top-right, 5=half
         static readonly byte[,] GuideHouseSlopes =
         {
 			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -197,7 +180,7 @@ namespace yourtale
 			{0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0},
 			{0,0,0,0,0,0,0,0,0,2,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
 			{0,0,0,0,0,0,0,0,0,0,2,0,0,1,0,0,0,0,0,0,0,0,0,0}
-		};
+		};*/
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight) //each task has a different name/stage,
         {
@@ -211,210 +194,6 @@ namespace yourtale
             {
                 tasks.Insert(buriedChestIndex + 1, new PassLegacy("yourtale chest generation", ChestGeneration));
             }
-        }
-
-        public void AddGuideHouse(GenerationProgress progress = null)
-        {
-            if (GenerateHouse)
-            {
-                return;
-            }
-            try
-            {
-                bool Success = do_MakeGuideHouse(progress);
-                if (Success)
-                {
-                    GenerateHouse = true;
-                }
-            }
-            catch (Exception exception)
-            {
-                Main.NewText("If you're seeing this error message then something went wrong! check error log for more info. -Quidd");
-                ErrorLogger.Log(exception);
-            }
-        }
-
-        bool do_MakeGuideHouse(GenerationProgress progress)
-        {
-			string GuideHouseGen = Language.GetTextValue("Mods.Antiaris.GuideHouseGen");
-            if (progress != null)
-            {
-                progress.Message = GuideHouseGen;
-                progress.Set(0.1f);
-            }
-            StartPositionX = WorldGen.genRand.Next(Main.maxTilesX / 2 + 5, Main.spawnTileX + 50);
-            for (var Attempts = 0; Attempts < 10000; Attempts++)
-            {
-                for (var i = 0; i < 25; i++)
-                {
-                    StartPositionY = 190;
-                    do
-                    {
-                        StartPositionY++;
-                    }
-                    while ((!Main.tile[StartPositionX + i, StartPositionY].active() && StartPositionY < Main.worldSurface) || Main.tile[StartPositionX + i, StartPositionY].type == TileID.Trees || Main.tile[StartPositionX + i, StartPositionY].type == 27);
-                    if (!Main.tile[StartPositionX, StartPositionY].active() || Main.tile[StartPositionX, StartPositionY].liquid > 0)
-                    {
-                        StartPositionX++;
-                    }
-                    if (Main.tile[StartPositionX + i, StartPositionY].active())
-                    {
-						if (Main.tile[StartPositionX, StartPositionY].liquid > 0)
-							StartPositionX = WorldGen.genRand.Next(Main.maxTilesX / 2 + 5, Main.spawnTileX + 50);
-                        goto GenerateBuild;
-                    }
-                }
-            }
-            return false;
-
-            GenerateBuild:
-            for (var t = 0; t < 6; t++)
-            {
-                if (Main.tile[StartPositionX, StartPositionY + t].type == TileID.SnowBlock)
-                {
-                    Bed = 24;
-                    Wood = 321;
-                    WoodWall = 149;
-                    StoneWall = 84;
-                    Brick = 206;
-                    WoodTile = 150;
-                    Table = 28;
-                    Door = 30;
-                    Platform = 19;
-                    Chair = 60;
-                    Stone = TileID.IceBlock;
-                    Grass = TileID.SnowBlock;
-                    Fence = WallID.BorealWoodFence;
-                }
-                if (Main.tile[StartPositionX, StartPositionY + t].type == TileID.Dirt)
-                {
-                    Bed = 0;
-                    Wood = TileID.WoodBlock;
-                    WoodWall = 4;
-                    StoneWall = 5;
-                    Brick = 38;
-                    WoodTile = 106;
-                    Door = 0;
-                    Table = 0;
-                    Platform = 0;
-                    Chair = 0;
-                    Stone = TileID.Stone;
-                    Grass = 2;
-                    Fence = 106;
-                }
-                if (Main.tile[StartPositionX, StartPositionY + t].type == TileID.IceBlock)
-                {
-                    Bed = 24;
-                    Wood = 321;
-                    WoodWall = 149;
-                    StoneWall = 84;
-                    Brick = 206;
-                    WoodTile = 150;
-                    Table = 28;
-                    Door = 60;
-                    Platform = 19;
-                    Chair = 30;
-                    Stone = TileID.IceBlock;
-                    Grass = TileID.SnowBlock;
-                    Fence = WallID.BorealWoodFence;
-                }
-            }
-            StartPositionY += 3;
-            for (var X = 0; X < GuideHouse.GetLength(1); X++)
-            {
-                for (var Y = 0; Y < GuideHouse.GetLength(0); Y++)
-                {
-                    var tile = Framing.GetTileSafely(StartPositionX + X, StartPositionY - Y);
-                    switch (GuideHouse[Y, X])
-                    {
-                        case 0:
-                            break;
-                        case 2:
-                            tile.type = (ushort)Wood;
-                            tile.active(true);
-                            break;
-                        case 3:
-                            tile.type = (ushort)Brick;
-                            tile.active(true);
-                            break;
-                        case 4:
-                            tile.type = (ushort)Stone;
-                            tile.active(true);
-                            break;
-						case 5:
-							WorldGen.PlaceTile(StartPositionX + X, StartPositionY - Y, TileID.Platforms, true, true, -1, Platform);
-							break;
-						case 6:
-                            tile.type = (ushort)StoneSlab;
-                            tile.active(true);
-                            break;
-						case 7:
-                            tile.type = (ushort)Grass;
-                            tile.active(true);
-                            break;
-                        case 8:
-                            WorldGen.KillTile(StartPositionX + X, StartPositionY - Y, false, false, false);
-                            break;
-                    }
-                    switch (GuideHouseWall[Y, X])
-                    {
-                        case 0:
-                            tile.wall = 0;
-                            break;
-                        case 1:
-                            tile.wall = (ushort)StoneWall;
-                            break;
-                        case 2:
-                            tile.wall = (ushort)WoodWall;
-                            break;
-                        case 3:
-                            tile.wall = (ushort)LivingWoodWall;
-                            break;
-						case 4:
-							tile.wall = (ushort)PlankedWall;
-							break;
-						case 5:
-							tile.wall = (ushort)StoneSlabWall;
-							break;
-						case 6:
-							tile.wall = (ushort)Fence;
-							break;
-                    }
-                    if (GuideHouseSlopes[Y, X] == 5)
-                    {
-                        tile.halfBrick(true);
-                    }
-                    else
-                    {
-                        tile.halfBrick(false);
-                        tile.slope(GuideHouseSlopes[Y, X]);
-                    }
-					WorldGen.PlaceObject(StartPositionX + 11, StartPositionY - 13, 79, true, Bed);
-					var ChestIndex2 = Chest.FindChest(StartPositionX + 14, StartPositionY - 14);
-					WorldGen.PlaceObject(StartPositionX + 11, StartPositionY - 11, 42, true, 3);
-					WorldGen.PlaceObject(StartPositionX + 14, StartPositionY - 15, 78, true);
-					WorldGen.PlaceObject(StartPositionX + 8, StartPositionY - 5, 387, true);
-					WorldGen.PlaceObject(StartPositionX + 11, StartPositionY - 6, 14, true, Table);
-					WorldGen.PlaceObject(StartPositionX + 11, StartPositionY - 8, 103, true);
-					WorldGen.PlaceObject(StartPositionX + 8, StartPositionY - 10, 50, true);
-					WorldGen.PlaceObject(StartPositionX + 9, StartPositionY - 10, 13, true, 1);
-					WorldGen.PlaceObject(StartPositionX + 15, StartPositionY - 10, 246, true, 3);
-					WorldGen.PlaceObject(StartPositionX + 19, StartPositionY - 6, 10, true, Door);
-                    WorldGen.KillTile(StartPositionX + 11, StartPositionY - 2, false, false, true);
-                    WorldGen.KillTile(StartPositionX + 12, StartPositionY - 2, false, false, true);
-                    WorldGen.KillTile(StartPositionX + 11, StartPositionY - 3, false, false, true);
-                    WorldGen.KillTile(StartPositionX + 12, StartPositionY - 3, false, false, true);
-                    WorldGen.KillTile(StartPositionX + 10, StartPositionY - 2, false, false, true);
-                    WorldGen.KillTile(StartPositionX + 9, StartPositionY - 2, false, false, true);
-                    WorldGen.KillTile(StartPositionX + 10, StartPositionY - 3, false, false, true);
-                    WorldGen.KillTile(StartPositionX + 9, StartPositionY - 3, false, false, true);
-                    WorldGen.KillTile(StartPositionX + 8, StartPositionY - 2, false, false, true);
-                    WorldGen.KillTile(StartPositionX + 8, StartPositionY - 3, false, false, true);
-                    WorldGen.PlaceChest(StartPositionX + 11, StartPositionY - 2, 21, true, 28);
-					var ChestIndex1 = Chest.FindChest(StartPositionX + 11, StartPositionY - 3);
-                }
-            }
-            return true;
         }
 
         private void OreGeneration(GenerationProgress progress)
@@ -507,7 +286,6 @@ namespace yourtale
                     }
                 }
             }
-
         }
     }
 }

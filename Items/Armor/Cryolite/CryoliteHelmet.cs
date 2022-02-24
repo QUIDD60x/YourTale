@@ -11,7 +11,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace yourtale.Items.Armor.Cryolite
 {
-    [AutoloadEquip(EquipType.Head)]
+    [AutoloadEquip(EquipType.Head)] //helmets are where I (and most other mod creators) put the set bonus feature at, although you can put it anywhere it doesn't matter that much.
     public class CryoliteHelmet : ModItem
     {
         public virtual int Speed => 1;
@@ -27,8 +27,8 @@ namespace yourtale.Items.Armor.Cryolite
         {
             item.width = 25;
             item.height = 700;
-            item.value = Item.sellPrice(silver: -1);
-            item.rare = ItemRarityID.White;
+            item.value = Item.sellPrice(silver: 12);
+            item.rare = ItemRarityID.Blue;
             item.defense = 7;
         }
 
@@ -41,18 +41,17 @@ namespace yourtale.Items.Armor.Cryolite
             recipe.AddRecipe();
         }
 
-        public override bool IsArmorSet(Item head, Item body, Item legs)
-        {
+        public override bool IsArmorSet(Item head, Item body, Item legs) //This last bit here is the set bonus code.
+        { //this checks to see if you have all 3 armours equipped. You MIGHT be able to add extra equipped gear here like wings and stuff although i haven't personally tried yet.
             return body.type == mod.ItemType("CryoliteBreastplate") && legs.type == mod.ItemType("CryoliteLeggings");
         }
 
-        public override void UpdateArmorSet(Player player)
+        public override void UpdateArmorSet(Player player) //here is the armor set upgrade.
         {
-            player.setBonus = "You're chilled out! life regen starts faster and more defense.";
-            player.lifeRegenTime += 1000;
-            player.endurance += 0.3f;
+            player.setBonus = "You're chilled out! More defense, protection from cold sources, and an ice barrier!";
+            player.endurance += 0.3f; //endurance decreases total damage taken. Check my CheatSheet for a list of the player.status upgrades.
             player.AddBuff(BuffID.IceBarrier, 2);
-            player.AddBuff(BuffID.Warmth, 2);
+            player.AddBuff(BuffID.Warmth, 2); //player.AddBuff(mod.BuffType("buffhere"), numberhere); for modded buffs/debuffs.
         }
     }
 }

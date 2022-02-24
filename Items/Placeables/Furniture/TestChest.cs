@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
 
-namespace yourtale.Items.Placeables
+namespace yourtale.Items.Placeables.Furniture
 {
     public class TestChest : ModItem
     {

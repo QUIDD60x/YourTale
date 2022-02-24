@@ -25,7 +25,7 @@ namespace yourtale.Items.Weapons.Melee
 			item.value = -1;
 			item.rare = 13;
 			item.autoReuse = true;
-			item.UseSound = (mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Chaotic"));
+			item.UseSound = (mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Chaotic")); //custom sounds are a pain, i'll probably do a youtube video on them soon.
 		}
 
 		public override void AddRecipes() 
