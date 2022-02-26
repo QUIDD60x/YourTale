@@ -11,19 +11,6 @@ namespace yourtale.NPCs.Evil.Boss
 {
 	public class Cryolisis : ModNPC
 	{
-		 /*public override void PostSetupContent()
-         {
-            Mod bossChecklist = ModLoader.GetMod("BossChecklist");
-            if(bossChecklist != null)
-            {
-                // AddBoss, bossname, order or value in terms of vanilla bosses, inline method for retrieving downed value.
-                bossChecklist.Call("AddBoss", "Cryolisis", 5.5f, (Func<bool>)(() => yourtale.downedCryolisis));
-                //bossChecklist.Call(....
-                // To include a description:
-                bossChecklist.Call("AddBossWithInfo", "Cryolisis", 5.5f, (Func<bool>)(() => yourtale.downedCryolisis), "Use a [i:" + ItemType("StrongFlareGun") + "] at night in the Example Biome");
-            }
-         }*/
-
 		private static int hellLayer
 		{
 			get
@@ -82,7 +69,7 @@ namespace yourtale.NPCs.Evil.Boss
 			}
 		}
 
-		private int moveTime = 300;
+		private int moveTime = 100;
 		private int moveTimer = 60;
 		private bool currentlyImmune = false;
 		private int lastStage = 0;
@@ -123,8 +110,8 @@ namespace yourtale.NPCs.Evil.Boss
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
 			bossLifeScale = 1.2f;
-			npc.lifeMax = 8000;
-			npc.damage = 100;
+			npc.lifeMax = 4500;
+			npc.damage = 50;
 		}
 
 		public override void AI()
@@ -180,7 +167,7 @@ namespace yourtale.NPCs.Evil.Boss
 				player = Main.player[npc.target];
 				if(!player.active || player.dead || player.position.Y < hellLayer)
 				{
-					npc.velocity = new Vector2(0f, 10f);
+					npc.velocity = new Vector2(0f, 5f);
 					if(npc.timeLeft > 10)
 					{
 						npc.timeLeft = 10;
@@ -188,7 +175,7 @@ namespace yourtale.NPCs.Evil.Boss
 					return;
 				}
 			}
-			if(player.name != "Quidd")
+			/*if(player.name != "Quidd")
 			{
 				Main.NewText("You're dealing too much damage!", 255, 32, 32);
 				player.statDefense = 0;
@@ -196,13 +183,13 @@ namespace yourtale.NPCs.Evil.Boss
 				player.Hurt(PlayerDeathReason.ByCustomReason(player.name + " was frostbitten."), 9999, -player.direction,
 					false, false, true, -1);
 				BitLightning(player.Center);
-			}
+			}*/
 
 			if(currentlyImmune)
 			{
 				if(rotationSpeed > 0f)
 				{
-					rotationSpeed += 0.4f;
+					rotationSpeed += 0.2f;
 				}
 				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 100, (player.Center.Y - npc.Center.Y) / 100);
 			}
@@ -210,7 +197,7 @@ namespace yourtale.NPCs.Evil.Boss
 			{
 				if(rotationSpeed < 0.1f)
 				{
-					rotationSpeed += 2f;
+					rotationSpeed += 0.1f;
 				}
 			}
 
@@ -474,7 +461,7 @@ namespace yourtale.NPCs.Evil.Boss
 			}
 		}
 
-		public override Color? GetAlpha(Color drawColor)
+		/*public override Color? GetAlpha(Color drawColor)
 		{
 			if(currentlyImmune)
 			{
@@ -487,9 +474,9 @@ namespace yourtale.NPCs.Evil.Boss
 			/*if(stage == 1)
 			{
 				return Color.MidnightBlue;
-			}*/
+			}
 			return null;
-		}
+		}*/
 
 		public override void HitEffect(int hitDirection, double damage)
 		{

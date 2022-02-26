@@ -21,9 +21,9 @@ namespace yourtale.NPCs
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LifeShard"));
             }
-            if (npc.type == NPCID.BlueSlime)
+            if (npc.type == NPCID.EyeofCthulhu)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("StarShard"));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CorExitio"), Main.rand.Next(3, 11));
             } //for specific vanilla NPCs to drop things.
             
             /*if (npc.type == NPCID.EyeofCthulhu)
