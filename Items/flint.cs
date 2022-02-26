@@ -13,7 +13,7 @@ namespace yourtale.Items
 {
     public class flint : ModItem
     {
-        public override void SetStaticDefaults()
+        public override void SetStaticDefaults() 
         {
             DisplayName.SetDefault("Flint Shard");
             Tooltip.SetDefault("I can probably make tools with this if I can find some stone nearby..."); // \n = new line
