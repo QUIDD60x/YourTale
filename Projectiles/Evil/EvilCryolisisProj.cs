@@ -25,7 +25,7 @@ namespace yourtale.Projectiles.Evil
 			projectile.noDropItem = true;
 			projectile.alpha = 255;
 			projectile.extraUpdates = 100;
-			aiType = ProjectileID.Bullet;
+			aiType = ProjectileID.Bullet; 
 		}
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
@@ -34,8 +34,9 @@ namespace yourtale.Projectiles.Evil
 			if (Main.rand.Next(0, 101) < GetWeaponCrit(player))
 			{
 				crit = true;
+				target.AddBuff(BuffID.Frostburn, 60);
 			}
-			target.AddBuff(BuffID.Frostburn, 600);
+			
 		}
 
 		private int GetWeaponCrit(Player player)

@@ -69,7 +69,7 @@ namespace yourtale.NPCs.Evil.Boss
 			}
 		}
 
-		private int moveTime = 100;
+		private int moveTime = 60;
 		private int moveTimer = 60;
 		private bool currentlyImmune = false;
 		private int lastStage = 0;
@@ -189,7 +189,7 @@ namespace yourtale.NPCs.Evil.Boss
 			{
 				if(rotationSpeed > 0f)
 				{
-					rotationSpeed += 0.2f;
+					rotationSpeed += 0f;
 				}
 				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 100, (player.Center.Y - npc.Center.Y) / 100);
 			}
@@ -218,17 +218,17 @@ namespace yourtale.NPCs.Evil.Boss
 			subCool--;
 			if(currentMove == 1)
 			{
-				rotationSpeed = 0.7f;
+				rotationSpeed = 0.22f;
 				if(subCool <= 0 && stage >= 2)
 				{
 					npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 30, (player.Center.Y - npc.Center.Y) / 30);
 				}
 			}
-			if(currentMove == 2)
+			/*if(currentMove == 2)
 			{
 				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 200, (player.Center.Y - npc.Center.Y) / 200);
 				BitStorm(player.Center);
-			}
+			}*/
 			if(currentMove == 3)
 			{
 				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 150, (player.Center.Y - npc.Center.Y) / 150);
@@ -237,7 +237,7 @@ namespace yourtale.NPCs.Evil.Boss
 			if(currentMove == 4)
 			{
 				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 300, (player.Center.Y - npc.Center.Y) / 300);
-				rotationSpeed = 0.1f;
+				rotationSpeed = 0.3f;
 				if(subCool <= 0)
 				{
 					BitExplosion(player.Center);
@@ -307,19 +307,19 @@ namespace yourtale.NPCs.Evil.Boss
 			int damage = (int)(npc.damage);
 			if(Main.expertMode)
 			{
-				damage = (int)(damage * 1.5f);
+				damage = (int)(damage * 1.8f);
 			}
 			for(int i = 0; i < 3; i++)
 			{
-				int a2 = Projectile.NewProjectile(pos.X + Main.rand.Next(-12, 13), 50, 0, 10, mod.ProjectileType("EvilCryolisisProj"), damage, 0, 0);
+				int a2 = Projectile.NewProjectile(pos.X + Main.rand.Next(-9, 10), 50, 0, 10, mod.ProjectileType("EvilCryolisisProj"), damage, 0, 0);
 			}
 		}
 
-		private void BitStorm(Vector2 pos)
+		/*private void BitStorm(Vector2 pos)
 		{
 			for(int i = -5; i <= 5; i++)
-			{										//was 6
-				Dust.NewDust(new Vector2(pos.X - (i * 15f), pos.Y - 300f + Main.rand.Next(-16, 17)), 12, 16, mod.DustType("CryoDust"));
+			{										//was 15
+				Dust.NewDust(new Vector2(pos.X - (i * 6f), pos.Y - 300f + Main.rand.Next(-16, 17)), 12, 16, mod.DustType("CryoDust"));
 			}
 			int fallSpeed = 2;
 			if(Main.expertMode)
@@ -328,7 +328,7 @@ namespace yourtale.NPCs.Evil.Boss
 			}
 			int a2 = Projectile.NewProjectile(pos.X - (Main.rand.Next(-5, 6)*15f), pos.Y-300f+Main.rand.Next(-16,17), 0, fallSpeed, mod.ProjectileType("EvilCryolisisProj"), (int)(npc.damage * 0.3f), 0, 0);
 			Main.projectile[a2].timeLeft = 45;
-		}
+		}*/
 
 		private void BitBeam(Vector2 pos)
 		{
@@ -497,7 +497,7 @@ namespace yourtale.NPCs.Evil.Boss
 		public override void NPCLoot()
 		{
 			YourWorld.downedCryolisis = true;
-			if (Main.rand.Next(6) == 0)
+			if (Main.rand.Next(5) == 0)
             {
                 Item.NewItem(npc.getRect(), mod.ItemType("CryoliteBar"), Main.rand.Next(9, 15));
             }
@@ -520,6 +520,10 @@ namespace yourtale.NPCs.Evil.Boss
 			if (Main.rand.Next(4) == 0)
             {
                 Item.NewItem(npc.getRect(), mod.ItemType("IceStaff"), 1);
+            }
+			if (Main.rand.Next(1) == 0)
+            {
+				Item.NewItem(npc.getRect(), mod.ItemType("ManuscriptCryo"), 1);
             }
 		}
 

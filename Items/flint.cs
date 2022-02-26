@@ -37,13 +37,13 @@ namespace yourtale.Items
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.Next(3) == 0)
-                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("TMMCDust"));
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("nothinghereyeteither"));
         }
 
         public override bool UseItem(Player player)
         {
             if (Main.rand.Next(3) == 0)
-                Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.Hitbox.Width, player.Hitbox.Height, mod.DustType("TMMCDust"));
+                Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.Hitbox.Width, player.Hitbox.Height, mod.DustType("nothinghereyet"));
             return base.UseItem(player);
         }
     }
