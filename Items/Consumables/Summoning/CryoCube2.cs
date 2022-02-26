@@ -23,13 +23,13 @@ namespace yourtale.Items.Consumables.Summoning
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Cryo Cube");
-            Tooltip.SetDefault("You can almost see a face in there... \nSummons Cryolisis \nNonconsumable");
+            Tooltip.SetDefault("You can almost see a face in there... \nSummons Cryolisis \nNot consumable");
         }
 
 
         public override bool CanUseItem(Player player)
         {
-            return player.ZoneDesert && !NPC.AnyNPCs(mod.NPCType("Cryolisis"));
+            return player.ZoneSnow && !NPC.AnyNPCs(mod.NPCType("Cryolisis"));
         }
 
         public override void AddRecipes()

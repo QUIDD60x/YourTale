@@ -15,17 +15,17 @@ namespace yourtale.Projectiles.Evil
 		public override void SetDefaults()
 		{
 			projectile.penetrate = 1;
-			projectile.aiStyle = 1;
-			projectile.width = 16;
-			projectile.height = 16;
+			//projectile.aiStyle = 1;
+			projectile.width = 14;
+			projectile.height = 14;
 			projectile.ignoreWater = true;
 			projectile.hostile = true;
-			projectile.timeLeft = 9999;
+			projectile.timeLeft = 1200;
 			projectile.tileCollide = true;
 			projectile.noDropItem = true;
 			projectile.alpha = 255;
 			projectile.extraUpdates = 100;
-			aiType = ProjectileID.Bullet; 
+			aiType = ProjectileID.Bullet;
 		}
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
@@ -69,7 +69,6 @@ namespace yourtale.Projectiles.Evil
 			if (projectile.frameCounter % 2 == 0)
 			{
 					Dust dust;
-				// You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
 				Vector2 position = Main.LocalPlayer.Center;
 				dust = Main.dust[Terraria.Dust.NewDust(projectile.position + projectile.velocity, 30, 30, 76, 0f, 0.6976748f, 0, new Color(255,255,255), 0.8f)];
 				dust.noLight = true;
@@ -83,7 +82,6 @@ namespace yourtale.Projectiles.Evil
 			for (int i = 0; i < 5; i++)
 			{
 				Dust dust;
-				// You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
 				Vector2 position = Main.LocalPlayer.Center;
 				dust = Main.dust[Terraria.Dust.NewDust(projectile.position + projectile.velocity, 30, 30, 76, 0f, 0.6976748f, 0, new Color(255,255,255), 0.8f)];
 				dust.noLight = true;

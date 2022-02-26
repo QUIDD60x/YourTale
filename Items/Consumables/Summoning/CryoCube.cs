@@ -31,7 +31,7 @@ namespace yourtale.Items.Consumables.Summoning
 
         public override bool CanUseItem(Player player)
         {
-            return player.ZoneDesert && !NPC.AnyNPCs(mod.NPCType("Cryolisis"));
+            return player.ZoneSnow && !NPC.AnyNPCs(mod.NPCType("Cryolisis"));
         }
 
         public override void AddRecipes()

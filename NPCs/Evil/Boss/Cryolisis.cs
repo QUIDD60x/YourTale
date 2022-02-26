@@ -205,14 +205,17 @@ namespace yourtale.NPCs.Evil.Boss
 
 			if(stage == 1 && lastStage == 0)
 			{
-				Main.NewText("The air is getting colder around you...", 255, 32, 32);
+				Main.NewText("The air is getting colder around you...", 41, 84, 153);
 				music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Chaotic");
+				npc.defense += 8;
+				npc.damage += 20;
 			}
 			if(stage == 2 && lastStage != 2)
 			{
-				Main.NewText("It's begining to melt!", 255, 0, 0);
-				npc.damage += 12;
-				npc.defense += 8;
+				Main.NewText("It's begining to melt!", 66, 135, 245);
+				npc.damage -= 15;
+				npc.defense -= 10;
+				npc.AddBuff(BuffID.Wet, -1);
 			}
 			// -------------------------------------------------------------------------- ATTACKS
 			subCool--;
@@ -246,7 +249,7 @@ namespace yourtale.NPCs.Evil.Boss
 			if(currentMove == 5)
 			{
 				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 250, (player.Center.Y - npc.Center.Y) / 250);
-				rotationSpeed = 0.5f;
+				rotationSpeed = 0.2f;
 				if(subCool == 25)
 				{
 					targetPos = player.Center;
@@ -335,12 +338,12 @@ namespace yourtale.NPCs.Evil.Boss
 			Vector2 vector2 = npc.Center;
 			float num200 = (float)pos.X - vector2.X;
 			float num201 = (float)pos.Y - vector2.Y;
-			num200 += (float)Main.rand.Next(-40, 41) * 2f;
-			num201 += (float)Main.rand.Next(-32, 33) * 2f;
+			num200 += (float)Main.rand.Next(-999, 41) * 2f;
+			num201 += (float)Main.rand.Next(-999, 33) * 2f;
 			Vector2 vector12 = vector2 + Vector2.Normalize(new Vector2(num200, num201).RotatedBy((double)(-1.5f * (float)npc.direction), default(Vector2))) * 3f;
 			int a2 = Projectile.NewProjectile(vector12.X, vector12.Y, num200, num201, mod.ProjectileType("EvilCryolisisProj"), (int)(npc.damage * 0.3f), 0, 0);
 			Main.projectile[a2].tileCollide = true;
-			Main.projectile[a2].timeLeft = 90;
+			Main.projectile[a2].timeLeft = 270;
 		}
 
 		private void BitExplosion(Vector2 pos)
@@ -490,7 +493,7 @@ namespace yourtale.NPCs.Evil.Boss
 		{
 			if(Main.expertMode || Main.rand.Next(2) == 0)
 			{
-				player.AddBuff(BuffID.Chilled, 60);
+				player.AddBuff(BuffID.Frostburn, 300);
 			}
 		}
 

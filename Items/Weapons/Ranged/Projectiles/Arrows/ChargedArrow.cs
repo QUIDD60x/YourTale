@@ -25,7 +25,7 @@ namespace yourtale.Items.Weapons.Ranged.Projectiles.Arrows
             item.ammo = AmmoID.Arrow;
             item.rare = ItemRarityID.LightRed;
             item.value = 1000;
-            item.shootSpeed = 10;
+            item.shootSpeed = 14;
 
         }
         public override void AddRecipes()
