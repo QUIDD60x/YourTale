@@ -528,6 +528,10 @@ namespace yourtale.NPCs.Evil.Boss
             {
 				Item.NewItem(npc.getRect(), mod.ItemType("ManuscriptCryo"), 1);
             }
+			if (Main.rand.Next(1) == 0)
+            {
+				Item.NewItem(npc.getRect(), mod.ItemType("CorExitio"), Main.rand.Next(4, 10));
+            }
 		}
 
 		public int GetHighestDamage()

@@ -23,9 +23,29 @@ namespace yourtale.NPCs
             }
             if (npc.type == NPCID.EyeofCthulhu)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CorExitio"), Main.rand.Next(3, 11));
+                Item.NewItem((int)nc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CorExitio"), Main.rand.Next(3, 11));
+                Item.NewItem((int)nc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManuscriptEye"), 1);
             } //for specific vanilla NPCs to drop things.
-            
+            if (npc.type == NPCID.KingSlime)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CorExitio"), Main.rand.Next(3, 11));
+                Item.NewItem((int)nc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManuscriptSlime"), 1);
+            }
+            if (npc.type == NPCID.EaterofWorldsHead)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CorExitio"), Main.rand.Next(0, 3));
+            }
+            if (npc.type == NPCID.BrainofCthulhu)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CorExitio"), Main.rand.Next(3, 11));
+                Item.NewItem((int)nc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManuscriptBOC"), 1);
+            }
+            if (npc.type == NPCID.Creeper)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LifeShard"), 0);
+            }
+
+
             /*if (npc.type == NPCID.EyeofCthulhu)
             {
                 if (Main.rand.Next(2) == 0)
