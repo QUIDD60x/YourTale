@@ -17,7 +17,7 @@ namespace yourtale.Items
         {
             DisplayName.SetDefault("Flint Shard");
             Tooltip.SetDefault("I can probably make tools with this if I can find some stone nearby..."); // \n = new line
-        }
+        } 
 
         public override void SetDefaults()
         {

@@ -1,11 +1,11 @@
 ﻿using Terraria;
-using yourtale.Dusts;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader.Audio;
 using yourtale.Items.Placeables;
 using yourtale.Items.Accessories;
+using yourtale.Dusts;
 
 namespace yourtale.NPCs.Evil
 {
@@ -18,20 +18,16 @@ namespace yourtale.NPCs.Evil
 
         public override void SetDefaults()
         {
-            /* Removed as of 0.10
-            //npc.name = "Tutorial Zombie";
-            //npc.displayName = "Tutorial Zombie";
-            */
             npc.width = 18;
             npc.height = 40;
-            npc.damage = 7;
+            npc.damage = 14;
             npc.defense = 6;
             npc.lifeMax = 85;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath7;
-            npc.value = 388f; //how much money is dropped (why is it a float? Change soon please)
+            npc.value = 388f; //how much money is dropped (why is it a float?)
             npc.knockBackResist = 0.4f;
-            npc.aiStyle = 22; //basic walker AI
+            npc.aiStyle = 22;
             Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.Pixie]; //Main.npcFrameCount[3];
             aiType = NPCID.Pixie; // aiType = 3;
             animationType = NPCID.Pixie; // animationType = 3;
@@ -49,12 +45,13 @@ namespace yourtale.NPCs.Evil
             if (!Main.dayTime)
             {
                 chance += 5f;
-                if (spawnInfo.player.ZoneSnow)
-                {    
-                    {
-                        chance += 8f;
-                    }
-                }
+                
+            }
+            if (spawnInfo.player.ZoneSnow)
+            {    
+               {
+                 chance += 8f;
+               }
             }
             return chance;
         }
@@ -75,11 +72,11 @@ namespace yourtale.NPCs.Evil
         {
             /*Will make NPC always drop entered loot
             Item.NewItem(npc.position, ItemID.Gel, 100);*/
-            if (Main.rand.Next(4) == 0)
-            {
-                Item.NewItem(npc.getRect(), mod.ItemType("Cryolite"), Main.rand.Next(3, 9));
-            }
             if (Main.rand.Next(6) == 0)
+            {
+                Item.NewItem(npc.getRect(), mod.ItemType("Cryolite"), Main.rand.Next(1, 5));
+            }
+            if (Main.rand.Next(15) == 0)
             {
                 Item.NewItem(npc.getRect(), mod.ItemType("IceHeart"));
             }

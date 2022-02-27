@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-
+using yourtale;
 
 namespace yourtale.NPCs
 {
@@ -23,22 +24,26 @@ namespace yourtale.NPCs
             }
             if (npc.type == NPCID.EyeofCthulhu)
             {
-                Item.NewItem((int)nc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CorExitio"), Main.rand.Next(3, 11));
-                Item.NewItem((int)nc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManuscriptEye"), 1);
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CorExitio"), Main.rand.Next(3, 11));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManuscriptEye"), 1);
+                //music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss1_Otherworldly");
             } //for specific vanilla NPCs to drop things.
             if (npc.type == NPCID.KingSlime)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CorExitio"), Main.rand.Next(3, 11));
-                Item.NewItem((int)nc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManuscriptSlime"), 1);
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManuscriptSlime"), 1);
+                //music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss1_Otherworldly");
             }
             if (npc.type == NPCID.EaterofWorldsHead)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CorExitio"), Main.rand.Next(0, 3));
+                //music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss1_Otherworldly");
             }
             if (npc.type == NPCID.BrainofCthulhu)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CorExitio"), Main.rand.Next(3, 11));
-                Item.NewItem((int)nc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManuscriptBOC"), 1);
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManuscriptBOC"), 1);
+                //music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss1_Otherworldly");
             }
             if (npc.type == NPCID.Creeper)
             {

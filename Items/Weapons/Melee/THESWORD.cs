@@ -18,14 +18,14 @@ namespace yourtale.Items.Weapons.Melee
 			item.melee = true;
 			item.width = 1000;
 			item.height = 1000;
-			item.useTime = 10;
-			item.useAnimation = 10;
+			item.useTime = 1;
+			item.useAnimation = 1;
 			item.useStyle = 3;
 			item.knockBack = 0;
 			item.value = -1;
 			item.rare = 13;
 			item.autoReuse = true;
-			item.UseSound = (mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Chaotic")); //custom sounds are a pain, i'll probably do a youtube video on them soon.
+			item.UseSound = (mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Item/Explosion1")); //custom sounds are a pain, i'll probably do a youtube video on them soon.
 		}
 
 		public override void AddRecipes() 

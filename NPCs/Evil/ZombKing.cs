@@ -25,7 +25,7 @@ namespace yourtale.NPCs.Evil
             npc.lifeMax = 200;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath2;
-            npc.value = 100f; //how much money is dropped (why is it a float? Change soon please)
+            npc.value = 100f;
             npc.knockBackResist = 0.75f;
             npc.aiStyle = 3; //basic walker AI
             Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.Zombie]; //Main.npcFrameCount[3];
@@ -42,10 +42,10 @@ namespace yourtale.NPCs.Evil
             float chance = 0f;
             if(!Main.dayTime)
             {
-                chance += .1f;
+                chance += .05f;
                 if(spawnInfo.spawnTileY <= Main.rockLayer && spawnInfo.spawnTileY >= Main.worldSurface * 0.15)
                 {
-                    chance += .2f;
+                    chance += .1f;
                 }
 
             }
@@ -84,7 +84,7 @@ namespace yourtale.NPCs.Evil
             //Will drop only in Hardmode
             if(Main.hardMode)
             {
-                Item.NewItem(npc.position, ItemID.GoldBar, 1);
+                Item.NewItem(npc.position, ItemID.GoldBar, Main.rand.Next(1, 6));
             }
         }
     }

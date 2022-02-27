@@ -123,9 +123,9 @@ namespace yourtale
                 {
                     WorldGen.TileRunner(x, y, WorldGen.genRand.Next(80, 100), WorldGen.genRand.Next(80, 100), TileType<Tiles.Ores.Vigore>());
                 }
-                if (tile.type == TileID.Stone)
+                if (tile.type == TileID.RichMahogany)
                 {
-                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(1, 1), WorldGen.genRand.Next(1, 1), TileType<Tiles.Ores.Vigore>());
+                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(5, 90), WorldGen.genRand.Next(6, 99), TileType<Tiles.Ores.Vigore>());
                 }
             }
         }

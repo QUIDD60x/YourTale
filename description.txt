@@ -1,9 +1,11 @@
 Hello and welcome to YourTale! Yourtale (Your Tale, yourtale) is a modded experience for Terraria's modloader, meant to be tinkered with by others and myself.
 All of the source code is completely open, and totally open for share. All I ask in return is a simple "Thanks" in the description or the code itself.
+
 Make sure to hit me up on Discord (Quidd#7638) and tell me about what you're making, I'd love to hear about it! Or if you have any comments, credits, or suggestions i'm open for that aswell.
+
 I hope you enjoy this code, as no matter what level of skill you are I've tried to include something helpful.
 This is open release 1.0, a pretty barebones mod structure i've been working on as a hobby project for a couple months, I'll be updating it regularly though so check back weekly!
-
+-------------------------------------------
 This currently includes:
 -Custom world generation, currently supports ore generation and will soon support custom structures and loot placement.
 -A couple weapon types, such as lots of different staffs and whatnot.

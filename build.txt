@@ -1,7 +1,7 @@
 displayName = [c/8b0000:Your] [c/9d0000:Tale]- For [c/0110AA:your] creativity!
 author = QUIDD60x
-version = 1.0
-homepage = https://quiddcorp.net/your-tale
+version = 1.2
+homepage = https://github.com/QUIDD60x/Your-Tale
 includePDB = true
 buildIgnore = .git\*, referenceImages\*, .gitignore, .gitattributes, *.MD, *.csproj, *.user, obj\*, bin\*, dllReferences\*
 hideCode = false
