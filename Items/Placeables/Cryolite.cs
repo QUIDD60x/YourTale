@@ -23,7 +23,7 @@ namespace yourtale.Items.Placeables
         {
             item.Size = new Vector2(12); //vector2 gives it a 12x12 size instead of having to do item.width and item.height.
             item.rare = ItemRarityID.Blue;
-            item.value = Item.sellPrice(silver: 2);
+            item.value = Item.buyPrice(0, 0, 0, 75);
             //these are all pretty self-explanatory.
             item.autoReuse = true;
             item.useTurn = true;

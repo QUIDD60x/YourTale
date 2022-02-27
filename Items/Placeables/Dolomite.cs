@@ -22,7 +22,7 @@ namespace yourtale.Items.Placeables
         {
             item.Size = new Vector2(12);
             item.rare = ItemRarityID.Blue;
-            item.value = Item.sellPrice(copper: 2);
+            item.value = 25;
 
             item.autoReuse = true;
             item.useTurn = true;

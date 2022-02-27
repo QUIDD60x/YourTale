@@ -20,7 +20,7 @@ namespace yourtale.Items.Placeables
             item.height = 12;
             item.width = 12;
             item.rare = ItemRarityID.Blue;
-            item.value = 10000;
+            item.value = 300;
 
             item.autoReuse = true;
             item.useTurn = true;

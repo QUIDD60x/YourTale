@@ -1,4 +1,4 @@
-﻿using yourtale.Projectiles.Staffs;
+﻿/*using yourtale.Projectiles.Staffs;
 using yourtale.Tiles;
 using Terraria;
 using Terraria.ID;
@@ -27,7 +27,7 @@ namespace yourtale.Items.Weapons.Mana
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 5;
-            item.value = 100;
+            item.value = Item.buyPrice(0, 0, 20, 0);
             item.rare = ItemRarityID.Green;
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;
@@ -47,4 +47,4 @@ namespace yourtale.Items.Weapons.Mana
             recipe.AddRecipe();
         }
     }
-}
+}*/

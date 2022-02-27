@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace yourtale.Items.Weapons.Melee
 {
-    public class FlintJian : ModItem
+    public class FlintSword : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -13,15 +13,15 @@ namespace yourtale.Items.Weapons.Melee
 
         public override void SetDefaults()
         {
-            item.damage = 8;
+            item.damage = 14;
             item.melee = true;
-            item.width = 50;
-            item.height = 50;
-            item.useTime = 20;
-            item.useAnimation = 20;
+            item.width = 40;
+            item.height = 40;
+            item.useTime = 15;
+            item.useAnimation = 15;
             item.useStyle = 1;
             item.knockBack = 3;
-            item.value = 1750;
+            item.value = 2500;
             item.rare = 1;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
@@ -31,8 +31,8 @@ namespace yourtale.Items.Weapons.Melee
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("flint"), 4);
-            recipe.AddIngredient(ItemID.Wood, 6);
-            recipe.AddIngredient(ItemID.StoneBlock, 2);
+            recipe.AddIngredient(ItemID.Wood, 8);
+            recipe.AddIngredient(ItemID.StoneBlock, 4);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

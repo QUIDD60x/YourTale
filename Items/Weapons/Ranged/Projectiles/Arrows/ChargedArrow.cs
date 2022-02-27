@@ -23,17 +23,18 @@ namespace yourtale.Items.Weapons.Ranged.Projectiles.Arrows
             item.rare = 6;
             item.shoot = mod.ProjectileType("ChargedArrow");
             item.ammo = AmmoID.Arrow;
-            item.rare = ItemRarityID.LightRed;
-            item.value = 1000;
+            item.rare = ItemRarityID.Green;
+            item.value = Item.buyPrice(0, 0, 1, 25);
             item.shootSpeed = 14;
 
         }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Glass, 999); //currently uncraftable, will implement recipe later.
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this); //can add recipe.SetResult(this, number here) for making multiple
+            recipe.AddIngredient(ItemID.Glass, 8);
+            recipe.AddIngredient(ItemID.WoodenArrow);
+            recipe.AddTile(mod.TileType("EnergyCharger"));
+            recipe.SetResult(this);
             recipe.AddRecipe();
         }
     }

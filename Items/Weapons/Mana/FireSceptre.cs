@@ -27,7 +27,7 @@ namespace yourtale.Items.Weapons.Mana
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 0;
-            item.value = 15000;
+            item.value = Item.buyPrice(0, 0, 65, 0);
             item.rare = ItemRarityID.Orange;
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;
