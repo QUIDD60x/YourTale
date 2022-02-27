@@ -48,11 +48,12 @@ namespace yourtale.Items.Armor.Animula
 
         public override void UpdateArmorSet(Player player) //here is the armor set upgrade.
         {
-            player.setBonus = "You've never felt so alive! Increased all types of speed, and constant swiftness!";
+            player.setBonus = "You've never felt so alive! Increased all types of speed, more health, and constant swiftness!";
             player.AddBuff(BuffID.Swiftness, 2);
             player.moveSpeed += 3;
             player.jumpSpeedBoost += 2.5f;
             player.extraFall += 11;
+            player.statLifeMax2 += 40;
         }
     }
 }

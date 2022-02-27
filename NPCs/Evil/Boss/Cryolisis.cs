@@ -88,9 +88,9 @@ namespace yourtale.NPCs.Evil.Boss
 		public override void SetDefaults()
 		{
 			npc.aiStyle = -1;
-			npc.lifeMax = 3000;
-			npc.damage = 30;
-			npc.defense = 12;
+			npc.lifeMax = 2700;
+			npc.damage = 35;
+			npc.defense = 13;
 			npc.knockBackResist = 0f;
 			npc.width = 180;
 			npc.height = 180;
