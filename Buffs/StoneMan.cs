@@ -8,19 +8,16 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 
-namespace yourtale.Buffs.Debuffs
-{
-    public class Melting : ModBuff
+namespace yourtale.Buffs
+{ 
+    public class StoneMan : ModBuff
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Tsuchinoko Poison");
-            Description.SetDefault("Your skin is melting off?!");
-            Main.debuff[Type] = true; //Debuffs cannot be canceled, buffs can. Make sure to include this!
-           longerExpertDebuff = true; //This will increase the time for the buff if you're in expert mode.
-
-
-
+            DisplayName.SetDefault("Rock Solid");
+            Description.SetDefault("You're stuck between a rock and a... nother rock.");
+            Main.debuff[Type] = false; //Debuffs cannot be canceled, buffs can. Make sure to include this!
+            longerExpertDebuff = true; //This will increase the time for the buff if you're in expert mode.
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
@@ -31,10 +28,10 @@ namespace yourtale.Buffs.Debuffs
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            player.lifeRegen /= 2;  //divides life regen in half? IDK if this is good or bad yet, messing with life regen is annoying.
-            player.meleeDamage -= 0.5f; //these decrease melee damage, move speed, and total amount of hearts respectively.
-            player.moveSpeed -= 0.7f;
-            player.statLifeMax2 -=20;
+            player.lifeRegen += 36;
+            player.endurance *= 5;
+            player.statDefense *= 5;
+            player.AddBuff(BuffID.Stoned, 6);
         }
     }
 }

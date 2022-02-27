@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using yourtale.Buffs.Debuffs;
 
-namespace yourtale.Items.Potions
+namespace yourtale.Items.Consumables.Potions
 {
 	public class MeltingPot : ModItem
 	{
