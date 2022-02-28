@@ -15,6 +15,7 @@ namespace yourtale.Tiles.Furniture
 {
     public class EnergyCharger : ModTile
     {
+
         public override void SetDefaults()
         {
             Main.tileSolidTop[Type] = true;
