@@ -25,6 +25,7 @@ using yourtale.Items.Placeables;
 using yourtale.Items.Armor.Cryolite;
 using yourtale.Items.Weapons.Mana;
 using yourtale.Items;
+using yourtale.Items.Consumables.Summoning;
 
 namespace yourtale
 {
@@ -36,7 +37,7 @@ namespace yourtale
             Mod bossChecklist = ModLoader.GetMod("BossChecklist");
             if (bossChecklist != null)
             {                                                                                                                                                                                                                                                                                                                                                                                                                               //[i:" + ItemType("summon item here") + "]
-                bossChecklist.Call("AddBoss", 3f, NPCType("Cryolisis"), this, "Cryolisis", (Func<bool>)(() => YourWorld.downedCryolisis), ItemType("flint"), new List<int> { }, new List<int> { ModContent.ItemType<IceHeart>(), ModContent.ItemType<Cryolite>(), ModContent.ItemType<CryoliteHelmet>(), ModContent.ItemType<CryoliteBreastplate>(), ModContent.ItemType<CryoliteLeggings>(), ModContent.ItemType<IceStaff>() }, "Currently unspawnable :(");
+                bossChecklist.Call("AddBoss", 3f, NPCType("Cryolisis"), this, "Cryolisis", (Func<bool>)(() => YourWorld.downedCryolisis), ItemType("CryoCube"), new List<int> { }, new List<int> { ModContent.ItemType<IceHeart>(), ModContent.ItemType<Cryolite>(), ModContent.ItemType<CryoliteHelmet>(), ModContent.ItemType<CryoliteBreastplate>(), ModContent.ItemType<CryoliteLeggings>(), ModContent.ItemType<IceStaff>() }, "Use a Cryo Cube in the Ice biome.");
             }
         }
 

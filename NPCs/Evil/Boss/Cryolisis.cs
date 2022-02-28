@@ -227,11 +227,11 @@ namespace yourtale.NPCs.Evil.Boss
 					npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 30, (player.Center.Y - npc.Center.Y) / 30);
 				}
 			}
-			/*if(currentMove == 2)
+			if(currentMove == 2)
 			{
 				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 200, (player.Center.Y - npc.Center.Y) / 200);
 				BitStorm(player.Center);
-			}*/
+			}
 			if(currentMove == 3)
 			{
 				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 150, (player.Center.Y - npc.Center.Y) / 150);
@@ -318,7 +318,7 @@ namespace yourtale.NPCs.Evil.Boss
 			}
 		}
 
-		/*private void BitStorm(Vector2 pos)
+		private void BitStorm(Vector2 pos)
 		{
 			for(int i = -5; i <= 5; i++)
 			{										//was 15
@@ -330,8 +330,8 @@ namespace yourtale.NPCs.Evil.Boss
 				fallSpeed = 2;
 			}
 			int a2 = Projectile.NewProjectile(pos.X - (Main.rand.Next(-5, 6)*15f), pos.Y-300f+Main.rand.Next(-16,17), 0, fallSpeed, mod.ProjectileType("EvilCryolisisProj"), (int)(npc.damage * 0.3f), 0, 0);
-			Main.projectile[a2].timeLeft = 45;
-		}*/
+			Main.projectile[a2].timeLeft = 9999;
+		}
 
 		private void BitBeam(Vector2 pos)
 		{
@@ -356,7 +356,7 @@ namespace yourtale.NPCs.Evil.Boss
 			}
 			for(int i = 0; i < count; i++)
 			{
-				int a2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Main.rand.Next(-range, range+1), Main.rand.Next(-range, range+1), mod.ProjectileType("EvilCryolisisProj"), (int)(npc.damage * 0.6f), 0, 0);
+				int a2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Main.rand.Next(-range, range+1), Main.rand.Next(-range, range+1), mod.ProjectileType("EvilCryolisisProj"), (int)(npc.damage * 0.8f), 0, 0);
 				Main.projectile[a2].tileCollide = true;
 				Main.projectile[a2].timeLeft = 100;
 			}

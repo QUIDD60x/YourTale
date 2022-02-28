@@ -11,20 +11,6 @@ namespace yourtale.Items
 {
     public class ytGlobalItem : GlobalItem
     {
-        public override void SetDefaults(Item item)
-        {
-            ItemID.Sets.ExtractinatorMode[ItemID.Cloud] = ItemID.Cloud;
-            ItemID.Sets.IsAMaterial[ItemID.ManaCrystal] = true;
-        }
-
-        public override void ExtractinatorUse(int extractType, ref int resultType, ref int resultStack)
-        {
-            Main.NewText(extractType);
-            if (extractType == ItemID.IronOre)
-            {
-                resultType = ItemID.PlatinumCoin;
-                resultStack = 1;
-            }
-        }
+       
     }
 }

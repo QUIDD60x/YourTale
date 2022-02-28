@@ -36,7 +36,7 @@ namespace yourtale.Items.Accessories.Lockets
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.LifeCrystal, 1);
-			recipe.AddIngredient(ItemID.ManaCrystal, 2);
+			recipe.AddIngredient(ItemID.ManaCrystal);
 			recipe.AddIngredient(mod.ItemType("LifeShard"), 12);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
