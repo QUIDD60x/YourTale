@@ -23,7 +23,7 @@ namespace yourtale
                     color.B,
                     Language.GetTextValue("LegacyTooltip.50"),
                     price,
-                    "faces"
+                    "faces" //shabookey
                 });
         }
     }
