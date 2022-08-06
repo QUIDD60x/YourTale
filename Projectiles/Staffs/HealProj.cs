@@ -1,4 +1,5 @@
-﻿using yourtale.Dusts;
+﻿using Terraria.Audio;
+using yourtale.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -10,45 +11,45 @@ namespace yourtale.Projectiles.Staffs
     {
         public override void SetDefaults()
         {
-            projectile.width = 16;
-            projectile.height = 16;
-            projectile.friendly = true;
-            projectile.magic = true;
-            projectile.penetrate = 3;
-            projectile.timeLeft = 600;
+            Projectile.width = 16;
+            Projectile.height = 16;
+            Projectile.friendly = true;
+            Projectile.DamageType = DamageClass.Magic;
+            Projectile.penetrate = 3;
+            Projectile.timeLeft = 600;
         }
 
         public override void AI()
         {
-            projectile.velocity.Y += projectile.ai[0];
+            Projectile.velocity.Y += Projectile.ai[0];
             if (Main.rand.NextBool(3))
             {
-                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, ModContent.DustType<LifeStaffDust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<LifeStaffDust>(), Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
             }
-            projectile.rotation += projectile.velocity.X * 0.01f;
+            Projectile.rotation += Projectile.velocity.X * 0.01f;
             return;
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            projectile.penetrate--;
-            if (projectile.penetrate <= 0)
+            Projectile.penetrate--;
+            if (Projectile.penetrate <= 0)
             {
-                projectile.Kill();
+                Projectile.Kill();
             }
             else
             {
-                projectile.ai[0] += 0.1f;
-                if (projectile.velocity.X != oldVelocity.X)
+                Projectile.ai[0] += 0.1f;
+                if (Projectile.velocity.X != oldVelocity.X)
                 {
-                    projectile.velocity.X = -oldVelocity.X;
+                    Projectile.velocity.X = -oldVelocity.X;
                 }
-                if (projectile.velocity.Y != oldVelocity.Y)
+                if (Projectile.velocity.Y != oldVelocity.Y)
                 {
-                    projectile.velocity.Y = -oldVelocity.Y;
+                    Projectile.velocity.Y = -oldVelocity.Y;
                 }
-                projectile.velocity *= 0.75f;
-                Main.PlaySound(SoundID.Item10, projectile.position);
+                Projectile.velocity *= 0.75f;
+                SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
             }
             return false;
         }
@@ -63,14 +64,14 @@ namespace yourtale.Projectiles.Staffs
                     Dust dust;
                     // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                     Vector2 position = Main.LocalPlayer.Center;
-                    dust = Terraria.Dust.NewDustDirect(projectile.position + projectile.velocity, 30, 30, 170, -0.2325583f, 0f, 0, new Color(22, 255, 0), 1f);
+                    dust = Terraria.Dust.NewDustDirect(Projectile.position + Projectile.velocity, 30, 30, 170, -0.2325583f, 0f, 0, new Color(22, 255, 0), 1f);
                     dust.noGravity = true;
                     dust.noLight = true;
                     dust.fadeIn = 2.60075f;
                 }
 
             }
-            Main.PlaySound(SoundID.Item25, projectile.position);
+            SoundEngine.PlaySound(SoundID.Item25, Projectile.position);
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

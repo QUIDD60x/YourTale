@@ -12,27 +12,27 @@ namespace yourtale.Items.Weapons.Mana
         {
             DisplayName.SetDefault("Developer Sceptre");
             Tooltip.SetDefault("Why do you have this? \nUsed for testing hostile projectiles.");
-            Item.staff[item.type] = true;
+            Item.staff[Item.type] = true;
         }
 
         public override void SetDefaults()
         {
-            item.damage = 14;
-            item.magic = true;
-            item.mana = 5;
-            item.width = 40;
-            item.height = 40;
-            item.useTime = 25;
-            item.useAnimation = 25;
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.noMelee = true;
-            item.knockBack = 5;
-            item.value = 100;
-            item.rare = ItemRarityID.Green;
-            item.UseSound = SoundID.Item20;
-            item.autoReuse = true;
-            item.shoot = ModContent.ProjectileType<EvilCryolisisProj>();
-            item.shootSpeed = 1f; //the speed at which the projectile goes flying out.
+            Item.damage = 14;
+            Item.DamageType = DamageClass.Magic;
+            Item.mana = 5;
+            Item.width = 40;
+            Item.height = 40;
+            Item.useTime = 25;
+            Item.useAnimation = 25;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.noMelee = true;
+            Item.knockBack = 5;
+            Item.value = 100;
+            Item.rare = ItemRarityID.Green;
+            Item.UseSound = SoundID.Item20;
+            Item.autoReuse = true;
+            Item.shoot = ModContent.ProjectileType<EvilCryolisisProj>();
+            Item.shootSpeed = 1f; //the speed at which the projectile goes flying out.
         }
     }
 }

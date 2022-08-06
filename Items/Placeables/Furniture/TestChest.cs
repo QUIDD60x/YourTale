@@ -9,17 +9,16 @@ namespace yourtale.Items.Placeables.Furniture
     {
         public override void SetDefaults()
         {
-            item.CloneDefaults(ItemID.Chest);
-            item.createTile = TileType<Tiles.Furniture.TestChest>();
+            Item.CloneDefaults(ItemID.Chest);
+            Item.createTile = TileType<Tiles.Furniture.TestChest>();
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
+            Recipe recipe = CreateRecipe();
             recipe.AddRecipeGroup("IronBar", 2);
             recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            recipe.Register();
         }
     }
 }

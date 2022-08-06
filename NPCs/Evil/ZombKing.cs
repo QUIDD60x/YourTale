@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ModLoader.Utilities;
 using yourtale.Dusts;
 using Terraria.ModLoader;
 using Terraria.ID;
@@ -18,21 +19,21 @@ namespace yourtale.NPCs.Evil
             //npc.name = "Tutorial Zombie";
             //npc.displayName = "Tutorial Zombie";
             */
-            npc.width = 18;
-            npc.height = 40;
-            npc.damage = 12;
-            npc.defense = 10;
-            npc.lifeMax = 200;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath2;
-            npc.value = 100f;
-            npc.knockBackResist = 0.75f;
-            npc.aiStyle = 3; //basic walker AI
-            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.Zombie]; //Main.npcFrameCount[3];
-            aiType = NPCID.Zombie; // aiType = 3;
-            animationType = NPCID.Zombie; // animationType = 3;
-            banner = Item.NPCtoBanner(NPCID.Zombie); //Gets NPC to banner
-            bannerItem = Item.BannerToItem(banner);
+            NPC.width = 18;
+            NPC.height = 40;
+            NPC.damage = 12;
+            NPC.defense = 10;
+            NPC.lifeMax = 200;
+            NPC.HitSound = SoundID.NPCHit1;
+            NPC.DeathSound = SoundID.NPCDeath2;
+            NPC.value = 100f;
+            NPC.knockBackResist = 0.75f;
+            NPC.aiStyle = 3; //basic walker AI
+            Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Zombie]; //Main.npcFrameCount[3];
+            AIType = NPCID.Zombie; // aiType = 3;
+            AnimationType = NPCID.Zombie; // animationType = 3;
+            Banner = Item.NPCtoBanner(NPCID.Zombie); //Gets NPC to banner
+            BannerItem = Item.BannerToItem(Banner);
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -43,7 +44,7 @@ namespace yourtale.NPCs.Evil
             if(!Main.dayTime)
             {
                 chance += .05f;
-                if(spawnInfo.spawnTileY <= Main.rockLayer && spawnInfo.spawnTileY >= Main.worldSurface * 0.15)
+                if(spawnInfo.SpawnTileY <= Main.rockLayer && spawnInfo.SpawnTileY >= Main.worldSurface * 0.15)
                 {
                     chance += .1f;
                 }
@@ -64,27 +65,27 @@ namespace yourtale.NPCs.Evil
             }
 
         }*/
-        public override void NPCLoot() //do mod.ItemType instead of ItemID for modded items
+        public override void OnKill() //do mod.ItemType instead of ItemID for modded items
         {
             /*Will make NPC always drop entered loot
             Item.NewItem(npc.position, ItemID.Gel, 100);*/
             if (Main.rand.Next(2) == 0)
             {
-                Item.NewItem(npc.position, ItemID.ZombieArm, 1);
+                Item.NewItem(NPC.position, ItemID.ZombieArm, 1);
             }
             if (Main.rand.Next(2) == 0)
             {
-                Item.NewItem(npc.position, ItemID.Shackle, 1);
+                Item.NewItem(NPC.position, ItemID.Shackle, 1);
             }
             //will only drop 25% of the time based on integer added
             if (Main.rand.Next(3) == 0)
             {
-                Item.NewItem(npc.position, ItemID.GoldCrown, 1);
+                Item.NewItem(NPC.position, ItemID.GoldCrown, 1);
             }
             //Will drop only in Hardmode
             if(Main.hardMode)
             {
-                Item.NewItem(npc.position, ItemID.GoldBar, Main.rand.Next(1, 6));
+                Item.NewItem(NPC.position, ItemID.GoldBar, Main.rand.Next(1, 6));
             }
         }
     }

@@ -21,20 +21,20 @@ namespace yourtale.Items.Placeables
         }
         public override void SetDefaults()
         {
-            item.Size = new Vector2(12); //vector2 gives it a 12x12 size instead of having to do item.width and item.height.
-            item.rare = ItemRarityID.Blue;
-            item.value = Item.buyPrice(0, 0, 0, 75);
+            Item.Size = new Vector2(12); //vector2 gives it a 12x12 size instead of having to do item.width and item.height.
+            Item.rare = ItemRarityID.Blue;
+            Item.value = Item.buyPrice(0, 0, 0, 75);
             //these are all pretty self-explanatory.
-            item.autoReuse = true;
-            item.useTurn = true;
-            item.useTime = 10;
-            item.useAnimation = 10;
-            item.useStyle = ItemUseStyleID.SwingThrow;
+            Item.autoReuse = true;
+            Item.useTurn = true;
+            Item.useTime = 10;
+            Item.useAnimation = 10;
+            Item.useStyle = ItemUseStyleID.Swing;
 
-            item.consumable = true; //this will make it to where when it's placed it will take one away. Veryyy important!
-            item.maxStack = 999;
+            Item.consumable = true; //this will make it to where when it's placed it will take one away. Veryyy important!
+            Item.maxStack = 999;
             //THIS is how you create it to become a tile when placed. Goto that folder section for the actual ore.
-            item.createTile = TileType<Tiles.Ores.Cryolite>();
+            Item.createTile = TileType<Tiles.Ores.Cryolite>();
         }
     }
 }

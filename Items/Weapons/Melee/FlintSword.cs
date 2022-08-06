@@ -1,4 +1,5 @@
-﻿using Terraria.ID;
+﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace yourtale.Items.Weapons.Melee
@@ -13,29 +14,28 @@ namespace yourtale.Items.Weapons.Melee
 
         public override void SetDefaults()
         {
-            item.damage = 14;
-            item.melee = true;
-            item.width = 40;
-            item.height = 40;
-            item.useTime = 15;
-            item.useAnimation = 15;
-            item.useStyle = 1;
-            item.knockBack = 3;
-            item.value = 2500;
-            item.rare = 1;
-            item.UseSound = SoundID.Item1;
-            item.autoReuse = true;
+            Item.damage = 14;
+            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.width = 40;
+            Item.height = 40;
+            Item.useTime = 15;
+            Item.useAnimation = 15;
+            Item.useStyle = 1;
+            Item.knockBack = 3;
+            Item.value = 2500;
+            Item.rare = 1;
+            Item.UseSound = SoundID.Item1;
+            Item.autoReuse = true;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("flint"), 4);
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(Mod.Find<ModItem>("flint").Type, 4);
             recipe.AddIngredient(ItemID.Wood, 8);
             recipe.AddIngredient(ItemID.StoneBlock, 4);
             recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            recipe.Register();
         }
     }
 }

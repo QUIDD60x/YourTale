@@ -9,7 +9,7 @@ namespace yourtale.Properties.BansheeClass
     // Any class that we wish to be using our custom damage class will derive from this class, instead of ModItem
     public abstract class BansheeClass : ModItem
     {
-        public override bool CloneNewInstances => true;
+        protected override bool CloneNewInstances => true;
         public int exampleResourceCost = 1;
 
         // Custom items should override this to set their defaults
@@ -23,27 +23,27 @@ namespace yourtale.Properties.BansheeClass
         {
             SafeSetDefaults();
             // all vanilla damage types must be false for custom damage types to work
-            item.melee = false;
-            item.ranged = false;
-            item.magic = false;
-            item.thrown = false;
-            item.summon = false;
+            Item.melee = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
+            Item.ranged = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
+            Item.magic = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
+            Item.thrown = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
+            Item.summon = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
         }
 
         // As a modder, you could also opt to make these overrides also sealed. Up to the modder
-        public override void ModifyWeaponDamage(Player player, ref float add, ref float mult, ref float flat)
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             add += ExampleDamagePlayer.ModPlayer(player).exampleDamageAdd;
             mult *= ExampleDamagePlayer.ModPlayer(player).exampleDamageMult;
         }
 
-        public override void GetWeaponKnockback(Player player, ref float knockback)
+        public override void ModifyWeaponKnockback(Player player, ref StatModifier knockback)
         {
             // Adds knockback bonuses
             knockback += ExampleDamagePlayer.ModPlayer(player).exampleKnockback;
         }
 
-        public override void GetWeaponCrit(Player player, ref int crit)
+        public override void ModifyWeaponCrit(Player player, ref float crit)
         {
             // Adds crit bonuses
             crit += ExampleDamagePlayer.ModPlayer(player).exampleCrit;
@@ -53,21 +53,21 @@ namespace yourtale.Properties.BansheeClass
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             // Get the vanilla damage tooltip
-            TooltipLine tt = tooltips.FirstOrDefault(x => x.Name == "Baba" && x.mod == "Booey");
+            TooltipLine tt = tooltips.FirstOrDefault(x => x.Name == "Baba" && x.Mod == "Booey");
             if (tt != null)
             {
                 // We want to grab the last word of the tooltip, which is the translated word for 'damage' (depending on what language the player is using)
                 // So we split the string by whitespace, and grab the last word from the returned arrays to get the damage word, and the first to get the damage shown in the tooltip
-                string[] splitText = tt.text.Split(' ');
+                string[] splitText = tt.Text.Split(' ');
                 string damageValue = splitText.First();
                 string damageWord = splitText.Last();
                 // Change the tooltip text
-                tt.text = damageValue + " 100 " + damageWord;
+                tt.Text = damageValue + " 100 " + damageWord;
             }
 
             if (exampleResourceCost > 0)
             {
-                tooltips.Add(new TooltipLine(mod, "100", $"Uses {exampleResourceCost} StarShard"));
+                tooltips.Add(new TooltipLine(Mod, "100", $"Uses {exampleResourceCost} StarShard"));
             }
         }
 

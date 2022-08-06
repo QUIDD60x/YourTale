@@ -10,25 +10,25 @@ namespace yourtale.Projectiles.Misc
         public override void SetDefaults()
         {
 
-            projectile.height = 15;
-            projectile.width = 8;
-            projectile.aiStyle = 1;
-            projectile.friendly = true;
-            projectile.ranged = true;
-            projectile.penetrate = 2;
+            Projectile.height = 15;
+            Projectile.width = 8;
+            Projectile.aiStyle = 1;
+            Projectile.friendly = true;
+            Projectile.DamageType = DamageClass.Ranged;
+            Projectile.penetrate = 2;
 
 
         }
         public override void OnHitNPC(NPC target, int damage, float knockBack, bool crit)
         {
             
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y + Main.rand.Next(-5, 5), ProjectileID.CrystalShard, projectile.damage, projectile.knockBack, Main.myPlayer);
+                Projectile.NewProjectile(Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X, Projectile.velocity.Y + Main.rand.Next(-5, 5), ProjectileID.CrystalShard, Projectile.damage, Projectile.knockBack, Main.myPlayer);
             
             base.OnHitNPC(target, damage, knockBack, crit);
         }
         public override void AI()
         {
-            int DustID = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width + 4, projectile.height + 4, 226, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 120, default(Color), 0.2f);
+            int DustID = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y + 2f), Projectile.width + 4, Projectile.height + 4, 226, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 120, default(Color), 0.2f);
             Main.dust[DustID].noGravity = true;
         }
 

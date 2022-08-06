@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -16,17 +17,17 @@ namespace yourtale.Projectiles.Staffs
         public override void SetDefaults()
         {
             // while the sprite is actually bigger than 15x15, we use 15x15 since it lets the projectile clip into tiles as it bounces. It looks better.
-            projectile.width = 15;
-            projectile.height = 15;
-            projectile.friendly = true;
-            projectile.penetrate = -1;
+            Projectile.width = 15;
+            Projectile.height = 15;
+            Projectile.friendly = true;
+            Projectile.penetrate = -1;
 
             // 5 second fuse.
-            projectile.timeLeft = 300;
+            Projectile.timeLeft = 300;
 
             // These 2 help the projectile hitbox be centered on the projectile sprite.
-            drawOffsetX = 5;
-            drawOriginOffsetY = 5;
+            DrawOffsetX = 5;
+            DrawOriginOffsetY = 5;
         }
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
@@ -37,7 +38,7 @@ namespace yourtale.Projectiles.Staffs
                 if (target.type >= NPCID.EaterofWorldsHead && target.type <= NPCID.EaterofWorldsTail)
                 {
                     damage /= 5;
-                    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Item/Explosion1"));
+                    SoundEngine.PlaySound(Mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Item/Explosion1"));
                 }
             }
         }
@@ -45,7 +46,7 @@ namespace yourtale.Projectiles.Staffs
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             // Die immediately if ai[1] isn't 0 (We set this to 1 for the 5 extra explosives we spawn in Kill)
-            if (projectile.ai[1] != 0)
+            if (Projectile.ai[1] != 0)
             {
                 return true;
             }
@@ -55,135 +56,135 @@ namespace yourtale.Projectiles.Staffs
                 // We can use WithVolume since the sound is a bit too loud, and WithPitchVariance to give the sound some random pitch variance.
                 //Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/BananaImpact").WithVolume(.7f).WithPitchVariance(.5f));
             //}
-            projectile.soundDelay = 10;
+            Projectile.soundDelay = 10;
             // This code makes the projectile very bouncy.
-            if (projectile.velocity.X != oldVelocity.X && Math.Abs(oldVelocity.X) > 1f)
+            if (Projectile.velocity.X != oldVelocity.X && Math.Abs(oldVelocity.X) > 1f)
             {
-                projectile.velocity.X = oldVelocity.X * -0.9f;
+                Projectile.velocity.X = oldVelocity.X * -0.9f;
             }
-            if (projectile.velocity.Y != oldVelocity.Y && Math.Abs(oldVelocity.Y) > 1f)
+            if (Projectile.velocity.Y != oldVelocity.Y && Math.Abs(oldVelocity.Y) > 1f)
             {
-                projectile.velocity.Y = oldVelocity.Y * -0.9f;
+                Projectile.velocity.Y = oldVelocity.Y * -0.9f;
             }
             return false;
         }
 
         public override void AI()
         {
-            if (projectile.owner == Main.myPlayer && projectile.timeLeft <= 3)
+            if (Projectile.owner == Main.myPlayer && Projectile.timeLeft <= 3)
             {
-                projectile.tileCollide = false;
+                Projectile.tileCollide = false;
                 // Set to transparent. This projectile technically lives as  transparent for about 3 frames
-                projectile.alpha = 255;
+                Projectile.alpha = 255;
                 // change the hitbox size, centered about the original projectile center. This makes the projectile damage enemies during the explosion.
-                projectile.position = projectile.Center;
+                Projectile.position = Projectile.Center;
                 //projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
                 //projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
-                projectile.width = 250;
-                projectile.height = 250;
-                projectile.Center = projectile.position;
+                Projectile.width = 250;
+                Projectile.height = 250;
+                Projectile.Center = Projectile.position;
                 //projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
                 //projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
-                projectile.damage = 1000;
-                projectile.knockBack = 100f;
+                Projectile.damage = 1000;
+                Projectile.knockBack = 100f;
             }
             else
             {
                 // Smoke and fuse dust spawn.
                 if (Main.rand.NextBool())
                 {
-                    int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default(Color), 1f);
+                    int dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 31, 0f, 0f, 100, default(Color), 1f);
                     Main.dust[dustIndex].scale = 0.1f + (float)Main.rand.Next(5) * 0.1f;
                     Main.dust[dustIndex].fadeIn = 1.5f + (float)Main.rand.Next(5) * 0.1f;
                     Main.dust[dustIndex].noGravity = true;
-                    Main.dust[dustIndex].position = projectile.Center + new Vector2(0f, (float)(-(float)projectile.height / 2)).RotatedBy((double)projectile.rotation, default(Vector2)) * 1.1f;
-                    dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 1f);
+                    Main.dust[dustIndex].position = Projectile.Center + new Vector2(0f, (float)(-(float)Projectile.height / 2)).RotatedBy((double)Projectile.rotation, default(Vector2)) * 1.1f;
+                    dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 6, 0f, 0f, 100, default(Color), 1f);
                     Main.dust[dustIndex].scale = 1f + (float)Main.rand.Next(5) * 0.1f;
                     Main.dust[dustIndex].noGravity = true;
-                    Main.dust[dustIndex].position = projectile.Center + new Vector2(0f, (float)(-(float)projectile.height / 2 - 6)).RotatedBy((double)projectile.rotation, default(Vector2)) * 1.1f;
+                    Main.dust[dustIndex].position = Projectile.Center + new Vector2(0f, (float)(-(float)Projectile.height / 2 - 6)).RotatedBy((double)Projectile.rotation, default(Vector2)) * 1.1f;
                 }
             }
-            projectile.ai[0] += 1f;
-            if (projectile.ai[0] > 5f)
+            Projectile.ai[0] += 1f;
+            if (Projectile.ai[0] > 5f)
             {
-                projectile.ai[0] = 10f;
+                Projectile.ai[0] = 10f;
                 // Roll speed dampening.
-                if (projectile.velocity.Y == 0f && projectile.velocity.X != 0f)
+                if (Projectile.velocity.Y == 0f && Projectile.velocity.X != 0f)
                 {
-                    projectile.velocity.X = projectile.velocity.X * 0.97f;
+                    Projectile.velocity.X = Projectile.velocity.X * 0.97f;
                     //if (projectile.type == 29 || projectile.type == 470 || projectile.type == 637)
                     {
-                        projectile.velocity.X = projectile.velocity.X * 0.99f;
+                        Projectile.velocity.X = Projectile.velocity.X * 0.99f;
                     }
-                    if ((double)projectile.velocity.X > -0.01 && (double)projectile.velocity.X < 0.01)
+                    if ((double)Projectile.velocity.X > -0.01 && (double)Projectile.velocity.X < 0.01)
                     {
-                        projectile.velocity.X = 0f;
-                        projectile.netUpdate = true;
+                        Projectile.velocity.X = 0f;
+                        Projectile.netUpdate = true;
                     }
                 }
-                projectile.velocity.Y = projectile.velocity.Y + 0.2f;
+                Projectile.velocity.Y = Projectile.velocity.Y + 0.2f;
             }
             // Rotation increased by velocity.X 
-            projectile.rotation += projectile.velocity.X * 0.1f;
+            Projectile.rotation += Projectile.velocity.X * 0.1f;
             return;
         }
 
         public override void Kill(int timeLeft)
         {
             // If we are the original projectile, spawn the 5 child projectiles
-            if (projectile.ai[1] == 0)
+            if (Projectile.ai[1] == 0)
             {
                 for (int i = 0; i < 5; i++)
                 {
                     // Random upward vector.
                     Vector2 vel = new Vector2(Main.rand.NextFloat(-3, 3), Main.rand.NextFloat(-10, -8));
-                    Projectile.NewProjectile(projectile.Center, vel, projectile.type, projectile.damage, projectile.knockBack, projectile.owner, 0, 1);
+                    Projectile.NewProjectile(Projectile.Center, vel, Projectile.type, Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
                 }
             }
             // Play explosion sound
-            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Item/Explosion1"));
+            SoundEngine.PlaySound(Mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Item/Explosion1"));
             // Smoke Dust spawn
             for (int i = 0; i < 50; i++)
             {
-                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default(Color), 2f);
+                int dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 31, 0f, 0f, 100, default(Color), 2f);
                 Main.dust[dustIndex].velocity *= 1.4f;
             }
             // Fire Dust spawn
             for (int i = 0; i < 80; i++)
             {
-                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 3f);
+                int dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 6, 0f, 0f, 100, default(Color), 3f);
                 Main.dust[dustIndex].noGravity = true;
                 Main.dust[dustIndex].velocity *= 5f;
-                dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 2f);
+                dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 6, 0f, 0f, 100, default(Color), 2f);
                 Main.dust[dustIndex].velocity *= 3f;
             }
             // Large Smoke Gore spawn
             for (int g = 0; g < 2; g++)
             {
-                int goreIndex = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                int goreIndex = Gore.NewGore(new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
                 Main.gore[goreIndex].scale = 1.5f;
                 Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                 Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                goreIndex = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                goreIndex = Gore.NewGore(new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
                 Main.gore[goreIndex].scale = 1.5f;
                 Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                 Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                goreIndex = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                goreIndex = Gore.NewGore(new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
                 Main.gore[goreIndex].scale = 1.5f;
                 Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                 Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-                goreIndex = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                goreIndex = Gore.NewGore(new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
                 Main.gore[goreIndex].scale = 1.5f;
                 Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                 Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
             }
             // reset size to normal width and height.
-            projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-            projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
-            projectile.width = 10;
-            projectile.height = 10;
-            projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-            projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+            Projectile.position.X = Projectile.position.X + (float)(Projectile.width / 2);
+            Projectile.position.Y = Projectile.position.Y + (float)(Projectile.height / 2);
+            Projectile.width = 10;
+            Projectile.height = 10;
+            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
+            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
 
             
             {
@@ -192,10 +193,10 @@ namespace yourtale.Projectiles.Staffs
                 {
                     explosionRadius = 7;
                 }
-                int minTileX = (int)(projectile.position.X / 16f - (float)explosionRadius);
-                int maxTileX = (int)(projectile.position.X / 16f + (float)explosionRadius);
-                int minTileY = (int)(projectile.position.Y / 16f - (float)explosionRadius);
-                int maxTileY = (int)(projectile.position.Y / 16f + (float)explosionRadius);
+                int minTileX = (int)(Projectile.position.X / 16f - (float)explosionRadius);
+                int maxTileX = (int)(Projectile.position.X / 16f + (float)explosionRadius);
+                int minTileY = (int)(Projectile.position.Y / 16f - (float)explosionRadius);
+                int maxTileY = (int)(Projectile.position.Y / 16f + (float)explosionRadius);
                 if (minTileX < 0)
                 {
                     minTileX = 0;
@@ -217,10 +218,10 @@ namespace yourtale.Projectiles.Staffs
                 {
                     for (int y = minTileY; y <= maxTileY; y++)
                     {
-                        float diffX = Math.Abs((float)x - projectile.position.X / 16f);
-                        float diffY = Math.Abs((float)y - projectile.position.Y / 16f);
+                        float diffX = Math.Abs((float)x - Projectile.position.X / 16f);
+                        float diffY = Math.Abs((float)y - Projectile.position.Y / 16f);
                         double distance = Math.Sqrt((double)(diffX * diffX + diffY * diffY));
-                        if (distance < (double)explosionRadius && Main.tile[x, y] != null && Main.tile[x, y].wall == 0)
+                        if (distance < (double)explosionRadius && Main.tile[x, y] != null && Main.tile[x, y].WallType == 0)
                         {
                             canKillWalls = true;
                             break;
@@ -232,20 +233,20 @@ namespace yourtale.Projectiles.Staffs
                 {
                     for (int j = minTileY; j <= maxTileY; j++)
                     {
-                        float diffX = Math.Abs((float)i - projectile.position.X / 16f);
-                        float diffY = Math.Abs((float)j - projectile.position.Y / 16f);
+                        float diffX = Math.Abs((float)i - Projectile.position.X / 16f);
+                        float diffY = Math.Abs((float)j - Projectile.position.Y / 16f);
                         double distanceToTile = Math.Sqrt((double)(diffX * diffX + diffY * diffY));
                         if (distanceToTile < (double)explosionRadius)
                         {
                             bool canKillTile = true;
-                            if (Main.tile[i, j] != null && Main.tile[i, j].active())
+                            if (Main.tile[i, j] != null && Main.tile[i, j].HasTile)
                             {
                                 canKillTile = true;
-                                if (Main.tileDungeon[(int)Main.tile[i, j].type] || Main.tile[i, j].type == 88 || Main.tile[i, j].type == 21 || Main.tile[i, j].type == 26 || Main.tile[i, j].type == 107 || Main.tile[i, j].type == 108 || Main.tile[i, j].type == 111 || Main.tile[i, j].type == 226 || Main.tile[i, j].type == 237 || Main.tile[i, j].type == 221 || Main.tile[i, j].type == 222 || Main.tile[i, j].type == 223 || Main.tile[i, j].type == 211 || Main.tile[i, j].type == 404)
+                                if (Main.tileDungeon[(int)Main.tile[i, j].TileType] || Main.tile[i, j].TileType == 88 || Main.tile[i, j].TileType == 21 || Main.tile[i, j].TileType == 26 || Main.tile[i, j].TileType == 107 || Main.tile[i, j].TileType == 108 || Main.tile[i, j].TileType == 111 || Main.tile[i, j].TileType == 226 || Main.tile[i, j].TileType == 237 || Main.tile[i, j].TileType == 221 || Main.tile[i, j].TileType == 222 || Main.tile[i, j].TileType == 223 || Main.tile[i, j].TileType == 211 || Main.tile[i, j].TileType == 404)
                                 {
                                     canKillTile = false;
                                 }
-                                if (!Main.hardMode && Main.tile[i, j].type == 58)
+                                if (!Main.hardMode && Main.tile[i, j].TileType == 58)
                                 {
                                     canKillTile = false;
                                 }
@@ -256,7 +257,7 @@ namespace yourtale.Projectiles.Staffs
                                 if (canKillTile)
                                 {
                                     WorldGen.KillTile(i, j, false, false, false);
-                                    if (!Main.tile[i, j].active() && Main.netMode != NetmodeID.SinglePlayer)
+                                    if (!Main.tile[i, j].HasTile && Main.netMode != NetmodeID.SinglePlayer)
                                     {
                                         NetMessage.SendData(MessageID.TileChange, -1, -1, null, 0, (float)i, (float)j, 0f, 0, 0, 0);
                                     }
@@ -268,10 +269,10 @@ namespace yourtale.Projectiles.Staffs
                                 {
                                     for (int y = j - 1; y <= j + 1; y++)
                                     {
-                                        if (Main.tile[x, y] != null && Main.tile[x, y].wall > 0 && canKillWalls && WallLoader.CanExplode(x, y, Main.tile[x, y].wall))
+                                        if (Main.tile[x, y] != null && Main.tile[x, y].WallType > 0 && canKillWalls && WallLoader.CanExplode(x, y, Main.tile[x, y].WallType))
                                         {
                                             WorldGen.KillWall(x, y, false);
-                                            if (Main.tile[x, y].wall == 0 && Main.netMode != NetmodeID.SinglePlayer)
+                                            if (Main.tile[x, y].WallType == 0 && Main.netMode != NetmodeID.SinglePlayer)
                                             {
                                                 NetMessage.SendData(MessageID.TileChange, -1, -1, null, 2, (float)x, (float)y, 0f, 0, 0, 0);
                                             }

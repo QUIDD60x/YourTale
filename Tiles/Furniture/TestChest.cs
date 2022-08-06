@@ -5,8 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.Enums;
+using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -18,14 +20,14 @@ namespace yourtale.Tiles.Furniture
 {
     public class TestChest : ModTile
     {
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         {
             Main.tileSpelunker[Type] = true;
             Main.tileContainer[Type] = true;
             Main.tileShine[Type] = 1200;
             Main.tileShine2[Type] = true;
             Main.tileNoAttach[Type] = true;
-            Main.tileValue[Type] = 500;
+            Main.tileOreFinderPriority[Type] = 500;
             Main.tileFrameImportant[Type] = true;
 
             TileID.Sets.HasOutlines[Type] = true;
@@ -33,7 +35,7 @@ namespace yourtale.Tiles.Furniture
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
             TileObjectData.newTile.Origin = new Point16(0, 1);
             TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
-            TileObjectData.newTile.HookCheck = new PlacementHook(new Func<int, int, int, int, int, int>(Chest.FindEmptyChest), -1, 0, false);
+            TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook(new Func<int, int, int, int, int, int>(Chest.FindEmptyChest), -1, 0, false);
             TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(new Func<int, int, int, int, int, int>(Chest.AfterPlacement_Hook), -1, 0, false);
             TileObjectData.newTile.AnchorInvalidTiles = new[] { 127 };
             TileObjectData.newTile.StyleHorizontal = true;
@@ -45,24 +47,24 @@ namespace yourtale.Tiles.Furniture
             AddMapEntry(new Color(200, 200, 200), name, MapChestName);
             name = CreateMapEntryName(Name + "_Locked");
             AddMapEntry(new Color(0, 141, 63), name, MapChestName);
-            disableSmartCursor = true;
-            adjTiles = new int[] { TileID.Containers };
-            chest = "TestChest";
-            chestDrop = ItemType<Items.Placeables.Furniture.TestChest>();
+            disableSmartCursor/* tModPorter Note: Removed. Use TileID.Sets.DisableSmartCursor instead */ = true;
+            AdjTiles = new int[] { TileID.Containers };
+            chest/* tModPorter Note: Removed. Use ContainerName.SetDefault() and TileID.Sets.BasicChest instead */ = "TestChest";
+            ChestDrop = ItemType<Items.Placeables.Furniture.TestChest>();
         }
 
-        public override ushort GetMapOption(int i, int j) => (ushort)(Main.tile[i, j].frameX / 36);
+        public override ushort GetMapOption(int i, int j) => (ushort)(Main.tile[i, j].TileFrameX / 36);
 
-        public override bool HasSmartInteract() => true;
+        public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 
         public string MapChestName(string name, int i, int j)
         {
             int left = i;
             int top = j;
             Tile tile = Main.tile[i, j];
-            if (tile.frameX % 36 != 0)
+            if (tile.TileFrameX % 36 != 0)
                 left--;
-            if (tile.frameY != 0)
+            if (tile.TileFrameY != 0)
                 top--;
 
             int chest = Chest.FindChest(left, top);
@@ -73,32 +75,32 @@ namespace yourtale.Tiles.Furniture
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(i * 16, j * 16, 32, 32, chestDrop);
+            Item.NewItem(i * 16, j * 16, 32, 32, ChestDrop);
             Chest.DestroyChest(i, j);
         }
 
-        public override bool NewRightClick(int i, int j)
+        public override bool RightClick(int i, int j)
         {
             Player player = Main.LocalPlayer;
             Tile tile = Main.tile[i, j];
             Main.mouseRightRelease = false;
             int left = i;
             int top = j;
-            if (tile.frameX % 36 != 0)
+            if (tile.TileFrameX % 36 != 0)
                 left--;
-            if (tile.frameY != 0)
+            if (tile.TileFrameY != 0)
                 top--;
 
             if (player.sign >= 0)
             {
-                Main.PlaySound(SoundID.MenuClose);
+                SoundEngine.PlaySound(SoundID.MenuClose);
                 player.sign = -1;
                 Main.editSign = false;
                 Main.npcChatText = "";
             }
             if (Main.editChest)
             {
-                Main.PlaySound(SoundID.MenuTick);
+                SoundEngine.PlaySound(SoundID.MenuTick);
                 Main.editChest = false;
                 Main.npcChatText = "";
             }
@@ -116,7 +118,7 @@ namespace yourtale.Tiles.Furniture
                 {
                     player.chest = -1;
                     Recipe.FindRecipes();
-                    Main.PlaySound(SoundID.MenuClose);
+                    SoundEngine.PlaySound(SoundID.MenuClose);
                 }
                 else
                 {
@@ -146,7 +148,7 @@ namespace yourtale.Tiles.Furniture
                         if (chest == player.chest)
                         {
                             player.chest = -1;
-                            Main.PlaySound(SoundID.MenuClose);
+                            SoundEngine.PlaySound(SoundID.MenuClose);
                         }
                         else
                         {
@@ -155,7 +157,7 @@ namespace yourtale.Tiles.Furniture
                             Main.recBigList = false;
                             player.chestX = left;
                             player.chestY = top;
-                            Main.PlaySound(player.chest < 0 ? SoundID.MenuOpen : SoundID.MenuTick);
+                            SoundEngine.PlaySound(player.chest < 0 ? SoundID.MenuOpen : SoundID.MenuTick);
                         }
                         Recipe.FindRecipes();
                     }
@@ -170,37 +172,37 @@ namespace yourtale.Tiles.Furniture
             Tile tile = Main.tile[i, j];
             int left = i;
             int top = j;
-            if (tile.frameX % 36 != 0)
+            if (tile.TileFrameX % 36 != 0)
                 left--;
-            if (tile.frameY != 0)
+            if (tile.TileFrameY != 0)
                 top--;
 
             int chest = Chest.FindChest(left, top);
-            player.showItemIcon2 = -1;
-            if (chest < 0) player.showItemIconText = Language.GetTextValue("LegacyChestType.0");
+            player.cursorItemIconID = -1;
+            if (chest < 0) player.cursorItemIconText = Language.GetTextValue("LegacyChestType.0");
             else
             {
-                player.showItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : Language.GetTextValue("");
-                if (player.showItemIconText == Language.GetTextValue(""))
+                player.cursorItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : Language.GetTextValue("");
+                if (player.cursorItemIconText == Language.GetTextValue(""))
                 {
-                    player.showItemIcon2 = ItemType<Items.Placeables.Furniture.TestChest>();
-                    if (Main.tile[left, top].frameX / 36 == 1)
-                        player.showItemIcon2 = ItemType<Items.Misc.TestKey>();
-                    player.showItemIconText = "";
+                    player.cursorItemIconID = ItemType<Items.Placeables.Furniture.TestChest>();
+                    if (Main.tile[left, top].TileFrameX / 36 == 1)
+                        player.cursorItemIconID = ItemType<Items.Misc.TestKey>();
+                    player.cursorItemIconText = "";
                 }
             }
             player.noThrow = 2;
-            player.showItemIcon = true;
+            player.cursorItemIconEnabled = true;
         }
 
         public override void MouseOverFar(int i, int j)
         {
             MouseOver(i, j);
             Player player = Main.LocalPlayer;
-            if (player.showItemIconText == "")
+            if (player.cursorItemIconText == "")
             {
-                player.showItemIcon = false;
-                player.showItemIcon2 = 0;
+                player.cursorItemIconEnabled = false;
+                player.cursorItemIconID = 0;
             }
         }
     }

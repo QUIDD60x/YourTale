@@ -18,10 +18,10 @@ namespace yourtale.Items.Accessories.Lockets
 
 		public override void SetDefaults()
 		{
-			item.width = 40;
-			item.height = 40;
-			item.accessory = true;
-			item.rare = ItemRarityID.Blue;
+			Item.width = 40;
+			Item.height = 40;
+			Item.accessory = true;
+			Item.rare = ItemRarityID.Blue;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
@@ -31,13 +31,12 @@ namespace yourtale.Items.Accessories.Lockets
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.GoldBar, 4);
-			recipe.AddIngredient(mod.ItemType("EmptyLocket"));
-			recipe.AddIngredient(mod.ItemType("LifeShard"), 8);
+			recipe.AddIngredient(Mod.Find<ModItem>("EmptyLocket").Type);
+			recipe.AddIngredient(Mod.Find<ModItem>("LifeShard").Type, 8);
 			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			recipe.Register();
 		}
 	}
 }

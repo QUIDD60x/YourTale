@@ -4,6 +4,7 @@ using Terraria.ID;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Xna.Framework.Graphics;
+using yourtale.Items;
 
 namespace yourtale
 {
@@ -20,12 +21,12 @@ namespace yourtale
             summonSpiritMinion = false;
         }
 
-        public override void SetupStartInventory(IList<Item> items)
+        /*public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)/* tModPorter Suggestion: Return an Item array to add to the players starting items. Use ModifyStartingInventory for modifying them if needed 
         {
             Item item = new Item();
-            item.SetDefaults(mod.ItemType("KnowledgeBook"));
+            item.SetDefaults(Mod.Find<ModItem>("KnowledgeBook").Type);
             item.stack = 1;
             items.Add(item);
-        }
+        }*/
     }
 }

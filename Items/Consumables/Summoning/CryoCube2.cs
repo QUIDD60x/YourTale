@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -10,14 +11,14 @@ namespace yourtale.Items.Consumables.Summoning
     {
         public override void SetDefaults()
         {
-            item.width = 32;
-            item.height = 32;
-            item.maxStack = 20;
-            item.rare = 0;
-            item.useAnimation = 45;
-            item.useTime = 45;
-            item.useStyle = 4;
-            item.consumable = false;
+            Item.width = 32;
+            Item.height = 32;
+            Item.maxStack = 20;
+            Item.rare = 0;
+            Item.useAnimation = 45;
+            Item.useTime = 45;
+            Item.useStyle = 4;
+            Item.consumable = false;
         }
 
         public override void SetStaticDefaults()
@@ -29,27 +30,26 @@ namespace yourtale.Items.Consumables.Summoning
 
         public override bool CanUseItem(Player player)
         {
-            return player.ZoneSnow && !NPC.AnyNPCs(mod.NPCType("Cryolisis"));
+            return player.ZoneSnow && !NPC.AnyNPCs(Mod.Find<ModNPC>("Cryolisis").Type);
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
+            Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.IceBlock, 15);
             recipe.AddIngredient(ItemID.Shiverthorn, 2);
             recipe.AddIngredient(null, "LifeShard", 2);
             recipe.AddIngredient(null, "ManuscriptCryo", 1);
-            recipe.SetResult(this);
             recipe.AddTile(TileID.DemonAltar);
-            recipe.AddRecipe();
+            recipe.Register();
         }
 
-        public override bool UseItem(Player player)
+        public override bool? UseItem(Player player)/* tModPorter Suggestion: Return null instead of false */
         {
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            SoundEngine.PlaySound(SoundID.Roar, player.position);
             if (Main.netMode != 1)
             {
-                NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("Cryolisis"));
+                NPC.SpawnOnPlayer(player.whoAmI, Mod.Find<ModNPC>("Cryolisis").Type);
             }
             return true;
         }

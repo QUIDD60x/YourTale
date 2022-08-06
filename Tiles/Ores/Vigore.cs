@@ -13,7 +13,7 @@ namespace yourtale.Tiles.Ores
 {
     public class Vigore : ModTile
     {
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         {
             Main.tileSolid[Type] = true; 
             Main.tileMergeDirt[Type] = true; 
@@ -21,13 +21,13 @@ namespace yourtale.Tiles.Ores
             Main.tileLavaDeath[Type] = true;
             Main.tileShine[Type] = 95;
 
-            drop = ItemType<Items.LifeShard>(); //drop = Item.itemhere for vanilla drops
+            ItemDrop = ItemType<Items.LifeShard>(); //drop = Item.itemhere for vanilla drops
 
             
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Vigore");
             AddMapEntry(new Color(13, 195, 4), name); 
-            minPick = 65; 
+            MinPick = 65; 
         }
         // Will let you modify the light level and colour, RGB variables are obviously RBG colours.
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

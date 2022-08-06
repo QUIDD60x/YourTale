@@ -12,38 +12,37 @@ namespace yourtale.Items.Weapons.Mana
         {
             DisplayName.SetDefault("Fire Sceptre");
             Tooltip.SetDefault("Incredibly hot! \nextremely powerful, but can only be used in bursts.");
-            Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
+            Item.staff[Item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
         }
 
         public override void SetDefaults()
         {
-            item.damage = 25;
-            item.magic = true;
-            item.mana = 20;
-            item.width = 40;
-            item.height = 40;
-            item.useTime = 3;
-            item.useAnimation = 7;
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.noMelee = true; //so the item's animation doesn't do damage
-            item.knockBack = 0;
-            item.value = Item.buyPrice(0, 0, 65, 0);
-            item.rare = ItemRarityID.Orange;
-            item.UseSound = SoundID.Item20;
-            item.autoReuse = true;
-            item.shoot = ModContent.ProjectileType<FireStaffProj>();
-            item.shootSpeed = 20f;
+            Item.damage = 25;
+            Item.DamageType = DamageClass.Magic;
+            Item.mana = 20;
+            Item.width = 40;
+            Item.height = 40;
+            Item.useTime = 3;
+            Item.useAnimation = 7;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.noMelee = true; //so the item's animation doesn't do damage
+            Item.knockBack = 0;
+            Item.value = Item.buyPrice(0, 0, 65, 0);
+            Item.rare = ItemRarityID.Orange;
+            Item.UseSound = SoundID.Item20;
+            Item.autoReuse = true;
+            Item.shoot = ModContent.ProjectileType<FireStaffProj>();
+            Item.shootSpeed = 20f;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
+            Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.AshBlock, 20);
             recipe.AddIngredient(ItemID.LavaBucket, 1);
-            recipe.AddIngredient(mod.ItemType("StarShard"), 5);
+            recipe.AddIngredient(Mod.Find<ModItem>("StarShard").Type, 5);
             recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            recipe.Register();
         }
     }
 }

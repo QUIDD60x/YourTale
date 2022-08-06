@@ -2,7 +2,6 @@
 using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.Localization;
-using Terraria.ModLoader.Audio;
 using yourtale.Items.Placeables;
 using yourtale.Items.Accessories;
 using yourtale.Dusts;
@@ -18,28 +17,28 @@ namespace yourtale.NPCs.Evil
 
         public override void SetDefaults()
         {
-            npc.width = 18;
-            npc.height = 40;
-            npc.damage = 14;
-            npc.defense = 6;
-            npc.lifeMax = 85;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath7;
-            npc.value = 388f; //how much money is dropped (why is it a float?)
-            npc.knockBackResist = 0.4f;
-            npc.aiStyle = 22;
-            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.Pixie]; //Main.npcFrameCount[3];
-            aiType = NPCID.Pixie; // aiType = 3;
-            animationType = NPCID.Pixie; // animationType = 3;
-            banner = Item.NPCtoBanner(NPCID.Pixie); //Gets NPC to banner
-            bannerItem = Item.BannerToItem(banner);
-            npc.noGravity = true;
+            NPC.width = 18;
+            NPC.height = 40;
+            NPC.damage = 14;
+            NPC.defense = 6;
+            NPC.lifeMax = 85;
+            NPC.HitSound = SoundID.NPCHit1;
+            NPC.DeathSound = SoundID.NPCDeath7;
+            NPC.value = 388f; //how much money is dropped (why is it a float?)
+            NPC.knockBackResist = 0.4f;
+            NPC.aiStyle = 22;
+            Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Pixie]; //Main.npcFrameCount[3];
+            AIType = NPCID.Pixie; // aiType = 3;
+            AnimationType = NPCID.Pixie; // animationType = 3;
+            Banner = Item.NPCtoBanner(NPCID.Pixie); //Gets NPC to banner
+            BannerItem = Item.BannerToItem(Banner);
+            NPC.noGravity = true;
             //npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/NPCHit/Spacey"); EXTRMELY USEFUL
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return (Main.tile[spawnInfo.playerFloorX, spawnInfo.playerFloorY].type == TileID.SnowBlock).ToInt() * 0.5f;
+            return (Main.tile[spawnInfo.PlayerFloorX, spawnInfo.PlayerFloorY].TileType == TileID.SnowBlock).ToInt() * 0.5f;
 
             float chance = 10f;
             if (!Main.dayTime)
@@ -47,7 +46,7 @@ namespace yourtale.NPCs.Evil
                 chance += 5f;
                 
             }
-            if (spawnInfo.player.ZoneSnow)
+            if (spawnInfo.Player.ZoneSnow)
             {    
                {
                  chance += 8f;
@@ -59,8 +58,8 @@ namespace yourtale.NPCs.Evil
         {
             for (int i = 0; i < 10; i++)
             {
-                int dustType = mod.DustType("IceDust");
-                int dustIndex = Dust.NewDust(npc.position, npc.width, npc.height, dustType);
+                int dustType = Mod.Find<ModDust>("IceDust").Type;
+                int dustIndex = Dust.NewDust(NPC.position, NPC.width, NPC.height, dustType);
                 Dust dust = Main.dust[dustIndex];
                 dust.velocity.X = dust.velocity.X + Main.rand.Next(-50, 51) * 0.01f;
                 dust.velocity.Y = dust.velocity.Y + Main.rand.Next(-50, 51) * 0.01f;
@@ -68,17 +67,17 @@ namespace yourtale.NPCs.Evil
             }
 
         }
-        public override void NPCLoot() //do mod.ItemType instead of ItemID for modded items
+        public override void OnKill() //do mod.ItemType instead of ItemID for modded items
         {
             /*Will make NPC always drop entered loot
             Item.NewItem(npc.position, ItemID.Gel, 100);*/
             if (Main.rand.Next(6) == 0)
             {
-                Item.NewItem(npc.getRect(), mod.ItemType("Cryolite"), Main.rand.Next(1, 5));
+                Item.NewItem(NPC.getRect(), Mod.Find<ModItem>("Cryolite").Type, Main.rand.Next(1, 5));
             }
             if (Main.rand.Next(15) == 0)
             {
-                Item.NewItem(npc.getRect(), mod.ItemType("IceHeart"));
+                Item.NewItem(NPC.getRect(), Mod.Find<ModItem>("IceHeart").Type);
             }
         }
     }

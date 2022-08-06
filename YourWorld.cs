@@ -8,7 +8,7 @@ using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using Terraria.World.Generation;
+using Terraria.WorldBuilding;
 using yourtale.Tiles.Furniture;
 using static Terraria.ModLoader.ModContent;
 using System.IO;
@@ -19,16 +19,16 @@ using yourtale.NPCs.Evil.Boss;
 
 namespace yourtale
 {
-    public class YourWorld : ModWorld
+    public class YourWorld : ModSystem
     {
         public static bool downedCryolisis;
 
-        public override void Initialize()
+        public override void OnWorldLoad()/* tModPorter Suggestion: Also override OnWorldUnload, and mirror your worldgen-sensitive data initialization in PreWorldGen */
         {
             downedCryolisis = false;
         }
        
-        public override void Load(TagCompound tag)
+        public override void LoadWorldData(TagCompound tag)
         {
             var downed = tag.GetList<string>("downed");
             downedCryolisis = downed.Contains("Cryolisis");
@@ -107,23 +107,23 @@ namespace yourtale
 
                 //Higher numbers mean more, for some reason overlapping TileIDs will cause a lower chance ore to just not spawn, idk why atm. 
                 Tile tile = Framing.GetTileSafely(x, y);
-                if (tile.active() && (tile.type == TileID.Sand || tile.type == TileID.Dirt || tile.type == TileID.Mud))
+                if (tile.HasTile && (tile.TileType == TileID.Sand || tile.TileType == TileID.Dirt || tile.TileType == TileID.Mud))
                 {
                     WorldGen.TileRunner(x, y, WorldGen.genRand.Next(18, 35), WorldGen.genRand.Next(45, 80), TileType<Tiles.Ores.FlintDeposit>()); //worldgen numbers can and should be messed with untill you are happy
                 }
-                if (tile.active() && (tile.type == TileID.SnowBlock || tile.type == TileID.IceBlock))
+                if (tile.HasTile && (tile.TileType == TileID.SnowBlock || tile.TileType == TileID.IceBlock))
                 {
                     WorldGen.TileRunner(x, y, WorldGen.genRand.Next(12, 24), WorldGen.genRand.Next(8, 45), TileType<Tiles.Ores.Cryolite>());
                 }
-                if (tile.active() && (tile.type == TileID.Stone || tile.type == TileID.ClayBlock || tile.type == TileID.Iron))
+                if (tile.HasTile && (tile.TileType == TileID.Stone || tile.TileType == TileID.ClayBlock || tile.TileType == TileID.Iron))
                 {
                     WorldGen.TileRunner(x, y, WorldGen.genRand.Next(2, 15), WorldGen.genRand.Next(15, 40), TileType<Tiles.Ores.Dolomite>());
                 }
-                if (tile.type == TileID.Emerald || tile.type == TileID.Amethyst || tile.type == TileID.Diamond || tile.type == TileID.Sapphire || tile.type == TileID.Topaz || tile.type == TileID.Ruby || tile.type == TileID.Gold || tile.type == TileID.Platinum || tile.type == TileID.Lead)
+                if (tile.TileType == TileID.Emerald || tile.TileType == TileID.Amethyst || tile.TileType == TileID.Diamond || tile.TileType == TileID.Sapphire || tile.TileType == TileID.Topaz || tile.TileType == TileID.Ruby || tile.TileType == TileID.Gold || tile.TileType == TileID.Platinum || tile.TileType == TileID.Lead)
                 {
                     WorldGen.TileRunner(x, y, WorldGen.genRand.Next(80, 100), WorldGen.genRand.Next(80, 100), TileType<Tiles.Ores.Vigore>());
                 }
-                if (tile.type == TileID.RichMahogany)
+                if (tile.TileType == TileID.RichMahogany)
                 {
                     WorldGen.TileRunner(x, y, WorldGen.genRand.Next(5, 90), WorldGen.genRand.Next(6, 99), TileType<Tiles.Ores.Vigore>());
                 }

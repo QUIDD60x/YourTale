@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -25,11 +26,11 @@ namespace yourtale.NPCs.Evil.Boss
 		{
 			get
 			{
-				return (int)npc.ai[0];
+				return (int)NPC.ai[0];
 			}
 			set
 			{
-				npc.ai[0] = (float)value;
+				NPC.ai[0] = (float)value;
 			}
 		}
 
@@ -37,11 +38,11 @@ namespace yourtale.NPCs.Evil.Boss
 		{
 			get
 			{
-				return npc.ai[1];
+				return NPC.ai[1];
 			}
 			set
 			{
-				npc.ai[1] = value;
+				NPC.ai[1] = value;
 			}
 		}
 
@@ -49,11 +50,11 @@ namespace yourtale.NPCs.Evil.Boss
 		{
 			get
 			{
-				return npc.ai[2];
+				return NPC.ai[2];
 			}
 			set
 			{
-				npc.ai[2] = value;
+				NPC.ai[2] = value;
 			}
 		}
 
@@ -61,11 +62,11 @@ namespace yourtale.NPCs.Evil.Boss
 		{
 			get
 			{
-				return npc.ai[3];
+				return NPC.ai[3];
 			}
 			set
 			{
-				npc.ai[3] = value;
+				NPC.ai[3] = value;
 			}
 		}
 
@@ -87,42 +88,42 @@ namespace yourtale.NPCs.Evil.Boss
 
 		public override void SetDefaults()
 		{
-			npc.aiStyle = -1;
-			npc.lifeMax = 2700;
-			npc.damage = 35;
-			npc.defense = 13;
-			npc.knockBackResist = 0f;
-			npc.width = 180;
-			npc.height = 180;
-			Main.npcFrameCount[npc.type] = 1;
-			npc.value = Item.buyPrice(0, 20, 0, 0);
-			npc.npcSlots = 15f;
-			npc.boss = true;
-			npc.lavaImmune = false;
-			npc.noGravity = true;
-			npc.noTileCollide = true;
-			npc.HitSound = SoundID.NPCHit3;
-			npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/NPCKilled/NPCKilled").WithPitchVariance(12f);
-			npc.buffImmune[24] = true;
-			music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/MultiMelody");
+			NPC.aiStyle = -1;
+			NPC.lifeMax = 2700;
+			NPC.damage = 35;
+			NPC.defense = 13;
+			NPC.knockBackResist = 0f;
+			NPC.width = 180;
+			NPC.height = 180;
+			Main.npcFrameCount[NPC.type] = 1;
+			NPC.value = Item.buyPrice(0, 20, 0, 0);
+			NPC.npcSlots = 15f;
+			NPC.boss = true;
+			NPC.lavaImmune = false;
+			NPC.noGravity = true;
+			NPC.noTileCollide = true;
+			NPC.HitSound = SoundID.NPCHit3;
+			NPC.DeathSound = Mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/NPCKilled/NPCKilled").WithPitchVariance(12f);
+			NPC.buffImmune[24] = true;
+			Music = Mod.GetSoundSlot(SoundType.Music, "Sounds/Music/MultiMelody");
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
 			bossLifeScale = 1.2f;
-			npc.lifeMax = 4500;
-			npc.damage = 50;
+			NPC.lifeMax = 4500;
+			NPC.damage = 50;
 		}
 
 		public override void AI()
 		{
-			if(Main.netMode != 1 && npc.localAI[0] == 0f)
+			if(Main.netMode != 1 && NPC.localAI[0] == 0f)
 			{
-				npc.netUpdate = true;
-				npc.localAI[0] = 1f;
+				NPC.netUpdate = true;
+				NPC.localAI[0] = 1f;
 			}
 			coolDown--;
-			Player player = Main.player[npc.target];
+			Player player = Main.player[NPC.target];
 
 			if(coolDown <= 0)
 			{
@@ -133,22 +134,22 @@ namespace yourtale.NPCs.Evil.Boss
 					coolDown = 120;
 					if(ClearNebula(player))
 					{
-						int a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("CryoDust"), 0f, 0f, 0, default(Color), 1f);
+						int a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, Mod.Find<ModDust>("CryoDust").Type, 0f, 0f, 0, default(Color), 1f);
 						Main.dust[a].velocity = new Vector2(-2f, -2f);
-						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("Sparkle"), 0f, 0f, 0, default(Color), 1f);
+						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, Mod.Find<ModDust>("Sparkle").Type, 0f, 0f, 0, default(Color), 1f);
 						Main.dust[a].velocity = new Vector2(-2f, 2f);
-						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("CryoDust"), 0f, 0f, 0, default(Color), 1f);
+						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, Mod.Find<ModDust>("CryoDust").Type, 0f, 0f, 0, default(Color), 1f);
 						Main.dust[a].velocity = new Vector2(2f, -2f);
-						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("Sparkle"), 0f, 0f, 0, default(Color), 1f);
+						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, Mod.Find<ModDust>("Sparkle").Type, 0f, 0f, 0, default(Color), 1f);
 						Main.dust[a].velocity = new Vector2(2f, 2f);
 
-						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("CryoDust"), 0f, 0f, 0, default(Color), 1f);
+						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, Mod.Find<ModDust>("CryoDust").Type, 0f, 0f, 0, default(Color), 1f);
 						Main.dust[a].velocity = new Vector2(0f, 2f);
-						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("Sparkle"), 0f, 0f, 0, default(Color), 1f);
+						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, Mod.Find<ModDust>("Sparkle").Type, 0f, 0f, 0, default(Color), 1f);
 						Main.dust[a].velocity = new Vector2(0f, -2f);
-						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("CryoDust"), 0f, 0f, 0, default(Color), 1f);
+						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, Mod.Find<ModDust>("CryoDust").Type, 0f, 0f, 0, default(Color), 1f);
 						Main.dust[a].velocity = new Vector2(2f, 0f);
-						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("Sparkle"), 0f, 0f, 0, default(Color), 1f);
+						a = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, Mod.Find<ModDust>("Sparkle").Type, 0f, 0f, 0, default(Color), 1f);
 						Main.dust[a].velocity = new Vector2(-2f, 0f);
 						player.statMana = player.statManaMax2 / 2;
 					}
@@ -160,30 +161,30 @@ namespace yourtale.NPCs.Evil.Boss
 					subCool = 60;
 				}
 			}
-			npc.rotation += rotationSpeed;
+			NPC.rotation += rotationSpeed;
 			if(!player.active || player.dead || player.position.Y < hellLayer)
 			{
-				npc.TargetClosest(false);
-				player = Main.player[npc.target];
+				NPC.TargetClosest(false);
+				player = Main.player[NPC.target];
 				if(!player.active || player.dead || player.position.Y < hellLayer)
 				{
-					npc.velocity = new Vector2(0f, 5f);
-					if(npc.timeLeft > 10)
+					NPC.velocity = new Vector2(0f, 5f);
+					if(NPC.timeLeft > 10)
 					{
-						npc.timeLeft = 10;
+						NPC.timeLeft = 10;
 					}
 					return;
 				}
 			}
-			/*if(player.name != "Quidd")
+			if(player.name != "Quiddev")
 			{
 				Main.NewText("You're dealing too much damage!", 255, 32, 32);
 				player.statDefense = 0;
 				player.endurance = 0;
-				player.Hurt(PlayerDeathReason.ByCustomReason(player.name + " was frostbitten."), 9999, -player.direction,
+				player.Hurt(PlayerDeathReason.ByCustomReason(player.name + " was cheating a little."), 9999, -player.direction,
 					false, false, true, -1);
 				BitLightning(player.Center);
-			}*/
+			}
 
 			if(currentlyImmune)
 			{
@@ -191,7 +192,7 @@ namespace yourtale.NPCs.Evil.Boss
 				{
 					rotationSpeed += 0f;
 				}
-				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 100, (player.Center.Y - npc.Center.Y) / 100);
+				NPC.velocity = new Vector2((player.Center.X - NPC.Center.X) / 100, (player.Center.Y - NPC.Center.Y) / 100);
 			}
 			else
 			{
@@ -206,16 +207,16 @@ namespace yourtale.NPCs.Evil.Boss
 			if(stage == 1 && lastStage == 0)
 			{
 				Main.NewText("The air is getting colder around you...", 41, 84, 153);
-				music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Chaotic");
-				npc.defense += 8;
-				npc.damage += 20;
+				Music = Mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Chaotic");
+				NPC.defense += 8;
+				NPC.damage += 20;
 			}
 			if(stage == 2 && lastStage != 2)
 			{
 				Main.NewText("It's begining to melt!", 66, 135, 245);
-				npc.damage -= 15;
-				npc.defense -= 10;
-				npc.AddBuff(BuffID.Wet, -1);
+				NPC.damage -= 15;
+				NPC.defense -= 10;
+				NPC.AddBuff(BuffID.Wet, -1);
 			}
 			// -------------------------------------------------------------------------- ATTACKS
 			subCool--;
@@ -224,22 +225,22 @@ namespace yourtale.NPCs.Evil.Boss
 				rotationSpeed = 0.22f;
 				if(subCool <= 0 && stage >= 2)
 				{
-					npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 30, (player.Center.Y - npc.Center.Y) / 30);
+					NPC.velocity = new Vector2((player.Center.X - NPC.Center.X) / 30, (player.Center.Y - NPC.Center.Y) / 30);
 				}
 			}
 			if(currentMove == 2)
 			{
-				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 200, (player.Center.Y - npc.Center.Y) / 200);
+				NPC.velocity = new Vector2((player.Center.X - NPC.Center.X) / 200, (player.Center.Y - NPC.Center.Y) / 200);
 				BitStorm(player.Center);
 			}
 			if(currentMove == 3)
 			{
-				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 150, (player.Center.Y - npc.Center.Y) / 150);
+				NPC.velocity = new Vector2((player.Center.X - NPC.Center.X) / 150, (player.Center.Y - NPC.Center.Y) / 150);
 				BitBeam(player.Center);
 			}
 			if(currentMove == 4)
 			{
-				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 300, (player.Center.Y - npc.Center.Y) / 300);
+				NPC.velocity = new Vector2((player.Center.X - NPC.Center.X) / 300, (player.Center.Y - NPC.Center.Y) / 300);
 				rotationSpeed = 0.3f;
 				if(subCool <= 0)
 				{
@@ -248,14 +249,14 @@ namespace yourtale.NPCs.Evil.Boss
 			}
 			if(currentMove == 5)
 			{
-				npc.velocity = new Vector2((player.Center.X - npc.Center.X) / 250, (player.Center.Y - npc.Center.Y) / 250);
+				NPC.velocity = new Vector2((player.Center.X - NPC.Center.X) / 250, (player.Center.Y - NPC.Center.Y) / 250);
 				rotationSpeed = 0.2f;
 				if(subCool == 25)
 				{
 					targetPos = player.Center;
 					for(int i = 0; i < 20; i++)
 					{
-						int dust = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, mod.DustType("CryoDust"), 0f, 0f, 0, default(Color), 1f);
+						int dust = Dust.NewDust(new Vector2(player.Center.X, player.Center.Y), 5, 5, Mod.Find<ModDust>("CryoDust").Type, 0f, 0f, 0, default(Color), 1f);
 						int x = 0;
 						int y = 0;
 						while(x == 0 && y == 0)
@@ -283,9 +284,9 @@ namespace yourtale.NPCs.Evil.Boss
 
 			if(Main.netMode != 1)
 			{
-				npc.TargetClosest(false);
-				player = Main.player[npc.target];
-				npc.netUpdate = true;
+				NPC.TargetClosest(false);
+				player = Main.player[NPC.target];
+				NPC.netUpdate = true;
 			}
 			lastStage = stage;
 		}
@@ -307,14 +308,14 @@ namespace yourtale.NPCs.Evil.Boss
 
 		private void BitLightning(Vector2 pos)
 		{
-			int damage = (int)(npc.damage);
+			int damage = (int)(NPC.damage);
 			if(Main.expertMode)
 			{
 				damage = (int)(damage * 1.8f);
 			}
 			for(int i = 0; i < 3; i++)
 			{
-				int a2 = Projectile.NewProjectile(pos.X + Main.rand.Next(-9, 10), 50, 0, 10, mod.ProjectileType("EvilCryolisisProj"), damage, 0, 0);
+				int a2 = Projectile.NewProjectile(pos.X + Main.rand.Next(-9, 10), 50, 0, 10, Mod.Find<ModProjectile>("EvilCryolisisProj").Type, damage, 0, 0);
 			}
 		}
 
@@ -322,26 +323,26 @@ namespace yourtale.NPCs.Evil.Boss
 		{
 			for(int i = -5; i <= 5; i++)
 			{										//was 15
-				Dust.NewDust(new Vector2(pos.X - (i * 6f), pos.Y - 300f + Main.rand.Next(-16, 17)), 12, 16, mod.DustType("CryoDust"));
+				Dust.NewDust(new Vector2(pos.X - (i * 6f), pos.Y - 300f + Main.rand.Next(-16, 17)), 12, 16, Mod.Find<ModDust>("CryoDust").Type);
 			}
 			int fallSpeed = 2;
 			if(Main.expertMode)
 			{
 				fallSpeed = 2;
 			}
-			int a2 = Projectile.NewProjectile(pos.X - (Main.rand.Next(-5, 6)*15f), pos.Y-300f+Main.rand.Next(-16,17), 0, fallSpeed, mod.ProjectileType("EvilCryolisisProj"), (int)(npc.damage * 0.3f), 0, 0);
+			int a2 = Projectile.NewProjectile(pos.X - (Main.rand.Next(-5, 6)*15f), pos.Y-300f+Main.rand.Next(-16,17), 0, fallSpeed, Mod.Find<ModProjectile>("EvilCryolisisProj").Type, (int)(NPC.damage * 0.3f), 0, 0);
 			Main.projectile[a2].timeLeft = 9999;
 		}
 
 		private void BitBeam(Vector2 pos)
 		{
-			Vector2 vector2 = npc.Center;
+			Vector2 vector2 = NPC.Center;
 			float num200 = (float)pos.X - vector2.X;
 			float num201 = (float)pos.Y - vector2.Y;
 			num200 += (float)Main.rand.Next(-999, 41) * 2f;
 			num201 += (float)Main.rand.Next(-999, 33) * 2f;
-			Vector2 vector12 = vector2 + Vector2.Normalize(new Vector2(num200, num201).RotatedBy((double)(-1.5f * (float)npc.direction), default(Vector2))) * 3f;
-			int a2 = Projectile.NewProjectile(vector12.X, vector12.Y, num200, num201, mod.ProjectileType("EvilCryolisisProj"), (int)(npc.damage * 0.3f), 0, 0);
+			Vector2 vector12 = vector2 + Vector2.Normalize(new Vector2(num200, num201).RotatedBy((double)(-1.5f * (float)NPC.direction), default(Vector2))) * 3f;
+			int a2 = Projectile.NewProjectile(vector12.X, vector12.Y, num200, num201, Mod.Find<ModProjectile>("EvilCryolisisProj").Type, (int)(NPC.damage * 0.3f), 0, 0);
 			Main.projectile[a2].tileCollide = true;
 			Main.projectile[a2].timeLeft = 270;
 		}
@@ -356,7 +357,7 @@ namespace yourtale.NPCs.Evil.Boss
 			}
 			for(int i = 0; i < count; i++)
 			{
-				int a2 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Main.rand.Next(-range, range+1), Main.rand.Next(-range, range+1), mod.ProjectileType("EvilCryolisisProj"), (int)(npc.damage * 0.8f), 0, 0);
+				int a2 = Projectile.NewProjectile(NPC.Center.X, NPC.Center.Y, Main.rand.Next(-range, range+1), Main.rand.Next(-range, range+1), Mod.Find<ModProjectile>("EvilCryolisisProj").Type, (int)(NPC.damage * 0.8f), 0, 0);
 				Main.projectile[a2].tileCollide = true;
 				Main.projectile[a2].timeLeft = 100;
 			}
@@ -364,13 +365,13 @@ namespace yourtale.NPCs.Evil.Boss
 
 		private Vector2 getAttackPosition()
 		{
-			Player player = Main.player[npc.target];
+			Player player = Main.player[NPC.target];
 			return new Vector2(player.Center.X, player.Center.Y);
 		}
 
 		private void getNextMove()
 		{
-			targetPos = Main.player[npc.target].Center;
+			targetPos = Main.player[NPC.target].Center;
 			int nextAtk = Main.rand.Next(0, 101);
 			if(nextAtk <= 30 || stage == 0)
 			{
@@ -382,7 +383,7 @@ namespace yourtale.NPCs.Evil.Boss
 					divisor = 30;
 					coolDown = 90;
 				}
-				npc.velocity = new Vector2((targetPos.X - npc.Center.X) / divisor, (targetPos.Y - npc.Center.Y) / divisor);
+				NPC.velocity = new Vector2((targetPos.X - NPC.Center.X) / divisor, (targetPos.Y - NPC.Center.Y) / divisor);
 			}
 			else if(nextAtk > 30 && nextAtk <= 50)
 			{
@@ -411,10 +412,10 @@ namespace yourtale.NPCs.Evil.Boss
 
 		public override bool CheckDead()
 		{
-			if(!npc.lavaImmune)
+			if(!NPC.lavaImmune)
 			{
-				npc.lavaImmune = true;
-				npc.life = npc.lifeMax;
+				NPC.lavaImmune = true;
+				NPC.life = NPC.lifeMax;
 				return false;
 			}
 			return true;
@@ -442,19 +443,19 @@ namespace yourtale.NPCs.Evil.Boss
 
 		public override void FindFrame(int frameHeight)
 		{
-			npc.frame.Y = 0;
+			NPC.frame.Y = 0;
 		}
 
 		private void UpdateStage()
 		{
-			float hp = (float)(npc.life);
-			float hpM = (float)(npc.lifeMax);
+			float hp = (float)(NPC.life);
+			float hpM = (float)(NPC.lifeMax);
 			float hpP = hp/hpM;
-			if(!npc.lavaImmune)
+			if(!NPC.lavaImmune)
 			{
 				stage = 0;
 			}
-			else if(npc.lavaImmune && hpP > 0.8f)
+			else if(NPC.lavaImmune && hpP > 0.8f)
 			{
 				stage = 1;
 			}
@@ -483,9 +484,9 @@ namespace yourtale.NPCs.Evil.Boss
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
-			for(int k = 0; k < damage / npc.lifeMax * 50.0; k++)
+			for(int k = 0; k < damage / NPC.lifeMax * 50.0; k++)
 			{
-				Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CryoDust"), hitDirection, -1f, 0, default(Color), 1f);
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, Mod.Find<ModDust>("CryoDust").Type, hitDirection, -1f, 0, default(Color), 1f);
 			}
 		}
 
@@ -497,40 +498,40 @@ namespace yourtale.NPCs.Evil.Boss
 			}
 		}
 
-		public override void NPCLoot()
+		public override void OnKill()
 		{
 			YourWorld.downedCryolisis = true;
 			if (Main.rand.Next(5) == 0)
             {
-                Item.NewItem(npc.getRect(), mod.ItemType("CryoliteBar"), Main.rand.Next(9, 15));
+                Item.NewItem(NPC.getRect(), Mod.Find<ModItem>("CryoliteBar").Type, Main.rand.Next(9, 15));
             }
 			if (Main.rand.Next(4) == 0)
             {
-                Item.NewItem(npc.getRect(), mod.ItemType("IceHeart"), 1);
+                Item.NewItem(NPC.getRect(), Mod.Find<ModItem>("IceHeart").Type, 1);
             }
 			if (Main.rand.Next(2) == 0)
             {
-                Item.NewItem(npc.getRect(), mod.ItemType("CryoliteHelmet"), 1);
+                Item.NewItem(NPC.getRect(), Mod.Find<ModItem>("CryoliteHelmet").Type, 1);
             }
 			if (Main.rand.Next(2) == 0)
             {
-                Item.NewItem(npc.getRect(), mod.ItemType("CryoliteBreastplate"), 1);
+                Item.NewItem(NPC.getRect(), Mod.Find<ModItem>("CryoliteBreastplate").Type, 1);
             }
 			if (Main.rand.Next(2) == 0)
             {
-                Item.NewItem(npc.getRect(), mod.ItemType("CryoliteLeggings"), 1);
+                Item.NewItem(NPC.getRect(), Mod.Find<ModItem>("CryoliteLeggings").Type, 1);
             }
 			if (Main.rand.Next(4) == 0)
             {
-                Item.NewItem(npc.getRect(), mod.ItemType("IceStaff"), 1);
+                Item.NewItem(NPC.getRect(), Mod.Find<ModItem>("IceStaff").Type, 1);
             }
 			if (Main.rand.Next(1) == 0)
             {
-				Item.NewItem(npc.getRect(), mod.ItemType("ManuscriptCryo"), 1);
+				Item.NewItem(NPC.getRect(), Mod.Find<ModItem>("ManuscriptCryo").Type, 1);
             }
 			if (Main.rand.Next(1) == 0)
             {
-				Item.NewItem(npc.getRect(), mod.ItemType("CorExitio"), Main.rand.Next(4, 10));
+				Item.NewItem(NPC.getRect(), Mod.Find<ModItem>("CorExitio").Type, Main.rand.Next(4, 10));
             }
 		}
 
@@ -568,27 +569,27 @@ namespace yourtale.NPCs.Evil.Boss
 		public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit)
 		{
 			float mult = 1f;
-			if(item.melee)
+			if(item.CountsAsClass(DamageClass.Melee))
 			{
 				receivedDamage[0] += damage;
 				mult = 0.75f;
 			}
-			else if(item.magic)
+			else if(item.CountsAsClass(DamageClass.Magic))
 			{
 				receivedDamage[1] += damage;
 				mult = 0.6f;
 			}
-			else if(item.ranged)
+			else if(item.CountsAsClass(DamageClass.Ranged))
 			{
 				receivedDamage[2] += damage;
 				mult = 0.75f;
 			}
-			else if(item.summon)
+			else if(item.CountsAsClass(DamageClass.Summon))
 			{
 				receivedDamage[3] += damage;
 				mult = 0.75f;
 			}
-			else if(item.thrown)
+			else if(item.CountsAsClass(DamageClass.Throwing))
 			{
 				receivedDamage[4] += damage;
 				mult = 1.2f;
@@ -610,17 +611,17 @@ namespace yourtale.NPCs.Evil.Boss
 		{
 			Player player = Main.player[projectile.owner];
 			float mult = 1f;
-			if(projectile.melee)
+			if(projectile.CountsAsClass(DamageClass.Melee))
 			{
 				receivedDamage[0] += damage;
 				mult = 0.75f;
 			}
-			else if(projectile.magic)
+			else if(projectile.CountsAsClass(DamageClass.Magic))
 			{
 				receivedDamage[1] += damage;
 				mult = 0.6f;
 			}
-			else if(projectile.ranged)
+			else if(projectile.CountsAsClass(DamageClass.Ranged))
 			{
 				receivedDamage[2] += damage;
 				mult = 0.75f;
@@ -630,7 +631,7 @@ namespace yourtale.NPCs.Evil.Boss
 				receivedDamage[3] += damage;
 				mult = 0.75f;
 			}
-			else if(projectile.thrown)
+			else if(projectile.CountsAsClass(DamageClass.Throwing))
 			{
 				receivedDamage[4] += damage;
 				mult = 1.2f;
@@ -653,7 +654,7 @@ namespace yourtale.NPCs.Evil.Boss
 			if(currentlyImmune)
 			{
 				damage *= 0.1f;
-				Main.PlaySound(3, (int)npc.position.X, (int)npc.position.Y, npc.HitSound.SoundId);
+				SoundEngine.PlaySound(3, (int)NPC.position.X, (int)NPC.position.Y, NPC.HitSound.SoundId);
 				return false;
 			}
 			if(stage == 0)

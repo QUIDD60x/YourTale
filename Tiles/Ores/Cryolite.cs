@@ -14,7 +14,7 @@ namespace yourtale.Tiles.Ores
 {
     public class Cryolite : ModTile
     {
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         { //these are all important and should be specified.
             Main.tileSolid[Type] = true;  //will make it a solid block.
             Main.tileMergeDirt[Type] = true;  //will merge with dirt, probably the most important.
@@ -23,15 +23,15 @@ namespace yourtale.Tiles.Ores
             Main.tileSpelunker[Type] = true; //will trigger the spelunker potion as an ore.
             Main.tileShine[Type] = 80; //amount of light produced as a integer.
 
-            drop = ItemType<Items.Placeables.Cryolite>(); //drop = Item.itemhere for vanilla drops
+            ItemDrop = ItemType<Items.Placeables.Cryolite>(); //drop = Item.itemhere for vanilla drops
 
-            dustType = 84; //dustType = DustID.Platinum for vanilla, dustType = mod.dustType.Platinum for modded
+            DustType = 84; //dustType = DustID.Platinum for vanilla, dustType = mod.dustType.Platinum for modded
             ModTranslation name = CreateMapEntryName(); //adds a map entry so it will be pointed out on a map.
             name.SetDefault("Cryolite");
             AddMapEntry(new Color(129, 159, 242), name); //or AddMapEntry(Color.Red) or any other colour in the color class
-            soundType = SoundID.Tink;
-            soundStyle = 1;
-            minPick = 35; //will set minimum pick strength
+            HitSound = SoundID.Tink;
+            soundStyle/* tModPorter Note: Removed. Integrate into HitSound */ = 1;
+            MinPick = 35; //will set minimum pick strength
         }
         // Will let you modify the light level and colour, RGB variables are obviously RBG colours.
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

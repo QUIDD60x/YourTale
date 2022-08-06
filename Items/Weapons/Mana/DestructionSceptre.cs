@@ -12,39 +12,38 @@ namespace yourtale.Items.Weapons.Mana
         {
             DisplayName.SetDefault("Staff Of Destruction");
             Tooltip.SetDefault("Absolutely terrifying!");
-            Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
+            Item.staff[Item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
         }
 
         public override void SetDefaults()
         {
-            item.damage = 60;
-            item.magic = true;
-            item.mana = 50;
-            item.width = 40;
-            item.height = 40;
-            item.useTime = 60;
-            item.useAnimation = 60;
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.noMelee = false; //so the item's animation doesn't do damage
-            item.knockBack = 7;
-            item.value = Item.buyPrice(0, 0, 55, 0);
-            item.rare = ItemRarityID.Orange;
-            item.UseSound = SoundID.Item20;
-            item.autoReuse = true;
-            item.shoot = ModContent.ProjectileType<EarlyBomb>();
-            item.shootSpeed = 5f;
+            Item.damage = 60;
+            Item.DamageType = DamageClass.Magic;
+            Item.mana = 50;
+            Item.width = 40;
+            Item.height = 40;
+            Item.useTime = 60;
+            Item.useAnimation = 60;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.noMelee = false; //so the item's animation doesn't do damage
+            Item.knockBack = 7;
+            Item.value = Item.buyPrice(0, 0, 55, 0);
+            Item.rare = ItemRarityID.Orange;
+            Item.UseSound = SoundID.Item20;
+            Item.autoReuse = true;
+            Item.shoot = ModContent.ProjectileType<EarlyBomb>();
+            Item.shootSpeed = 5f;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
+            Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.Bomb, 5);
             recipe.AddIngredient(ItemID.Grenade, 3);
-            recipe.AddIngredient(mod.ItemType("CorExitio"), 3);
-            recipe.AddIngredient(mod.ItemType("StarShard"), 5);
+            recipe.AddIngredient(Mod.Find<ModItem>("CorExitio").Type, 3);
+            recipe.AddIngredient(Mod.Find<ModItem>("StarShard").Type, 5);
             recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            recipe.Register();
         }
     }
 }

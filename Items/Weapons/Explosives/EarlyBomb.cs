@@ -10,35 +10,34 @@ namespace yourtale.Items.Weapons.Explosives
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("exitium incarnatus est");
-            ItemID.Sets.ItemsThatCountAsBombsForDemolitionistToSpawn[item.type] = true; //basically means this in inventory=demolitionist will spawn.
+            ItemID.Sets.ItemsThatCountAsBombsForDemolitionistToSpawn[Item.type] = true; //basically means this in inventory=demolitionist will spawn.
         }
 
         public override void SetDefaults()
         {
-            item.useStyle = ItemUseStyleID.SwingThrow; //makes it look more like a throw.
-            item.shootSpeed = 4f; //the velocity at which is goes flying out at.
-            item.shoot = ModContent.ProjectileType<Projectiles.Staffs.EarlyBomb>(); //the actual projectile.
-            item.width = 8;
-            item.height = 28;
-            item.maxStack = 30;
-            item.consumable = true; //VERY IMPORTANT as without this it will be infinite.
-            item.UseSound = SoundID.Item1;
-            item.useAnimation = 40;
-            item.useTime = 40;
-            item.noUseGraphic = true;
-            item.noMelee = true; //will stop it from dealing damage as a melee hit.
-            item.value = Item.buyPrice(0, 0, 20, 0);
-            item.rare = ItemRarityID.Pink;
+            Item.useStyle = ItemUseStyleID.Swing; //makes it look more like a throw.
+            Item.shootSpeed = 4f; //the velocity at which is goes flying out at.
+            Item.shoot = ModContent.ProjectileType<Projectiles.Staffs.EarlyBomb>(); //the actual projectile.
+            Item.width = 8;
+            Item.height = 28;
+            Item.maxStack = 30;
+            Item.consumable = true; //VERY IMPORTANT as without this it will be infinite.
+            Item.UseSound = SoundID.Item1;
+            Item.useAnimation = 40;
+            Item.useTime = 40;
+            Item.noUseGraphic = true;
+            Item.noMelee = true; //will stop it from dealing damage as a melee hit.
+            Item.value = Item.buyPrice(0, 0, 20, 0);
+            Item.rare = ItemRarityID.Pink;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
+            Recipe recipe = CreateRecipe(3);
             recipe.AddIngredient(ItemID.Grenade, 3);
-            recipe.AddIngredient(mod.ItemType("CorExitio"), 1);
+            recipe.AddIngredient(Mod.Find<ModItem>("CorExitio").Type, 1);
             recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this, 3);
-            recipe.AddRecipe();
+            recipe.Register();
         }
     }
 }

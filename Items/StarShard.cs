@@ -22,17 +22,17 @@ namespace yourtale.Items
 
         public override void SetDefaults()
         {
-            item.width = 1;
-            item.height = 1;
-            item.maxStack = 999;
-            item.useStyle = 2;
-            item.useTime = 10;
-            item.useAnimation = 10;
-            item.useTurn = true;
-            item.autoReuse = true;
-            item.UseSound = SoundID.Item25;
-            item.rare = ItemRarityID.Blue;
-            item.flame = true;
+            Item.width = 1;
+            Item.height = 1;
+            Item.maxStack = 999;
+            Item.useStyle = 2;
+            Item.useTime = 10;
+            Item.useAnimation = 10;
+            Item.useTurn = true;
+            Item.autoReuse = true;
+            Item.UseSound = SoundID.Item25;
+            Item.rare = ItemRarityID.Blue;
+            Item.flame = true;
         }
         public override void HoldItem(Player player)
         {
@@ -45,22 +45,21 @@ namespace yourtale.Items
                 public override void MeleeEffects(Player player, Rectangle hitbox)
                 {
                     if (Main.rand.Next(3) == 0)
-                    Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("StarShine"));
+                    Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, Mod.Find<ModDust>("StarShine").Type);
                 }
 
-        public override bool UseItem(Player player)
+        public override bool? UseItem(Player player)/* tModPorter Suggestion: Return null instead of false */
         {
             if (Main.rand.Next(3) == 0)
-                Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.Hitbox.Width, player.Hitbox.Height, mod.DustType("StarShine"));
+                Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.Hitbox.Width, player.Hitbox.Height, Mod.Find<ModDust>("StarShine").Type);
             return base.UseItem(player);
         }
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
+            Recipe recipe = CreateRecipe(10);//can add recipe.SetResult(this, number here) for making multiple
             recipe.AddIngredient(ItemID.FallenStar, 1);
             recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this, 10); //can add recipe.SetResult(this, number here) for making multiple
-            recipe.AddRecipe();
+            recipe.Register();
         }
     }
 }

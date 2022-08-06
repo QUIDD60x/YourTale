@@ -25,25 +25,24 @@ namespace yourtale.Items.Armor.Cryolite
         }
         public override void SetDefaults()
         {
-            item.width = 25;
-            item.height = 700;
-            item.value = Item.sellPrice(silver: 12);
-            item.rare = ItemRarityID.Blue;
-            item.defense = 7;
+            Item.width = 25;
+            Item.height = 700;
+            Item.value = Item.sellPrice(silver: 12);
+            Item.rare = ItemRarityID.Blue;
+            Item.defense = 7;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("CryoliteBar"), 8);
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(Mod.Find<ModItem>("CryoliteBar").Type, 8);
             recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            recipe.Register();
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) //This last bit here is the set bonus code.
         { //this checks to see if you have all 3 armours equipped. You MIGHT be able to add extra equipped gear here like wings and stuff although i haven't personally tried yet.
-            return body.type == mod.ItemType("CryoliteBreastplate") && legs.type == mod.ItemType("CryoliteLeggings");
+            return body.type == Mod.Find<ModItem>("CryoliteBreastplate").Type && legs.type == Mod.Find<ModItem>("CryoliteLeggings").Type;
         }
 
         public override void UpdateArmorSet(Player player) //here is the armor set upgrade.

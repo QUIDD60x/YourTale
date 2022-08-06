@@ -21,20 +21,19 @@ namespace yourtale.Items.Armor.Flint
 
         public override void SetDefaults()
         {
-            item.width = 22;
-            item.height = 24;
-            item.value = Item.sellPrice(silver: -1);
-            item.rare = ItemRarityID.White;
-            item.defense = 3;
+            Item.width = 22;
+            Item.height = 24;
+            Item.value = Item.sellPrice(silver: -1);
+            Item.rare = ItemRarityID.White;
+            Item.defense = 3;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("flint"), 9);
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(Mod.Find<ModItem>("flint").Type, 9);
             recipe.AddTile(TileID.Stone);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            recipe.Register();
         }
     }
 }

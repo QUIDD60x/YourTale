@@ -18,9 +18,9 @@ namespace yourtale.Items.Accessories.Lockets
 
 		public override void SetDefaults()
 		{
-			item.width = 20;
-			item.height = 20;
-			item.rare = ItemRarityID.White;
+			Item.width = 20;
+			Item.height = 20;
+			Item.rare = ItemRarityID.White;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
@@ -29,12 +29,11 @@ namespace yourtale.Items.Accessories.Lockets
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.GoldBar, 2);
 			recipe.AddIngredient(ItemID.IronBar, 5);
 			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			recipe.Register();
 		}
 	}
 }

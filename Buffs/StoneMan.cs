@@ -12,12 +12,11 @@ namespace yourtale.Buffs
 { 
     public class StoneMan : ModBuff
     {
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rock Solid");
             Description.SetDefault("You're stuck between a rock and a... nother rock.");
-            Main.debuff[Type] = false; //Debuffs cannot be canceled, buffs can. Make sure to include this!
-            longerExpertDebuff = true; //This will increase the time for the buff if you're in expert mode.
+            Main.debuff[Type] = false; //Debuffs cannot be canceled, buffs can. Make sure to include this
         }
         public override void Update(NPC npc, ref int buffIndex)
         {

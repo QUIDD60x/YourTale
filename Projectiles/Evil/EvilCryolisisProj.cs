@@ -14,23 +14,23 @@ namespace yourtale.Projectiles.Evil
 
 		public override void SetDefaults()
 		{
-			projectile.penetrate = 1;
+			Projectile.penetrate = 1;
 			//projectile.aiStyle = 1;
-			projectile.width = 14;
-			projectile.height = 14;
-			projectile.ignoreWater = true;
-			projectile.hostile = true;
-			projectile.timeLeft = 1200;
-			projectile.tileCollide = true;
-			projectile.noDropItem = true;
-			projectile.alpha = 255;
-			projectile.extraUpdates = 100;
-			aiType = ProjectileID.Bullet;
+			Projectile.width = 14;
+			Projectile.height = 14;
+			Projectile.ignoreWater = true;
+			Projectile.hostile = true;
+			Projectile.timeLeft = 1200;
+			Projectile.tileCollide = true;
+			Projectile.noDropItem = true;
+			Projectile.alpha = 255;
+			Projectile.extraUpdates = 100;
+			AIType = ProjectileID.Bullet;
 		}
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-			Player player = Main.player[projectile.owner];
+			Player player = Main.player[Projectile.owner];
 			if (Main.rand.Next(0, 101) < GetWeaponCrit(player))
 			{
 				crit = true;
@@ -43,34 +43,34 @@ namespace yourtale.Projectiles.Evil
 		{
 			Item item = player.inventory[player.selectedItem];
 			int crit = item.crit;
-			if (item.melee)
+			if (item.CountsAsClass(DamageClass.Melee))
 			{
-				crit += player.meleeCrit;
+				crit += player.GetCritChance(DamageClass.Generic);
 			}
-			else if (item.magic)
+			else if (item.CountsAsClass(DamageClass.Magic))
 			{
-				crit += player.magicCrit;
+				crit += player.GetCritChance(DamageClass.Magic);
 			}
-			else if (item.ranged)
+			else if (item.CountsAsClass(DamageClass.Ranged))
 			{
-				crit += player.rangedCrit;
+				crit += player.GetCritChance(DamageClass.Ranged);
 			}
-			else if (item.thrown)
+			else if (item.CountsAsClass(DamageClass.Throwing))
 			{
-				crit += player.thrownCrit;
+				crit += player.GetCritChance(DamageClass.Throwing);
 			}
 			return crit;
 		}
 
 		public override void AI()
 		{
-			projectile.alpha = 255;
-			projectile.frameCounter++;
-			if (projectile.frameCounter % 2 == 0)
+			Projectile.alpha = 255;
+			Projectile.frameCounter++;
+			if (Projectile.frameCounter % 2 == 0)
 			{
 					Dust dust;
 				Vector2 position = Main.LocalPlayer.Center;
-				dust = Main.dust[Terraria.Dust.NewDust(projectile.position + projectile.velocity, 30, 30, 76, 0f, 0.6976748f, 0, new Color(255,255,255), 0.8f)];
+				dust = Main.dust[Terraria.Dust.NewDust(Projectile.position + Projectile.velocity, 30, 30, 76, 0f, 0.6976748f, 0, new Color(255,255,255), 0.8f)];
 				dust.noLight = true;
 				dust.fadeIn = 0.5232558f;
 
@@ -83,11 +83,11 @@ namespace yourtale.Projectiles.Evil
 			{
 				Dust dust;
 				Vector2 position = Main.LocalPlayer.Center;
-				dust = Main.dust[Terraria.Dust.NewDust(projectile.position + projectile.velocity, 30, 30, 76, 0f, 0.6976748f, 0, new Color(255,255,255), 0.8f)];
+				dust = Main.dust[Terraria.Dust.NewDust(Projectile.position + Projectile.velocity, 30, 30, 76, 0f, 0.6976748f, 0, new Color(255,255,255), 0.8f)];
 				dust.noLight = true;
 				dust.fadeIn = 0.5232558f;
 			}
-			projectile.type = 0;
+			Projectile.type = 0;
 			return true;
 		}
 	}

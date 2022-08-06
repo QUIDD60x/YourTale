@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -17,29 +18,28 @@ namespace yourtale.Items.Placeables
         }
         public override void SetDefaults()
         {
-            item.height = 12;
-            item.width = 12;
-            item.rare = ItemRarityID.Blue;
-            item.value = 300;
+            Item.height = 12;
+            Item.width = 12;
+            Item.rare = ItemRarityID.Blue;
+            Item.value = 300;
 
-            item.autoReuse = true;
-            item.useTurn = true;
-            item.useTime = 10;
-            item.useAnimation = 12;
-            item.useStyle = ItemUseStyleID.SwingThrow;
+            Item.autoReuse = true;
+            Item.useTurn = true;
+            Item.useTime = 10;
+            Item.useAnimation = 12;
+            Item.useStyle = ItemUseStyleID.Swing;
 
-            item.consumable = true;
-            item.maxStack = 999;
+            Item.consumable = true;
+            Item.maxStack = 999;
 
-            item.createTile = TileType<Tiles.Bars.CryoliteBar>();
+            Item.createTile = TileType<Tiles.Bars.CryoliteBar>();
         }
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("Cryolite"), 4);
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(Mod.Find<ModItem>("Cryolite").Type, 4);
             recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            recipe.Register();
         }
     }
 }

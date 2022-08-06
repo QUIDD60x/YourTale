@@ -21,20 +21,19 @@ namespace yourtale.Items.Armor.Animula
 
         public override void SetDefaults()
         {
-            item.width = 25;
-            item.height = 700;
-            item.value = Item.sellPrice(silver: -1);
-            item.rare = ItemRarityID.Green;
-            item.defense = 10;
+            Item.width = 25;
+            Item.height = 700;
+            Item.value = Item.sellPrice(silver: -1);
+            Item.rare = ItemRarityID.Green;
+            Item.defense = 10;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("LifeShard"), 9);
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(Mod.Find<ModItem>("LifeShard").Type, 9);
             recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            recipe.Register();
         }
     }
 }

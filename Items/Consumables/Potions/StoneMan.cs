@@ -15,31 +15,30 @@ namespace yourtale.Items.Consumables.Potions
 
 		public override void SetDefaults()
 		{
-			item.width = 8;
-			item.height = 26;
-			item.useStyle = 3;
-			item.useAnimation = 15;
-			item.useTime = 15;
-			item.useTurn = true;
-			item.UseSound = SoundID.Item3; //i have a list of sounds on my cheetsheat, or you can google them.
-			item.maxStack = 30;
-			item.consumable = true;
-			item.rare = 5; //rarities are specified on my cheetsheat. item.rare = ItemRarityID.colour also works to specify one.
-			item.value = 1000; //i think 1 = 1 copper coin?
-			item.buffType = ModContent.BuffType<Buffs.StoneMan>(); // Specify an existing buff to be applied when used.
-			item.buffTime = 600; // The amount of time the buff declared in Item.buffType will last in ticks. 5400 / 60 is 90, so this buff will last 90 seconds.
+			Item.width = 8;
+			Item.height = 26;
+			Item.useStyle = 3;
+			Item.useAnimation = 15;
+			Item.useTime = 15;
+			Item.useTurn = true;
+			Item.UseSound = SoundID.Item3; //i have a list of sounds on my cheetsheat, or you can google them.
+			Item.maxStack = 30;
+			Item.consumable = true;
+			Item.rare = 5; //rarities are specified on my cheetsheat. item.rare = ItemRarityID.colour also works to specify one.
+			Item.value = 1000; //i think 1 = 1 copper coin?
+			Item.buffType = ModContent.BuffType<Buffs.StoneMan>(); // Specify an existing buff to be applied when used.
+			Item.buffTime = 600; // The amount of time the buff declared in Item.buffType will last in ticks. 5400 / 60 is 90, so this buff will last 90 seconds.
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+			Recipe recipe = CreateRecipe(5);
 			recipe.AddIngredient(ItemID.BottledWater, 1);
 			recipe.AddIngredient(ItemID.StoneBlock, 15);
-			recipe.AddIngredient(mod.ItemType("Dolomite"), 2);
+			recipe.AddIngredient(Mod.Find<ModItem>("Dolomite").Type, 2);
 			recipe.AddIngredient(ItemID.Blinkroot);
 			recipe.AddTile(TileID.Bottles);
-			recipe.SetResult(this, 5);
-			recipe.AddRecipe();
+			recipe.Register();
 		}
 	}
 }

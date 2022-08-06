@@ -21,16 +21,16 @@ namespace yourtale.Items.Manuscripts
 
         public override void SetDefaults()
         {
-            item.width = 25;
-            item.height = 25;
-            item.maxStack = 999;
-            item.useStyle = 1;
-            item.useTime = 45;
-            item.useAnimation = 45;
-            item.useTurn = true;
-            item.autoReuse = false;
-            item.UseSound = SoundID.Item1;
-            item.rare = ItemRarityID.Green;
+            Item.width = 25;
+            Item.height = 25;
+            Item.maxStack = 999;
+            Item.useStyle = 1;
+            Item.useTime = 45;
+            Item.useAnimation = 45;
+            Item.useTurn = true;
+            Item.autoReuse = false;
+            Item.UseSound = SoundID.Item1;
+            Item.rare = ItemRarityID.Green;
         }
     }
 }

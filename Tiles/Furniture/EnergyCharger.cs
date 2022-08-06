@@ -16,7 +16,7 @@ namespace yourtale.Tiles.Furniture
     public class EnergyCharger : ModTile
     {
 
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         {
             Main.tileSolidTop[Type] = true;
             Main.tileFrameImportant[Type] = true;
@@ -34,9 +34,9 @@ namespace yourtale.Tiles.Furniture
             ModTranslation name = CreateMapEntryName();
             AddMapEntry(new Color(191, 142, 111), name);
 
-            disableSmartCursor = true;
+            disableSmartCursor/* tModPorter Note: Removed. Use TileID.Sets.DisableSmartCursor instead */ = true;
 
-            adjTiles = new int[] { TileID.WorkBenches };
+            AdjTiles = new int[] { TileID.WorkBenches };
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)

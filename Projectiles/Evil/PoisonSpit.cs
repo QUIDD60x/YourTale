@@ -12,15 +12,15 @@ namespace yourtale.Projectiles.Evil
         public override void SetDefaults()
         {
             
-            projectile.height = 16;
-            projectile.width = 16;
-            projectile.aiStyle = 1;
-            projectile.scale = 2f;
-            projectile.hostile = true;
-            projectile.ranged = true;
+            Projectile.height = 16;
+            Projectile.width = 16;
+            Projectile.aiStyle = 1;
+            Projectile.scale = 2f;
+            Projectile.hostile = true;
+            Projectile.DamageType = DamageClass.Ranged;
            
-            projectile.penetrate = 1;
-            projectile.alpha = 128;
+            Projectile.penetrate = 1;
+            Projectile.alpha = 128;
 
 
         }
@@ -30,7 +30,7 @@ namespace yourtale.Projectiles.Evil
             
             if (Main.rand.Next(1) == 0)
             {
-                int DustID = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width + 4, projectile.height + 4, 74, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f, 120, default(Color), 2f);
+                int DustID = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y + 2f), Projectile.width + 4, Projectile.height + 4, 74, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 120, default(Color), 2f);
                 Main.dust[DustID].noGravity = true;
             }
 
@@ -38,7 +38,7 @@ namespace yourtale.Projectiles.Evil
         }
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType("Melting"), 100);
+            target.AddBuff(Mod.Find<ModBuff>("Melting").Type, 100);
 
         }
     }

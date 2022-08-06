@@ -12,15 +12,11 @@ namespace yourtale.Buffs.Debuffs
 {
     public class Melting : ModBuff
     {
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Tsuchinoko Poison");
             Description.SetDefault("Your skin is melting off?!");
             Main.debuff[Type] = true; //Debuffs cannot be canceled, buffs can. Make sure to include this!
-           longerExpertDebuff = true; //This will increase the time for the buff if you're in expert mode.
-
-
-
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
@@ -32,7 +28,7 @@ namespace yourtale.Buffs.Debuffs
         public override void Update(Player player, ref int buffIndex)
         {
             player.lifeRegen /= 2;  //divides life regen in half? IDK if this is good or bad yet, messing with life regen is annoying.
-            player.meleeDamage -= 0.5f; //these decrease melee damage, move speed, and total amount of hearts respectively.
+            player.GetDamage(DamageClass.Melee) -= 0.5f; //these decrease melee damage, move speed, and total amount of hearts respectively.
             player.moveSpeed -= 0.7f;
             player.statLifeMax2 -=20;
         }

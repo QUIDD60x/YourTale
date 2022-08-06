@@ -17,18 +17,18 @@ namespace yourtale.Items
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("Essence of destruction, very volatile!"); 
-			ItemID.Sets.ItemNoGravity[item.type] = true;
-            ItemID.Sets.AnimatesAsSoul[item.type] = true;
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
+			ItemID.Sets.ItemNoGravity[Item.type] = true;
+            ItemID.Sets.AnimatesAsSoul[Item.type] = true;
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 4));
         }
 
 		public override void SetDefaults()
 		{
-			item.width = 20;
-			item.height = 20;
-			item.maxStack = 999;
-			item.value = 850;
-			item.rare = ItemRarityID.Green;
+			Item.width = 20;
+			Item.height = 20;
+			Item.maxStack = 999;
+			Item.value = 850;
+			Item.rare = ItemRarityID.Green;
 
 		}
 		/*public override void HoldItem(Player player)
@@ -42,13 +42,12 @@ namespace yourtale.Items
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+			Recipe recipe = CreateRecipe(5);
 			recipe.AddIngredient(ItemID.Dynamite, 3);
 			recipe.AddIngredient(ItemID.Bomb, 10);
 			recipe.AddIngredient(ItemID.Grenade, 7);
 			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this, 5);
-			recipe.AddRecipe();
+			recipe.Register();
 		}
 	}
 }

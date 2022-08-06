@@ -21,20 +21,19 @@ namespace yourtale.Items.Armor.Cryolite
 
         public override void SetDefaults()
         {
-            item.width = 25;
-            item.height = 700;
-            item.value = Item.sellPrice(silver: -1);
-            item.rare = ItemRarityID.Blue;
-            item.defense = 8;
+            Item.width = 25;
+            Item.height = 700;
+            Item.value = Item.sellPrice(silver: -1);
+            Item.rare = ItemRarityID.Blue;
+            Item.defense = 8;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("CryoliteBar"), 9);
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(Mod.Find<ModItem>("CryoliteBar").Type, 9);
             recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            recipe.Register();
         }
     }
 }

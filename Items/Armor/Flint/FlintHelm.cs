@@ -23,25 +23,24 @@ namespace yourtale.Items.Armor.Flint
         }
         public override void SetDefaults()
         {
-            item.width = 22;
-            item.height = 24;
-            item.value = Item.sellPrice(silver: -1);
-            item.rare = ItemRarityID.White;
-            item.defense = 1;
+            Item.width = 22;
+            Item.height = 24;
+            Item.value = Item.sellPrice(silver: -1);
+            Item.rare = ItemRarityID.White;
+            Item.defense = 1;
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("flint"), 6);
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(Mod.Find<ModItem>("flint").Type, 6);
             recipe.AddTile(TileID.Stone);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            recipe.Register();
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == mod.ItemType("Flintmail") && legs.type == mod.ItemType("FlintLeggings");
+            return body.type == Mod.Find<ModItem>("Flintmail").Type && legs.type == Mod.Find<ModItem>("FlintLeggings").Type;
         }
 
         public override void UpdateArmorSet(Player player)

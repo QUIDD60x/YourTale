@@ -21,16 +21,16 @@ namespace yourtale.Items
 
         public override void SetDefaults()
         {
-            item.width = 1;
-            item.height = 1;
-            item.maxStack = 1;
-            item.useStyle = 1;
-            item.useTime = 20;
-            item.useAnimation = 20;
-            item.useTurn = true;
-            item.autoReuse = false;
-            item.UseSound = SoundID.Item1;
-            item.rare = ItemRarityID.Red;
+            Item.width = 1;
+            Item.height = 1;
+            Item.maxStack = 1;
+            Item.useStyle = 1;
+            Item.useTime = 20;
+            Item.useAnimation = 20;
+            Item.useTurn = true;
+            Item.autoReuse = false;
+            Item.UseSound = SoundID.Item1;
+            Item.rare = ItemRarityID.Red;
         }
 
         /*public override void MeleeEffects(Player player, Rectangle hitbox)

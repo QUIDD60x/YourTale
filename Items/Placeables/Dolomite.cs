@@ -20,20 +20,20 @@ namespace yourtale.Items.Placeables
         }
         public override void SetDefaults()
         {
-            item.Size = new Vector2(12);
-            item.rare = ItemRarityID.Blue;
-            item.value = 25;
+            Item.Size = new Vector2(12);
+            Item.rare = ItemRarityID.Blue;
+            Item.value = 25;
 
-            item.autoReuse = true;
-            item.useTurn = true;
-            item.useTime = 10;
-            item.useAnimation = 12;
-            item.useStyle = ItemUseStyleID.SwingThrow;
+            Item.autoReuse = true;
+            Item.useTurn = true;
+            Item.useTime = 10;
+            Item.useAnimation = 12;
+            Item.useStyle = ItemUseStyleID.Swing;
 
-            item.consumable = true;
-            item.maxStack = 999;
+            Item.consumable = true;
+            Item.maxStack = 999;
 
-            item.createTile = TileType<Tiles.Ores.Dolomite>();
+            Item.createTile = TileType<Tiles.Ores.Dolomite>();
         }
     }
 }

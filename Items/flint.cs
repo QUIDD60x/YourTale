@@ -21,30 +21,23 @@ namespace yourtale.Items
 
         public override void SetDefaults()
         {
-            item.width = 1;
-            item.height = 1;
-            item.maxStack = 999;
-            item.useStyle = 1;
-            item.useTime = 10;
-            item.useAnimation = 10;
-            item.useTurn = true;
-            item.autoReuse = true;
-            item.UseSound = SoundID.Item1;
-            item.rare = ItemRarityID.White;
-            item.createTile = TileType<Tiles.Ores.FlintDeposit>();
+            Item.width = 1;
+            Item.height = 1;
+            Item.maxStack = 999;
+            Item.useStyle = 1;
+            Item.useTime = 10;
+            Item.useAnimation = 10;
+            Item.useTurn = true;
+            Item.autoReuse = true;
+            Item.UseSound = SoundID.Item1;
+            Item.rare = ItemRarityID.White;
+            Item.createTile = TileType<Tiles.Ores.FlintDeposit>();
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.Next(3) == 0)
-                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("nothinghereyeteither"));
-        }
-
-        public override bool UseItem(Player player)
-        {
-            if (Main.rand.Next(3) == 0)
-                Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.Hitbox.Width, player.Hitbox.Height, mod.DustType("nothinghereyet"));
-            return base.UseItem(player);
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, Mod.Find<ModDust>("nothinghereyeteither").Type);
         }
     }
 }

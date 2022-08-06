@@ -21,29 +21,29 @@ namespace yourtale.Items
 
         public override void SetDefaults()
         {
-            item.width = 1;
-            item.height = 1;
-            item.maxStack = 999;
-            item.useStyle = 1;
-            item.useTime = 10;
-            item.useAnimation = 10;
-            item.useTurn = true;
-            item.autoReuse = true;
-            item.UseSound = SoundID.Item1;
-            item.rare = ItemRarityID.Orange;
-            item.createTile = TileType<Tiles.Ores.Vigore>();
+            Item.width = 1;
+            Item.height = 1;
+            Item.maxStack = 999;
+            Item.useStyle = 1;
+            Item.useTime = 10;
+            Item.useAnimation = 10;
+            Item.useTurn = true;
+            Item.autoReuse = true;
+            Item.UseSound = SoundID.Item1;
+            Item.rare = ItemRarityID.Orange;
+            Item.createTile = TileType<Tiles.Ores.Vigore>();
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.Next(3) == 0)
-                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("LifeStaffDust"));
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, Mod.Find<ModDust>("LifeStaffDust").Type);
         }
 
-        public override bool UseItem(Player player)
+        public override bool? UseItem(Player player)/* tModPorter Suggestion: Return null instead of false */
         {
             if (Main.rand.Next(3) == 0)
-                Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.Hitbox.Width, player.Hitbox.Height, mod.DustType("LifeStaffDust"));
+                Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.Hitbox.Width, player.Hitbox.Height, Mod.Find<ModDust>("LifeStaffDust").Type);
             return base.UseItem(player);
         }
     }
