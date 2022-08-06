@@ -2,6 +2,7 @@
 using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.Localization;
+using Terraria.GameContent.ItemDropRules;
 using yourtale.Items.Placeables;
 using yourtale.Items.Accessories;
 using yourtale.Dusts;
@@ -67,18 +68,9 @@ namespace yourtale.NPCs.Evil
             }
 
         }
-        public override void OnKill() //do mod.ItemType instead of ItemID for modded items
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            /*Will make NPC always drop entered loot
-            Item.NewItem(npc.position, ItemID.Gel, 100);*/
-            if (Main.rand.Next(6) == 0)
-            {
-                Item.NewItem(NPC.getRect(), Mod.Find<ModItem>("Cryolite").Type, Main.rand.Next(1, 5));
-            }
-            if (Main.rand.Next(15) == 0)
-            {
-                Item.NewItem(NPC.getRect(), Mod.Find<ModItem>("IceHeart").Type);
-            }
+            npcLoot.Add(ItemDropRule.Common(ItemID.PixieDust, 100, 1, 7));
         }
     }
 }

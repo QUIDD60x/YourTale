@@ -30,7 +30,6 @@ namespace yourtale.Tiles.Ores
             name.SetDefault("Cryolite");
             AddMapEntry(new Color(129, 159, 242), name); //or AddMapEntry(Color.Red) or any other colour in the color class
             HitSound = SoundID.Tink;
-            soundStyle/* tModPorter Note: Removed. Integrate into HitSound */ = 1;
             MinPick = 35; //will set minimum pick strength
         }
         // Will let you modify the light level and colour, RGB variables are obviously RBG colours.

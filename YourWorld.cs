@@ -15,7 +15,7 @@ using System.IO;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
 using yourtale.Tiles.Ores;
-using yourtale.NPCs.Evil.Boss;
+//using yourtale.NPCs.Evil.Boss;  Currently does not work due to Cryolisis not being in the game.
 
 namespace yourtale
 {
@@ -65,7 +65,7 @@ namespace yourtale
             {
                 mod.Logger.WarnFormat("yourtale: Unknown loadVersion: {0}", loadVersion);
             }
-        }*/
+        }
 
         public override void NetSend(BinaryWriter writer)
         {
@@ -184,6 +184,6 @@ namespace yourtale
                     }
                 }
             }
-        }
+        }*/
     }
 }

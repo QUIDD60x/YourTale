@@ -3,7 +3,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using yourtale.NPCs.Evil.Boss;
+//using yourtale.NPCs.Evil.Boss;  Currently does not work due to Cryolisis not being implemented.
 
 namespace yourtale.Items.Consumables.Summoning
 {
@@ -25,8 +25,7 @@ namespace yourtale.Items.Consumables.Summoning
         {
             DisplayName.SetDefault("Cryo Cube");
             Tooltip.SetDefault("You can almost see a face in there... \nSummons Cryolisis");
-            DisplayName.AddTranslation(GameCulture.Russian, "Кукла муравьиного льва"); //you can use this to add translated stuff, neat!
-            Tooltip.AddTranslation(GameCulture.Russian, "Призывает Королеву муравьиных львов");
+            
         }
 
 

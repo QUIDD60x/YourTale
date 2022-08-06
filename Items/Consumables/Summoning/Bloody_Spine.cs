@@ -3,7 +3,6 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using yourtale.NPCs.Evil.Boss;
 
 namespace yourtale.Items.Consumables.Summoning
 {

@@ -31,35 +31,12 @@ namespace yourtale.Projectiles.Evil
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
 			Player player = Main.player[Projectile.owner];
-			if (Main.rand.Next(0, 101) < GetWeaponCrit(player))
+			if (Main.rand.NextBool(3));
 			{
 				crit = true;
 				target.AddBuff(BuffID.Frostburn, 60);
 			}
 			
-		}
-
-		private int GetWeaponCrit(Player player)
-		{
-			Item item = player.inventory[player.selectedItem];
-			int crit = item.crit;
-			if (item.CountsAsClass(DamageClass.Melee))
-			{
-				crit += player.GetCritChance(DamageClass.Generic);
-			}
-			else if (item.CountsAsClass(DamageClass.Magic))
-			{
-				crit += player.GetCritChance(DamageClass.Magic);
-			}
-			else if (item.CountsAsClass(DamageClass.Ranged))
-			{
-				crit += player.GetCritChance(DamageClass.Ranged);
-			}
-			else if (item.CountsAsClass(DamageClass.Throwing))
-			{
-				crit += player.GetCritChance(DamageClass.Throwing);
-			}
-			return crit;
 		}
 
 		public override void AI()

@@ -1,4 +1,4 @@
-﻿using System.IO;
+﻿/*using System.IO;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using yourtale.Projectiles.Evil;
-using yourtale;
+using yourtale;						//Too lazy to update Cryolisis RN, will fix everything with it once i get 1.4 working.
 
 namespace yourtale.NPCs.Evil.Boss
 {
@@ -103,9 +103,9 @@ namespace yourtale.NPCs.Evil.Boss
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
 			NPC.HitSound = SoundID.NPCHit3;
-			NPC.DeathSound = Mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/NPCKilled/NPCKilled").WithPitchVariance(12f);
+			NPC.DeathSound = SoundID.Thunder;
 			NPC.buffImmune[24] = true;
-			Music = Mod.GetSoundSlot(SoundType.Music, "Sounds/Music/MultiMelody");
+			//Music = Mod.GetSoundSlot(SoundType.Music, "Sounds/Music/MultiMelody");
 		}
 
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -207,7 +207,7 @@ namespace yourtale.NPCs.Evil.Boss
 			if(stage == 1 && lastStage == 0)
 			{
 				Main.NewText("The air is getting colder around you...", 41, 84, 153);
-				Music = Mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Chaotic");
+				//Music = Mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Chaotic");
 				NPC.defense += 8;
 				NPC.damage += 20;
 			}
@@ -480,7 +480,7 @@ namespace yourtale.NPCs.Evil.Boss
 				return Color.MidnightBlue;
 			}
 			return null;
-		}*/
+		}*/ /*
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
@@ -559,7 +559,7 @@ namespace yourtale.NPCs.Evil.Boss
 					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CryoliteBar", 12));
 			}
 			else if (choice == 1)
-		}*/
+		}*/ /*
 
 		private int DropLoot(int x, int y, int w, int h, int itemId, int stack = 1, bool broadcast = false, int prefix = 0, bool nodelay = false)
 		{
@@ -670,4 +670,4 @@ namespace yourtale.NPCs.Evil.Boss
 			return false;
 		}
 	}
-}
+} */

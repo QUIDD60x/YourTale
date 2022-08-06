@@ -3,6 +3,7 @@ using Terraria.ModLoader.Utilities;
 using yourtale.Dusts;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.GameContent.ItemDropRules;
 
 namespace yourtale.NPCs.Evil
 {
@@ -41,10 +42,10 @@ namespace yourtale.NPCs.Evil
             return SpawnCondition.OverworldNightMonster.Chance * 0.3f; //Might have fixed issue with spawns.
 
             float chance = 0f;
-            if(!Main.dayTime)
+            if (!Main.dayTime)
             {
                 chance += .05f;
-                if(spawnInfo.SpawnTileY <= Main.rockLayer && spawnInfo.SpawnTileY >= Main.worldSurface * 0.15)
+                if (spawnInfo.SpawnTileY <= Main.rockLayer && spawnInfo.SpawnTileY >= Main.worldSurface * 0.15)
                 {
                     chance += .1f;
                 }
@@ -65,28 +66,9 @@ namespace yourtale.NPCs.Evil
             }
 
         }*/
-        public override void OnKill() //do mod.ItemType instead of ItemID for modded items
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            /*Will make NPC always drop entered loot
-            Item.NewItem(npc.position, ItemID.Gel, 100);*/
-            if (Main.rand.Next(2) == 0)
-            {
-                Item.NewItem(NPC.position, ItemID.ZombieArm, 1);
-            }
-            if (Main.rand.Next(2) == 0)
-            {
-                Item.NewItem(NPC.position, ItemID.Shackle, 1);
-            }
-            //will only drop 25% of the time based on integer added
-            if (Main.rand.Next(3) == 0)
-            {
-                Item.NewItem(NPC.position, ItemID.GoldCrown, 1);
-            }
-            //Will drop only in Hardmode
-            if(Main.hardMode)
-            {
-                Item.NewItem(NPC.position, ItemID.GoldBar, Main.rand.Next(1, 6));
-            }
+            npcLoot.Add(ItemDropRule.Common(ItemID.GoldCrown, 10));
         }
     }
 }

@@ -10,7 +10,7 @@ namespace yourtale.Items.Placeables.Furniture
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.Chest);
-            Item.createTile = TileType<Tiles.Furniture.TestChest>();
+            //Item.createTile = TileType<Tiles.Furniture.TestChest>(); Item doesn't currently exist.
         }
 
         public override void AddRecipes()

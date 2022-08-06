@@ -8,7 +8,11 @@ using Terraria.ModLoader;
 using Terraria.Modules;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
-using yourtale.NPCs.Banners;
+using Microsoft.Xna.Framework.Design;
+using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ModLoader.Utilities;
+using Terraria.DataStructures;
 
 namespace yourtale.NPCs.Evil
 {
@@ -34,11 +38,9 @@ namespace yourtale.NPCs.Evil
             NPC.value = Main.rand.Next(1000, 10000);
             NPC.knockBackResist = 0.3f;
             Banner = NPC.type; //banner currently does NOT work.
-            BannerItem = ModContent.ItemType<PrinceSlimeBanner>();
+            //BannerItem = ModContent.ItemType<PrinceSlimeBanner>();
 
         }
-
-
 
         //the spawn info for them.
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -54,13 +56,11 @@ namespace yourtale.NPCs.Evil
                 return 0.001f;
             } //Then: return a chance of 0.001f.
         } //there is more info on spawning on tmodloaders github somewhere, i'll probably link it in my cheatsheet soon maybe, just google it.
-        public override void OnKill()
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            Item.NewItem(NPC.getRect(), ItemID.Gel, Main.rand.Next(4, 8)); //Main.rand.Next(int, int)); will generate a random amount
-            if (Main.rand.Next(7) == 0) //(0) == 0 will guarantee the drop, i think it's just picking a random number and then comparing it? (so this would theoretically be a 1 in 7, or a 14% chance.)
-            {
-                Item.NewItem(NPC.position, ItemID.GoldCrown, 1);
-            }
+            npcLoot.Add(ItemDropRule.Common(ItemID.Gel, 100, 2, 8));
+            npcLoot.Add(ItemDropRule.Common(ItemID.GoldCrown, 10));
+            npcLoot.Add(ItemDropRule.Common(ItemID.SlimeStaff, 15));
         }
 
     }

@@ -1,58 +1,49 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using static Terraria.ModLoader.ModContent;
 
 namespace yourtale.Tiles.Furniture
 {
-    public class EnergyCharger : ModTile
-    {
+	public class EnergyCharger : ModTile
+	{
+		public override void SetStaticDefaults()
+		{
+			// Properties
+			Main.tileTable[Type] = true;
+			Main.tileSolidTop[Type] = true;
+			Main.tileNoAttach[Type] = true;
+			Main.tileLavaDeath[Type] = true;
+			Main.tileFrameImportant[Type] = true;
+			TileID.Sets.DisableSmartCursor[Type] = true;
+			TileID.Sets.IgnoredByNpcStepUp[Type] = true; // This line makes NPCs not try to step up this tile during their movement. Only use this for furniture with solid tops.
 
-        public override void SetStaticDefaults()
-        {
-            Main.tileSolidTop[Type] = true;
-            Main.tileFrameImportant[Type] = true;
-            Main.tileNoAttach[Type] = true;
-            Main.tileTable[Type] = true;
-            Main.tileLavaDeath[Type] = true;
+			DustType = ModContent.DustType<Dusts.Sparkle>();
+			AdjTiles = new int[] { TileID.WorkBenches };
 
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style2x1);
-            TileObjectData.newTile.StyleHorizontal = true;
-            TileObjectData.newTile.StyleWrapLimit = 36;
-            TileObjectData.addTile(Type);
+			// Placement
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x1);
+			TileObjectData.newTile.CoordinateHeights = new[] { 18 };
+			TileObjectData.addTile(Type);
 
-            AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
+			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 
-            ModTranslation name = CreateMapEntryName();
-            AddMapEntry(new Color(191, 142, 111), name);
+			// Etc
+			ModTranslation name = CreateMapEntryName();
+			name.SetDefault("Energy Charger");
+			AddMapEntry(new Color(200, 200, 200), name);
+		}
 
-            disableSmartCursor/* tModPorter Note: Removed. Use TileID.Sets.DisableSmartCursor instead */ = true;
+		public override void NumDust(int x, int y, bool fail, ref int num)
+		{
+			num = fail ? 1 : 3;
+		}
 
-            AdjTiles = new int[] { TileID.WorkBenches };
-        }
-
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
-        {
-            Main.NewText(Lang.GetMapObjectName(TileID.WorkBenches));
-            int style = frameX / 36;
-            int type = ItemType<Items.Placeables.Furniture.EnergyCharger>();
-            switch (style)
-            {
-                case 1:
-                    type = ItemType<Items.Placeables.Furniture.EnergyCharger>();
-                    break;
-                default:
-                    break;
-            }
-            Item.NewItem(i * 16, j * 16, 32, 16, type);
-        }
-    }
+		public override void KillMultiTile(int x, int y, int frameX, int frameY)
+		{
+			Item.NewItem(new EntitySource_TileBreak(x, y), x * 16, y * 16, 32, 16, ModContent.ItemType<Items.Placeables.Furniture.EnergyCharger>());
+		}
+	}
 }

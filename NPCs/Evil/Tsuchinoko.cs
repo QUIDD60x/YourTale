@@ -1,13 +1,13 @@
-﻿using yourtale.NPCs.Evil;
-using yourtale.NPCs.Banners;
-using yourtale.Projectiles.Misc;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent.ItemDropRules;
 using static Terraria.ModLoader.ModContent;
 using yourtale.Projectiles.Evil;
+using yourtale.NPCs.Evil;
+using IL.Terraria.DataStructures;
 
 namespace yourtale.NPCs.Evil
 {
@@ -27,7 +27,7 @@ namespace yourtale.NPCs.Evil
 			NPC.defense = 15;
 			NPC.value = 50000;
             NPC.HitSound = SoundID.NPCHit13;
-            NPC.DeathSound = Mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/NPCKilled/BoneCrush1"); //will go into sounds in a youtube video probably, not explaining those in a text file.
+            //NPC.DeathSound = Mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/NPCKilled/BoneCrush1"); //will go into sounds in a youtube video probably, not explaining those in a text file.
 
         }
 
@@ -62,14 +62,14 @@ namespace yourtale.NPCs.Evil
 				Player target = Main.player[NPC.target];
 				if (attackCounter <= 0 && Vector2.Distance(NPC.Center, target.Center) < 200 && Collision.CanHit(NPC.Center, 1, 1, target.Center, 1, 1))
 				{
-					/* you can mark these off if needed, might get it working though.*/
+					/* 
 					Vector2 direction = (target.Center - NPC.Center).SafeNormalize(Vector2.UnitX);
 					direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
-					int projectile = Projectile.NewProjectile(NPC.Center, direction * 100, ProjectileType<PoisonSpit>(), NPC.damage / 4, 0, Main.myPlayer);
+					int projectile = Projectile.NewProjectile(IEntitySource 0, Vector2 position, Vector2 velocity, int Type, int Damage, float KnockBack, int Owner = 255, float ai0 = 0, float ai1 = 0);
 					Main.projectile[projectile].timeLeft = 5;
 
 					attackCounter = 1;
-					NPC.netUpdate = true;
+					NPC.netUpdate = true;*/
 				}
 			}
 		}
@@ -150,26 +150,10 @@ namespace yourtale.NPCs.Evil
 			flies = true;
 			
 		}
-		public override void OnKill() //do mod.ItemType instead of ItemID for modded items
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			/*Will make NPC always drop entered loot
-            Item.NewItem(npc.position, ItemID.Gel, 100);*/
-			if (Main.rand.Next(0) == 0)
-			{
-				Item.NewItem(NPC.position, ItemID.WormTooth, Main.rand.Next(3, 9));
-			}
-			if (Main.rand.Next(10) == 0)
-			{
-				Item.NewItem(NPC.position, ItemID.BandofRegeneration, 1);
-			}
-			if (Main.rand.Next(7) == 0)
-			{
-				Item.NewItem(NPC.position, ItemID.ShadowOrb, 1);
-			}
-            if (Main.rand.Next(10) == 0)
-			{
-				Item.NewItem(NPC.position, ItemID.WhoopieCushion, 1);
-			}
+			npcLoot.Add(ItemDropRule.Common(ItemID.CursedFlame, 20, 1, 9));
+			npcLoot.Add(ItemDropRule.Common(ItemID.WormTooth, 100, 3, 10));
 		}
 
 	}

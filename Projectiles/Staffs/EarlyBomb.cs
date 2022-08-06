@@ -38,7 +38,6 @@ namespace yourtale.Projectiles.Staffs
                 if (target.type >= NPCID.EaterofWorldsHead && target.type <= NPCID.EaterofWorldsTail)
                 {
                     damage /= 5;
-                    SoundEngine.PlaySound(Mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Item/Explosion1"));
                 }
             }
         }
