@@ -1,7 +1,6 @@
 # Your-Tale
 ![broken image link](https://github.com/QUIDD60x/Your-Tale/blob/master/icon.png?raw=true)
 [![Build Status](https://travis-ci.org/tModLoader/tModLoader.svg?branch=master)](https://quiddcorp.com/your-tale) 
-[![Discord Server](https://discordapp.com/api/guilds/324979738533822464/embed.png)](https://discord.gg/zAynnAkSmP)
 
 # CURRENTLY BEING UPDATED TO 1.4, THIS MOD WILL NOT WORK UNTILL THIS IS REMOVED.
 
