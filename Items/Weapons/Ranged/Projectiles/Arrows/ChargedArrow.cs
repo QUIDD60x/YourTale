@@ -21,7 +21,7 @@ namespace yourtale.Items.Weapons.Ranged.Projectiles.Arrows
             Item.consumable = true;
             Item.knockBack = 5;
             Item.rare = 6;
-            Item.shoot = Mod.Find<ModProjectile>("ChargedArrow").Type;
+            //Item.shoot = Mod.Find<ModProjectile>("ChargedArrow").Type;
             Item.ammo = AmmoID.Arrow;
             Item.rare = ItemRarityID.Green;
             Item.value = Item.buyPrice(0, 0, 1, 25);

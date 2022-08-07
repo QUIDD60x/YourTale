@@ -64,7 +64,7 @@ namespace yourtale.Projectiles.Staffs
                     Dust dust;
                     // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                     Vector2 position = Main.LocalPlayer.Center;
-                    dust = Terraria.Dust.NewDustDirect(Projectile.position + Projectile.velocity, 30, 30, 170, -0.2325583f, 0f, 0, new Color(22, 255, 0), 1f);
+                    dust = Terraria.Dust.NewDustDirect(Projectile.position + Projectile.velocity, 30, 30, DustID.Ichor, -0.2325583f, 0f, 0, new Color(22, 255, 0), 1f);
                     dust.noGravity = true;
                     dust.noLight = true;
                     dust.fadeIn = 2.60075f;

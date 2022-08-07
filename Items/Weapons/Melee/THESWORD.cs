@@ -17,15 +17,16 @@ namespace yourtale.Items.Weapons.Melee
 		{
 			Item.damage = 65000;
 			Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
-			Item.width = 1000;
-			Item.height = 1000;
-			Item.useTime = 1;
-			Item.useAnimation = 1;
-			Item.useStyle = 3;
-			Item.knockBack = 0;
-			Item.value = -1;
-			Item.rare = 13;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 2;
+			Item.useAnimation = 3;
+			Item.useStyle = ItemUseStyleID.Thrust;
+			Item.knockBack = 0.1f;
+			Item.value = 1;
+			Item.rare = 15;
 			Item.autoReuse = true;
+			Item.healLife = 20;
 			Item.UseSound = SoundID.Item107;
 		}
 

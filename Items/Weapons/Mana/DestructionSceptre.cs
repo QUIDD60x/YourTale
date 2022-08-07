@@ -31,7 +31,7 @@ namespace yourtale.Items.Weapons.Mana
             Item.rare = ItemRarityID.Orange;
             Item.UseSound = SoundID.Item20;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<EarlyBomb>();
+            //Item.shoot = ModContent.ProjectileType<EarlyBomb>();
             Item.shootSpeed = 5f;
         }
 

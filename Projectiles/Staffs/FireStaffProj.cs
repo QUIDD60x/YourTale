@@ -25,7 +25,7 @@ namespace yourtale.Projectiles.Staffs
             Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
             Vector2 position = Main.LocalPlayer.Center;
-            dust = Main.dust[Terraria.Dust.NewDust(Projectile.position + Projectile.velocity, 30, 30, 127, 0f, 3.953488f, 5, new Color(255, 255, 255), 1f)];
+            dust = Main.dust[Terraria.Dust.NewDust(Projectile.position + Projectile.velocity, 30, 30, DustID.Flare, 0f, 3.953488f, 5, new Color(255, 255, 255), 1f)];
             dust.noGravity = true;
             dust.fadeIn = 1.151163f;
 
@@ -66,7 +66,7 @@ namespace yourtale.Projectiles.Staffs
                     Dust dust;
                     // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                     Vector2 position = Main.LocalPlayer.Center;
-                    dust = Terraria.Dust.NewDustDirect(Projectile.position + Projectile.velocity, 30, 30, 6, 0f, 0f, 0, new Color(255, 255, 255), 1f);
+                    dust = Terraria.Dust.NewDustDirect(Projectile.position + Projectile.velocity, 30, 30, DustID.Torch, 0f, 0f, 0, new Color(255, 255, 255), 1f);
                     dust.fadeIn = 1.534884f;
                 }
 
