@@ -1,6 +1,8 @@
 # Your-Tale
 ![broken image link](https://github.com/QUIDD60x/Your-Tale/blob/master/icon.png?raw=true)
-[![Build Status](https://travis-ci.org/tModLoader/tModLoader.svg?branch=master)](https://quiddcorp.net) 
+[![Build Status](https://travis-ci.org/tModLoader/tModLoader.svg?branch=master)](https://quiddcorp.com/your-tale) 
+
+# CURRENTLY BEING UPDATED TO 1.4, THIS MOD WILL NOT WORK UNTILL THIS IS REMOVED.
 
 **Your Tale**- A Terraria mod thing I update weekly-ish, and completely open for you to use!
 This might be broken sometimes so i would get this from the official Tmod site so you can update it a lot easier, untill version 1.5 official release it might not work a lot.
@@ -17,6 +19,7 @@ Lots of love to:
 * Tmodloader, and their example mod for helping me grasp the basics of modding terraria.
 * FoolsLynx, for getting me intrested in this whole mess.
 * The DRGN mod developer/s for providing an open sourced mod with lots of neat content aswell, that really helped me through harder coding times.
+* Calamity mod for butloads of inspiration.
 * And you, for reading this much!
 
 I hope you can enjoy this mod as much as I enjoyed coding it. -Quidd
