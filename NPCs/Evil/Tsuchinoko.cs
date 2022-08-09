@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent.ItemDropRules;
 
 namespace yourtale.NPCs.Evil
 {
@@ -29,12 +30,21 @@ namespace yourtale.NPCs.Evil
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
 		}
 
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
+		{
+			base.ModifyNPCLoot(npcLoot);
+
+			npcLoot.Add(ItemDropRule.Common(ItemID.CursedFlame, 30, 1, 7));
+			npcLoot.Add(ItemDropRule.Common(ItemID.WormTooth, 0, 1, 10));
+		}
+
 		public override void SetDefaults()
 		{
 			// Head is 10 defence, body 20, tail 30.
 			NPC.CloneDefaults(NPCID.DiggerHead);
 			NPC.aiStyle = -1;
 		}
+
 
 		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
 		{
@@ -45,7 +55,7 @@ namespace yourtale.NPCs.Evil
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
 
 				// Sets the description of this NPC that is listed in the bestiary.
-				new FlavorTextBestiaryInfoElement("Looks like a Digger fell into some aqua-colored paint. Oh well.")
+				new FlavorTextBestiaryInfoElement("You should not be seeing this, little jenova.")
 			});
 		}
 

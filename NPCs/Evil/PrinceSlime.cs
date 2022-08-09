@@ -58,9 +58,9 @@ namespace yourtale.NPCs.Evil
         } //there is more info on spawning on tmodloaders github somewhere, i'll probably link it in my cheatsheet soon maybe, just google it.
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ItemID.Gel, 100, 2, 8));
-            npcLoot.Add(ItemDropRule.Common(ItemID.GoldCrown, 10));
-            npcLoot.Add(ItemDropRule.Common(ItemID.SlimeStaff, 15));
+            npcLoot.Add(ItemDropRule.Common(ItemID.Gel, 0, 2, 8));
+            npcLoot.Add(ItemDropRule.Common(ItemID.GoldCrown, 90));
+            npcLoot.Add(ItemDropRule.Common(ItemID.SlimeStaff, 75));
         }
 
     }

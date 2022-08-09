@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ModLoader.Utilities;
-using yourtale.Dusts;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.GameContent.ItemDropRules;
+using Terraria.DataStructures;
 
 namespace yourtale.NPCs.Evil
 {
@@ -41,7 +41,7 @@ namespace yourtale.NPCs.Evil
         {
             return SpawnCondition.OverworldNightMonster.Chance * 0.3f; //Might have fixed issue with spawns.
 
-            float chance = 0f;
+            float chance = 0.1f;
             if (!Main.dayTime)
             {
                 chance += .05f;
@@ -53,7 +53,7 @@ namespace yourtale.NPCs.Evil
             }
             return chance;
         }
-        /*public override void HitEffect(int hitDirection, double damage) // NOT ADDED but saving for if needed later, this is how you add dust. Thanks for making me add this Jenova.
+        /*public override void HitEffect(int hitDirection, double damage) // NOT ADDED but saving for if needed later, this is how you add dust.
         {
             for (int i = 0; i < 10; i++)
             {
@@ -68,7 +68,10 @@ namespace yourtale.NPCs.Evil
         }*/
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ItemID.GoldCrown, 10));
+            base.ModifyNPCLoot(npcLoot);
+
+            npcLoot.Add(ItemDropRule.Common(ItemID.GoldCrown, 50));
+            npcLoot.Add(ItemDropRule.Common(ItemID.ZombieArm, 10));
         }
     }
 }

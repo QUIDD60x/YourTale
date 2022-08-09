@@ -70,7 +70,7 @@ namespace yourtale.NPCs.Evil
         }
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ItemID.PixieDust, 100, 1, 7));
+            npcLoot.Add(ItemDropRule.Common(ItemID.PixieDust, 0, 2, 8));
         }
     }
 }

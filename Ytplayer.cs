@@ -8,25 +8,25 @@ using yourtale.Items;
 
 namespace yourtale
 {
-    public class ytplayer : ModPlayer
-    {
-        public bool tutorialPet = false;
-        public bool summonSpiritMinion = false;
+	public class ytplayer : ModPlayer
+	{
+		public bool tutorialPet = false;
+		public bool summonSpiritMinion = false;
 
-        public bool zoneBiome = false;
+		public bool zoneBiome = false;
 
-        public override void ResetEffects()
-        {
-            tutorialPet = false;
-            summonSpiritMinion = false;
-        }
+		public override void ResetEffects()
+		{
+			tutorialPet = false;
+			summonSpiritMinion = false;
+		}
 
-        /*public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)/* tModPorter Suggestion: Return an Item array to add to the players starting items. Use ModifyStartingInventory for modifying them if needed 
-        {
-            Item item = new Item();
-            item.SetDefaults(Mod.Find<ModItem>("KnowledgeBook").Type);
-            item.stack = 1;
-            items.Add(item);
-        }*/
-    }
+		public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
+		{
+			return new[] {
+				new Item(ModContent.ItemType<KnowledgeBook>())
+
+			};
+		}
+	}
 }

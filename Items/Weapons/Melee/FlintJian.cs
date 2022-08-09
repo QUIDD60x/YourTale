@@ -9,7 +9,7 @@ namespace yourtale.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("THESWORD"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            Tooltip.SetDefault("A Flint sword with medium range yet fast speed.");
+            Tooltip.SetDefault("A Flint Jian with medium range yet fast speed.");
         }
 
         public override void SetDefaults()
@@ -20,10 +20,10 @@ namespace yourtale.Items.Weapons.Melee
             Item.height = 50;
             Item.useTime = 20;
             Item.useAnimation = 20;
-            Item.useStyle = 1;
-            Item.knockBack = 3;
-            Item.value = 1750;
-            Item.rare = 1;
+            Item.useStyle = ItemUseStyleID.Rapier;
+            Item.knockBack = 1;
+            Item.value = 0;
+            Item.rare = ItemRarityID.White;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
         }
