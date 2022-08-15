@@ -88,7 +88,7 @@ namespace yourtale.Tiles.Ores
 
 					// Then, we call WorldGen.TileRunner with random "strength" and random "steps", as well as the Tile we wish to place.
 					// Feel free to experiment with strength and step to see the shape they generate.
-					//WorldGen.TileRunner(x, y, WorldGen.genRand.Next(3, 6), WorldGen.genRand.Next(2, 6), ModContent.TileType<Cryolite>());
+					WorldGen.TileRunner(x, y, WorldGen.genRand.Next(2, 4), WorldGen.genRand.Next(2, 4), ModContent.TileType<Cryolite>());
 
 					// Alternately, we could check the tile already present in the coordinate we are interested.
 					// Wrapping WorldGen.TileRunner in the following condition would make the ore only generate in Snow.

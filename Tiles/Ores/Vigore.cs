@@ -71,7 +71,7 @@ namespace yourtale.Tiles.Ores
 
                     int y = WorldGen.genRand.Next((int)WorldGen.rockLayer, Main.maxTilesY);
 
-                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(3, 6), WorldGen.genRand.Next(2, 6), ModContent.TileType<Vigore>());
+                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(1, 3), WorldGen.genRand.Next(2, 4), ModContent.TileType<Vigore>());
                 }
 
             }

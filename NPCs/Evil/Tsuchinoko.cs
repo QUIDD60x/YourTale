@@ -33,10 +33,10 @@ namespace yourtale.NPCs.Evil
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			float chance = 0f;
-				if (spawnInfo.SpawnTileY <= Main.rockLayer && spawnInfo.SpawnTileY >= Main.rockLayer * 0.15)
+			float chance = 0;
+				if (spawnInfo.SpawnTileY <= Main.maxTilesY && spawnInfo.SpawnTileY >= Main.rockLayer)
 				{
-					chance += 2.3f;
+					chance += 0.02f;
 				}
 
 			return chance;

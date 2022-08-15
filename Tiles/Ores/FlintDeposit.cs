@@ -82,7 +82,7 @@ namespace yourtale.Tiles.Ores
 
 					// Then, we call WorldGen.TileRunner with random "strength" and random "steps", as well as the Tile we wish to place.
 					// Feel free to experiment with strength and step to see the shape they generate.
-					WorldGen.TileRunner(x, y, WorldGen.genRand.Next(3, 5), WorldGen.genRand.Next(2, 5), ModContent.TileType<FlintDeposit>());
+					WorldGen.TileRunner(x, y, WorldGen.genRand.Next(5, 8), WorldGen.genRand.Next(2, 5), ModContent.TileType<FlintDeposit>());
 				}
 
 			}
