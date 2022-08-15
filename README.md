@@ -19,7 +19,7 @@ Lots of love to:
 * Tmodloader, and their example mod for helping me grasp the basics of modding terraria.
 * FoolsLynx, for getting me intrested in this whole mess.
 * The DRGN mod developer/s for providing an open sourced mod with lots of neat content aswell, that really helped me through harder coding times.
-* Calamity mod for butloads of inspiration.
+* Calamity mod for buttloads of inspiration.
 * And you, for reading this much!
 
 I hope you can enjoy this mod as much as I enjoyed coding it. -Quidd
