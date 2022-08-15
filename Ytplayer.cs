@@ -23,10 +23,11 @@ namespace yourtale
 
 		public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
 		{
-			return new[] {
-				new Item(ModContent.ItemType<KnowledgeBook>())
 
+			return new[] {
+				new Item(ModContent.ItemType<KnowledgeBook>(), 1),
 			};
 		}
+
 	}
 }

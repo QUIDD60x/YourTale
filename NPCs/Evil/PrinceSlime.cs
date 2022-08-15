@@ -37,8 +37,6 @@ namespace yourtale.NPCs.Evil
             AnimationType = NPCID.BlueSlime;
             NPC.value = Main.rand.Next(1000, 10000);
             NPC.knockBackResist = 0.3f;
-            Banner = NPC.type; //banner currently does NOT work.
-            //BannerItem = ModContent.ItemType<PrinceSlimeBanner>();
 
         }
 
@@ -58,9 +56,9 @@ namespace yourtale.NPCs.Evil
         } //there is more info on spawning on tmodloaders github somewhere, i'll probably link it in my cheatsheet soon maybe, just google it.
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ItemID.Gel, 0, 2, 8));
-            npcLoot.Add(ItemDropRule.Common(ItemID.GoldCrown, 90));
-            npcLoot.Add(ItemDropRule.Common(ItemID.SlimeStaff, 75));
+            npcLoot.Add(ItemDropRule.Common(ItemID.Gel, 1, 2, 8));
+            npcLoot.Add(ItemDropRule.Common(ItemID.GoldCrown, 40));
+            npcLoot.Add(ItemDropRule.Common(ItemID.SlimeStaff, 20));
         }
 
     }

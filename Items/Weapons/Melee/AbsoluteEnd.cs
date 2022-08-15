@@ -17,7 +17,7 @@ namespace yourtale.Items.Weapons.Melee
 
 		public override void SetDefaults()
 		{
-			Item.DamageType = ModContent.GetInstance<BansheeClass>(); // Makes our item use our custom damage type.
+			Item.DamageType = ModContent.GetInstance<BansheeClass>();
 			Item.width = 40;
 			Item.height = 40;
 			Item.useStyle = ItemUseStyleID.Swing;
@@ -29,7 +29,7 @@ namespace yourtale.Items.Weapons.Melee
 			Item.crit = 6;
 			Item.value = Item.buyPrice(gold: 1);
 			Item.rare = ItemRarityID.Quest;
-			Item.UseSound = SoundID.DD2_BetsyScream;
+			Item.UseSound = SoundID.Item110;
 		}
 
 		public override void AddRecipes()

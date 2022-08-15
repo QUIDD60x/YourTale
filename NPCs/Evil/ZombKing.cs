@@ -70,10 +70,8 @@ namespace yourtale.NPCs.Evil
         }*/
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            base.ModifyNPCLoot(npcLoot);
-
-            npcLoot.Add(ItemDropRule.Common(ItemID.GoldCrown, 50));
-            npcLoot.Add(ItemDropRule.Common(ItemID.ZombieArm, 10));
+            npcLoot.Add(ItemDropRule.Common(ItemID.GoldCrown, 50, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(ItemID.ZombieArm, 10, 1, 1));
         }
     }
 }

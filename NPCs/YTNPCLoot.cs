@@ -1,0 +1,41 @@
+﻿using Terraria;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.ModLoader;
+using yourtale.Items;
+using YourTale.DropConditions;
+
+namespace yourtale.NPCs
+{
+    // This file shows numerous examples of what you can do with the extensive NPC Loot lootable system.
+    // You can find more info on the wiki: https://github.com/tModLoader/tModLoader/wiki/Basic-NPC-Drops-and-Loot-1.4
+    // Despite this file being GlobalNPC, everything here can be used with a ModNPC as well! See examples of this in the Content/NPCs folder.
+    public class YTNPCLoot : GlobalNPC
+	{
+		// ModifyNPCLoot uses a unique system called the ItemDropDatabase, which has many different rules for many different drop use cases.
+		// Here we go through all of them, and how they can be used.
+		// There are tons of other examples in vanilla! In a decompiled vanilla build, GameContent/ItemDropRules/ItemDropDatabase adds item drops to every single vanilla NPC, which can be a good resource.
+
+		public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+		{
+			if (!NPCID.Sets.CountsAsCritter[npc.type])
+			{
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<LifeShard>(), 80, 1));
+			}
+
+			if (npc.type == NPCID.Skeleton || npc.type == NPCID.SkeletonArcher)
+			{
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AncientShard>(), 0, 4, 9));
+			}
+		}
+
+		// ModifyGlobalLoot allows you to modify loot that every NPC should be able to drop, preferably with a condition.
+		// Vanilla uses this for the biome keys, souls of night/light, as well as the holiday drops.
+		// Any drop rules in ModifyGlobalLoot should only run once. Everything else should go in ModifyNPCLoot.
+		public override void ModifyGlobalLoot(GlobalLoot globalLoot)
+		{
+			// If the ExampleSoulCondition is true, drop ExampleSoul 20% of the time. See Common/ItemDropRules/DropConditions/ExampleSoulCondition.cs for how it's determined
+			globalLoot.Add(ItemDropRule.ByCondition(new YTSoulCondition(), ModContent.ItemType<CorExitio>(), 5, 1, 1));
+		}
+	}
+}
