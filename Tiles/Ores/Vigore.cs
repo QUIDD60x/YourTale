@@ -1,12 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.Localization;
+using Terraria.ID;
+using Terraria.IO;
 using Terraria.ModLoader;
+using Terraria.WorldBuilding;
 using static Terraria.ModLoader.ModContent;
 
 namespace yourtale.Tiles.Ores
@@ -40,6 +38,43 @@ namespace yourtale.Tiles.Ores
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = fail ? 1 : 3;
+        }
+
+        public class VigoreOreSystem : ModSystem
+        {
+            public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+            {
+                int ShiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
+
+                if (ShiniesIndex != -1)
+                {
+                    tasks.Insert(ShiniesIndex + 1, new VigoreOrePass("Vigore Ore", 237.4298f));
+                }
+            }
+        }
+
+        public class VigoreOrePass : GenPass
+        {
+            public VigoreOrePass(string name, float loadWeight) : base(name, loadWeight)
+            {
+            }
+
+            protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
+            {
+
+                progress.Message = "Adding in Vigore...";
+
+                for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-09); k++)
+                {
+                    int x = WorldGen.genRand.Next(0, Main.maxTilesX);
+
+
+                    int y = WorldGen.genRand.Next((int)WorldGen.rockLayer, Main.maxTilesY);
+
+                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(3, 6), WorldGen.genRand.Next(2, 6), ModContent.TileType<Vigore>());
+                }
+
+            }
         }
     }
 }

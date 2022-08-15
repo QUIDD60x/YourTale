@@ -31,18 +31,18 @@ namespace yourtale
             return false;
         }
         [Label("$ToolTweaks")]
-        [Tooltip("$This nerfs some vanilla weapons, including the copper pick and stuff at the begining of the game.")]
+        [Tooltip("$Will disable the copper tools nerf (currently not working).")]
         [DefaultValue(true)]
         public bool ToolTweaks;
 
-        [Label("$Extractor Speed")]
-        [Tooltip("$Manipulates extractor speed")]
+        [Label("$Placeholder Slider")]
+        [Tooltip("$Placeholder slider thingy")]
         [Range(1f, 5f)]
         [DefaultValue(5f)]
         public float ExtractSpeedMultiplier;
 
-        [Label("$Function Button")]
-        [Tooltip("$Displays a function, at the moment it does something with molotov cocktails?")]
+        [Label("$Placeholder Button")]
+        [Tooltip("$Placeholder button.")]
         [ReloadRequired]
         [Range(0, 100)]
         [DefaultValue(69f)]

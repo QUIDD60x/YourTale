@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.Localization;
+﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
@@ -21,12 +15,14 @@ namespace yourtale
                     if (GetInstance<ServerConfig>().ToolTweaks)
                     {
                         item.axe = 1;
+                        item.useTime = 100;
                     }
                     return;
                 case ItemID.CopperPickaxe:
                         if (GetInstance<ServerConfig>().ToolTweaks)
                         {
-                            item.pick = 8;
+                            item.pick = 1;
+                            item.useTime = 1;
                         }
                     return;
                 case ItemID.CopperShortsword:
@@ -35,12 +31,6 @@ namespace yourtale
                         item.damage = 1;
                     }
                     return;
-                /*case ItemID.SpaceGun:
-                    if (GetInstance<ServerConfig>().ToolTweaks)
-                    {
-                        item.mana = 12;
-                    }
-                    return;*/
             }
         }
     }

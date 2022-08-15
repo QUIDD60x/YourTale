@@ -1,17 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using Terraria.IO;
-using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
-using yourtale.Items;
 
 namespace yourtale.Tiles.Ores
 {
@@ -78,7 +71,7 @@ namespace yourtale.Tiles.Ores
 
 				// Ores are quite simple, we simply use a for loop and the WorldGen.TileRunner to place splotches of the specified Tile in the world.
 				// "6E-05" is "scientific notation". It simply means 0.00006 but in some ways is easier to read.
-				for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
+				for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-03); k++)
 				{
 					// The inside of this for loop corresponds to one single splotch of our Ore.
 					// First, we randomly choose any coordinate in the world by choosing a random x and y value.
@@ -89,7 +82,7 @@ namespace yourtale.Tiles.Ores
 
 					// Then, we call WorldGen.TileRunner with random "strength" and random "steps", as well as the Tile we wish to place.
 					// Feel free to experiment with strength and step to see the shape they generate.
-					WorldGen.TileRunner(x, y, WorldGen.genRand.Next(20, 26), WorldGen.genRand.Next(12, 16), ModContent.TileType<FlintDeposit>());
+					WorldGen.TileRunner(x, y, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(4, 6), ModContent.TileType<FlintDeposit>());
 				}
 
 			}
