@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
+#pragma warning disable CS0162
 
 namespace yourtale.NPCs.Evil
 {
@@ -16,10 +17,6 @@ namespace yourtale.NPCs.Evil
 
         public override void SetDefaults()
         {
-            /* Removed as of 0.10
-            //npc.name = "Tutorial Zombie";
-            //npc.displayName = "Tutorial Zombie";
-            */
             NPC.width = 18;
             NPC.height = 40;
             NPC.damage = 12;
@@ -33,17 +30,13 @@ namespace yourtale.NPCs.Evil
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Zombie]; //Main.npcFrameCount[3];
             AIType = NPCID.Zombie; // aiType = 3;
             AnimationType = NPCID.Zombie; // animationType = 3;
-            Banner = Item.NPCtoBanner(NPCID.Zombie); //Gets NPC to banner
-            BannerItem = Item.BannerToItem(Banner);
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return SpawnCondition.OverworldNightMonster.Chance * 0.3f; //Might have fixed issue with spawns.
 
-#pragma warning disable CS0162 // Unreachable code detected
             float chance = 0.1f;
-#pragma warning restore CS0162 // Unreachable code detected
             if (!Main.dayTime)
             {
                 chance += .05f;

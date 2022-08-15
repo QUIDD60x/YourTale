@@ -6,6 +6,7 @@ using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
+using Terraria.ModLoader.Utilities;
 
 namespace yourtale.NPCs.Evil
 {
@@ -30,12 +31,24 @@ namespace yourtale.NPCs.Evil
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
 		}
 
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+		{
+			float chance = 0f;
+				if (spawnInfo.SpawnTileY <= Main.rockLayer && spawnInfo.SpawnTileY >= Main.rockLayer * 0.15)
+				{
+					chance += 2.3f;
+				}
+
+			return chance;
+		}
+
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 			base.ModifyNPCLoot(npcLoot);
 
 			npcLoot.Add(ItemDropRule.Common(ItemID.CursedFlame, 30, 1, 7));
 			npcLoot.Add(ItemDropRule.Common(ItemID.WormTooth, 0, 1, 10));
+			npcLoot.Add(ItemDropRule.Common(ItemID.CursedArrow, 20, 5, 8));
 		}
 
 		public override void SetDefaults()
@@ -104,7 +117,7 @@ namespace yourtale.NPCs.Evil
 					Vector2 direction = (target.Center - NPC.Center).SafeNormalize(Vector2.UnitX);
 					direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-					int projectile = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 1, ProjectileID.ShadowBeamHostile, 5, 0, Main.myPlayer);
+					int projectile = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 1, ProjectileID.CursedFlameHostile, 5, 0, Main.myPlayer);
 					Main.projectile[projectile].timeLeft = 300;
 					attackCounter = 500;
 					NPC.netUpdate = true;

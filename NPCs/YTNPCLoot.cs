@@ -23,9 +23,9 @@ namespace yourtale.NPCs
 				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<LifeShard>(), 80, 1));
 			}
 
-			if (npc.type == NPCID.Skeleton || npc.type == NPCID.SkeletonArcher)
+			if (npc.type == NPCID.Skeleton || npc.type == NPCID.SkeletonArcher || npc.type == NPCID.ArmoredSkeleton || npc.type == NPCID.ArmoredViking)
 			{
-				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AncientShard>(), 0, 4, 9));
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AncientShard>(), 1, 4, 9));
 			}
 		}
 

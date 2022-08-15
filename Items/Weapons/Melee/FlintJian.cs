@@ -20,7 +20,7 @@ namespace yourtale.Items.Weapons.Melee
             Item.height = 50;
             Item.useTime = 20;
             Item.useAnimation = 20;
-            Item.useStyle = ItemUseStyleID.Rapier;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 1;
             Item.value = 0;
             Item.rare = ItemRarityID.White;
