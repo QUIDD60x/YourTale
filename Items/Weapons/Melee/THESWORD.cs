@@ -26,8 +26,11 @@ namespace yourtale.Items.Weapons.Melee
 			Item.value = 1;
 			Item.rare = 15;
 			Item.autoReuse = true;
-			Item.healLife = 20;
-			Item.UseSound = SoundID.Item107;
+			Item.healLife = 2000;
+			Item.healMana = 200;
+			Item.lifeRegen = 2000;
+			Item.UseSound = SoundID.Grab;
+			Item.createTile = TileID.Diamond;
 		}
 
 		public override void AddRecipes() 

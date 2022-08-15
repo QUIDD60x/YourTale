@@ -36,7 +36,7 @@ namespace yourtale.Items
         }
         public override void HoldItem(Player player)
         {
-            if (Main.rand.Next(player.itemAnimation > 0 ? 40 : 80) == 0)
+            if (Main.rand.NextBool(player.itemAnimation > 0 ? 40 : 80))
             {
                 Dust.NewDust(new Vector2(player.itemLocation.X + 1f * player.direction, player.itemLocation.Y - 1f * player.gravDir), 4, 4, ModContent.DustType<StarShine>());
             }
@@ -44,7 +44,7 @@ namespace yourtale.Items
                 
                 public override void MeleeEffects(Player player, Rectangle hitbox)
                 {
-                    if (Main.rand.Next(3) == 0)
+                    if (Main.rand.NextBool(3))
                     Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, Mod.Find<ModDust>("StarShine").Type);
                 }
 

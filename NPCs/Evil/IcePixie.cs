@@ -41,7 +41,9 @@ namespace yourtale.NPCs.Evil
         {
             return (Main.tile[spawnInfo.PlayerFloorX, spawnInfo.PlayerFloorY].TileType == TileID.SnowBlock).ToInt() * 0.5f;
 
+#pragma warning disable CS0162 // Unreachable code detected
             float chance = 10f;
+#pragma warning restore CS0162 // Unreachable code detected
             if (!Main.dayTime)
             {
                 chance += 5f;

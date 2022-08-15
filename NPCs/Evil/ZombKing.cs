@@ -41,7 +41,9 @@ namespace yourtale.NPCs.Evil
         {
             return SpawnCondition.OverworldNightMonster.Chance * 0.3f; //Might have fixed issue with spawns.
 
+#pragma warning disable CS0162 // Unreachable code detected
             float chance = 0.1f;
+#pragma warning restore CS0162 // Unreachable code detected
             if (!Main.dayTime)
             {
                 chance += .05f;
