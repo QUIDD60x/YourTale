@@ -20,7 +20,7 @@ namespace yourtale.Items.Weapons.Melee
             Item.CloneDefaults(ItemID.TrueExcalibur);
             Item.shoot = Mod.Find<ModProjectile>("ChrysaorProj").Type;
             Item.damage = 90;
-            Item.shootSpeed = 3;
+            Item.shootSpeed = 5;
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
