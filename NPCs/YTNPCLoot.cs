@@ -7,10 +7,10 @@ using YourTale.DropConditions;
 
 namespace yourtale.NPCs
 {
-    // This file shows numerous examples of what you can do with the extensive NPC Loot lootable system.
-    // You can find more info on the wiki: https://github.com/tModLoader/tModLoader/wiki/Basic-NPC-Drops-and-Loot-1.4
-    // Despite this file being GlobalNPC, everything here can be used with a ModNPC as well! See examples of this in the Content/NPCs folder.
-    public class YTNPCLoot : GlobalNPC
+	// This file shows numerous examples of what you can do with the extensive NPC Loot lootable system.
+	// You can find more info on the wiki: https://github.com/tModLoader/tModLoader/wiki/Basic-NPC-Drops-and-Loot-1.4
+	// Despite this file being GlobalNPC, everything here can be used with a ModNPC as well! See examples of this in the Content/NPCs folder.
+	public class YTNPCLoot : GlobalNPC
 	{
 		// ModifyNPCLoot uses a unique system called the ItemDropDatabase, which has many different rules for many different drop use cases.
 		// Here we go through all of them, and how they can be used.
@@ -27,6 +27,11 @@ namespace yourtale.NPCs
 			{
 				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AncientShard>(), 1, 4, 9));
 			}
+
+			if (npc.type == NPCID.EyeofCthulhu || npc.type == NPCID.KingSlime || npc.type == NPCID.EaterofWorldsHead || npc.type == NPCID.BrainofCthulhu || npc.type == NPCID.QueenBee || npc.type == NPCID.SkeletronHead || npc.type == NPCID.Deerclops || npc.type == NPCID.WallofFlesh || npc.type == NPCID.QueenSlimeBoss || npc.type == NPCID.Retinazer || npc.type == NPCID.Spazmatism || npc.type == NPCID.SkeletronPrime || npc.type == NPCID.Plantera || npc.type == NPCID.Golem || npc.type == NPCID.DukeFishron || npc.type == NPCID.EmpressButterfly || npc.type == NPCID.CultistBoss || npc.type == NPCID.MoonLordCore)
+            {
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CorExitio>(), 1, 9, 15));
+            }
 		}
 
 		// ModifyGlobalLoot allows you to modify loot that every NPC should be able to drop, preferably with a condition.

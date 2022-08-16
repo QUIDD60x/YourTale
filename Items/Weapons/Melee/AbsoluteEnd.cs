@@ -5,6 +5,7 @@ using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
+using yourtale.Rarities;
 
 namespace yourtale.Items.Weapons.Melee
 {
@@ -29,7 +30,7 @@ namespace yourtale.Items.Weapons.Melee
 			Item.knockBack = 4;
 			Item.crit = 6;
 			Item.value = Item.buyPrice(gold: 1);
-			Item.rare = ItemRarityID.Quest;
+			Item.rare = ModContent.RarityType<Black2Red>();
 			Item.UseSound = new SoundStyle($"{nameof(yourtale)}/Assets/Sounds/Items/RamielScream"); //Test to see if the modded sounds work (they do!)
 		}
 

@@ -38,7 +38,7 @@ namespace yourtale.Items.Placeables.Furniture
 			recipe.AddIngredient(Mod.Find<ModItem>("StarShard").Type, 5);
 			recipe.AddIngredient(ItemID.IronBar, 7);
 			recipe.AddIngredient(Mod.Find<ModItem>("AncientShard").Type, 7);
-			recipe.AddTile(TileID.Anvils);
+			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}
 
