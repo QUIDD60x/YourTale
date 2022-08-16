@@ -21,7 +21,7 @@ namespace yourtale.Items.Weapons.Melee
             Item.CloneDefaults(ItemID.TrueExcalibur);
             Item.damage = 90;
             Item.shootSpeed = 12;
-            Item.rare = ModContent.RarityType<Black2Gold>();
+            Item.rare = ModContent.RarityType<Gold>();
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
@@ -30,6 +30,7 @@ namespace yourtale.Items.Weapons.Melee
             if (Main.rand.NextBool(3))
             {
                 type = ProjectileID.EnchantedBeam;
+                type = ProjectileID.SuperStar;
             }
 
             if (!Main.rand.NextBool(2))
@@ -39,6 +40,14 @@ namespace yourtale.Items.Weapons.Melee
 
             if (!Main.rand.NextBool(2))
             {
+                type = ProjectileID.IchorSplash;
+            }
+
+            if (Main.rand.NextBool(10))
+            {
+                type = ProjectileID.EnchantedBeam;
+                type = ProjectileID.SuperStar;
+                type = ProjectileID.HallowStar;
                 type = ProjectileID.IchorSplash;
             }
 
@@ -53,6 +62,13 @@ namespace yourtale.Items.Weapons.Melee
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ItemID.TitaniumBar, 10);
+            recipe.AddIngredient(ItemID.HallowedBar, 14);
+            recipe.AddIngredient(Mod.Find<ModItem>("AncientShard"), 15);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.Register();
+
+            recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.AdamantiteBar, 10);
             recipe.AddIngredient(ItemID.HallowedBar, 14);
             recipe.AddIngredient(Mod.Find<ModItem>("AncientShard"), 15);

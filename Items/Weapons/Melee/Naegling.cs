@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using yourtale.Rarities;
 
 namespace yourtale.Items.Weapons.Melee
 {
@@ -21,6 +22,7 @@ namespace yourtale.Items.Weapons.Melee
             Item.useAnimation = 12;
             Item.shootSpeed = 2;
             Item.autoReuse = true;
+            Item.rare = ModContent.RarityType<AncientPurple>();
         }
 
         public override void AddRecipes()

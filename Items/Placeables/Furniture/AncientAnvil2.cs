@@ -7,17 +7,17 @@ using yourtale.Rarities;
 
 namespace yourtale.Items.Placeables.Furniture
 {
-	public class AncientAnvil : ModItem
+	public class AncientAnvil2 : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ancient Anvil");
-			Tooltip.SetDefault("Used by ancients to craft mystical equipment, it is too used to continue that tradition.");
+			DisplayName.SetDefault("Refurbished Anvil");
+			Tooltip.SetDefault("You somehow repaired this, and can now use it to make weapons beyond mortality.");
 		}
 
 		public override void SetDefaults()
 		{
-			Item.createTile = ModContent.TileType<Tiles.Furniture.AncientAnvil>(); // This sets the id of the tile that this item should place when used.
+			Item.createTile = ModContent.TileType<Tiles.Furniture.AncientAnvil2>(); // This sets the id of the tile that this item should place when used.
 
 			Item.width = 28; // The item texture's width
 			Item.height = 14; // The item texture's height
@@ -37,10 +37,11 @@ namespace yourtale.Items.Placeables.Furniture
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(Mod.Find<ModItem>("StarShard").Type, 5);
-			recipe.AddIngredient(ItemID.IronBar, 7);
-			recipe.AddIngredient(Mod.Find<ModItem>("AncientShard").Type, 7);
-			recipe.AddTile(TileID.WorkBenches);
+			recipe.AddIngredient(Mod.Find<ModItem>("AncientAnvil").Type, 2);
+			recipe.AddIngredient(ItemID.HallowedBar, 7);
+			recipe.AddIngredient(ItemID.MythrilBar, 5);
+			recipe.AddIngredient(Mod.Find<ModItem>("AncientShard").Type, 15);
+			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();
 		}
 

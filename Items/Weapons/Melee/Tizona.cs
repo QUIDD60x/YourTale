@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using yourtale.Rarities;
 
 namespace yourtale.Items.Weapons.Melee
 {
@@ -19,7 +20,7 @@ namespace yourtale.Items.Weapons.Melee
             Item.damage = 115;
             Item.useTime = 8;
             Item.useAnimation = 10;
-            Item.rare = ItemRarityID.LightRed;
+            Item.rare = ModContent.RarityType<AncientPurple>();
             Item.crit = 99;
         }
 
@@ -32,7 +33,7 @@ namespace yourtale.Items.Weapons.Melee
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.Katana, 1);
+            recipe.AddIngredient(ItemID.Muramasa, 1);
             recipe.AddIngredient(Mod.Find<ModItem>("AncientShard").Type, 5);
             recipe.AddTile(Mod.Find<ModTile>("AncientAnvil"));
             recipe.Register();

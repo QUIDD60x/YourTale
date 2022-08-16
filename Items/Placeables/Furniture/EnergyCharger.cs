@@ -36,7 +36,7 @@ namespace yourtale.Items.Placeables.Furniture
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(Mod.Find<ModItem>("LifeShard").Type, 5);
 			recipe.AddIngredient(ItemID.IronBar, 7);
-			recipe.AddTile(TileID.Anvils);
+			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();
 		}
 	}

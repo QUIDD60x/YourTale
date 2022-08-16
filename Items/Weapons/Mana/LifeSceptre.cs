@@ -43,8 +43,12 @@ namespace yourtale.Items.Weapons.Mana
             recipe.AddIngredient(Mod.Find<ModItem>("StarShard").Type, 5);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
+
+            recipe = CreateRecipe();
             recipe.AddIngredient(Mod.Find<ModItem>("LifeShard").Type, 3);
             recipe.AddIngredient(Mod.Find<ModItem>("StarShard").Type, 5);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.Register();
         }
     }
 }
