@@ -1,13 +1,14 @@
 using yourtale.DamageClasses;
 using yourtale.Tiles.Furniture;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace yourtale.Items.Weapons.Melee
 {
-	public class AbsoluteEnd : ModItem
+    public class AbsoluteEnd : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -29,7 +30,7 @@ namespace yourtale.Items.Weapons.Melee
 			Item.crit = 6;
 			Item.value = Item.buyPrice(gold: 1);
 			Item.rare = ItemRarityID.Quest;
-			Item.UseSound = SoundID.Item110;
+			Item.UseSound = new SoundStyle($"{nameof(yourtale)}/Assets/Sounds/Items/RamielScream"); //Test to see if the modded sounds work (they do!)
 		}
 
 		public override void AddRecipes()

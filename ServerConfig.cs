@@ -53,7 +53,6 @@ namespace yourtale
         [ReloadRequired]
         [DefaultValue(true)]
         public bool CoinRecipesAtEndofList;
-
     }
 
 }

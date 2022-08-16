@@ -92,9 +92,11 @@ namespace yourtale.DamageClasses
 				return false;
 			if (lineName == "Knockback")
 				return false;
-			if (lineName == "Critical Strike Chance")
+			if (lineName == "CritChance")
 				return false;
-
+			if (lineName == "Damage")
+				return false;
+				
 			return true;
 			// PLEASE BE AWARE that this hook will NOT be here forever; only until an upcoming revamp to tooltips as a whole comes around.
 			// Once this happens, a better, more versatile explanation of how to pull this off will be showcased, and this hook will be removed.

@@ -20,22 +20,29 @@ namespace yourtale.Items.Armor.Animula
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Animula Helm");
-            Tooltip.SetDefault("Makes me feel smart!");
+            Tooltip.SetDefault("Makes me feel smart!\n" +
+                "That grants extra max movement speed, for some reason.");
 
         }
         public override void SetDefaults()
         {
             Item.width = 25;
             Item.height = 700;
-            Item.value = Item.sellPrice(silver: 12);
+            Item.value = Item.sellPrice(0, 0, 85, 25);
             Item.rare = ItemRarityID.Green;
             Item.defense = 9;
+        }
+
+        public override void UpdateAccessory(Player player, bool hideVisual)
+        {
+            player.maxRunSpeed += 20;
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(Mod.Find<ModItem>("LifeShard").Type, 10);
+            recipe.AddIngredient(Mod.Find<ModItem>("LifeShard").Type, 8);
+            recipe.AddIngredient(ItemID.Bone, 10);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }
@@ -49,10 +56,9 @@ namespace yourtale.Items.Armor.Animula
         {
             player.setBonus = "You've never felt so alive! Increased all types of speed, more health, and constant swiftness!";
             player.AddBuff(BuffID.Swiftness, 2);
-            player.moveSpeed += 3;
-            player.jumpSpeedBoost += 2.5f;
-            player.extraFall += 11;
-            player.statLifeMax2 += 40;
+            player.moveSpeed += 1.2f;
+            player.jumpSpeedBoost += 1.5f;
+            player.statLifeMax2 += 60;
         }
     }
 }

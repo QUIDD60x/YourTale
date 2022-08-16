@@ -31,11 +31,11 @@ namespace yourtale.Projectiles.Evil
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
 			Player player = Main.player[Projectile.owner];
-			if (Main.rand.NextBool(3));
+            if (Main.rand.NextBool(3))
 			{
 				crit = true;
 				target.AddBuff(BuffID.Frostburn, 60);
-			}
+			};
 			
 		}
 
