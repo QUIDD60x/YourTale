@@ -1,6 +1,6 @@
 # Your-Tale
 ![broken image link](https://github.com/QUIDD60x/Your-Tale/blob/master/icon.png?raw=true)
-[![Build Status](https://travis-ci.org/tModLoader/tModLoader.svg?branch=master)](https://quiddcorp.com/your-tale) 
+[![Build Status](https://travis-ci.org/tModLoader/tModLoader.svg?branch=master)](https://quiddcorp.com/my-creations/your-tale) 
 
 # CURRENTLY UPDATED TO 1.4 BUT THERE ARE STILL ISSUES, I have no idea what i'm doing and until there is an official (1.0.0) release the code may not work. Currently not vanilla playable.
 
