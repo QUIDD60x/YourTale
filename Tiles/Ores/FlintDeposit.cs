@@ -24,7 +24,7 @@ namespace yourtale.Tiles.Ores
 			name.SetDefault("Flint");
 			AddMapEntry(new Color(246, 158, 44), name); //or AddMapEntry(Color.Red) or any other colour in the color class
 
-			MinPick = -100; //will set minimum pick strength
+			MinPick = 0; //will set minimum pick strength
 		}
 		// Will let you modify the light level and colour, RGB variables are obviously RBG colours.
 		/*public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

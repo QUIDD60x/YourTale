@@ -1,5 +1,4 @@
-﻿using yourtale.Biomes;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.GameContent.ItemDropRules;
 
@@ -25,7 +24,7 @@ namespace YourTale.DropConditions
 					return false;
 				}
 
-				return info.player.InModBiome<HellSurfaceBiome>();
+				//return info.player.InModBiome<HellSurfaceBiome>();
 			}
 			return false;
 		}

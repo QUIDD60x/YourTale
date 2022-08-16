@@ -18,7 +18,7 @@ namespace yourtale.Items.Armor.Flint
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Flint Helmet");
-            Tooltip.SetDefault("Not very good...");
+            Tooltip.SetDefault("Not good at all...");
 
         }
         public override void SetDefaults()
@@ -27,7 +27,7 @@ namespace yourtale.Items.Armor.Flint
             Item.height = 24;
             Item.value = Item.sellPrice(silver: -1);
             Item.rare = ItemRarityID.White;
-            Item.defense = 1;
+            Item.defense = -1;
         }
 
         public override void AddRecipes()
@@ -45,7 +45,7 @@ namespace yourtale.Items.Armor.Flint
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Increased Mining speed";
+            player.setBonus = "Increased Mining speed.";
             player.pickSpeed -= 0.35f;
         }
     }

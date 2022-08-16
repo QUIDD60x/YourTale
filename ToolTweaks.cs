@@ -7,6 +7,7 @@ namespace yourtale
 {
     public class ToolTweaks : GlobalItem
     { //this allows you to manipulate the defaults for items. This is a little more advanced, just about on the brink of my knowledge so i don't have a tutorial yet, although expect a video on it eventually.
+
         public override void SetDefaults(Item item)
         {
             switch (item.type)
@@ -14,15 +15,16 @@ namespace yourtale
                 case ItemID.CopperAxe:
                     if (GetInstance<ServerConfig>().ToolTweaks)
                     {
-                        item.axe = 1;
+                        item.axe = -1;
                         item.useTime = 100;
                     }
                     return;
                 case ItemID.CopperPickaxe:
                         if (GetInstance<ServerConfig>().ToolTweaks)
                         {
-                            item.pick = 1;
-                            item.useTime = 1;
+                            item.pick = 15;
+                            item.useTime = 20;
+                            item.useAnimation = 20;
                         }
                     return;
                 case ItemID.CopperShortsword:

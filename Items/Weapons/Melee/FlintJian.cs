@@ -9,7 +9,7 @@ namespace yourtale.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("THESWORD"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            Tooltip.SetDefault("A Flint Jian with medium range yet fast speed.");
+            Tooltip.SetDefault("A Jian with medium range yet fast speed, will do for now...");
         }
 
         public override void SetDefaults()

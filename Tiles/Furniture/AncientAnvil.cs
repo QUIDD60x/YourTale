@@ -21,7 +21,7 @@ namespace yourtale.Tiles.Furniture
 			TileID.Sets.IgnoredByNpcStepUp[Type] = true; // This line makes NPCs not try to step up this tile during their movement. Only use this for furniture with solid tops.
 
 			DustType = ModContent.DustType<Dusts.AncientPurpleDust>();
-			AdjTiles = new int[] { TileID.WorkBenches };
+			AdjTiles = new int[] { TileID.Anvils};
 
 			// Placement
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x1);

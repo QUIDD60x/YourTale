@@ -28,9 +28,9 @@ namespace yourtale.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.AddBuff(BuffID.IceBarrier, 2); //player.AddBuff(mod.BuffType("buffnamehere"), number here); for modded buffs/debuffs.
-            player.GetAttackSpeed(DamageClass.Melee) -= 0.2f;
-            player.moveSpeed *= 0.8f; //remember that multiplying a decimal is equivalent to dividing by a whole number.
-            player.maxRunSpeed *= 0.2f;
+            player.moveSpeed *= 0.9f; //remember that multiplying a decimal is equivalent to dividing by a whole number.
+            player.maxRunSpeed *= 0.7f;
+            player.endurance *= 1.5f;
         }
 
         public override void AddRecipes()

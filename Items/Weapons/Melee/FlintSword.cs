@@ -9,7 +9,7 @@ namespace yourtale.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("THESWORD"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            Tooltip.SetDefault("A bulkier weapon, stronger but slower.");
+            Tooltip.SetDefault("The flint makes it stronger than wood, but bulkier.");
         }
 
         public override void SetDefaults()
@@ -18,8 +18,8 @@ namespace yourtale.Items.Weapons.Melee
             Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
             Item.width = 40;
             Item.height = 40;
-            Item.useTime = 15;
-            Item.useAnimation = 15;
+            Item.useTime = 35;
+            Item.useAnimation = 35;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 3;
             Item.value = 0;
