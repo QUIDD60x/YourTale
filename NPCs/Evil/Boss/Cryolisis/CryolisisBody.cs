@@ -566,7 +566,7 @@ namespace YourTale.NPCs.Evil.Boss.Cryolisis
                 float kitingOffsetX = Utils.Clamp(player.velocity.X * 16, -100, 100);
                 Vector2 position = player.Bottom + new Vector2(kitingOffsetX + Main.rand.Next(-100, 100), Main.rand.Next(50, 100));
 
-                int type = ModContent.ProjectileType<EvilCryolisisProj>();
+                int type = ModContent.ProjectileType<EvilCryolisisProj>(); //Change this Quidd -Quidd
                 int damage = NPC.damage / 2;
                 var entitySource = NPC.GetSource_FromAI();
 
