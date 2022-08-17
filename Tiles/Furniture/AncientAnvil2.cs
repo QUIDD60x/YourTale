@@ -32,7 +32,7 @@ namespace yourtale.Tiles.Furniture
 
 			// Etc
 			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Refurbished Anvil");
+			name.SetDefault("Thendric Anvil");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 

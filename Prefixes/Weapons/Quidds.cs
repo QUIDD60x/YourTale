@@ -3,15 +3,15 @@ using Terraria.ModLoader;
 
 namespace yourtale.Prefixes
 {
-	public class Speedy : ModPrefix
+	public class Quidds : ModPrefix
 	{
-		public virtual float Power => 1f;
+		public virtual float Power => 100f;
 
-		public override PrefixCategory Category => PrefixCategory.Ranged;
+		public override PrefixCategory Category => PrefixCategory.Melee;
 
 		public override float RollChance(Item item)
 		{
-			return 5f;
+			return 0.001f;
 		}
 
 		public override bool CanRoll(Item item)
@@ -21,12 +21,15 @@ namespace yourtale.Prefixes
 
 		public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
 		{
-			shootSpeedMult *= 2f + 5f * Power;
+			damageMult *= 10000f * Power;
+			knockbackMult *= 10000f * Power;
+			useTimeMult /= 10000f * Power;
+			scaleMult *= 10f;
 		}
 
 		public override void ModifyValue(ref float valueMult)
 		{
-			valueMult *= 1f + 0.05f * Power;
+			valueMult *= 1000f + 0.05f * Power;
 		}
 
 		public override void Apply(Item item)

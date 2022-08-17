@@ -1,7 +1,6 @@
 ﻿using yourtale.Common;
 using yourtale.NPCs.Evil.Boss.Minion;
 using yourtale.Items;
-using yourtale.Items.Consumables;
 using yourtale.Projectiles.Evil;
 using Microsoft.Xna.Framework;
 using System;
@@ -14,7 +13,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace YourTale.NPCs.Evil.Boss.Cryolisis
+namespace yourtale.NPCs.Evil.Boss.Cryolisis
 {
     // The main part of the boss, usually refered to as "body"
     [AutoloadBossHead] // This attribute looks for a texture called "ClassName_Head_Boss" and automatically registers it as the NPC boss head icon
@@ -81,7 +80,7 @@ namespace YourTale.NPCs.Evil.Boss.Cryolisis
 
             if (Main.expertMode)
             {
-                count += 7; // Increase by 5 if expert or master mode
+                count += 7; // Increase by 7 if expert or master mode
             }
 
             if (Main.getGoodWorld)
@@ -111,8 +110,8 @@ namespace YourTale.NPCs.Evil.Boss.Cryolisis
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Minion Boss");
-            Main.npcFrameCount[Type] = 6;
+            DisplayName.SetDefault("Cryolisis");
+            Main.npcFrameCount[Type] = 1;
 
             // Add this in for bosses that have a summon item, requires corresponding code in the item (See MinionBossSummonItem.cs)
             NPCID.Sets.MPAllowedEnemies[Type] = true;
@@ -242,8 +241,7 @@ namespace YourTale.NPCs.Evil.Boss.Cryolisis
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            // Here you'd want to change the potion type that drops when the boss is defeated. Because this boss is early pre-hardmode, we keep it unchanged
-            // (Lesser Healing Potion). If you wanted to change it, simply write "potionType = ItemID.HealingPotion;" or any other potion type
+            potionType = ItemID.GreaterHealingPotion;
         }
 
         public override bool CanHitPlayer(Player target, ref int cooldownSlot)
@@ -252,7 +250,7 @@ namespace YourTale.NPCs.Evil.Boss.Cryolisis
             return true;
         }
 
-        public override void FindFrame(int frameHeight)
+        /*public override void FindFrame(int frameHeight)
         {
             // This NPC animates with a simple "go from start frame to final frame, and loop back to start frame" rule
             // In this case: First stage: 0-1-2-0-1-2, Second stage: 3-4-5-3-4-5, 5 being "total frame count - 1"
@@ -284,7 +282,7 @@ namespace YourTale.NPCs.Evil.Boss.Cryolisis
                     NPC.frame.Y = startFrame * frameHeight;
                 }
             }
-        }
+        }*/
 
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -298,8 +296,8 @@ namespace YourTale.NPCs.Evil.Boss.Cryolisis
             if (NPC.life <= 0)
             {
                 // These gores work by simply existing as a texture inside any folder which path contains "Gores/"
-                int backGoreType = Mod.Find<ModGore>("MinionBossBody_Back").Type;
-                int frontGoreType = Mod.Find<ModGore>("MinionBossBody_Front").Type;
+                int backGoreType = Mod.Find<ModGore>("CryolisisGore1").Type;
+                int frontGoreType = Mod.Find<ModGore>("CryolisisGore2").Type;
 
                 var entitySource = NPC.GetSource_Death();
 
@@ -488,7 +486,7 @@ namespace YourTale.NPCs.Evil.Boss.Cryolisis
                     NPC.position += NPC.netOffset;
 
                     // Draw a line between the NPC and its destination, represented as dusts every 20 pixels
-                    Dust.QuickDustLine(NPC.Center + toDestinationNormalized * NPC.width, FirstStageDestination, toDestination.Length() / 20f, Color.Yellow);
+                    Dust.QuickDustLine(NPC.Center + toDestinationNormalized * NPC.width, FirstStageDestination, toDestination.Length() / 20f, Color.WhiteSmoke);
 
                     NPC.position -= NPC.netOffset;
                 }
@@ -566,7 +564,7 @@ namespace YourTale.NPCs.Evil.Boss.Cryolisis
                 float kitingOffsetX = Utils.Clamp(player.velocity.X * 16, -100, 100);
                 Vector2 position = player.Bottom + new Vector2(kitingOffsetX + Main.rand.Next(-100, 100), Main.rand.Next(50, 100));
 
-                int type = ModContent.ProjectileType<EvilCryolisisProj>(); //Change this Quidd -Quidd
+                int type = ProjectileID.Bullet; //ModContent.ProjectileType<EvilCryolisisProj>(); Change this Quidd -Quidd
                 int damage = NPC.damage / 2;
                 var entitySource = NPC.GetSource_FromAI();
 

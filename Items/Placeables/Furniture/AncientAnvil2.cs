@@ -11,7 +11,7 @@ namespace yourtale.Items.Placeables.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Refurbished Anvil");
+			DisplayName.SetDefault("Thendric Anvil");
 			Tooltip.SetDefault("You somehow repaired this, and can now use it to make weapons beyond mortality.");
 		}
 

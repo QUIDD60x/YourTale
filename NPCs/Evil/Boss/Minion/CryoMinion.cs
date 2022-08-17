@@ -5,7 +5,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
-using YourTale.NPCs.Evil.Boss.Cryolisis;
+using yourtale.NPCs.Evil.Boss.Cryolisis;
 
 namespace yourtale.NPCs.Evil.Boss.Minion
 {
@@ -77,9 +77,9 @@ namespace yourtale.NPCs.Evil.Boss.Minion
 		{
 			NPC.width = 30;
 			NPC.height = 30;
-			NPC.damage = 7;
-			NPC.defense = 0;
-			NPC.lifeMax = 50;
+			NPC.damage = 15;
+			NPC.defense = 4;
+			NPC.lifeMax = 550;
 			NPC.HitSound = SoundID.NPCHit9;
 			NPC.DeathSound = SoundID.NPCDeath11;
 			NPC.noGravity = true;
@@ -99,7 +99,7 @@ namespace yourtale.NPCs.Evil.Boss.Minion
 
 			bestiaryEntry.Info.AddRange(new List<IBestiaryInfoElement> {
 				new MoonLordPortraitBackgroundProviderBestiaryInfoElement(), // Plain black background
-				new FlavorTextBestiaryInfoElement("A minion protecting his boss from taking damage by sacrificing itself. If none are alive, the boss is exposed to damage.")
+				new FlavorTextBestiaryInfoElement("You shouldn't be seeing this.")
 			});
 		}
 
