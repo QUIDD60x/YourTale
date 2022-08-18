@@ -33,18 +33,18 @@ namespace yourtale.NPCs.Nice.Town
 		{
 			// DisplayName automatically assigned from localization files, but the commented line below is the normal approach.
 			// DisplayName.SetDefault("Example Person");
-			Main.npcFrameCount[Type] = 25; // The amount of frames the NPC has
+			Main.npcFrameCount[Type] = 23; // The amount of frames the NPC has
 
 			NPCID.Sets.ExtraFramesCount[Type] = 9; // Generally for Town NPCs, but this is how the NPC does extra things such as sitting in a chair and talking to other NPCs.
 			NPCID.Sets.AttackFrameCount[Type] = 4;
-			NPCID.Sets.DangerDetectRange[Type] = 700; // The amount of pixels away from the center of the npc that it tries to attack enemies.
-			NPCID.Sets.AttackType[Type] = 0;
-			NPCID.Sets.AttackTime[Type] = 90; // The amount of time it takes for the NPC's attack animation to be over once it starts.
-			NPCID.Sets.AttackAverageChance[Type] = 30;
+			NPCID.Sets.DangerDetectRange[Type] = 1; // The amount of pixels away from the center of the npc that it tries to attack enemies.
+			NPCID.Sets.AttackType[Type] = 1;
+			NPCID.Sets.AttackTime[Type] = 80; // The amount of time it takes for the NPC's attack animation to be over once it starts.
+			NPCID.Sets.AttackAverageChance[Type] = 20;
 			NPCID.Sets.HatOffsetY[Type] = 4; // For when a party is active, the party hat spawns at a Y offset.
 
 			// Influences how the NPC looks in the Bestiary
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new(0)
 			{
 				Velocity = 1f, // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
 				Direction = 1 // -1 is left and 1 is right. NPCs are drawn facing the left by default but ExamplePerson will be drawn facing the right
@@ -125,7 +125,7 @@ namespace yourtale.NPCs.Nice.Town
 
 			for (int k = 0; k < num; k++)
 			{
-				Dust.NewDust(NPC.position, NPC.width, NPC.height, ModContent.DustType<Sparkle>());
+				Dust.NewDust(NPC.position, NPC.width, NPC.height, ModContent.DustType<AncientGoldDust>());
 			}
 		}
 
@@ -184,12 +184,12 @@ namespace yourtale.NPCs.Nice.Town
 
 		public override string GetChat()
 		{
-			WeightedRandom<string> chat = new WeightedRandom<string>();
+			WeightedRandom<string> chat = new();
 
-			int partyGirl = NPC.FindFirstNPC(NPCID.PartyGirl);
-			if (partyGirl >= 0 && Main.rand.NextBool(4))
+			int stylist = NPC.FindFirstNPC(NPCID.Stylist);
+			if (stylist >= 0 && Main.rand.NextBool(4))
 			{
-				chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.PartyGirlDialogue", Main.npc[partyGirl].GivenName));
+				chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.PartyGirlDialogue", Main.npc[stylist].GivenName));
 			}
 			// These are things that the NPC has a chance of telling you when you talk to it.
 			chat.Add(Language.GetTextValue("You know, there weren't a whole let of men at the Sisterhood. There were none at all, actually..."));
@@ -198,6 +198,8 @@ namespace yourtale.NPCs.Nice.Town
 			chat.Add(Language.GetTextValue("If you have any ancient things laying around I could possibly fix them..."));
 			chat.Add(Language.GetTextValue("Even our nurse ends up resorting to violence, what world have we come to?"));
 			chat.Add(Language.GetTextValue("The sisterhood could use a killer like you."));
+			chat.Add(Language.GetTextValue("Our workout techniques from the Sisterhood could be a bit... outlandish."));
+			chat.Add(Language.GetTextValue("I originally came here to kill that guide guy, but after hearing some rumors about what he is I'm not so sure anymore..."));
 
 			NumberOfTimesTalkedTo++;
 			if (NumberOfTimesTalkedTo >= 100)
