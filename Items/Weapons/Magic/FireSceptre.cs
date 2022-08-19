@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace yourtale.Items.Weapons.Mana
+namespace yourtale.Items.Weapons.Magic
 {
     public class FireSceptre : ModItem
     {
@@ -34,7 +34,6 @@ namespace yourtale.Items.Weapons.Mana
             Item.shoot = ModContent.ProjectileType<FireStaffProj>();
             Item.shootSpeed = 20f;
         }
-
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

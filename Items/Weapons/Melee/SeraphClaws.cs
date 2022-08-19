@@ -20,8 +20,8 @@ namespace yourtale.Items.Weapons.Melee
         {
             Item.damage = 40;
             Item.DamageType = DamageClass.Melee;
-            Item.width = 40;
-            Item.height = 40;
+            Item.width = 50;
+            Item.height = 50;
             Item.useTime = 10;
             Item.useAnimation = 2;
             Item.useStyle = ItemUseStyleID.Swing;
@@ -31,6 +31,7 @@ namespace yourtale.Items.Weapons.Melee
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.crit = 77;
+            Item.shootSpeed = 15;
         }
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)

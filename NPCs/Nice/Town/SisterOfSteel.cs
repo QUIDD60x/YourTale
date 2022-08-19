@@ -199,6 +199,8 @@ namespace yourtale.NPCs.Nice.Town
 			chat.Add(Language.GetTextValue("Even our nurse ends up resorting to violence, what world have we come to?"));
 			chat.Add(Language.GetTextValue("The sisterhood could use a killer like you."));
 			chat.Add(Language.GetTextValue("Our workout techniques from the Sisterhood could be a bit... outlandish."));
+			chat.Add(Language.GetTextValue("Why do guys smell so bad?"));
+			chat.Add(Language.GetTextValue("How do we keep our numbers high? Recruiting, of course!"));
 			chat.Add(Language.GetTextValue("I originally came here to kill that guide guy, but after hearing some rumors about what he is I'm not so sure anymore..."));
 
 			NumberOfTimesTalkedTo++;
@@ -340,7 +342,7 @@ namespace yourtale.NPCs.Nice.Town
 					position.Y = Math.Sign(position.Y) * 20;
 				}
 
-				Dust.NewDustPerfect(NPC.Center + position, ModContent.DustType<Sparkle>(), Vector2.Zero).noGravity = true;
+				Dust.NewDustPerfect(NPC.Center + position, ModContent.DustType<AncientGoldDust>(), Vector2.Zero).noGravity = true;
 			}
 		}
 

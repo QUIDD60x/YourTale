@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace yourtale.Items.Weapons.Mana
+namespace yourtale.Items.Weapons.Magic
 {
     public class EarthSceptre : ModItem
     {

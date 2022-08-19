@@ -15,7 +15,7 @@ namespace yourtale.Items.Weapons.Melee
 
 		public override void SetDefaults() 
 		{
-			Item.damage = 65000;
+			Item.damage = 25052006;
 			Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
 			Item.width = 40;
 			Item.height = 40;
