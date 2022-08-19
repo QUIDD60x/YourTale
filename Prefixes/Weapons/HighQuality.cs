@@ -45,7 +45,7 @@ namespace YourTale.Prefixes.Weapons
         // This is used to modify most other stats of items which have this modifier.
         public override void Apply(Item item)
         {
-            //
+            item.autoReuse = true;
         }
     }
 }

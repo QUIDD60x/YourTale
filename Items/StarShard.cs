@@ -25,7 +25,7 @@ namespace yourtale.Items
             Item.width = 1;
             Item.height = 1;
             Item.maxStack = 999;
-            Item.useStyle = 2;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 10;
             Item.useAnimation = 10;
             Item.useTurn = true;

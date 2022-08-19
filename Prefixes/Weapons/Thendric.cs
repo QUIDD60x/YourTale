@@ -34,6 +34,7 @@ namespace yourtale.Prefixes.Weapons
 		public override void Apply(Item item)
 		{
 			item.shoot = Mod.Find<ModProjectile>("LahatCherebProj").Type;
+			item.shootSpeed = 10;
 		}
 	}
 }
