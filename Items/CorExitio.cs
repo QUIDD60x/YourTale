@@ -31,14 +31,6 @@ namespace yourtale.Items
 			Item.rare = ItemRarityID.Green;
 
 		}
-		/*public override void HoldItem(Player player)
-        {
-			Dust dust;
-				// You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-			Vector2 position = Main.LocalPlayer.Center;
-			dust = Terraria.Dust.NewDustDirect(position, 30, 30, 60, 0f, 0f, 0, new Color(255,255,255), 0.9883721f);
-
-        }*/
 
 		public override void AddRecipes()
 		{
@@ -46,7 +38,7 @@ namespace yourtale.Items
 			recipe.AddIngredient(ItemID.Dynamite, 3);
 			recipe.AddIngredient(ItemID.Bomb, 10);
 			recipe.AddIngredient(ItemID.Grenade, 7);
-			recipe.AddTile(TileID.Anvils);
+			recipe.AddTile(TileID.HeavyWorkBench);
 			recipe.Register();
 		}
 	}

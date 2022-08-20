@@ -28,9 +28,9 @@ namespace yourtale.Projectiles.Evil
         public override void AI()
         {
             
-            if (Main.rand.Next(1) == 0)
+            if (Main.rand.NextBool(1))
             {
-                int DustID = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y + 2f), Projectile.width + 4, Projectile.height + 4, 74, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 120, default(Color), 2f);
+                int DustID = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y + 2f), Projectile.width + 4, Projectile.height + 4, 74, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 120, default, 2f);
                 Main.dust[DustID].noGravity = true;
             }
 

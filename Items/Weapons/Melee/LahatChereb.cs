@@ -12,7 +12,8 @@ namespace yourtale.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Lahat Chereb");
-            Tooltip.SetDefault("This extremely powerful flame of the whirling sword was once wielded by an angel.");
+            Tooltip.SetDefault("This extremely powerful flame of the whirling sword was once wielded by an angel.\n" +
+                "'[c/ffa500:Some just want to watch the world burn, some want to burn those.]'");
         }
 
         public override void SetDefaults()
@@ -28,6 +29,16 @@ namespace yourtale.Items.Weapons.Melee
             Item.rare = ModContent.RarityType<Gold>();
         }
 
+        public override void HoldItem(Player player)
+        {
+            base.HoldItem(player);
+            if (Main.rand.NextFloat() < 0.3604651f)
+            {
+                Dust dust;
+                Vector2 position = Main.LocalPlayer.Center; dust = Terraria.Dust.NewDustDirect(position, 18, 30, DustID.HealingPlus, 0f, 0f, 0, new Color(255, 255, 255), 0.116279066f);
+                dust.fadeIn = 1.6744187f;
+            }
+        }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(3))

@@ -11,7 +11,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace yourtale.Items
 {
-    public class flint : ModItem
+    public class flint : ModItem //You should always capitalise the first letter (grammar is important). I'll leave this though because it's funny.
     {
         public override void SetStaticDefaults() 
         {
@@ -24,7 +24,7 @@ namespace yourtale.Items
             Item.width = 1;
             Item.height = 1;
             Item.maxStack = 999;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 10;
             Item.useAnimation = 10;
             Item.useTurn = true;

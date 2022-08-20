@@ -2,6 +2,7 @@
 using yourtale.NPCs.Evil.Boss.Minion;
 using yourtale.Items;
 using yourtale.Projectiles.Evil;
+using yourtale.Projectiles.Staffs;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -564,7 +565,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
                 float kitingOffsetX = Utils.Clamp(player.velocity.X * 16, -100, 100);
                 Vector2 position = player.Bottom + new Vector2(kitingOffsetX + Main.rand.Next(-100, 100), Main.rand.Next(50, 100));
 
-                int type = ProjectileID.Bullet; //ModContent.ProjectileType<EvilCryolisisProj>(); Change this Quidd -Quidd
+                int type = ModContent.ProjectileType<HealProj>(); //Change this Quidd -Quidd
                 int damage = NPC.damage / 2;
                 var entitySource = NPC.GetSource_FromAI();
 

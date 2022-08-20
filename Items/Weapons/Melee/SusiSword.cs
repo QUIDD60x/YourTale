@@ -11,7 +11,7 @@ namespace yourtale.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("SusiSwinger");
-            Tooltip.SetDefault("Thank you for the great sprites Susi!");
+            Tooltip.SetDefault("[c/ff0080:Thank you for the great sprites Susi!]");
         }
 
         public override void SetDefaults()
@@ -25,12 +25,13 @@ namespace yourtale.Items.Weapons.Melee
             Item.useAnimation = 15;
             Item.autoReuse = true;
             Item.rare = ItemRarityID.Pink;
+            Item.healLife = 5;
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.FoodPlatter, 1);
+            recipe.AddIngredient(ItemID.Apple, 1);
             recipe.AddIngredient(Mod.Find<ModItem>("LifeShard").Type, 1);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
