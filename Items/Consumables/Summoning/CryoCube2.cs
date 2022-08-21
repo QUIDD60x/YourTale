@@ -30,7 +30,7 @@ namespace yourtale.Items.Consumables.Summoning
 
         public override bool CanUseItem(Player player)
         {
-            return player.ZoneSnow && !NPC.AnyNPCs(Mod.Find<ModNPC>("Cryolisis").Type);
+            return player.ZoneSnow && !NPC.AnyNPCs(Mod.Find<ModNPC>("CryolisisBody").Type);
         }
 
         public override void AddRecipes()
@@ -49,7 +49,7 @@ namespace yourtale.Items.Consumables.Summoning
             SoundEngine.PlaySound(SoundID.Roar, player.position);
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                NPC.SpawnOnPlayer(player.whoAmI, Mod.Find<ModNPC>("Cryolisis").Type);
+                NPC.SpawnOnPlayer(player.whoAmI, Mod.Find<ModNPC>("CryolisisBody").Type);
             }
             return true;
         }

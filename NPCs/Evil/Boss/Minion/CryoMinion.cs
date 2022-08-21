@@ -6,6 +6,7 @@ using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
 using yourtale.NPCs.Evil.Boss.Cryolisis;
+using yourtale.Projectiles.Evil;
 
 namespace yourtale.NPCs.Evil.Boss.Minion
 {
@@ -44,7 +45,7 @@ namespace yourtale.NPCs.Evil.Boss.Minion
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Minion Boss Minion");
+			DisplayName.SetDefault("Cryolisis Minion");
 			Main.npcFrameCount[Type] = 1;
 
 			// By default enemies gain health and attack if hardmode is reached. this NPC should not be affected by that
@@ -55,8 +56,8 @@ namespace yourtale.NPCs.Evil.Boss.Minion
 			NPCID.Sets.BossBestiaryPriority.Add(Type);
 
 			// Specify the debuffs it is immune to
-			NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
-			{
+			NPCDebuffImmunityData debuffData = new()
+            {
 				SpecificallyImmuneTo = new int[] {
 					BuffID.Poisoned,
 
@@ -123,19 +124,10 @@ namespace yourtale.NPCs.Evil.Boss.Minion
 		{
 			if (NPC.life <= 0)
 			{
-				// If this NPC dies, spawn some visuals
+                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
+                Vector2 position = Main.LocalPlayer.Center;
+                _ = Main.dust[Terraria.Dust.NewDust(position, 30, 30, DustID.DungeonWater, 0f, 0f, 0, new Color(255, 255, 255), 1.2209302f)];
 
-				int dustType = 59; // Some blue dust, read the dust guide on the wiki for how to find the perfect dust
-
-				for (int i = 0; i < 20; i++)
-				{
-					Vector2 velocity = NPC.velocity + new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f));
-					Dust dust = Dust.NewDustPerfect(NPC.Center, dustType, velocity, 26, Color.White, Main.rand.NextFloat(1.5f, 2.4f));
-
-					dust.noLight = true;
-					dust.noGravity = true;
-					dust.fadeIn = Main.rand.NextFloat(0.3f, 0.8f);
-				}
 			}
 		}
 
@@ -223,5 +215,5 @@ namespace yourtale.NPCs.Evil.Boss.Minion
 			Vector2 moveTo = toDestinationNormalized * speed;
 			NPC.velocity = (NPC.velocity * (inertia - 1) + moveTo) / inertia;
 		}
-	}
+    }
 }

@@ -17,14 +17,14 @@ namespace yourtale.Items.Consumables.Potions
 		{
 			Item.width = 8;
 			Item.height = 26;
-			Item.useStyle = 3;
+			Item.useStyle = ItemUseStyleID.DrinkLiquid;
 			Item.useAnimation = 15;
 			Item.useTime = 15;
 			Item.useTurn = true;
 			Item.UseSound = SoundID.Item3; //i have a list of sounds on my cheetsheat, or you can google them.
 			Item.maxStack = 30;
 			Item.consumable = true;
-			Item.rare = 5; //rarities are specified on my cheetsheat. item.rare = ItemRarityID.colour also works to specify one.
+			Item.rare = ItemRarityID.Pink; //rarities are specified on my cheetsheat. item.rare = ItemRarityID.colour also works to specify one.
 			Item.value = 1000; //i think 1 = 1 copper coin?
 			Item.buffType = ModContent.BuffType<Buffs.StoneMan>(); // Specify an existing buff to be applied when used.
 			Item.buffTime = 600; // The amount of time the buff declared in Item.buffType will last in ticks. 5400 / 60 is 90, so this buff will last 90 seconds.

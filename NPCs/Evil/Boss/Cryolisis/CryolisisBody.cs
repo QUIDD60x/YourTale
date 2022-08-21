@@ -85,7 +85,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
 
             if (Main.getGoodWorld)
             {
-                count += 100; // Increase by 5 if using the "For The Worthy" seed
+                count += 100; // Increase by 100 if using the "For The Worthy" seed
             }
 
             return count;
@@ -539,7 +539,6 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
 
                 Projectile.NewProjectile(entitySource, position, -Vector2.UnitY, type, damage, 0f, Main.myPlayer);
             }
-            int projectile = ProjectileID.Bullet;
         }
     }
 }
