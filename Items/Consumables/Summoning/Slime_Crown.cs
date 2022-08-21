@@ -12,17 +12,17 @@ namespace yourtale.Items.Consumables.Summoning
             Item.width = 24;
             Item.height = 22;
             Item.maxStack = 20;
-            Item.rare = 0;
+            Item.rare = ItemRarityID.Orange;
             Item.useAnimation = 45;
             Item.useTime = 45;
-            Item.useStyle = 4;
+            Item.useStyle = ItemUseStyleID.HoldUp;
             Item.consumable = false;
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Slime Crown");
-            Tooltip.SetDefault("\nSummons the King Slime \nNot consumable");
+            Tooltip.SetDefault("Summons the King Slime.\nNot consumable.");
         }
 
 
@@ -40,18 +40,18 @@ namespace yourtale.Items.Consumables.Summoning
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
 
-            /*recipe.AddRecipe();
+            recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.Gel, 20);
             recipe.AddIngredient(ItemID.PlatinumCrown);
             recipe.AddIngredient(null, "ManuscriptSlime", 1);
             recipe.AddTile(TileID.DemonAltar);
-            recipe.SetResult(this);*/
+            recipe.Register();
         }
 
         public override bool? UseItem(Player player)/* tModPorter Suggestion: Return null instead of false */
         {
             SoundEngine.PlaySound(SoundID.Roar, player.position);
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 NPC.SpawnOnPlayer(player.whoAmI, NPCID.KingSlime);
             }

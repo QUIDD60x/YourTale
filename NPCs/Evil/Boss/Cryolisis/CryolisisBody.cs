@@ -2,7 +2,6 @@
 using yourtale.NPCs.Evil.Boss.Minion;
 using yourtale.Items;
 using yourtale.Projectiles.Evil;
-using yourtale.Projectiles.Staffs;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -37,7 +36,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
         // More advanced usage of a property, used to wrap around to floats to act as a Vector2
         public Vector2 FirstStageDestination
         {
-            get => new Vector2(NPC.ai[1], NPC.ai[2]);
+            get => new(NPC.ai[1], NPC.ai[2]);
             set
             {
                 NPC.ai[1] = value.X;
@@ -63,7 +62,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
         public ref float RemainingShields => ref NPC.localAI[2];
 
         // We could also repurpose FirstStageTimer since it's unused in the second stage, or write "=> ref FirstStageTimer", but then we have to reset the timer when the state switch happens
-        public ref float SecondStageTimer_SpawnEyes => ref NPC.localAI[3];
+        public ref float SecondStageTimer_SpawnIce => ref NPC.localAI[3];
 
         // Do NOT try to use NPC.ai[4]/NPC.localAI[4] or higher indexes, it only accepts 0, 1, 2 and 3!
         // If you choose to go the route of "wrapping properties" for NPC.ai[], make sure they don't overlap (two properties using the same variable in different ways), and that you don't accidently use NPC.ai[] directly
@@ -120,7 +119,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             NPCID.Sets.BossBestiaryPriority.Add(Type);
 
             // Specify the debuffs it is immune to
-            NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
+            NPCDebuffImmunityData debuffData = new()
             {
                 SpecificallyImmuneTo = new int[] {
                     BuffID.Poisoned,
@@ -131,7 +130,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             NPCID.Sets.DebuffImmunitySets.Add(Type, debuffData);
 
             // Influences how the NPC looks in the Bestiary
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new(0)
             {
                 CustomTexturePath = "ExampleMod/Assets/Textures/Bestiary/MinionBoss_Preview",
                 PortraitScale = 0.6f, // Portrait refers to the full picture when clicking on the icon in the bestiary
@@ -144,18 +143,18 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
         {
             NPC.width = 180;
             NPC.height = 180;
-            NPC.damage = 45;
-            NPC.defense = 15;
-            NPC.lifeMax = 17500;
-            NPC.HitSound = SoundID.NPCHit1;
-            NPC.DeathSound = SoundID.NPCDeath1;
+            NPC.damage = 40;
+            NPC.defense = 10;
+            NPC.lifeMax = 4500;
+            NPC.HitSound = SoundID.Item25;
+            NPC.DeathSound = SoundID.Item4;
             NPC.knockBackResist = 0f;
             NPC.noGravity = true;
             NPC.noTileCollide = true;
             NPC.value = Item.buyPrice(gold: 5);
             NPC.SpawnWithHigherTime(30);
             NPC.boss = true;
-            NPC.npcSlots = 10f; // Take up open spawn slots, preventing random NPCs from spawning during the fight
+            NPC.npcSlots = 8f; // Take up open spawn slots, preventing random NPCs from spawning during the fight
 
             // Don't set immunities like this as of 1.4:
             // NPC.buffImmune[BuffID.Confused] = true;
@@ -183,9 +182,12 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            // Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
+            npcLoot.Add(ItemDropRule.Common(ItemID.Shiverthorn, 1, 3, 9));
+            npcLoot.Add(ItemDropRule.Common(ItemID.ShiverthornSeeds, 1, 5, 10));
+            npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("AncientShard").Type, 10, 5, 15));
+            npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("CorExitio").Type, 1, 7, 14));
 
-            // Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
+            /* Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
             //npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<MinionBossBag>()));
 
             // Trophies are spawned with 1/10 chance
@@ -198,7 +200,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             //npcLoot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<MinionBossPetItem>(), 4));
 
             // All our drops here are based on "not expert", meaning we use .OnSuccess() to add them into the rule, which then gets added
-            LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+            LeadingConditionRule notExpertRule = new(new Conditions.NotExpert());
 
             // Notice we use notExpertRule.OnSuccess instead of npcLoot.Add so it only applies in normal mode
             // Boss masks are spawned with 1/7 chance
@@ -221,7 +223,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             notExpertRule.OnSuccess(new DropOneByOne(itemType, parameters));
 
             // Finally add the leading rule
-            npcLoot.Add(notExpertRule);
+            npcLoot.Add(notExpertRule);*/
         }
 
         public override void OnKill()
@@ -242,7 +244,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.GreaterHealingPotion;
+            potionType = ItemID.HealingPotion;
         }
 
         public override bool CanHitPlayer(Player target, ref int cooldownSlot)
@@ -250,40 +252,6 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             cooldownSlot = ImmunityCooldownID.Bosses; // use the boss immunity cooldown counter, to prevent ignoring boss attacks by taking damage from other sources
             return true;
         }
-
-        /*public override void FindFrame(int frameHeight)
-        {
-            // This NPC animates with a simple "go from start frame to final frame, and loop back to start frame" rule
-            // In this case: First stage: 0-1-2-0-1-2, Second stage: 3-4-5-3-4-5, 5 being "total frame count - 1"
-            int startFrame = 0;
-            int finalFrame = 2;
-
-            if (SecondStage)
-            {
-                startFrame = 3;
-                finalFrame = Main.npcFrameCount[NPC.type] - 1;
-
-                if (NPC.frame.Y < startFrame * frameHeight)
-                {
-                    // If we were animating the first stage frames and then switch to second stage, immediately change to the start frame of the second stage
-                    NPC.frame.Y = startFrame * frameHeight;
-                }
-            }
-
-            int frameSpeed = 5;
-            NPC.frameCounter += 0.5f;
-            NPC.frameCounter += NPC.velocity.Length() / 10f; // Make the counter go faster with more movement speed
-            if (NPC.frameCounter > frameSpeed)
-            {
-                NPC.frameCounter = 0;
-                NPC.frame.Y += frameHeight;
-
-                if (NPC.frame.Y > finalFrame * frameHeight)
-                {
-                    NPC.frame.Y = startFrame * frameHeight;
-                }
-            }
-        }*/
 
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -472,7 +440,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             Vector2 toDestination = FirstStageDestination - NPC.Center;
             Vector2 toDestinationNormalized = toDestination.SafeNormalize(Vector2.UnitY);
             float speed = Math.Min(distance, toDestination.Length());
-            NPC.velocity = toDestinationNormalized * speed / 30;
+            NPC.velocity = toDestinationNormalized * speed / 25;
 
             if (FirstStageDestination != LastFirstStageDestination)
             {
@@ -515,8 +483,8 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             Vector2 toAbovePlayerNormalized = toAbovePlayer.SafeNormalize(Vector2.UnitY);
 
             // The NPC tries to go towards the offsetX position, but most likely it will never get there exactly, or close to if the player is moving
-            // This checks if the npc is "70% there", and then changes direction
-            float changeDirOffset = offsetX * 0.7f;
+            // This checks if the npc is "20% there", and then changes direction
+            float changeDirOffset = offsetX * 0.2f;
 
             if (NPC.direction == -1 && NPC.Center.X - changeDirOffset < abovePlayer.X ||
                 NPC.direction == 1 && NPC.Center.X + changeDirOffset > abovePlayer.X)
@@ -524,19 +492,19 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
                 NPC.direction *= -1;
             }
 
-            float speed = 8f;
-            float inertia = 40f;
+            float speed = 12f;
+            float inertia = 55f;
 
             // If the boss is somehow below the player, move faster to catch up
             if (NPC.Top.Y > player.Bottom.Y)
             {
-                speed = 12f;
+                speed = 16f;
             }
 
             Vector2 moveTo = toAbovePlayerNormalized * speed;
             NPC.velocity = (NPC.velocity * (inertia - 1) + moveTo) / inertia;
 
-            DoSecondStage_SpawnEyes(player);
+            DoSecondStage_SpawnIce(player);
 
             NPC.damage = NPC.defDamage;
 
@@ -545,32 +513,33 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             NPC.rotation = toPlayer.ToRotation() - MathHelper.PiOver2;
         }
 
-        private void DoSecondStage_SpawnEyes(Player player)
+        private void DoSecondStage_SpawnIce(Player player)
         {
-            // At 100% health, spawn every 90 ticks
-            // Drops down until 33% health to spawn every 30 ticks
-            float timerMax = Utils.Clamp((float)NPC.life / NPC.lifeMax, 0.33f, 1f) * 90;
+            // At 100% health, spawn every 75 ticks
+            // Drops down until 50% health to spawn every 30 ticks
+            float timerMax = Utils.Clamp((float)NPC.life / NPC.lifeMax, 0.5f, 1f) * 75;
 
-            SecondStageTimer_SpawnEyes++;
-            if (SecondStageTimer_SpawnEyes > timerMax)
+            SecondStageTimer_SpawnIce++;
+            if (SecondStageTimer_SpawnIce > timerMax)
             {
-                SecondStageTimer_SpawnEyes = 0;
+                SecondStageTimer_SpawnIce = 0;
             }
 
-            if (NPC.HasValidTarget && SecondStageTimer_SpawnEyes == 0 && Main.netMode != NetmodeID.MultiplayerClient)
+            if (NPC.HasValidTarget && SecondStageTimer_SpawnIce == 0 && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 // Spawn projectile randomly below player, based on horizontal velocity to make kiting harder, starting velocity 1f upwards
                 // (The projectiles accelerate from their initial velocity)
 
-                float kitingOffsetX = Utils.Clamp(player.velocity.X * 16, -100, 100);
+                float kitingOffsetX = Utils.Clamp(player.velocity.X * 30, -100, 100);
                 Vector2 position = player.Bottom + new Vector2(kitingOffsetX + Main.rand.Next(-100, 100), Main.rand.Next(50, 100));
 
-                int type = ModContent.ProjectileType<HealProj>(); //Change this Quidd -Quidd
-                int damage = NPC.damage / 2;
+                int type = ModContent.ProjectileType<CryolisisProj>();
+                int damage = NPC.damage + 15;
                 var entitySource = NPC.GetSource_FromAI();
 
                 Projectile.NewProjectile(entitySource, position, -Vector2.UnitY, type, damage, 0f, Main.myPlayer);
             }
+            int projectile = ProjectileID.Bullet;
         }
     }
 }

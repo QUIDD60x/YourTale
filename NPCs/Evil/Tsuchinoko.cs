@@ -117,7 +117,7 @@ namespace yourtale.NPCs.Evil
 					Vector2 direction = (target.Center - NPC.Center).SafeNormalize(Vector2.UnitX);
 					direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-					int projectile = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 1, Mod.Find<ModProjectile>("PosionSpit").Type, 5, 0, Main.myPlayer);
+					int projectile = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 1, Mod.Find<ModProjectile>("PoisonSpit").Type, 5, 0, Main.myPlayer);
 					Main.projectile[projectile].timeLeft = 300;
 					attackCounter = 500;
 					NPC.netUpdate = true;

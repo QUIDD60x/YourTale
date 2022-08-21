@@ -3,7 +3,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-//using yourtale.NPCs.Evil.Boss;  Currently does not work due to Cryolisis not being implemented.
+using yourtale.NPCs.Evil.Boss;
 
 namespace yourtale.Items.Consumables.Summoning
 {
@@ -14,10 +14,10 @@ namespace yourtale.Items.Consumables.Summoning
             Item.width = 32;
             Item.height = 32;
             Item.maxStack = 20;
-            Item.rare = 0;
+            Item.rare = ItemRarityID.Orange;
             Item.useAnimation = 45;
             Item.useTime = 45;
-            Item.useStyle = 4;
+            Item.useStyle = ItemUseStyleID.HoldUp;
             Item.consumable = true;
         }
 
@@ -31,7 +31,7 @@ namespace yourtale.Items.Consumables.Summoning
 
         public override bool CanUseItem(Player player)
         {
-            return player.ZoneSnow && !NPC.AnyNPCs(Mod.Find<ModNPC>("Cryolisis").Type);
+            return player.ZoneSnow && !NPC.AnyNPCs(Mod.Find<ModNPC>("CryolisisBody").Type);
         }
 
         public override void AddRecipes()
@@ -39,7 +39,7 @@ namespace yourtale.Items.Consumables.Summoning
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.IceBlock, 15);
             recipe.AddIngredient(ItemID.Shiverthorn, 2);
-            recipe.AddIngredient(null, "LifeShard", 2);
+            recipe.AddIngredient(null, "AncientShard", 2);
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
         }
@@ -47,9 +47,9 @@ namespace yourtale.Items.Consumables.Summoning
         public override bool? UseItem(Player player)/* tModPorter Suggestion: Return null instead of false */
         {
             SoundEngine.PlaySound(SoundID.Roar, player.position);
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                NPC.SpawnOnPlayer(player.whoAmI, Mod.Find<ModNPC>("Cryolisis").Type);
+                NPC.SpawnOnPlayer(player.whoAmI, Mod.Find<ModNPC>("CryolisisBody").Type);
             }
             return true;
         }

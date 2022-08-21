@@ -77,11 +77,11 @@ namespace yourtale.NPCs.Evil.Boss.Minion
 		{
 			NPC.width = 30;
 			NPC.height = 30;
-			NPC.damage = 15;
-			NPC.defense = 4;
-			NPC.lifeMax = 550;
-			NPC.HitSound = SoundID.NPCHit9;
-			NPC.DeathSound = SoundID.NPCDeath11;
+			NPC.damage = 25;
+			NPC.defense = 3;
+			NPC.lifeMax = 120;
+			NPC.HitSound = SoundID.Item30;
+			NPC.DeathSound = SoundID.Item4;
 			NPC.noGravity = true;
 			NPC.noTileCollide = true;
 			NPC.knockBackResist = 0.8f;

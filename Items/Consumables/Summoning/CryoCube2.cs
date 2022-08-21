@@ -14,10 +14,10 @@ namespace yourtale.Items.Consumables.Summoning
             Item.width = 32;
             Item.height = 32;
             Item.maxStack = 20;
-            Item.rare = 0;
+            Item.rare = ItemRarityID.Orange;
             Item.useAnimation = 45;
             Item.useTime = 45;
-            Item.useStyle = 4;
+            Item.useStyle = ItemUseStyleID.HoldUp;
             Item.consumable = false;
         }
 
@@ -47,7 +47,7 @@ namespace yourtale.Items.Consumables.Summoning
         public override bool? UseItem(Player player)/* tModPorter Suggestion: Return null instead of false */
         {
             SoundEngine.PlaySound(SoundID.Roar, player.position);
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 NPC.SpawnOnPlayer(player.whoAmI, Mod.Find<ModNPC>("Cryolisis").Type);
             }

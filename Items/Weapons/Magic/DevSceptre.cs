@@ -31,7 +31,7 @@ namespace yourtale.Items.Weapons.Magic
             Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item20;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<EvilCryolisisProj>();
+            Item.shoot = ModContent.ProjectileType<CryolisisProj>();
             Item.shootSpeed = 1f; //the speed at which the projectile goes flying out.
         }
     }

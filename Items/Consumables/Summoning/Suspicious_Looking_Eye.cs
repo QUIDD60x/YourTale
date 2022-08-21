@@ -12,17 +12,17 @@ namespace yourtale.Items.Consumables.Summoning
             Item.width = 30;
             Item.height = 20;
             Item.maxStack = 20;
-            Item.rare = 0;
+            Item.rare = ItemRarityID.Orange;
             Item.useAnimation = 45;
             Item.useTime = 45;
-            Item.useStyle = 4;
+            Item.useStyle = ItemUseStyleID.HoldUp;
             Item.consumable = false;
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Suspicious Looking Eye");
-            Tooltip.SetDefault("\nSummons the Eye of Cthulhu \nNot consumable");
+            Tooltip.SetDefault("Summons the Eye of Cthulhu.\nNot consumable.");
         }
 
 
@@ -43,7 +43,7 @@ namespace yourtale.Items.Consumables.Summoning
         public override bool? UseItem(Player player)/* tModPorter Suggestion: Return null instead of false */
         {
             SoundEngine.PlaySound(SoundID.Roar, player.position);
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 NPC.SpawnOnPlayer(player.whoAmI, NPCID.EyeofCthulhu);
             }
