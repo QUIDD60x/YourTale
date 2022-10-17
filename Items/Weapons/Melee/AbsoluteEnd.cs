@@ -14,7 +14,7 @@ namespace yourtale.Items.Weapons.Melee
 		public override void SetStaticDefaults()
 		{
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-			Tooltip.SetDefault("Ultimate test for the banshee class.");
+			Tooltip.SetDefault("test for the banshee class.");
 		}
 
 		public override void SetDefaults()

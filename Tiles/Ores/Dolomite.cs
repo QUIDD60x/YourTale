@@ -64,14 +64,19 @@ namespace yourtale.Tiles.Ores
 
 				progress.Message = "Adding in Dolomite...";
 
-				for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-04); k++)
+				for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-02); k++)
 				{
 					int x = WorldGen.genRand.Next(0, Main.maxTilesX);
 
 
 					int y = WorldGen.genRand.Next((int)WorldGen.rockLayer, Main.maxTilesY);
 
-					WorldGen.TileRunner(x, y, WorldGen.genRand.Next(3, 6), WorldGen.genRand.Next(2, 6), ModContent.TileType<Dolomite>());
+					//WorldGen.TileRunner(x, y, WorldGen.genRand.Next(3, 6), WorldGen.genRand.Next(2, 6), ModContent.TileType<Dolomite>());
+					Tile tile = Framing.GetTileSafely(x, y);
+					if (tile.HasTile && tile.TileType == TileID.MarbleBlock)
+					{
+						WorldGen.TileRunner(x, y, WorldGen.genRand.Next(7, 9), WorldGen.genRand.Next(8, 10), ModContent.TileType<Dolomite>());
+					}
 				}
 
 			}

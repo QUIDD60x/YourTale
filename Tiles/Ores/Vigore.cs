@@ -64,7 +64,7 @@ namespace yourtale.Tiles.Ores
 
                 progress.Message = "Adding in Vigore...";
 
-                for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-09); k++)
+                for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-07); k++)
                 {
                     int x = WorldGen.genRand.Next(0, Main.maxTilesX);
 

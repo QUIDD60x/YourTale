@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using Terraria.IO;
+using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
 
 namespace yourtale.Tiles.Ores
@@ -82,7 +83,12 @@ namespace yourtale.Tiles.Ores
 
 					// Then, we call WorldGen.TileRunner with random "strength" and random "steps", as well as the Tile we wish to place.
 					// Feel free to experiment with strength and step to see the shape they generate.
-					WorldGen.TileRunner(x, y, WorldGen.genRand.Next(5, 8), WorldGen.genRand.Next(2, 5), ModContent.TileType<FlintDeposit>());
+					//WorldGen.TileRunner(x, y, WorldGen.genRand.Next(5, 8), WorldGen.genRand.Next(2, 5), ModContent.TileType<FlintDeposit>());
+					Tile tile = Framing.GetTileSafely(x, y);
+					if (tile.HasTile && tile.TileType == TileID.Dirt || tile.HasTile && tile.TileType == TileID.ClayBlock)
+					{
+						WorldGen.TileRunner(x, y, WorldGen.genRand.Next(5, 8), WorldGen.genRand.Next(2, 3), ModContent.TileType<FlintDeposit>());
+					}
 				}
 
 			}
