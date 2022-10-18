@@ -43,7 +43,8 @@ namespace yourtale.NPCs.Evil
             // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				// Sets the spawning conditions of this NPC that is listed in the bestiary.
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert,
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert,
 
 				// Sets the description of this NPC that is listed in the bestiary.
 				new FlavorTextBestiaryInfoElement("A zombie with an apparent crown on its head. Who knew they had a hierearchy?"),
@@ -54,10 +55,10 @@ namespace yourtale.NPCs.Evil
         {
             return SpawnCondition.OverworldNightMonster.Chance * 0.3f; //Might have fixed issue with spawns.
 
-            float chance = 0.1f;
+            float chance = 0f;
             if (!Main.dayTime)
             {
-                chance += .05f;
+                chance += 0;
                 if (spawnInfo.SpawnTileY <= Main.rockLayer && spawnInfo.SpawnTileY >= Main.worldSurface * 0.15)
                 {
                     chance += .1f;
