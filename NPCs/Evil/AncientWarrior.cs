@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
+using Terraria.GameContent.Bestiary;
 
 namespace yourtale.NPCs.Evil
 {
@@ -12,6 +13,13 @@ namespace yourtale.NPCs.Evil
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ancient Warrior");
+
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            {
+                // Influences how the NPC looks in the Bestiary
+                Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
         }
 
         public override void SetDefaults()
@@ -30,11 +38,22 @@ namespace yourtale.NPCs.Evil
             AIType = NPCID.Skeleton;
             AnimationType = NPCID.Zombie;
         }
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+				// Sets the spawning conditions of this NPC that is listed in the bestiary.
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
+
+				// Sets the description of this NPC that is listed in the bestiary.
+				new FlavorTextBestiaryInfoElement("An old warrior who's somehow escaped the dungeon. They seem to hold ancient artifacts..."),
+            });
+        }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 
-            float chance = 0.8f;
+            float chance = 0.01f;
 
             if (spawnInfo.SpawnTileY <= Main.maxTilesY -200 && spawnInfo.SpawnTileY >= Main.rockLayer)
             {

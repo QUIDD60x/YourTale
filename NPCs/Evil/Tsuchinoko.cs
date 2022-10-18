@@ -30,6 +30,17 @@ namespace yourtale.NPCs.Evil
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
 		}
+		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+		{
+			// We can use AddRange instead of calling Add multiple times in order to add multiple items at once
+			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+				// Sets the spawning conditions of this NPC that is listed in the bestiary.
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
+
+				// Sets the description of this NPC that is listed in the bestiary.
+				new FlavorTextBestiaryInfoElement("A mythical creature often sought after for its extremely venomous fangs."),
+			});
+		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
@@ -56,20 +67,6 @@ namespace yourtale.NPCs.Evil
 			// Head is 10 defence, body 20, tail 30.
 			NPC.CloneDefaults(NPCID.DiggerHead);
 			NPC.aiStyle = -1;
-		}
-
-
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			// We can use AddRange instead of calling Add multiple times in order to add multiple items at once
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				// Sets the spawning conditions of this NPC that is listed in the bestiary.
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
-
-				// Sets the description of this NPC that is listed in the bestiary.
-				new FlavorTextBestiaryInfoElement("You should not be seeing this, little jenova.")
-			});
 		}
 
 		public override void Init()

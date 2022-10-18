@@ -3,6 +3,7 @@ using Terraria.ModLoader.Utilities;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.GameContent.ItemDropRules;
+using Terraria.GameContent.Bestiary;
 using Terraria.DataStructures;
 #pragma warning disable CS0162
 
@@ -13,6 +14,12 @@ namespace yourtale.NPCs.Evil
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("King Zombie");
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            {
+                // Influences how the NPC looks in the Bestiary
+                Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
         }
 
         public override void SetDefaults()
@@ -30,6 +37,17 @@ namespace yourtale.NPCs.Evil
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Zombie]; //Main.npcFrameCount[3];
             AIType = NPCID.Zombie; // aiType = 3;
             AnimationType = NPCID.Zombie; // animationType = 3;
+        }
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+				// Sets the spawning conditions of this NPC that is listed in the bestiary.
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert,
+
+				// Sets the description of this NPC that is listed in the bestiary.
+				new FlavorTextBestiaryInfoElement("A zombie with an apparent crown on its head. Who knew they had a hierearchy?"),
+            });
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

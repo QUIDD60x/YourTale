@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.GameContent.ItemDropRules;
+using Terraria.GameContent.Bestiary;
 using yourtale.Items.Placeables;
 using yourtale.Items.Accessories;
 using yourtale.Dusts;
@@ -14,6 +15,12 @@ namespace yourtale.NPCs.Evil
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ice Pixie");
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            {
+                // Influences how the NPC looks in the Bestiary
+                Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
+            };
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
         }
 
         public override void SetDefaults()
@@ -35,6 +42,18 @@ namespace yourtale.NPCs.Evil
             BannerItem = Item.BannerToItem(Banner);
             NPC.noGravity = true;
             //npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/NPCHit/Spacey"); EXTRMELY USEFUL
+        }
+
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+				// Sets the spawning conditions of this NPC that is listed in the bestiary.
+				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
+
+				// Sets the description of this NPC that is listed in the bestiary.
+				new FlavorTextBestiaryInfoElement("A weaker pixie. It seems to be uncontained by the forces of light and dark."),
+            });
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
