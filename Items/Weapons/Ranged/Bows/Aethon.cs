@@ -14,7 +14,7 @@ namespace yourtale.Items.Weapons.Ranged.Bows
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Watch your liver.");
+			Tooltip.SetDefault("Shoots rapid piercing feathers, that can randomly home.\nWatch your liver.");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}

@@ -12,7 +12,7 @@ namespace yourtale.Items.Weapons.Ranged.Projectiles.Arrows
 		{
 			Tooltip.SetDefault("Send those bogies to the wind."); // The item's description, can be set to whatever you want.
 
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
+			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
 		}
 
 		public override void SetDefaults()
@@ -28,7 +28,8 @@ namespace yourtale.Items.Weapons.Ranged.Projectiles.Arrows
 			Item.rare = ItemRarityID.Green;
 			Item.shoot = ModContent.ProjectileType<HarpyShotProj>(); // The projectile that weapons fire when using this item as ammunition.
 			Item.shootSpeed = 16f; // The speed of the projectile.
-			Item.ammo = AmmoID.Arrow; // The ammo class this ammo belongs to.
+			Item.ammo = AmmoID.Bullet; // The ammo class this ammo belongs to.
+			Item.ammo = Item.type;
 		}
 
 		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
@@ -37,7 +38,7 @@ namespace yourtale.Items.Weapons.Ranged.Projectiles.Arrows
 			CreateRecipe()
 				.AddIngredient(ItemID.Feather)
 				.AddIngredient(ItemID.WoodenArrow, 3)
-				.AddTile(TileID.WorkBenches)
+				.AddTile(TileID.SkyMill)
 				.Register();
 		}
 	}
