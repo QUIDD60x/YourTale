@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using yourtale.Dusts;
 
 namespace yourtale.Projectiles.Spears
 {
@@ -70,18 +71,16 @@ namespace yourtale.Projectiles.Spears
 				// These dusts are added later, for the 'ExampleMod' effect
 				if (Main.rand.NextBool(3))
 				{
-					Dust dust;
-					// You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-					Vector2 position = Main.LocalPlayer.Center;
-					dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, 14, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
-					dust.noGravity = true;
-					dust.fadeIn = 0.627907f;
-
+					Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<Sparkle>(), Projectile.velocity.X * 2f, Projectile.velocity.Y * 2f, Alpha: 128, Scale: 1.2f);
 				}
 
+				if (Main.rand.NextBool(4))
+				{
+					Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<Sparkle>(), Alpha: 128, Scale: 0.3f);
+				}
 			}
 
-				return false; // Don't execute vanilla AI.
+			return false; // Don't execute vanilla AI.
 		}
 	}
 }
