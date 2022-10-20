@@ -1,11 +1,10 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Buffs;
 
 namespace yourtale.Items.Consumables.Potions
 {
-	public class StoneMan : ModItem
+    public class StoneMan : ModItem
 	{
 		public override void SetStaticDefaults() //this is a debug potion, but still usable.
 		{
@@ -26,7 +25,7 @@ namespace yourtale.Items.Consumables.Potions
 			Item.consumable = true;
 			Item.rare = ItemRarityID.Pink; //rarities are specified on my cheetsheat. item.rare = ItemRarityID.colour also works to specify one.
 			Item.value = 1000; //i think 1 = 1 copper coin?
-			Item.buffType = ModContent.BuffType<Buffs.StoneMan>(); // Specify an existing buff to be applied when used.
+			Item.buffType = ModContent.BuffType<YourTale.Buffs.Good.StoneMan>(); // Specify an existing buff to be applied when used.
 			Item.buffTime = 600; // The amount of time the buff declared in Item.buffType will last in ticks. 5400 / 60 is 90, so this buff will last 90 seconds.
 		}
 

@@ -8,15 +8,15 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 
-namespace yourtale.Buffs
-{ 
-    public class StoneMan : ModBuff
+namespace yourtale.Buffs.Bad
+{
+    public class Melting : ModBuff
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Rock Solid");
-            Description.SetDefault("You're stuck between a rock and a... nother rock.");
-            Main.debuff[Type] = false; //Debuffs cannot be canceled, buffs can. Make sure to include this
+            DisplayName.SetDefault("Tsuchinoko Poison");
+            Description.SetDefault("Your skin is melting off?!");
+            Main.debuff[Type] = true; //Debuffs cannot be canceled, buffs can. Make sure to include this!
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
@@ -27,10 +27,10 @@ namespace yourtale.Buffs
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            player.lifeRegen += 36;
-            player.endurance *= 5;
-            player.statDefense *= 5;
-            player.AddBuff(BuffID.Stoned, 6);
+            player.lifeRegen /= 2;  //divides life regen in half? IDK if this is good or bad yet, messing with life regen is annoying.
+            player.GetDamage(DamageClass.Melee) -= 0.5f; //these decrease melee damage, move speed, and total amount of hearts respectively.
+            player.moveSpeed -= 0.7f;
+            player.statLifeMax2 -=20;
         }
     }
 }
