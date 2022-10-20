@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using yourtale.Rarities;
 using yourtale.Tiles.Furniture;
 
-namespace yourtale.Items.Weapons.Melee
+namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class HerosEnd : ModItem
     {
@@ -30,7 +30,7 @@ namespace yourtale.Items.Weapons.Melee
             Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
             Vector2 position = Main.LocalPlayer.Center;
-            dust = Terraria.Dust.NewDustDirect(position, 0, 0, DustID.Granite, 0f, 0f, 0, new Color(255, 255, 255), 0.1f);
+            dust = Dust.NewDustDirect(position, 0, 0, DustID.Granite, 0f, 0f, 0, new Color(255, 255, 255), 0.1f);
             dust.noGravity = false;
             dust.fadeIn = 1.4302325f;
         }
@@ -38,7 +38,7 @@ namespace yourtale.Items.Weapons.Melee
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
             base.OnHitNPC(player, target, damage, knockBack, crit);
-            
+
             if (Main.rand.NextBool(50))
             {
                 Item.damage = 25056;
@@ -56,7 +56,7 @@ namespace yourtale.Items.Weapons.Melee
             Dust dust;
             // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
             Vector2 position = Main.LocalPlayer.Center;
-            dust = Terraria.Dust.NewDustDirect(position, 0, 0, DustID.Granite, 0f, 0f, 0, new Color(255, 255, 255), 1f);
+            dust = Dust.NewDustDirect(position, 0, 0, DustID.Granite, 0f, 0f, 0, new Color(255, 255, 255), 1f);
             dust.noGravity = true;
             dust.fadeIn = 1.4302325f;
 

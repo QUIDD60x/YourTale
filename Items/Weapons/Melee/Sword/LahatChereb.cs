@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using yourtale.Rarities;
 using yourtale.Projectiles.Swords;
 
-namespace yourtale.Items.Weapons.Melee
+namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class LahatChereb : ModItem
     {
@@ -35,7 +35,7 @@ namespace yourtale.Items.Weapons.Melee
             if (Main.rand.NextFloat() < 0.3604651f)
             {
                 Dust dust;
-                Vector2 position = Main.LocalPlayer.Center; dust = Terraria.Dust.NewDustDirect(position, 18, 30, DustID.HealingPlus, 0f, 0f, 0, new Color(255, 255, 255), 0.116279066f);
+                Vector2 position = Main.LocalPlayer.Center; dust = Dust.NewDustDirect(position, 18, 30, DustID.HealingPlus, 0f, 0f, 0, new Color(255, 255, 255), 0.116279066f);
                 dust.fadeIn = 1.6744187f;
             }
         }

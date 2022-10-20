@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using yourtale.Projectiles.Swords;
 using yourtale.Rarities;
 
-namespace yourtale.Items.Weapons.Melee
+namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class Chrysaor : ModItem
     {
@@ -26,7 +26,7 @@ namespace yourtale.Items.Weapons.Melee
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
-            
+
             if (Main.rand.NextBool(3))
             {
                 type = ProjectileID.EnchantedBeam;

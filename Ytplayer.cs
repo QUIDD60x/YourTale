@@ -8,7 +8,7 @@ using yourtale.Items;
 
 namespace yourtale
 {
-	public class ytplayer : ModPlayer
+	public class Ytplayer : ModPlayer
 	{
 		public bool tutorialPet = false;
 		public bool summonSpiritMinion = false;

@@ -1,6 +1,5 @@
 ﻿using yourtale.Dusts;
 using yourtale.Items;
-using yourtale.Items.Weapons.Melee;
 using yourtale.Items.Placeables.Furniture;
 using Microsoft.Xna.Framework;
 using System;
@@ -20,11 +19,12 @@ using Terraria.DataStructures;
 using System.Collections.Generic;
 using ReLogic.Content;
 using Terraria.ModLoader.IO;
+using YourTale.Items.Weapons.Melee.Sword;
 
 namespace yourtale.NPCs.Nice.Town
 {
-	// [AutoloadHead] and NPC.townNPC are extremely important and absolutely both necessary for any Town NPC to work at all.
-	[AutoloadHead]
+    // [AutoloadHead] and NPC.townNPC are extremely important and absolutely both necessary for any Town NPC to work at all.
+    [AutoloadHead]
 	public class SisterOfSteel : ModNPC
 	{
 		public int NumberOfTimesTalkedTo = 0;

@@ -47,10 +47,10 @@ namespace yourtale.Items.Weapons.Ranged.Bows
 			Item.noMelee = true;
 
 			// Gun Properties
-			//Item.shoot = ProjectileID.PurificationPowder; // For some reason, all the guns in the vanilla source have this.
+			Item.shoot = ProjectileID.PurificationPowder; // For some reason, all the guns in the vanilla source have this.
 			Item.shoot = ProjectileID.Leaf;
 			Item.shootSpeed = 12f; // The speed of the projectile (measured in pixels per frame.)
-			//Item.useAmmo = Will add a custom ammo soon, too lazy rn.
+			Item.useAmmo = ItemID.WoodenArrow;
 		}
 
 		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
@@ -77,6 +77,10 @@ namespace yourtale.Items.Weapons.Ranged.Bows
 			if (Main.rand.NextBool(3))
 			{
 				type = ProjectileID.CrystalLeafShot;
+			}
+			if (type == ProjectileID.WoodenArrowFriendly)
+			{
+				type = ProjectileID.Leaf;
 			}
 		}
 

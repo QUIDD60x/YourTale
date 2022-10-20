@@ -5,7 +5,7 @@ using Terraria.Audio;
 using yourtale.Rarities;
 using Microsoft.Xna.Framework;
 
-namespace yourtale.Items.Weapons.Melee
+namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class SeraphClaws : ModItem
     {

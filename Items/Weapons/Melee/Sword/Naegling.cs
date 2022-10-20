@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using yourtale.Rarities;
 
-namespace yourtale.Items.Weapons.Melee
+namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class Naegling : ModItem
     {

@@ -39,7 +39,7 @@ namespace yourtale.NPCs
 		// Any drop rules in ModifyGlobalLoot should only run once. Everything else should go in ModifyNPCLoot.
 		public override void ModifyGlobalLoot(GlobalLoot globalLoot)
 		{
-			// If the ExampleSoulCondition is true, drop ExampleSoul 20% of the time. See Common/ItemDropRules/DropConditions/ExampleSoulCondition.cs for how it's determined
+			// If the ExampleSoulCondition is true, drop ExampleSoul 5% of the time. See Common/ItemDropRules/DropConditions/ExampleSoulCondition.cs for how it's determined
 			globalLoot.Add(ItemDropRule.ByCondition(new YTSoulCondition(), ModContent.ItemType<CorExitio>(), 5, 1, 1));
 		}
 	}

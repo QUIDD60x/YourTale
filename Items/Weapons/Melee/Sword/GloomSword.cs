@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using yourtale.Projectiles.Swords;
 using yourtale.Rarities;
 
-namespace yourtale.Items.Weapons.Melee
+namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class GloomSword : ModItem
     {
@@ -34,7 +34,7 @@ namespace yourtale.Items.Weapons.Melee
         {
             Dust dust;
             Vector2 position = Main.LocalPlayer.Center;
-            dust = Terraria.Dust.NewDustDirect(position, 0, 0, DustID.Granite, 0f, 0f, 0, new Color(255, 255, 255), 0.3f);
+            dust = Dust.NewDustDirect(position, 0, 0, DustID.Granite, 0f, 0f, 0, new Color(255, 255, 255), 0.3f);
             dust.noGravity = true;
             dust.fadeIn = 1.4302325f;
         }

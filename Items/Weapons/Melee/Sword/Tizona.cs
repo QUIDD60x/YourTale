@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using yourtale.Rarities;
 
-namespace yourtale.Items.Weapons.Melee
+namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class Tizona : ModItem
     {
@@ -32,7 +32,7 @@ namespace yourtale.Items.Weapons.Melee
                 Dust dust;
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                 Vector2 position = Main.LocalPlayer.Center;
-                dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, DustID.GemSapphire, 0.4651165f, -0.6976738f, 0, new Color(255, 255, 255), 0.69767445f)];
+                dust = Main.dust[Dust.NewDust(position, 30, 30, DustID.GemSapphire, 0.4651165f, -0.6976738f, 0, new Color(255, 255, 255), 0.69767445f)];
                 dust.fadeIn = 1.0116279f;
             }
 
