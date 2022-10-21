@@ -67,18 +67,6 @@ namespace yourtale.Items.Weapons.Melee.Spear
 				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<AncientBrownDust>());
 		}
 
-		//hit effect currently doesn't work, idk why atm.
-        public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
-        {
-            base.ModifyHitNPC(player, target, ref damage, ref knockBack, ref crit);
-			target.AddBuff(ModContent.BuffType<Crush>(), 1000);
-			target.stepSpeed = 0;
-			target.defense = 0;
-			target.AddBuff(BuffID.Slow, 100);
-			player.AddBuff(ModContent.BuffType<Crush>(), 1000);
-
-		}
-
         public override void AddRecipes()
 		{
 			CreateRecipe()
