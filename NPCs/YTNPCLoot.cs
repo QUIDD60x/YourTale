@@ -3,6 +3,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using yourtale.Items;
+using YourTale.Items.Weapons.Melee.Sword;
 using YourTale.DropConditions;
 
 namespace yourtale.NPCs
@@ -31,6 +32,11 @@ namespace yourtale.NPCs
 			if (npc.type == NPCID.EyeofCthulhu || npc.type == NPCID.KingSlime || npc.type == NPCID.EaterofWorldsHead || npc.type == NPCID.BrainofCthulhu || npc.type == NPCID.QueenBee || npc.type == NPCID.SkeletronHead || npc.type == NPCID.Deerclops || npc.type == NPCID.WallofFlesh || npc.type == NPCID.QueenSlimeBoss || npc.type == NPCID.Retinazer || npc.type == NPCID.Spazmatism || npc.type == NPCID.SkeletronPrime || npc.type == NPCID.Plantera || npc.type == NPCID.Golem || npc.type == NPCID.DukeFishron || npc.type == NPCID.EmpressButterfly || npc.type == NPCID.CultistBoss || npc.type == NPCID.MoonLordCore)
             {
 				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CorExitio>(), 1, 9, 15));
+            }
+			if (npc.type == NPCID.WallofFlesh)
+            {
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BallSword>(), 1));
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<YellowBall>(), 1));
             }
 		}
 
