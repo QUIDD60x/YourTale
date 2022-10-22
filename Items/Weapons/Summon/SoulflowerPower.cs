@@ -8,14 +8,16 @@ using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+#pragma warning disable ChangeMagicNumberToID // Change magic numbers into appropriate ID values
+
 namespace yourtale.Items.Weapons.Summon
 {
-	public class FlowerSummonBuff : ModBuff
+	public class SoulflowerSummonBuff : ModBuff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Flower Power");
-			Description.SetDefault("It smells nice!");
+			DisplayName.SetDefault("Soulflower Power");
+			Description.SetDefault("There's still some effort within it.\nSummons a flower that takes only 1/2 of a minion slot\nThe flower will die after 15 hits.");
 
 			Main.buffNoSave[Type] = true; // This buff won't save when you exit the world
 			Main.buffNoTimeDisplay[Type] = true; // The time remaining won't display on this buff
@@ -24,8 +26,9 @@ namespace yourtale.Items.Weapons.Summon
 		public override void Update(Player player, ref int buffIndex)
 		{
 			// If the minions exist reset the buff time, otherwise remove the buff from the player
-			if (player.ownedProjectileCounts[ModContent.ProjectileType<FlowerMinionProj>()] > 0)
+			if (player.ownedProjectileCounts[ModContent.ProjectileType<SoulflowerMinionProj>()] > 0)
 			{
+				player.lifeRegen += 4;
 				player.buffTime[buffIndex] = 18000;
 			}
 			else
@@ -36,12 +39,12 @@ namespace yourtale.Items.Weapons.Summon
 		}
 	}
 
-	public class FlowerPowerItem : ModItem
+	public class SoulflowerItem : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Flower of Power");
-			Tooltip.SetDefault("Summons a flower to fight for you");
+			DisplayName.SetDefault("Light's delicate bloom");
+			Tooltip.SetDefault("Summons a soul-tapped flower to fight for you");
 
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true; // This lets the player target anywhere on the whole screen while using a controller
@@ -50,24 +53,25 @@ namespace yourtale.Items.Weapons.Summon
 
 		public override void SetDefaults()
 		{
-			Item.damage = 30;
-			Item.knockBack = 3f;
+			Item.damage = 70;
+			Item.knockBack = 1;
 			Item.mana = 10; // mana cost
 			Item.width = 32;
 			Item.height = 32;
 			Item.useTime = 36;
 			Item.useAnimation = 36;
 			Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
-			Item.value = Item.sellPrice(gold: 2);
-			Item.rare = ItemRarityID.Green;
+			Item.value = Item.sellPrice(gold: 3, silver: 50);
+			Item.rare = ItemRarityID.Yellow;
 			Item.UseSound = SoundID.Item44; // What sound should play when using the item
+			Item.autoReuse = true;
 
 			// These below are needed for a minion weapon
 			Item.noMelee = true; // this item doesn't do any melee damage
 			Item.DamageType = DamageClass.Summon; // Makes the damage register as summon. If your item does not have any damage type, it becomes true damage (which means that damage scalars will not affect it). Be sure to have a damage type
-			Item.buffType = ModContent.BuffType<FlowerSummonBuff>();
+			Item.buffType = ModContent.BuffType<SoulflowerSummonBuff>();
 			// No buffTime because otherwise the item tooltip would say something like "1 minute duration"
-			Item.shoot = ModContent.ProjectileType<FlowerMinionProj>(); // This item creates the minion projectile
+			Item.shoot = ModContent.ProjectileType<SoulflowerMinionProj>(); // This item creates the minion projectile
 		}
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
@@ -93,9 +97,10 @@ namespace yourtale.Items.Weapons.Summon
 		public override void AddRecipes()
 		{
 			CreateRecipe()
-				.AddIngredient(ModContent.ItemType<LifeShard>(), 2)
+				.AddIngredient(ModContent.ItemType<FlowerPowerItem>(), 1)
 				.AddIngredient(ItemID.Sunflower, 5)
-				.AddTile(TileID.WorkBenches)
+				.AddIngredient(ItemID.Ectoplasm, 5)
+				.AddTile(TileID.MythrilAnvil)
 				.Register();
 		}
 	}
@@ -104,11 +109,11 @@ namespace yourtale.Items.Weapons.Summon
 	// Its attack pattern is simple: If an enemy is in range of 43 tiles, it will fly to it and deal contact damage
 	// If the player targets a certain NPC with right-click, it will fly through tiles to it
 	// If it isn't attacking, it will float near the player with minimal movement
-	public class FlowerMinionProj : ModProjectile
+	public class SoulflowerMinionProj : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Flower minion");
+			DisplayName.SetDefault("Sunflower Minion");
 			// Sets the amount of frames this minion has on its spritesheet
 			Main.projFrames[Projectile.type] = 4;
 			// This is necessary for right-click targeting
@@ -130,8 +135,8 @@ namespace yourtale.Items.Weapons.Summon
 			Projectile.friendly = true; // Only controls if it deals damage to enemies on contact (more on that later)
 			Projectile.minion = true; // Declares this as a minion (has many effects)
 			Projectile.DamageType = DamageClass.Summon; // Declares the damage type (needed for it to deal damage)
-			Projectile.minionSlots = 1f; // Amount of slots this minion occupies from the total minion slots available to the player (more on that later)
-			Projectile.penetrate = -1; // Needed so the minion doesn't despawn on collision with enemies or tiles
+			Projectile.minionSlots = 0.5f; // Amount of slots this minion occupies from the total minion slots available to the player (more on that later)
+			Projectile.penetrate = 15; // Needed so the minion doesn't despawn on collision with enemies or tiles
 		}
 
 		// Here you can decide if your minion breaks things like grass or pots
@@ -146,13 +151,18 @@ namespace yourtale.Items.Weapons.Summon
 			return true;
 		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            base.OnHitNPC(target, damage, knockback, crit);
-        }
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			base.OnHitNPC(target, damage, knockback, crit);
+			target.defense /= 2;
+			Dust dust;
+			Vector2 position = Main.LocalPlayer.Center;
+            dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, 159, 0f, 0f, 118, new Color(0, 222, 255), 1f)];
+			dust.fadeIn = 0.76744187f;
+		}
 
-        // The AI of this minion is split into multiple methods to avoid bloat. This method just passes values between calls actual parts of the AI.
-        public override void AI()
+		// The AI of this minion is split into multiple methods to avoid bloat. This method just passes values between calls actual parts of the AI.
+		public override void AI()
 		{
 			Player owner = Main.player[Projectile.owner];
 
@@ -188,12 +198,12 @@ namespace yourtale.Items.Weapons.Summon
 		private void GeneralBehavior(Player owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition)
 		{
 			Vector2 idlePosition = owner.Center;
-			idlePosition.Y -= 40f; // Go up 48 coordinates (three tiles from the center of the player)
+			idlePosition.Y -= 90f; // Go up 90 coordinates
 
 			// If your minion doesn't aimlessly move around when it's idle, you need to "put" it into the line of other summoned minions
 			// The index is projectile.minionPos
-			float minionPositionOffsetX = (10 + Projectile.minionPos * 40) * -owner.direction;
-			idlePosition.X += minionPositionOffsetX; // Go behind the player
+			float minionPositionOffsetX = (35 + Projectile.minionPos * 60) * -owner.direction; //was 10 and 40
+			idlePosition.X -= minionPositionOffsetX; // Go behind the player
 
 			// All of this code below this line is adapted from Spazmamini code (ID 388, aiStyle 66)
 
@@ -206,12 +216,12 @@ namespace yourtale.Items.Weapons.Summon
 				// Whenever you deal with non-regular events that change the behavior or position drastically, make sure to only run the code on the owner of the projectile,
 				// and then set netUpdate to true
 				Projectile.position = idlePosition;
-				Projectile.velocity *= 0.1f;
+				Projectile.velocity *= 5; //was 0.1f
 				Projectile.netUpdate = true;
 			}
 
 			// If your minion is flying, you want to do this independently of any conditions
-			float overlapVelocity = 0.04f;
+			float overlapVelocity = 0.7f; //was 0.04
 
 			// Fix overlap with other minions
 			for (int i = 0; i < Main.maxProjectiles; i++)
@@ -244,7 +254,7 @@ namespace yourtale.Items.Weapons.Summon
 		private void SearchForTargets(Player owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter)
 		{
 			// Starting search distance
-			distanceFromTarget = 70f;
+			distanceFromTarget = 90f;
 			targetCenter = Projectile.position;
 			foundTarget = false;
 
@@ -300,8 +310,8 @@ namespace yourtale.Items.Weapons.Summon
 		private void Movement(bool foundTarget, float distanceFromTarget, Vector2 targetCenter, float distanceToIdlePosition, Vector2 vectorToIdlePosition)
 		{
 			// Default movement parameters (here for attacking)
-			float speed = 8f;
-			float inertia = 20f;
+			float speed = 14f; //was 8 and 20
+			float inertia = 45f;
 
 			if (foundTarget)
 			{
@@ -322,14 +332,14 @@ namespace yourtale.Items.Weapons.Summon
 				if (distanceToIdlePosition > 600f)
 				{
 					// Speed up the minion if it's away from the player
-					speed = 12f;
-					inertia = 60f;
+					speed = 18f;
+					inertia = 70f;
 				}
 				else
 				{
 					// Slow down the minion if closer to the player
 					speed = 4f;
-					inertia = 80f;
+					inertia = 100f; //was 80
 				}
 
 				if (distanceToIdlePosition > 20f)
@@ -339,13 +349,13 @@ namespace yourtale.Items.Weapons.Summon
 					// This is a simple movement formula using the two parameters and its desired direction to create a "homing" movement
 					vectorToIdlePosition.Normalize();
 					vectorToIdlePosition *= speed;
-					Projectile.velocity = (Projectile.velocity * (inertia - 1) + vectorToIdlePosition) / inertia;
+					Projectile.velocity = (Projectile.velocity * (inertia - 5) + vectorToIdlePosition) / inertia; //was 1
 				}
 				else if (Projectile.velocity == Vector2.Zero)
 				{
 					// If there is a case where it's not moving at all, give it a little "poke"
-					Projectile.velocity.X = -0.15f;
-					Projectile.velocity.Y = -0.05f;
+					Projectile.velocity.X = -0.35f;
+					Projectile.velocity.Y = -0.15f;
 				}
 			}
 		}
@@ -372,7 +382,7 @@ namespace yourtale.Items.Weapons.Summon
 			}
 
 			// Some visuals here
-			Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.78f);
+			Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.98f);
 		}
 	}
 }
