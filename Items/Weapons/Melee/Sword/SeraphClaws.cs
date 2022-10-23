@@ -30,7 +30,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
             Item.rare = ModContent.RarityType<Gold>();
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.crit = 77;
+            Item.crit = 1;
             Item.shootSpeed = 15;
         }
 

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
+using yourtale.Items.Shells;
 
 namespace yourtale.Items.Armor.Animula
 {
@@ -25,7 +26,7 @@ namespace yourtale.Items.Armor.Animula
             Item.width = 25;
             Item.height = 700;
             Item.value = Item.sellPrice(0, 0, 50, 75);
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.LightRed;
             Item.defense = 10;
         }
 
@@ -39,7 +40,7 @@ namespace yourtale.Items.Armor.Animula
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(Mod.Find<ModItem>("LifeShard").Type, 7);
-            recipe.AddIngredient(ItemID.Bone, 12);
+            recipe.AddIngredient(Mod.Find<ModItem>("LegMold"), 1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

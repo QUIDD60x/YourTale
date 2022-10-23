@@ -17,6 +17,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.BeamSword);
+            Item.crit = 70;
             Item.damage = 60;
             Item.useTime = 10;
             Item.useAnimation = 12;

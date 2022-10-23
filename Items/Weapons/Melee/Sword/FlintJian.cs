@@ -15,6 +15,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
         public override void SetDefaults()
         {
             Item.damage = 8;
+            Item.crit = 15;
             Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
             Item.width = 50;
             Item.height = 50;

@@ -25,6 +25,13 @@ namespace YourTale.Items.Weapons.Melee.Sword
             Item.crit = 99;
         }
 
+        private void HoldItem(Player player, NPC target)
+        {
+            base.HoldItem(player);
+            target.defense /= 2;
+            target.lifeMax *= 10;
+        }
+
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextFloat() < 0.7209302f)

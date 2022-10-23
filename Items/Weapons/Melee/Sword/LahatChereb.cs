@@ -21,6 +21,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
             Item.CloneDefaults(ItemID.FieryGreatsword);
             Item.shoot = Mod.Find<ModProjectile>("LahatCherebProj").Type;
             Item.damage = 60;
+            Item.crit = 5;
             Item.useTime = 20;
             Item.useAnimation = 20;
             Item.autoReuse = true;

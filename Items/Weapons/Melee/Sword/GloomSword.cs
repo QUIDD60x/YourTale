@@ -18,6 +18,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
         public override void SetDefaults()
         {
             Item.DamageType = DamageClass.Melee;
+            Item.crit = 0;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.UseSound = SoundID.Item1;
             Item.shoot = ProjectileID.VilePowder;
