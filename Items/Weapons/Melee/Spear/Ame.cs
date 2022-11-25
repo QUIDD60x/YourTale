@@ -67,6 +67,13 @@ namespace yourtale.Items.Weapons.Melee.Spear
 				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<AncientBrownDust>());
 		}
 
+        public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
+        {
+            base.ModifyHitNPC(player, target, ref damage, ref knockBack, ref crit);
+			player.statDefense += 1000;
+			target.wet = true;
+        }
+
         public override void AddRecipes()
 		{
 			CreateRecipe()

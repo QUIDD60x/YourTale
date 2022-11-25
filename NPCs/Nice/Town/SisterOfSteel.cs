@@ -57,13 +57,13 @@ namespace yourtale.NPCs.Nice.Town
 			// Set Example Person's biome and neighbor preferences with the NPCHappiness hook. You can add happiness text and remarks with localization (See an example in ExampleMod/Localization/en-US.lang).
 			// NOTE: The following code uses chaining - a style that works due to the fact that the SetXAffection methods return the same NPCHappiness instance they're called on.
 			NPC.Happiness
-				.SetBiomeAffection<HallowBiome>(AffectionLevel.Like) // Example Person prefers the forest.
-				.SetBiomeAffection<ForestBiome>(AffectionLevel.Dislike) // Example Person dislikes the snow.
-				.SetBiomeAffection<SnowBiome>(AffectionLevel.Love) // Example Person likes the Example Surface Biome
-				.SetNPCAffection(NPCID.Steampunker, AffectionLevel.Love) // Loves living near the dryad.
-				.SetNPCAffection(NPCID.Guide, AffectionLevel.Like) // Likes living near the guide.
-				.SetNPCAffection(NPCID.Princess, AffectionLevel.Dislike) // Dislikes living near the merchant.
-				.SetNPCAffection(NPCID.Demolitionist, AffectionLevel.Hate) // Hates living near the demolitionist.
+				.SetBiomeAffection<HallowBiome>(AffectionLevel.Like)
+				.SetBiomeAffection<ForestBiome>(AffectionLevel.Dislike)
+				.SetBiomeAffection<SnowBiome>(AffectionLevel.Love)
+				.SetNPCAffection(NPCID.Steampunker, AffectionLevel.Love)
+				.SetNPCAffection(NPCID.Dryad, AffectionLevel.Like)
+				.SetNPCAffection(NPCID.Princess, AffectionLevel.Dislike)
+				.SetNPCAffection(NPCID.Guide, AffectionLevel.Hate)
 			; // < Mind the semicolon!
 		}
 
@@ -264,32 +264,9 @@ namespace yourtale.NPCs.Nice.Town
 		// 	shop.item[nextSlot++].SetDefaults(ItemType<ExamplePickaxe>());
 		// 	shop.item[nextSlot++].SetDefaults(ItemType<ExampleHamaxe>());
 		//
-		// 	if (Main.LocalPlayer.HasBuff(BuffID.Lifeforce)) {
-		// 		shop.item[nextSlot++].SetDefaults(ItemType<ExampleHealingPotion>());
-		// 	}
 		//
-		// 	// if (Main.LocalPlayer.GetModPlayer<ExamplePlayer>().ZoneExample && !GetInstance<ExampleConfigServer>().DisableExampleWings) {
-		// 	// 	shop.item[nextSlot].SetDefaults(ItemType<ExampleWings>());
-		// 	// 	nextSlot++;
-		// 	// }
 		//
-		// 	if (Main.moonPhase < 2) {
-		// 		shop.item[nextSlot++].SetDefaults(ItemType<ExampleSword>());
-		// 	}
-		// 	else if (Main.moonPhase < 4) {
-		// 		// shop.item[nextSlot++].SetDefaults(ItemType<ExampleGun>());
-		// 		shop.item[nextSlot].SetDefaults(ItemType<ExampleBullet>());
-		// 	}
-		// 	else if (Main.moonPhase < 6) {
-		// 		// shop.item[nextSlot++].SetDefaults(ItemType<ExampleStaff>());
-		// 	}
 		//
-		// 	// todo: Here is an example of how your npc can sell items from other mods.
-		// 	// var modSummonersAssociation = ModLoader.TryGetMod("SummonersAssociation");
-		// 	// if (ModLoader.TryGetMod("SummonersAssociation", out Mod modSummonersAssociation)) {
-		// 	// 	shop.item[nextSlot].SetDefaults(modSummonersAssociation.ItemType("BloodTalisman"));
-		// 	// 	nextSlot++;
-		// 	// }
 		//
 		// 	// if (!Main.LocalPlayer.GetModPlayer<ExamplePlayer>().examplePersonGiftReceived && GetInstance<ExampleConfigServer>().ExamplePersonFreeGiftList != null) {
 		// 	// 	foreach (var item in GetInstance<ExampleConfigServer>().ExamplePersonFreeGiftList) {
@@ -309,7 +286,7 @@ namespace yourtale.NPCs.Nice.Town
 		}
 
 		// Make this Town NPC teleport to the King and/or Queen statue when triggered.
-		public override bool CanGoToStatue(bool toKingStatue) => true;
+		public override bool CanGoToStatue(bool toQueenStatue) => true;
 
 		// Make something happen when the npc teleports to a statue. Since this method only runs server side, any visual effects like dusts or gores have to be synced across all clients manually.
 		/*public override void OnGoToStatue(bool toKingStatue)
@@ -349,7 +326,7 @@ namespace yourtale.NPCs.Nice.Town
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
 		{
 			damage = 20;
-			knockback = 4f;
+			knockback = 2f;
 		}
 
 		public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)

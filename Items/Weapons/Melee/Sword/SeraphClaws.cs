@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using yourtale.Rarities;
 using Microsoft.Xna.Framework;
+using yourtale.Items.Shells;
 
 namespace YourTale.Items.Weapons.Melee.Sword
 {
@@ -48,7 +49,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(Mod.Find<ModItem>("flint").Type, 4);
+            recipe.AddIngredient(Mod.Find<ModItem>("SwordMold").Type, 1);
             recipe.AddIngredient(ItemID.HallowedBar, 8);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();

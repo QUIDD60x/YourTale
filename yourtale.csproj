@@ -16,6 +16,5 @@
     <Folder Include="Items\Banners\" />
     <Folder Include="Items\Dyes\" />
     <Folder Include="Items\Weapons\Ranged\Guns\" />
-    <Folder Include="Localization\" />
   </ItemGroup>
 </Project>

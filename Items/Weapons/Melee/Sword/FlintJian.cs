@@ -14,11 +14,12 @@ namespace YourTale.Items.Weapons.Melee.Sword
 
         public override void SetDefaults()
         {
-            Item.damage = 8;
+            Item.damage = 5;
             Item.crit = 15;
             Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
             Item.width = 50;
             Item.height = 50;
+            Item.scale *= 0.75f;
             Item.useTime = 20;
             Item.useAnimation = 20;
             Item.useStyle = ItemUseStyleID.Swing;

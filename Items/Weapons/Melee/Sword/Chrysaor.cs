@@ -19,6 +19,8 @@ namespace YourTale.Items.Weapons.Melee.Sword
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.TrueExcalibur);
+            Item.useTime = 12;
+            Item.useAnimation = 12;
             Item.damage = 90;
             Item.shootSpeed = 12;
             Item.rare = ModContent.RarityType<Gold>();
