@@ -26,8 +26,8 @@ namespace yourtale.Items.Accessories.Lockets
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.moveSpeed *= 0.5f;
-			player.jumpSpeedBoost -= 0.6f;
+			player.moveSpeed *= 0.9f;
+			player.jumpSpeedBoost -= 0.4f;
 			player.statLifeMax2 += 20;
 			player.statDefense += 4;
 			player.endurance += 0.25f;

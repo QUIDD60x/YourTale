@@ -26,8 +26,8 @@ namespace YourTale.Items.Weapons.Melee.Sword
             Item.useAnimation = 24;
             Item.reuseDelay = 28;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.knockBack = 1.5f;
-            Item.value = 0;
+            Item.knockBack = 3.5f;
+            Item.value = 5235;
             Item.rare = ItemRarityID.Red;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;

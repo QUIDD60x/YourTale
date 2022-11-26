@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace yourtale.Projectiles.Evil
 {
-	public class CryolisisProj : ModProjectile
+	public class FreezeFire : ModProjectile
 	{
 		public bool FadedIn
 		{

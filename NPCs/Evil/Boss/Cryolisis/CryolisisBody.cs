@@ -12,6 +12,7 @@ using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using System.IO;
 
 namespace yourtale.NPCs.Evil.Boss.Cryolisis
 {
@@ -176,7 +177,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             // Sets the description of this NPC that is listed in the bestiary
             bestiaryEntry.Info.AddRange(new List<IBestiaryInfoElement> {
                 new MoonLordPortraitBackgroundProviderBestiaryInfoElement(), // Plain black background
-				new FlavorTextBestiaryInfoElement("Some old guy stuck in a refrigerator.")
+				new FlavorTextBestiaryInfoElement("An ancient ice elemental, certainly the weakest of the bunch.")
             });
         }
 
@@ -186,6 +187,8 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             npcLoot.Add(ItemDropRule.Common(ItemID.ShiverthornSeeds, 1, 5, 10));
             npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("AncientShard").Type, 10, 5, 15));
             npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("CorExitio").Type, 1, 7, 14));
+            npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("IceHeart").Type, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("CryoliteLocket").Type, 1, 1));
 
             /* Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
             //npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<MinionBossBag>()));
@@ -280,8 +283,40 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             }
         }
 
+        private int attackCounter;
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(attackCounter);
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            attackCounter = reader.ReadInt32();
+        }
+
         public override void AI()
         {
+            if (Main.netMode != NetmodeID.MultiplayerClient)
+            {
+                if (attackCounter > 0)
+                {
+                    attackCounter--; // tick down the attack counter.
+                }
+
+                Player target = Main.player[NPC.target];
+                
+                if (attackCounter <= 0 && Vector2.Distance(NPC.Center, target.Center) < 800 && Collision.CanHit(NPC.Center, 1, 1, target.Center, 1, 1))
+                {
+                    Vector2 direction = (target.Center - NPC.Center).SafeNormalize(Vector2.UnitX);
+                    direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
+
+                    int projectile = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 15, ModContent.ProjectileType<IceBolt>(), 20, 2, Main.myPlayer);
+                    Main.projectile[projectile].timeLeft = 300;
+                    attackCounter = 500;
+                    NPC.netUpdate = true;
+                }
+            }
+
             // This should almost always be the first code in AI() as it is responsible for finding the proper player target
             if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)
             {
@@ -405,7 +440,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
                 FirstStageTimer = 0;
             }
 
-            float distance = 200; // Distance in pixels behind the player
+            float distance = 350; // Distance in pixels behind the player
 
             if (FirstStageTimer == 0)
             {
@@ -529,15 +564,16 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             {
                 // Spawn projectile randomly below player, based on horizontal velocity to make kiting harder, starting velocity 1f upwards
                 // (The projectiles accelerate from their initial velocity)
-
+                // This is all for the blue fire thing.
                 float kitingOffsetX = Utils.Clamp(player.velocity.X * 30, -100, 100);
                 Vector2 position = player.Bottom + new Vector2(kitingOffsetX + Main.rand.Next(-100, 100), Main.rand.Next(50, 100));
 
-                int type = ModContent.ProjectileType<CryolisisProj>();
-                int damage = NPC.damage + 15;
+                int type = ModContent.ProjectileType<FreezeFire>();
+                int damage = NPC.damage - 10;
                 var entitySource = NPC.GetSource_FromAI();
 
                 Projectile.NewProjectile(entitySource, position, -Vector2.UnitY, type, damage, 0f, Main.myPlayer);
+                // Hoping I can make a new projectile he will shoot, to make the fight more intresting.
             }
         }
     }

@@ -13,6 +13,7 @@ namespace yourtale.Items.Accessories
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Frost Heart");
             Tooltip.SetDefault("Cold as ice... \ndecreases overall speed but protects you."); // \n will add another line, very useful for big text.
         }
 
