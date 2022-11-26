@@ -37,13 +37,13 @@ namespace yourtale.Items.Consumables.Potions
 			}
 		}
 
-		public override void AddRecipes()
+		/*public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.ManaCrystal, 1);
 			recipe.AddIngredient<StarShard>(10);
 			(recipe.createItem.ModItem as LifePot1).timer = 60;
 			recipe.Register();
-		}
+		}*/
 	}
 }

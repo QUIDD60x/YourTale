@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using yourtale.Items;
 using YourTale.Items.Weapons.Melee.Sword;
 using YourTale.DropConditions;
+using yourtale.Items.Placeables;
 
 namespace yourtale.NPCs
 {
@@ -38,6 +39,19 @@ namespace yourtale.NPCs
 				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BallSword>(), 1));
 				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<YellowBall>(), 1));
             }
+		}
+
+		public override void SetupShop(int type, Chest shop, ref int nextSlot)
+		{
+			// This example does not use the AppliesToEntity hook, as such, we can handle multiple npcs here by using if statements.
+			if (type == NPCID.Dryad)
+			{
+				// Adding an item to a vanilla NPC is easy:
+				// This item sells for the normal price.
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<CorpseSeeds>());
+				shop.item[nextSlot].shopCustomPrice = 550;
+				nextSlot++; // Don't forget this line, it is essential.
+			}
 		}
 
 		// ModifyGlobalLoot allows you to modify loot that every NPC should be able to drop, preferably with a condition.
