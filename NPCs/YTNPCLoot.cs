@@ -34,11 +34,25 @@ namespace yourtale.NPCs
             {
 				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CorExitio>(), 1, 9, 15));
             }
-			if (npc.type == NPCID.WallofFlesh)
+			if (npc.type == NPCID.Retinazer)
             {
-				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BallSword>(), 1));
 				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<YellowBall>(), 1));
             }
+			if (npc.type == NPCID.TheDestroyer)
+            {
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GreenBall>(), 1));
+            }
+			if (npc.type == NPCID.Spazmatism)
+			{
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BlueBall>(), 1));
+			}
+			if (npc.type == NPCID.SkeletronPrime)
+			{
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OrangeBall>(), 1));
+			}
+
+
+
 		}
 
 		public override void SetupShop(int type, Chest shop, ref int nextSlot)
