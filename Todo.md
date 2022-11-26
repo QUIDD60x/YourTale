@@ -12,4 +12,3 @@ All things listed are bugs in whatever newest update this is on.
 1. Sister Of Steel NPC has bug in walking animation, and needs an attack animation with her weapon.
 2. Change the green trail on the Lahat Chereb projectile so it isn't an obvious clone of the chlorophyte bullet.
 3. Cryolisis randomly does like a billion damage for no reason on contact and instantly kills the player, I have no idea why.
-4. Currently a Tmodloader=side issue with Tile.type and Tile.active, so currently Cryolite, Vigore, and Dolomite cannot spawn in their respective biomes. (I cannot fix this.)

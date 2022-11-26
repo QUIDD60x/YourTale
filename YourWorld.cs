@@ -15,7 +15,7 @@ using System.IO;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
 using yourtale.Tiles.Ores;
-//using yourtale.NPCs.Evil.Boss;  Currently does not work due to Cryolisis not being in the game.
+using yourtale.NPCs.Evil.Boss;
 
 namespace yourtale
 {
@@ -33,6 +33,17 @@ namespace yourtale
             var downed = tag.GetList<string>("downed");
             downedCryolisis = downed.Contains("Cryolisis");
         }
+
+
+
+
+
+        //WARNING
+        //I'm 99% all of this code below is obsolete and will not work. Just about everything here was fixed somewhere else. I'm too lazy to put where, just think of it like finding a buried treasure (:
+
+
+
+
 
         /*public override TagCompound Save()
         {

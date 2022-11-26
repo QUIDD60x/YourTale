@@ -23,8 +23,8 @@ namespace yourtale.Items
 
         public override void SetDefaults()
         {
-            Item.width = 1;
-            Item.height = 1;
+            Item.width = 15;
+            Item.height = 15;
             Item.scale *= 1.45f;
             Item.maxStack = 999;
             Item.useStyle = ItemUseStyleID.Swing;
@@ -33,8 +33,7 @@ namespace yourtale.Items
             Item.useTurn = true;
             Item.autoReuse = true;
             Item.UseSound = SoundID.Item1;
-            Item.rare = ItemRarityID.White;
-            Item.createTile = TileType<Tiles.Ores.FlintDeposit>();
+            Item.rare = ItemRarityID.Green;
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
