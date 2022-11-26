@@ -38,7 +38,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
             recipe.AddIngredient(ItemID.IronBar, 4);
             recipe.AddIngredient(ItemID.Wood, 8);
             recipe.AddIngredient(ItemID.StoneBlock, 4);
-            recipe.AddIngredient(Mod.Find<ModItem>("starshard"), 20);
+            recipe.AddIngredient(Mod.Find<ModItem>("StarShard"), 20);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }
