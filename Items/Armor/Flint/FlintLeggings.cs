@@ -23,8 +23,10 @@ namespace yourtale.Items.Armor.Flint
         {
             Item.width = 22;
             Item.height = 24;
+
             Item.value = Item.sellPrice(silver: -1);
             Item.rare = ItemRarityID.White;
+
             Item.defense = 2;
         }
 

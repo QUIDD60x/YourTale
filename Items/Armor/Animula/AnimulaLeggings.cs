@@ -25,8 +25,10 @@ namespace yourtale.Items.Armor.Animula
         {
             Item.width = 25;
             Item.height = 700;
+
             Item.value = Item.sellPrice(0, 0, 50, 75);
             Item.rare = ItemRarityID.LightRed;
+
             Item.defense = 10;
         }
 

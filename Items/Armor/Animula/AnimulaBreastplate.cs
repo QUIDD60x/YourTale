@@ -25,8 +25,10 @@ namespace yourtale.Items.Armor.Animula
         {
             Item.width = 25;
             Item.height = 700; //height is very large due to the need for it to resemble the sprite, i haven't messed with this so idk if it's nessecary to be exact.
+
             Item.value = Item.sellPrice(0, 1, 25, 0);
             Item.rare = ItemRarityID.LightRed;
+
             Item.defense = 11; //this obviously means the amount of defense it gets
         }
 

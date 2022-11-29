@@ -18,13 +18,11 @@ namespace yourtale.Items.Accessories.Lockets
 
 		public override void SetDefaults()
 		{
+
 			Item.width = 20;
 			Item.height = 20;
-			Item.rare = ItemRarityID.White;
-		}
 
-		public override void UpdateAccessory(Player player, bool hideVisual)
-		{
+			Item.rare = ItemRarityID.White;
 		}
 
 		public override void AddRecipes()

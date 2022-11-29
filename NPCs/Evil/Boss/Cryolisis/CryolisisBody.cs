@@ -293,6 +293,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
         {
             attackCounter = reader.ReadInt32();
         }
+        public int bolt = ModContent.ProjectileType<IceBolt>();
 
         public override void AI()
         {
@@ -310,7 +311,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
                     Vector2 direction = (target.Center - NPC.Center).SafeNormalize(Vector2.UnitX);
                     direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-                    int projectile = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 15, ModContent.ProjectileType<IceBolt>(), 20, 2, Main.myPlayer);
+                    int projectile = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 15, bolt, 20, 2, Main.myPlayer);
                     Main.projectile[projectile].timeLeft = 300;
                     attackCounter = 500;
                     NPC.netUpdate = true;
@@ -558,6 +559,11 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             if (SecondStageTimer_SpawnIce > timerMax)
             {
                 SecondStageTimer_SpawnIce = 0;
+            }
+
+            if (bolt > timerMax)
+            {
+                bolt++;
             }
 
             if (NPC.HasValidTarget && SecondStageTimer_SpawnIce == 0 && Main.netMode != NetmodeID.MultiplayerClient)

@@ -11,14 +11,13 @@ using static Terraria.ModLoader.ModContent;
 
 namespace yourtale.Items.Armor.Cryolite
 {
-    [AutoloadEquip(EquipType.Head)] //helmets are where I (and most other mod creators) put the set bonus feature at, although you can put it anywhere it doesn't matter that much.
+    [AutoloadEquip(EquipType.Head)]
     public class CryoliteHelmet : ModItem
     {
         public virtual int Speed => 1;
 
         public override void SetStaticDefaults()
         {
-            base.SetStaticDefaults();
             DisplayName.SetDefault("Cryolite Helmet");
             Tooltip.SetDefault("Chilly!");
 
@@ -27,8 +26,10 @@ namespace yourtale.Items.Armor.Cryolite
         {
             Item.width = 25;
             Item.height = 700;
+
             Item.value = Item.sellPrice(silver: 12);
             Item.rare = ItemRarityID.Blue;
+
             Item.defense = 7;
         }
 

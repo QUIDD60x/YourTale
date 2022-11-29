@@ -17,11 +17,15 @@ namespace yourtale.Items.Accessories.Lockets
 		}
 
 		public override void SetDefaults()
-		{
+		{	
+
 			Item.width = 40;
 			Item.height = 40;
-			Item.accessory = true;
+
 			Item.rare = ItemRarityID.Green;
+
+			Item.accessory = true;
+			
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

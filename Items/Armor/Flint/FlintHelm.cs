@@ -16,7 +16,6 @@ namespace yourtale.Items.Armor.Flint
     {
         public override void SetStaticDefaults()
         {
-            base.SetStaticDefaults();
             DisplayName.SetDefault("Flint Helmet");
             Tooltip.SetDefault("Not good at all...");
 
@@ -25,8 +24,10 @@ namespace yourtale.Items.Armor.Flint
         {
             Item.width = 22;
             Item.height = 24;
+
             Item.value = Item.sellPrice(silver: -1);
             Item.rare = ItemRarityID.White;
+
             Item.defense = -1;
         }
 

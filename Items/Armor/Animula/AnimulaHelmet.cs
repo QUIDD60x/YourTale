@@ -19,7 +19,6 @@ namespace yourtale.Items.Armor.Animula
 
         public override void SetStaticDefaults()
         {
-            base.SetStaticDefaults();
             DisplayName.SetDefault("Animula Helm");
             Tooltip.SetDefault("Makes me feel smart!\n" +
                 "That grants extra max movement speed, for some reason.");
@@ -29,8 +28,10 @@ namespace yourtale.Items.Armor.Animula
         {
             Item.width = 25;
             Item.height = 700;
+
             Item.value = Item.sellPrice(0, 0, 85, 25);
             Item.rare = ItemRarityID.LightRed;
+
             Item.defense = 9;
         }
 

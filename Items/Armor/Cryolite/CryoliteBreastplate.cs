@@ -11,7 +11,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace yourtale.Items.Armor.Cryolite
 {
-    [AutoloadEquip(EquipType.Body)] // for that function when you can put the armour on in one click.
+    [AutoloadEquip(EquipType.Body)]
     public class CryoliteBreastplate : ModItem
     {
         public override void SetStaticDefaults()
@@ -22,10 +22,12 @@ namespace yourtale.Items.Armor.Cryolite
         public override void SetDefaults()
         {
             Item.width = 25;
-            Item.height = 700; //height is very large due to the need for it to resemble the sprite, i haven't messed with this so idk if it's nessecary to be exact.
+            Item.height = 700;
+
             Item.value = Item.sellPrice(silver: 14);
             Item.rare = ItemRarityID.Blue;
-            Item.defense = 9; //this obviously means the amount of defense it gets
+
+            Item.defense = 9;
         }
 
         public override void AddRecipes()

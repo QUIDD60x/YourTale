@@ -21,9 +21,11 @@ namespace yourtale.Items.Accessories
         {
             Item.width = 20; //best to leave these the same size as the sprite if possible.
             Item.height = 20;
-            Item.accessory = true; //will allow it to be equipped
+
             Item.value = Item.sellPrice(gold: 1);
             Item.rare = ItemRarityID.Blue;
+
+            Item.accessory = true; //will allow it to be equipped
         }
         
         public override void UpdateAccessory(Player player, bool hideVisual)

@@ -23,13 +23,17 @@ namespace yourtale.Items.Manuscripts
         {
             Item.width = 25;
             Item.height = 25;
+
             Item.maxStack = 999;
+
             Item.useStyle = 1;
             Item.useTime = 45;
             Item.useAnimation = 45;
             Item.useTurn = true;
             Item.autoReuse = false;
             Item.UseSound = SoundID.Item1;
+
+            Item.value = 2007;
             Item.rare = ItemRarityID.Green;
         }
     }
