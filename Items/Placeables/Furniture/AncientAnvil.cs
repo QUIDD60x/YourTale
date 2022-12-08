@@ -12,7 +12,7 @@ namespace yourtale.Items.Placeables.Furniture
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ancient Anvil");
-			Tooltip.SetDefault("Used by ancients to craft mystical equipment, it is too used to continue that tradition.");
+			Tooltip.SetDefault("Used by dead gods to craft mystical equipment, it can barely continue that tradition.");
 		}
 
 		public override void SetDefaults()
