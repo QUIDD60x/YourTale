@@ -8,7 +8,7 @@ using Terraria.ID;
 
 namespace yourtale
 {
-	public class ExampleModMenu : ModMenu
+	public class YTModMenu : ModMenu
 	{
 		// I'm not going to be using any special textures simply because I can't draw.
 		// private const string menuAssetPath = "yourtale/Assets/Textures/Menu"; // This Creates a constant variable representing the texture path, so we don't have to write it out multiple times
@@ -23,7 +23,7 @@ namespace yourtale
 
 		// public override ModSurfaceBackgroundStyle MenuBackgroundStyle => ModContent.GetInstance<ExampleSurfaceBackgroundStyle>();
 
-		public override string DisplayName => "[c/5EAFF1:Y][c/74acda:o][c/82abcc:u][c/96a9b8:r] [c/c1a48d:T][c/c1a48d:a][c/e7a067:l][c/e7a067:e] menu";
+		public override string DisplayName => "Your Tale menu";
 		// I think the amount of raw text data this contains literally pushes the menu switch button to the side. Looks like there's a new bug for the Tmodloader devs to fix?
 
 		public new bool IsSelected => MenuLoader.CurrentMenu == this;

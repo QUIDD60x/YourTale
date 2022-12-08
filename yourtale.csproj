@@ -15,6 +15,7 @@
     <Folder Include="Assets\Sounds\Items\Ranged\" />
     <Folder Include="Items\Banners\" />
     <Folder Include="Items\Dyes\" />
+    <Folder Include="Items\Misc\" />
     <Folder Include="Items\Weapons\Ranged\Guns\" />
   </ItemGroup>
 </Project>
