@@ -71,7 +71,7 @@ namespace yourtale.Tiles.Ores
 			protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
 			{
 
-				progress.Message = "Adding in Cryolite...";
+				progress.Message = "Adding in Cryolite..."; //asdfghjkl
 
 				for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
 				{
