@@ -12,11 +12,11 @@ using yourtale.Dusts;
 
 namespace yourtale.Items.Shells
 {
-    public class LegMold : ModItem
+    public class BowMold : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Armor Mold: Leggings");
+            DisplayName.SetDefault("Weapon Mold: Bow");
             Tooltip.SetDefault("Used as a base for powerful equipment.");
         }
 

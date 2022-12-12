@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using IL.Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace YourTale.Prefixes.Weapons
@@ -6,6 +7,12 @@ namespace YourTale.Prefixes.Weapons
     // This class serves as an example for declaring item 'prefixes', or 'modifiers' in other words.
     public class HighQuality : ModPrefix
     {
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Sure Shot");
+        }
+
         // We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
         public virtual float Power => 1f;
 
@@ -32,14 +39,14 @@ namespace YourTale.Prefixes.Weapons
         // Damage Multiplier, Knockback Multiplier, Use Time Multiplier, Scale Multiplier (Size), Shoot Speed Multiplier, Mana Multiplier (Mana cost), Crit Bonus.
         public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
         {
-            damageMult *= 1f + .30f * Power;
-            knockbackMult *= 1.5f + .50f * Power;
+            damageMult *= 1f + .20f * Power;
+            knockbackMult *= 1.2f + .30f * Power;
         }
 
         // Modify the cost of items with this modifier with this function.
         public override void ModifyValue(ref float valueMult)
         {
-            valueMult *= 1f + 0.05f * Power;
+            valueMult *= 1f + 0.07f * Power;
         }
 
         // This is used to modify most other stats of items which have this modifier.

@@ -76,9 +76,9 @@ namespace yourtale.NPCs.Evil.Boss.Minion
 
 		public override void SetDefaults()
 		{
-			NPC.width = 30;
-			NPC.height = 30;
-			NPC.damage = 25;
+			NPC.width = 70;
+			NPC.height = 70;
+			NPC.damage = 15;
 			NPC.defense = 3;
 			NPC.lifeMax = 120;
 			NPC.HitSound = SoundID.Item30;

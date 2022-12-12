@@ -15,7 +15,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
         public override void SetDefaults()
         {
             Item.damage = 10;
-            Item.crit = 35;
+            Item.crit = 12;
             Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
             Item.width = 40;
             Item.height = 40;
@@ -27,7 +27,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
             Item.value = 0;
             Item.rare = ItemRarityID.White;
             Item.UseSound = SoundID.Item1;
-            Item.autoReuse = true;
+            Item.autoReuse = false;
         }
 
         public override void AddRecipes()

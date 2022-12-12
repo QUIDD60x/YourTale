@@ -11,5 +11,6 @@ namespace yourtale.Items
 {
     public class ytGlobalItem : GlobalItem
     {
+        
     }
 }

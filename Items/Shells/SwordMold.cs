@@ -16,7 +16,7 @@ namespace yourtale.Items.Shells
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Weapon Mold-Sword");
+            DisplayName.SetDefault("Weapon Mold: Sword");
             Tooltip.SetDefault("Used as a base for powerful equipment.");
         }
 

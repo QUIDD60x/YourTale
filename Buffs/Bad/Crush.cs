@@ -14,11 +14,15 @@ namespace yourtale.Buffs.Bad
 		public override void Update(NPC npc, ref int buffIndex)
 		{
 			npc.GetGlobalNPC<CrushDebuffNPC>().markedWithCrush = true;
-			npc.defense = 0;
-			npc.knockBackResist = 100;
-			npc.velocity = Vector2.Zero;
+			npc.defense /= 2;
 		}
-	}
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            base.Update(player, ref buffIndex);
+			player.statDefense += 10;
+        }
+    }
 
 	public class CrushDebuffNPC : GlobalNPC
 	{

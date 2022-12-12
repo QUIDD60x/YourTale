@@ -9,8 +9,8 @@ namespace yourtale.Items.Placeables.Furniture
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Energy Charger");
-			Tooltip.SetDefault("Restores batteries in some mystical way");
+			DisplayName.SetDefault("Restorer");
+			Tooltip.SetDefault("It has the capability to restore ancient materials, using artifacts.");
 		}
 
 		public override void SetDefaults()

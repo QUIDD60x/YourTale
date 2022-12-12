@@ -13,6 +13,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System.IO;
+using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace yourtale.NPCs.Evil.Boss.Cryolisis
 {
@@ -561,11 +562,6 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
                 SecondStageTimer_SpawnIce = 0;
             }
 
-            if (bolt > timerMax)
-            {
-                bolt++;
-            }
-
             if (NPC.HasValidTarget && SecondStageTimer_SpawnIce == 0 && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 // Spawn projectile randomly below player, based on horizontal velocity to make kiting harder, starting velocity 1f upwards
@@ -575,11 +571,20 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
                 Vector2 position = player.Bottom + new Vector2(kitingOffsetX + Main.rand.Next(-100, 100), Main.rand.Next(50, 100));
 
                 int type = ModContent.ProjectileType<FreezeFire>();
-                int damage = NPC.damage - 10;
+                int damage = NPC.damage - 35;
                 var entitySource = NPC.GetSource_FromAI();
 
                 Projectile.NewProjectile(entitySource, position, -Vector2.UnitY, type, damage, 0f, Main.myPlayer);
                 // Hoping I can make a new projectile he will shoot, to make the fight more intresting.
+            }
+
+            if (NPC.HasValidTarget && SecondStageTimer_SpawnIce == 0 && Main.netMode != NetmodeID.MultiplayerClient)
+            {
+                var entitySource = NPC.GetSource_FromAI();
+                float kitingOffsetX = Utils.Clamp(player.velocity.X * 100, -1000, 1000);
+                Vector2 position = player.Bottom + new Vector2(kitingOffsetX + Main.rand.Next(-100, 1000), Main.rand.Next(50, 100));
+
+                Projectile.NewProjectile(entitySource, position, -Vector2.UnitY, ProjectileID.LightBeam, 15, 0f, Main.myPlayer);
             }
         }
     }

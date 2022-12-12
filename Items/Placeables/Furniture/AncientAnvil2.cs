@@ -37,12 +37,12 @@ namespace yourtale.Items.Placeables.Furniture
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(Mod.Find<ModItem>("AncientAnvil").Type, 2);
-			recipe.AddIngredient(ItemID.HallowedBar, 7);
-			recipe.AddIngredient(ItemID.MythrilBar, 5);
-			recipe.AddIngredient(Mod.Find<ModItem>("AncientShard").Type, 15);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.Register();
+			recipe.AddIngredient(Mod.Find<ModItem>("AncientAnvil").Type, 3);
+			recipe.AddIngredient(ItemID.HallowedBar, 15);
+			recipe.AddIngredient(ItemID.MythrilBar, 10);
+			recipe.AddIngredient(Mod.Find<ModItem>("AncientShard").Type, 35);
+            recipe.AddTile(Mod.Find<ModTile>("EnergyCharger").Type);
+            recipe.Register();
 		}
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)

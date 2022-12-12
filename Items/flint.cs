@@ -34,6 +34,13 @@ namespace yourtale.Items
             Item.createTile = TileType<Tiles.Ores.FlintDeposit>();
         }
 
+        public override void AddRecipes()
+        {
+            Recipe recipe = Recipe.Create(ItemID.StoneBlock);
+            recipe.AddIngredient(ModContent.ItemType<Items.flint>(), 1);
+            recipe.Register();
+        }
+
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(3))

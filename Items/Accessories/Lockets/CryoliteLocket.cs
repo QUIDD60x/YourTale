@@ -35,15 +35,9 @@ namespace yourtale.Items.Accessories.Lockets
 			player.statDefense += 4;
 			player.endurance += 0.25f;
 		}
+		// CURRENTLY DO NOT HAVE THE FROSTBURN EFFECT WORKING, I have no idea how atm.
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
-		{
-			// Inflict the OnFire debuff for 1 second onto any NPC/Monster that this hits.
-			// 60 frames = 1 second
-			target.AddBuff(BuffID.Frostburn, 60);
-		}
-
-		public override void AddRecipes()
+        public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(Mod.Find<ModItem>("EmptyLocket").Type);

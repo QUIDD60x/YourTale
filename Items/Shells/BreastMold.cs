@@ -16,7 +16,7 @@ namespace yourtale.Items.Shells
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Armor Mold-Breastplate");
+            DisplayName.SetDefault("Armor Mold: Breastplate");
             Tooltip.SetDefault("Used as a base for powerful equipment.");
         }
 

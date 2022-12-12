@@ -30,11 +30,11 @@ namespace yourtale.NPCs.Nice
             NPC.defense = 1;
             NPC.lifeMax = 14;
             NPC.HitSound = SoundID.NPCHit1;
-            NPC.DeathSound = SoundID.NPCDeath2;
+            NPC.DeathSound = SoundID.NPCDeath6;
             NPC.value = 15000f;
             NPC.aiStyle = 3;
             Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Bunny];
-            AIType = NPCID.Zombie;
+            AIType = NPCID.Bunny;
             AnimationType = NPCID.Bunny;
         }
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -43,7 +43,7 @@ namespace yourtale.NPCs.Nice
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
 				// Sets the spawning conditions of this NPC that is listed in the bestiary.
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.DayTime,
-                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Caverns,
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 
 				// Sets the description of this NPC that is listed in the bestiary.
 				new FlavorTextBestiaryInfoElement("A very rare rabbit, who also happens to hate you."),
@@ -53,14 +53,18 @@ namespace yourtale.NPCs.Nice
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 
-            if (Main.dayTime && Main.time < 18000.0)
+            if (Main.dayTime)
             {
-                return 0.09f;
+                if(spawnInfo.SpawnTileY >= Main.worldSurface)
+                {
+                    return 0.09f;
+                }
+                return 0.001f;
             }
 
             else
             {
-                return 0.01f;
+                return 0;
             }
         }
 

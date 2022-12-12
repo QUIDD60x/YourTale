@@ -37,10 +37,10 @@ namespace yourtale.Items.Placeables.Furniture
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(Mod.Find<ModItem>("StarShard").Type, 5);
-			recipe.AddIngredient(ItemID.IronBar, 7);
-			recipe.AddIngredient(Mod.Find<ModItem>("AncientShard").Type, 7);
-			recipe.AddTile(TileID.WorkBenches);
+			recipe.AddIngredient(Mod.Find<ModItem>("StarShard").Type, 25);
+			recipe.AddIngredient(ItemID.MythrilAnvil, 1);
+			recipe.AddIngredient(Mod.Find<ModItem>("AncientShard").Type, 20);
+			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
 		}
 

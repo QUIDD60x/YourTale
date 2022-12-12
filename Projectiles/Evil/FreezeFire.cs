@@ -27,8 +27,8 @@ namespace yourtale.Projectiles.Evil
 
 		public override void SetDefaults()
 		{
-			Projectile.width = 20;
-			Projectile.height = 20;
+			Projectile.width = 18;
+			Projectile.height = 18;
 			Projectile.alpha = 255;
 			Projectile.timeLeft = 270;
 			Projectile.penetrate = -1;
