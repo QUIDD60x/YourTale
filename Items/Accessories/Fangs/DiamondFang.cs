@@ -40,7 +40,13 @@ namespace yourtale.Items.Accessories.Fangs
             base.UpdateEquip(player);
             player.statDefense += 20 - player.statDefense;
 
-
+            if (Main.rand.NextFloat() < 0.4651163f)
+            {
+                Dust dust;
+                Vector2 position = Main.LocalPlayer.Center; 
+                dust = Terraria.Dust.NewDustPerfect(position, 91, new Vector2(0f, 0f), 0, new Color(255,255,255), 1.0465117f); 
+                dust.noGravity = true; 
+            }
         }
         public override void AddRecipes()
         {

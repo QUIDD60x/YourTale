@@ -41,7 +41,14 @@ namespace yourtale.Items.Accessories.Fangs
             player.pickSpeed /= 2;
             player.AddBuff(BuffID.Spelunker, 2);
 
-
+            if (Main.rand.NextFloat() < 0.3139535f)
+            {
+                Dust dust; 
+                Vector2 position = Main.LocalPlayer.Center; 
+                dust = Terraria.Dust.NewDustDirect(position, 4, 4, 179, 0f, 0f, 112, new Color(222,255,0), 1.1046512f); 
+                dust.noGravity = true; 
+                dust.fadeIn = 1.6744187f; 
+            }
         }
         public override void AddRecipes()
         {

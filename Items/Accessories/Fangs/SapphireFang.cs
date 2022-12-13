@@ -41,6 +41,12 @@ namespace yourtale.Items.Accessories.Fangs
             player.maxRunSpeed += 5 - player.maxRunSpeed;
             player.extraFall += 10;
 
+            Dust dust; 
+            Vector2 position = Main.LocalPlayer.Center; 
+            dust = Terraria.Dust.NewDustDirect(position, 30, 30, 179, 0f, 0f, 112, new Color(0,255,244), 1f); 
+            dust.noGravity = true; 
+            dust.fadeIn = 1.255814f;
+
         }
 
         public override void AddRecipes()
