@@ -31,5 +31,12 @@ namespace yourtale.Items
             Item.UseSound = SoundID.Item1;
             Item.rare = ItemRarityID.Green;
         }
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ItemID.Bone, 12);
+            recipe.AddTile(TileID.Anvils);
+            recipe.Register();
+        }
     }
 }

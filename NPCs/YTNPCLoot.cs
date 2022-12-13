@@ -50,6 +50,10 @@ namespace yourtale.NPCs
 			{
 				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OrangeBall>(), 1));
 			}
+			if (npc.type == NPCID.Werewolf || npc.type == NPCID.Wolf)
+			{
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CrackedWolfFang>(), 4, 1));
+			}
 
 
 
