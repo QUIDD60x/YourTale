@@ -9,20 +9,21 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using rail;
+using yourtale.Items;
 
-namespace yourtale.Items
+namespace yourtale.Items.Accessories.Fangs
 {
-    public class RubyFang : ModItem
+    public class SapphireFang : ModItem
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("The ruby-imbued fang grants faster healing.");
+            Tooltip.SetDefault("This sapphire fang increases your maximum running speed and fall distance.");
         }
 
         public override void SetDefaults()
         {
             Item.width = 1;
-            Item.accessory= true;
+            Item.accessory = true;
             Item.height = 1;
             Item.maxStack = 1;
             Item.useStyle = ItemUseStyleID.Swing;
@@ -37,23 +38,15 @@ namespace yourtale.Items
         public override void UpdateEquip(Player player)
         {
             base.UpdateEquip(player);
-            player.lifeRegen += 3;
-            player.lifeRegenTime -= 3;
+            player.maxRunSpeed += 5 - player.maxRunSpeed;
+            player.extraFall += 10;
 
-            if (Main.rand.NextFloat() < 0.3813953f)
-            {
-                Dust dust; 
-                Vector2 position = Main.LocalPlayer.Center; 
-                dust = Terraria.Dust.NewDustPerfect(position, 179, new Vector2(0f, 0f), 133, new Color(255,0,44), 1f); 
-                dust.noGravity = true; 
-                dust.fadeIn = 1.8837209f; 
-            }
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.Ruby, 3);
+            recipe.AddIngredient(ItemID.Sapphire, 3);
             recipe.AddIngredient(ItemType<CrackedWolfFang>(), 1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
