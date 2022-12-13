@@ -13,11 +13,11 @@ using yourtale.Items;
 
 namespace yourtale.Items.Accessories.Fangs
 {
-    public class EmeraldFang : ModItem // IDK what to add for this yet.
+    public class EmeraldFang : ModItem
     {
-        /*public override void SetStaticDefaults()
+        public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("This emerald fang will increase your max life and movement speed.");
+            Tooltip.SetDefault("This emerald fang will vastly invrease your general damage and attack speed.");
         }
 
         public override void SetDefaults()
@@ -38,7 +38,8 @@ namespace yourtale.Items.Accessories.Fangs
         public override void UpdateEquip(Player player)
         {
             base.UpdateEquip(player);
-            player.statLifeMax2 += 80 - player.statLifeMax2;
+            player.GetDamage(DamageClass.Generic) *= 1.45f;
+            player.GetAttackSpeed(DamageClass.Generic) *= 1.11f;
 
 
         }
@@ -49,6 +50,6 @@ namespace yourtale.Items.Accessories.Fangs
             recipe.AddIngredient(ItemType<CrackedWolfFang>(), 1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
-        }*/
+        }
     }
 }
