@@ -169,7 +169,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             // The following code assigns a music track to the boss in a simple way.
             if (!Main.dedServ)
             {
-                Music = MusicLoader.GetMusicSlot(Mod, "Assets/Music/funny1");
+                Music = MusicLoader.GetMusicSlot(Mod, "Assets/Music/BadPianoFight");
             }
         }
 

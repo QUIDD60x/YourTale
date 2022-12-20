@@ -8,6 +8,7 @@ using static Terraria.ModLoader.PlayerDrawLayer;
 using Microsoft.Xna.Framework;
 using System.Security.Cryptography.X509Certificates;
 using yourtale.Projectiles.Swords;
+using yourtale.Projectiles.Staffs;
 
 namespace YourTale.Items.Weapons.Melee.Sword
 {
@@ -34,12 +35,13 @@ namespace YourTale.Items.Weapons.Melee.Sword
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.shootSpeed= 5;
-            Item.shoot = ProjectileID.PureSpray;
+            Item.shoot = ModContent.ProjectileType<Empty>();
+
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
-            if (Main.rand.NextBool(2))
+            if (Main.rand.NextBool(5))
             {
                 type = ModContent.ProjectileType<Sandnado2>();
             }
