@@ -3,15 +3,16 @@
 [![Build Status](https://travis-ci.org/tModLoader/tModLoader.svg?branch=master)](https://quiddcorp.com/my-creations/your-tale) 
 
 **Your Tale**- A Terraria mod thing I update weekly-ish, and completely open for you to use!
-This might be broken sometimes so i would get this from the official Tmod site so you can update it a lot easier, untill version 1.5 official release it might not work a lot.
+Cloning straight from this github and not downloading it from the releases tab (or from TmodLoader's official mod downloader) may result in some bugs or errors, so I would recommend looking into either previously mentioned option.
+
 ## This currently includes:
 1. Custom world generation, currently supports ore generation and will soon support custom structures and loot placement.
-2. A couple weapon types, such as lots of different staffs and whatnot.
-3. a couple custom mobs and 1 boss, all with varying AIs to mess around with.
+2. Over 29 weapons, with at least one of every type supported in vanilla terraria.
+3. a couple custom mobs and 1 boss.
 4. Custom prefixes, obtainable in normal play.
-5. LOTS of custom projectiles.
+5. And of course new features every update!
 
-This mod is not really meant to be played normally, as there are probably unbalanced features and not a lot of time worth playing with.
+If you're reading this, then this mod is not currently updated to play in a vanilla playthrough. I hope to implement a vanilla-like playstyle by update 1.5.
 
 Lots of love to:
 * Tmodloader, and their example mod for helping me grasp the basics of modding terraria.
