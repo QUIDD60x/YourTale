@@ -22,7 +22,7 @@ namespace yourtale.Items.Accessories
             Item.width = 20; //best to leave these the same size as the sprite if possible.
             Item.height = 20;
 
-            Item.value = Item.sellPrice(gold: 1);
+            Item.value = Item.sellPrice(gold: 1, silver: 50);
             Item.rare = ItemRarityID.Blue;
 
             Item.accessory = true; //will allow it to be equipped
@@ -31,9 +31,9 @@ namespace yourtale.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.AddBuff(BuffID.IceBarrier, 2); //player.AddBuff(mod.BuffType("buffnamehere"), number here); for modded buffs/debuffs.
-            player.moveSpeed *= 0.9f; //remember that multiplying a decimal is equivalent to dividing by a whole number.
-            player.maxRunSpeed *= 0.7f;
-            player.endurance *= 1.5f;
+            player.moveSpeed *= 0.9f; //remember that multiplying by a decimal is equivalent to dividing.
+            player.maxRunSpeed *= 0.85f;
+            player.endurance *= 1.45f;
         }
 
         public override void AddRecipes()

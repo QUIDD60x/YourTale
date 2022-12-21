@@ -14,7 +14,7 @@ namespace yourtale.Items.Accessories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Broken Umbrella");
-            Tooltip.SetDefault("Good job, you broke an umbrella. This rage increases melee damage and speed.");
+            Tooltip.SetDefault("Good job, you broke an umbrella. Your rage increases melee damage and speed.");
         }
 
         public override void SetDefaults()

@@ -1,8 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Buffs.Bad;
-using yourtale.Rarities;
 
 namespace YourTale.Items.Weapons.Melee.Sword
 {
@@ -10,7 +8,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("An average blade."); // Too lazy to think of something for amethyst rn, wtf does it even do
+            Tooltip.SetDefault("An average blade."); // Going to make this summon a minion to help you in combat soon, not rn tho
         }
 
         public override void SetDefaults()
@@ -28,11 +26,6 @@ namespace YourTale.Items.Weapons.Melee.Sword
             Item.rare = ItemRarityID.Orange;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-        }
-
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
-        {
-            base.OnHitNPC(player, target, damage, knockBack, crit);
         }
 
         public override void AddRecipes()

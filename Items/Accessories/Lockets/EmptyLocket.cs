@@ -32,6 +32,12 @@ namespace yourtale.Items.Accessories.Lockets
 			recipe.AddIngredient(ItemID.IronBar, 5);
 			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
+
+			recipe = CreateRecipe();
+			recipe.AddIngredient(ItemID.PlatinumBar, 2);
+			recipe.AddIngredient(ItemID.IronBar, 5);
+			recipe.AddTile(TileID.Anvils);
+			recipe.Register();
 		}
 	}
 }

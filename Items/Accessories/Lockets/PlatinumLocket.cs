@@ -29,12 +29,8 @@ namespace yourtale.Items.Accessories.Lockets
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.statDefense += 4;
-			player.GetDamage(DamageClass.Melee) += 0.5f;
-			player.GetDamage(DamageClass.Throwing) += 0.5f;
-			player.GetDamage(DamageClass.Ranged) += 0.5f;
-			player.GetDamage(DamageClass.Magic) += 0.5f;
-			player.GetDamage(DamageClass.Summon) += 0.5f;
+			player.statDefense += 6;
+			player.GetDamage(DamageClass.Generic) *= 1.215f;
 		}
 
 		public override void AddRecipes()

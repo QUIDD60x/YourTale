@@ -33,8 +33,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
             base.OnHitNPC(player, target, damage, knockBack, crit);
-            target.AddBuff(ModContent.BuffType<Crush>(), 360);
-            target.GetGlobalNPC<CrushDebuffNPC>().markedWithCrush = true;
+            target.defense /= 2;
         }
 
         public override void AddRecipes()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
@@ -13,7 +14,7 @@ namespace yourtale.Items.Accessories.Lockets
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Gives you extra defense, and inflicts frostburn.");
+			Tooltip.SetDefault("Gives you extra defense, and grants an ice shield.");
 		}
 
 		public override void SetDefaults()
@@ -29,13 +30,13 @@ namespace yourtale.Items.Accessories.Lockets
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.moveSpeed *= 0.9f;
+			player.moveSpeed *= 0.992f;
 			player.jumpSpeedBoost -= 0.4f;
 			player.statLifeMax2 += 20;
 			player.statDefense += 4;
 			player.endurance += 0.25f;
+			player.AddBuff(BuffID.IceBarrier, 2);
 		}
-		// CURRENTLY DO NOT HAVE THE FROSTBURN EFFECT WORKING, I have no idea how atm.
 
         public override void AddRecipes()
 		{
