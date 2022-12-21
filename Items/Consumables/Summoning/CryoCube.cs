@@ -44,7 +44,7 @@ namespace yourtale.Items.Consumables.Summoning
             recipe.Register();
         }
 
-        public override bool? UseItem(Player player)/* tModPorter Suggestion: Return null instead of false */
+        public override bool? UseItem(Player player)
         {
             SoundEngine.PlaySound(SoundID.Roar, player.position);
             if (Main.netMode != NetmodeID.MultiplayerClient)

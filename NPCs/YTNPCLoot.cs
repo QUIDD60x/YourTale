@@ -54,7 +54,10 @@ namespace yourtale.NPCs
 			{
 				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CrackedWolfFang>(), 4, 1));
 			}
-
+			if (npc.type == NPCID.AngryBones || npc.type == NPCID.DarkCaster || npc.type == NPCID. CursedSkull || npc.type == NPCID.Skeleton || npc.type == NPCID.SkeletonArcher)
+			{
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SpiritShard1>(), 10, 1, 7));
+			}
 
 
 		}
@@ -73,12 +76,9 @@ namespace yourtale.NPCs
 		}
 
 		// ModifyGlobalLoot allows you to modify loot that every NPC should be able to drop, preferably with a condition.
-		// Vanilla uses this for the biome keys, souls of night/light, as well as the holiday drops.
-		// Any drop rules in ModifyGlobalLoot should only run once. Everything else should go in ModifyNPCLoot.
 		public override void ModifyGlobalLoot(GlobalLoot globalLoot)
 		{
-			// If the ExampleSoulCondition is true, drop ExampleSoul 5% of the time. See Common/ItemDropRules/DropConditions/ExampleSoulCondition.cs for how it's determined
-			globalLoot.Add(ItemDropRule.ByCondition(new YTSoulCondition(), ModContent.ItemType<CorExitio>(), 5, 1, 1));
+			globalLoot.Add(ItemDropRule.ByCondition(new YTSoulCondition(), ModContent.ItemType<LifeShard>(), 5, 1, 1));
 		}
 	}
 }

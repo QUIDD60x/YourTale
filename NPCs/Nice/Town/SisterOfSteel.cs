@@ -1,6 +1,5 @@
 ﻿using yourtale.Dusts;
 using yourtale.Items;
-using yourtale.Items.Placeables.Furniture;
 using Microsoft.Xna.Framework;
 using System;
 using System.Linq;
@@ -20,6 +19,8 @@ using System.Collections.Generic;
 using ReLogic.Content;
 using Terraria.ModLoader.IO;
 using YourTale.Items.Weapons.Melee.Sword;
+using YourTale.Items;
+using yourtale.Items.Placeables;
 
 namespace yourtale.NPCs.Nice.Town
 {

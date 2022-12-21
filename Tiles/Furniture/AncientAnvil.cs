@@ -7,7 +7,7 @@ using Terraria.ObjectData;
 
 namespace yourtale.Tiles.Furniture
 {
-	public class AncientAnvil : ModTile
+    public class AncientAnvil : ModTile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -43,7 +43,7 @@ namespace yourtale.Tiles.Furniture
 
 		public override void KillMultiTile(int x, int y, int frameX, int frameY)
 		{
-			Item.NewItem(new EntitySource_TileBreak(x, y), x * 16, y * 16, 32, 16, ModContent.ItemType<Items.Placeables.Furniture.AncientAnvil>());
+			Item.NewItem(new EntitySource_TileBreak(x, y), x * 16, y * 16, 32, 16, ModContent.ItemType<Items.Placeables.AncientAnvil>());
 		}
 	}
 }

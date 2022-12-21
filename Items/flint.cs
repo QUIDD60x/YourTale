@@ -11,7 +11,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace yourtale.Items
 {
-    public class flint : ModItem //You should always capitalise the first letter (grammar is important). I'll leave this though because it's funny.
+    public class flint : ModItem //You should always capitalise the first letter (grammar is important). I'll leave this though because it's funny, and the first thing I'd ever made in Tmodloader.
     {
         public override void SetStaticDefaults() 
         {
@@ -39,12 +39,6 @@ namespace yourtale.Items
             Recipe recipe = Recipe.Create(ItemID.StoneBlock);
             recipe.AddIngredient(ModContent.ItemType<Items.flint>(), 1);
             recipe.Register();
-        }
-
-        public override void MeleeEffects(Player player, Rectangle hitbox)
-        {
-            if (Main.rand.NextBool(3))
-                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, Mod.Find<ModDust>("nothinghereyeteither").Type);
         }
     }
 }

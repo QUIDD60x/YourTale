@@ -39,7 +39,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
         {
             CreateRecipe()
                 .AddIngredient<flint>(20)
-                .AddTile<EnergyCharger>()
+                .AddTile<AnimanticConvoluter>()
                 .Register();
         }
     }

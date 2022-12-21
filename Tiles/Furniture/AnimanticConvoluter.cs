@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System.ComponentModel;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -7,7 +8,7 @@ using Terraria.ObjectData;
 
 namespace yourtale.Tiles.Furniture
 {
-	public class EnergyCharger : ModTile
+	public class AnimanticConvoluter : ModTile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -32,7 +33,7 @@ namespace yourtale.Tiles.Furniture
 
 			// Etc
 			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Energy Charger");
+			name.SetDefault("Animantic Convoluter");
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 
@@ -43,7 +44,7 @@ namespace yourtale.Tiles.Furniture
 
 		public override void KillMultiTile(int x, int y, int frameX, int frameY)
 		{
-			Item.NewItem(new EntitySource_TileBreak(x, y), x * 16, y * 16, 32, 16, ModContent.ItemType<Items.Placeables.Furniture.EnergyCharger>());
+			Item.NewItem(new EntitySource_TileBreak(x, y), x * 16, y * 16, 32, 16, ModContent.ItemType<Items.Placeables.AnimanticConvoluter>());
 		}
 	}
 }

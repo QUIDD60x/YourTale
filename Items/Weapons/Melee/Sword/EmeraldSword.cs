@@ -35,6 +35,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
             base.OnHitNPC(player, target, damage, knockBack, crit);
             player.AddBuff(BuffID.Swiftness, 360);
             player.AddBuff(BuffID.Lifeforce, 180);
+            player.statLife += 60;
         }
 
         public override void AddRecipes()

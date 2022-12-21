@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using yourtale.Dusts;
 
 namespace yourtale.Items
