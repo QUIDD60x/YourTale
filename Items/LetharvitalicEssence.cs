@@ -4,17 +4,19 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
+using yourtale.Items.Placeables;
+using yourtale.Tiles.Furniture;
 
 namespace yourtale.Items
 {
-    public class SpiritShard1 : ModItem
+    public class LetharvitalicEssence : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Torpid spirit shard");
-            Tooltip.SetDefault("A weak piece of manifested consciousness.\nCould be purified?");
+            DisplayName.SetDefault("Hypovitalic Essence");
+            Tooltip.SetDefault("A slow moving particle of consciousness.");
 
-            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(8, 4));
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(7, 4));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 
             ItemID.Sets.ItemIconPulse[Item.type] = true;
@@ -28,20 +30,20 @@ namespace yourtale.Items
             Item.width = 18;
             Item.height = 18;
             Item.maxStack = 999;
-            Item.value = 355; 
-            Item.rare = ItemRarityID.Green;
+            Item.value = 945; 
+            Item.rare = ItemRarityID.Orange;
         }
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(Item.Center, Color.WhiteSmoke.ToVector3() * 0.75f * Main.essScale);
+            Lighting.AddLight(Item.Center, Color.ForestGreen.ToVector3() * 0.22f * Main.essScale);
         }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.Bone, 3);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(ModContent.ItemType<SpiritShard1>(), 3);
+            recipe.AddTile(ModContent.TileType<Tiles.Furniture.AnimanticConvoluter>());
             recipe.Register();
         }
     }

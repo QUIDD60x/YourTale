@@ -54,11 +54,15 @@ namespace yourtale.NPCs.Evil
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
 
-            float chance = 0.01f;
+            float chance = 0f;
 
-            if (spawnInfo.SpawnTileY <= Main.maxTilesY -200 && spawnInfo.SpawnTileY >= Main.rockLayer)
+            if (spawnInfo.SpawnTileY <= Main.rockLayer && spawnInfo.SpawnTileY >= Main.worldSurface)
             {
-                chance += 0.21f;
+                chance += 0.07f;
+            }
+            if (spawnInfo.SpawnTileY >= Main.maxTilesY - 200 && spawnInfo.SpawnTileY <= Main.rockLayer)
+            {
+                chance += 0.10f;
             }
 
             return chance;
@@ -68,6 +72,7 @@ namespace yourtale.NPCs.Evil
         {
             npcLoot.Add(ItemDropRule.Common(ItemID.Bone, 10, 3, 9));
             npcLoot.Add(ItemDropRule.Common(ItemID.BoneSword, 30));
+            npcLoot.Add(ItemDropRule.Common(ItemID.AncientNecroHelmet, 10));
             npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("AncientShard").Type, 1, 2, 5));
             npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("LifeShard").Type, 5, 2, 6));
         }

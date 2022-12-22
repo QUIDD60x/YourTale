@@ -7,6 +7,7 @@ using Terraria.GameContent.Bestiary;
 using yourtale.Items.Placeables;
 using yourtale.Items.Accessories;
 using yourtale.Dusts;
+using yourtale.Items;
 
 namespace yourtale.NPCs.Evil
 {
@@ -15,7 +16,7 @@ namespace yourtale.NPCs.Evil
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ice Pixie");
-            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new(0)
             {
                 // Influences how the NPC looks in the Bestiary
                 Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
@@ -83,8 +84,8 @@ namespace yourtale.NPCs.Evil
                 int dustType = Mod.Find<ModDust>("IceDust").Type;
                 int dustIndex = Dust.NewDust(NPC.position, NPC.width, NPC.height, dustType);
                 Dust dust = Main.dust[dustIndex];
-                dust.velocity.X = dust.velocity.X + Main.rand.Next(-50, 51) * 0.01f;
-                dust.velocity.Y = dust.velocity.Y + Main.rand.Next(-50, 51) * 0.01f;
+                dust.velocity.X += Main.rand.Next(-50, 51) * 0.01f;
+                dust.velocity.Y += Main.rand.Next(-50, 51) * 0.01f;
                 dust.scale *= 1f + Main.rand.Next(-30, 31) * 0.01f;
             }
 
@@ -92,6 +93,7 @@ namespace yourtale.NPCs.Evil
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ItemID.PixieDust, 0, 2, 8));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<LetharvitalicEssence>(), 1, 3, 9));
         }
     }
 }

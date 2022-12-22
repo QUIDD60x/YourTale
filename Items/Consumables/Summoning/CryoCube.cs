@@ -39,7 +39,8 @@ namespace yourtale.Items.Consumables.Summoning
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.IceBlock, 15);
             recipe.AddIngredient(ItemID.Shiverthorn, 2);
-            recipe.AddIngredient(null, "AncientShard", 2);
+            recipe.AddIngredient(null, "AncientShard", 2); // I don't know how this worked but it does? Odd call for an object
+            recipe.AddIngredient(ModContent.ItemType<LetharvitalicEssence>(), 6);
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
         }

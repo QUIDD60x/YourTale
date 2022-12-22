@@ -1,4 +1,5 @@
-﻿using yourtale.Common;
+﻿#pragma warning disable CA2211 // Non-constant fields should not be visible
+using yourtale.Common;
 using yourtale.NPCs.Evil.Boss.Minion;
 using yourtale.Items;
 using yourtale.Projectiles.Evil;
@@ -190,6 +191,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("CorExitio").Type, 1, 7, 14));
             npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("IceHeart").Type, 1, 1));
             npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("CryoliteLocket").Type, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("LetharvitalicEssence").Type, 1, 3, 9));
 
             /* Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
             //npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<MinionBossBag>()));

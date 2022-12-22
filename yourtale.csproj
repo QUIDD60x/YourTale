@@ -16,6 +16,7 @@
     <Folder Include="Items\Banners\" />
     <Folder Include="Items\Dyes\" />
     <Folder Include="Items\Misc\" />
+    <Folder Include="Items\Placeables\Furniture\" />
     <Folder Include="Items\Weapons\Ranged\Guns\" />
   </ItemGroup>
 </Project>
