@@ -30,7 +30,7 @@ namespace yourtale.Items
             Item.width = 18;
             Item.height = 18;
             Item.maxStack = 999;
-            Item.value = 1000; // Makes the item worth 1 gold.
+            Item.value = 945;
             Item.rare = ItemRarityID.Orange;
         }
 
