@@ -1,16 +1,16 @@
-﻿using Terraria;
+﻿using IL.Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace YourTale.Prefixes.Weapons
 {
-    public class Wrathful : ModPrefix
+    public class Divine : ModPrefix
     {
-
-        public override PrefixCategory Category => PrefixCategory.Melee;
+        public override PrefixCategory Category => PrefixCategory.Magic;
 
         public override float RollChance(Item item)
         {
-            return 1.25f;
+            return 1.21f;
         }
 
         public override bool CanRoll(Item item)
@@ -20,19 +20,19 @@ namespace YourTale.Prefixes.Weapons
 
         public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
         {
-            damageMult *= 1.01f;
-            knockbackMult += 0.5f;
-            scaleMult *= 1.08f;
+            damageMult *= 1.65f;
+            knockbackMult *= 1.65f;
+            manaMult /= 1.25f;
         }
 
         public override void ModifyValue(ref float valueMult)
         {
-            valueMult += 8.25f;
+            valueMult /= 2f;
         }
 
         public override void Apply(Item item)
         {
-            //
+            item.autoReuse = true;
         }
     }
 }

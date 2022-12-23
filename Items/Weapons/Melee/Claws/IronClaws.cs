@@ -9,7 +9,6 @@ namespace YourTale.Items.Weapons.Melee.Claws
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("THESWORD"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
             Tooltip.SetDefault("A sturdy set of claws, perfect for unrelenting bloodlust.");
         }
 

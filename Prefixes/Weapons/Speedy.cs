@@ -5,7 +5,6 @@ namespace YourTale.Prefixes.Weapons
 {
     public class Speedy : ModPrefix
     {
-        public virtual float Power => 1f;
 
         public override PrefixCategory Category => PrefixCategory.Ranged;
 
@@ -21,12 +20,12 @@ namespace YourTale.Prefixes.Weapons
 
         public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
         {
-            shootSpeedMult *= 2f + 5f * Power;
+            shootSpeedMult += 5.5f;
         }
 
         public override void ModifyValue(ref float valueMult)
         {
-            valueMult *= 1f + 0.05f * Power;
+            valueMult += 25.35f;
         }
 
         public override void Apply(Item item)

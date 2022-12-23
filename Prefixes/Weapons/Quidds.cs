@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace yourtale.Prefixes
 {
-	public class Quidds : ModPrefix
+	public class Quidds : ModPrefix // This prefix cannot be achieved in-game.
 	{
 		public virtual float Power => 100f;
 

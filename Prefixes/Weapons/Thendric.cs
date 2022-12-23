@@ -3,14 +3,14 @@ using Terraria.ModLoader;
 
 namespace yourtale.Prefixes.Weapons
 {
-	public class Thendric : ModPrefix
+	public class Thendric : ModPrefix // This isn't really achievable in-game, but it's a learning experience?
 	{
 
 		public override PrefixCategory Category => PrefixCategory.Melee;
 
 		public override float RollChance(Item item)
 		{
-			return 0.1f;
+			return 0.01f;
 		}
 
 		public override bool CanRoll(Item item)

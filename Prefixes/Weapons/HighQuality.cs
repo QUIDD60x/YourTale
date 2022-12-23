@@ -5,19 +5,18 @@ using Terraria.ModLoader;
 namespace YourTale.Prefixes.Weapons
 {
     // This class serves as an example for declaring item 'prefixes', or 'modifiers' in other words.
-    public class HighQuality : ModPrefix
+    public class HighQuality : ModPrefix // This used to be an all-weapons modifier, now it's for ranged weapons only.
     {
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sure Shot");
+            DisplayName.SetDefault("SureShot");
         }
 
         // We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
-        public virtual float Power => 1f;
 
         // Change your category this way, defaults to PrefixCategory.Custom. Affects which items can get this prefix.
-        public override PrefixCategory Category => PrefixCategory.AnyWeapon;
+        public override PrefixCategory Category => PrefixCategory.Ranged;
 
         // See documentation for vanilla weights and more information.
         // In case of multiple prefixes with similar functions this can be used with a switch/case to provide different chances for different prefixes
@@ -25,7 +24,7 @@ namespace YourTale.Prefixes.Weapons
         // Note: if you use PrefixCategory.Custom, actually use ModItem.ChoosePrefix instead.
         public override float RollChance(Item item)
         {
-            return 1f;
+            return 1.45f;
         }
 
         // Determines if it can roll at all.
@@ -39,14 +38,14 @@ namespace YourTale.Prefixes.Weapons
         // Damage Multiplier, Knockback Multiplier, Use Time Multiplier, Scale Multiplier (Size), Shoot Speed Multiplier, Mana Multiplier (Mana cost), Crit Bonus.
         public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
         {
-            damageMult *= 1f + .20f * Power;
-            knockbackMult *= 1.2f + .30f * Power;
+            damageMult *= 1.35f;
+            knockbackMult *= 0.85f;
         }
 
         // Modify the cost of items with this modifier with this function.
         public override void ModifyValue(ref float valueMult)
         {
-            valueMult *= 1f + 0.07f * Power;
+            valueMult += 45.44f;
         }
 
         // This is used to modify most other stats of items which have this modifier.

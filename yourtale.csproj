@@ -18,5 +18,6 @@
     <Folder Include="Items\Misc\" />
     <Folder Include="Items\Placeables\Furniture\" />
     <Folder Include="Items\Weapons\Ranged\Guns\" />
+    <Folder Include="Prefixes\Accessories\" />
   </ItemGroup>
 </Project>
