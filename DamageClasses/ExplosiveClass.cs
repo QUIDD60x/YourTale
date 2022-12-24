@@ -14,8 +14,7 @@ namespace yourtale.DamageClasses
 
         public override void SetDefaultStats(Player player)
         {
-            player.GetCritChance<ExplosiveClass>() += 14;
-            player.GetArmorPenetration<ExplosiveClass>() -= 7;
+            player.GetArmorPenetration<ExplosiveClass>() -= 4; // Slightly prevent huge amounts of damage to heavily armored enemies, to prevent cheese.
         }
         public override bool UseStandardCritCalcs => true;
 

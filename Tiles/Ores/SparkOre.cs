@@ -78,7 +78,7 @@ namespace yourtale.Tiles.Ores
 
                     int y = WorldGen.genRand.Next((int)WorldGen.rockLayer, Main.maxTilesY);
                     Tile tile = Framing.GetTileSafely(x, y);
-                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(2, 4), WorldGen.genRand.Next(2, 4), ModContent.TileType<SparkOre>());
+                    WorldGen.TileRunner(x, y, WorldGen.genRand.Next(4, 9), WorldGen.genRand.Next(6, 10), ModContent.TileType<SparkOre>());
                 }
 
             }

@@ -2,6 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using yourtale.DamageClasses;
+using yourtale.Items.Placeables;
 using yourtale.Projectiles.Bombs;
 using yourtale.Projectiles.Staffs;
 
@@ -39,11 +40,9 @@ namespace yourtale.Items.Weapons.Explosives
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.IronBar, 4);
-            recipe.AddIngredient(ItemID.Wood, 8);
-            recipe.AddIngredient(ItemID.StoneBlock, 4);
-            recipe.AddIngredient(Mod.Find<ModItem>("StarShard"), 20);
+            Recipe recipe = CreateRecipe(5);
+            recipe.AddIngredient(ItemID.Silk, 5);
+            recipe.AddIngredient(Mod.Find<ModItem>("SparkPowder"), 3);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }

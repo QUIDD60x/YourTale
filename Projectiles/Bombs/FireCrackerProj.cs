@@ -17,7 +17,7 @@ namespace yourtale.Projectiles.Bombs
             Projectile.friendly = true;
             Projectile.DamageType = ModContent.GetInstance<ExplosiveClass>();
             Projectile.penetrate = 10;
-            Projectile.timeLeft = 60;
+            Projectile.timeLeft = 600;
         }
 
         public override void AI()
@@ -34,7 +34,7 @@ namespace yourtale.Projectiles.Bombs
             Projectile.penetrate--;
             if (Projectile.penetrate <= 0)
             {
-                Projectile.Kill();
+
             }
             else
             {
