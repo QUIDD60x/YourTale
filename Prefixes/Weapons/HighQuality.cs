@@ -45,7 +45,7 @@ namespace YourTale.Prefixes.Weapons
         // Modify the cost of items with this modifier with this function.
         public override void ModifyValue(ref float valueMult)
         {
-            valueMult += 45.44f;
+            valueMult += 0.4f;
         }
 
         // This is used to modify most other stats of items which have this modifier.

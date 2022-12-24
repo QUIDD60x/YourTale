@@ -20,12 +20,12 @@ namespace YourTale.Prefixes.Weapons
 
         public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
         {
-            shootSpeedMult += 5.5f;
+            shootSpeedMult *= 1.35f;
         }
 
         public override void ModifyValue(ref float valueMult)
         {
-            valueMult += 25.35f;
+            valueMult *= 1.08f;
         }
 
         public override void Apply(Item item)

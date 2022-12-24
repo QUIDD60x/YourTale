@@ -5,7 +5,7 @@ namespace yourtale.Prefixes
 {
 	public class Quidds : ModPrefix // This prefix cannot be achieved in-game.
 	{
-		public virtual float Power => 100f;
+		public virtual float Power => 1f;
 
 		public override PrefixCategory Category => PrefixCategory.Melee;
 
@@ -29,7 +29,7 @@ namespace yourtale.Prefixes
 
 		public override void ModifyValue(ref float valueMult)
 		{
-			valueMult *= 1000f + 0.05f * Power;
+			valueMult /= 2;
 		}
 
 		public override void Apply(Item item)

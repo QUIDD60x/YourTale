@@ -10,7 +10,7 @@ namespace yourtale.Prefixes.Weapons
 
 		public override float RollChance(Item item)
 		{
-			return 0.01f;
+			return 0.001f;
 		}
 
 		public override bool CanRoll(Item item)
@@ -28,7 +28,7 @@ namespace yourtale.Prefixes.Weapons
 
 		public override void ModifyValue(ref float valueMult)
 		{
-			valueMult *= 3.5f + 0.05f;
+			valueMult *= 30f;
 		}
 
 		public override void Apply(Item item)
