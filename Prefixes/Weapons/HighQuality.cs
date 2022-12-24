@@ -10,7 +10,7 @@ namespace YourTale.Prefixes.Weapons
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("SureShot");
+            DisplayName.SetDefault("Fine-Tuned");
         }
 
         // We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.

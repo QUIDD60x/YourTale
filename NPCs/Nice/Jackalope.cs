@@ -46,7 +46,7 @@ namespace yourtale.NPCs.Nice
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 
 				// Sets the description of this NPC that is listed in the bestiary.
-				new FlavorTextBestiaryInfoElement("A very rare rabbit, who also happens to hate you."),
+				new FlavorTextBestiaryInfoElement("A very rare rabbit, who also happens to strongly dislike you."),
             });
         }
 

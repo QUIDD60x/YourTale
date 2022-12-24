@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
+using yourtale.Items.Placeables;
 using static Terraria.ModLoader.ModContent;
 
 namespace yourtale.Tiles.Ores
@@ -19,7 +20,7 @@ namespace yourtale.Tiles.Ores
             Main.tileLavaDeath[Type] = true;
             Main.tileShine[Type] = 95;
 
-            ItemDrop = ItemType<Items.LifeShard>(); //drop = Item.itemhere for vanilla drops
+            ItemDrop = ItemType<Items.Placeables.LifeShard>(); //drop = Item.itemhere for vanilla drops
 
             
             ModTranslation name = CreateMapEntryName();
@@ -48,7 +49,7 @@ namespace yourtale.Tiles.Ores
 
                 if (ShiniesIndex != -1)
                 {
-                    tasks.Insert(ShiniesIndex + 1, new VigoreOrePass("Vigore Ore", 237.4298f));
+                    tasks.Insert(ShiniesIndex + 1, new VigoreOrePass("Vigorous Ore", 237.4298f));
                 }
             }
         }

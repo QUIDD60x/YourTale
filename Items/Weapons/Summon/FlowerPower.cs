@@ -1,5 +1,4 @@
-﻿using yourtale.Items;
-using yourtale.Tiles.Furniture;
+﻿using yourtale.Tiles.Furniture;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -7,10 +6,11 @@ using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
+using yourtale.Items.Placeables;
 
 namespace yourtale.Items.Weapons.Summon
 {
-	public class FlowerSummonBuff : ModBuff
+    public class FlowerSummonBuff : ModBuff
 	{
 		public override void SetStaticDefaults()
 		{

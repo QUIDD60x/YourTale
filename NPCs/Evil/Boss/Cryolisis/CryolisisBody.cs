@@ -573,7 +573,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
                 Vector2 position = player.Bottom + new Vector2(kitingOffsetX + Main.rand.Next(-100, 100), Main.rand.Next(50, 100));
 
                 int type = ModContent.ProjectileType<FreezeFire>();
-                int damage = NPC.damage - 35;
+                int damage = NPC.damage - 15;
                 var entitySource = NPC.GetSource_FromAI();
 
                 Projectile.NewProjectile(entitySource, position, -Vector2.UnitY, type, damage, 0f, Main.myPlayer);
@@ -586,7 +586,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
                 float kitingOffsetX = Utils.Clamp(player.velocity.X * 100, -1000, 1000);
                 Vector2 position = player.Bottom + new Vector2(kitingOffsetX + Main.rand.Next(-100, 1000), Main.rand.Next(50, 100));
 
-                Projectile.NewProjectile(entitySource, position, -Vector2.UnitY, ProjectileID.LightBeam, 15, 0f, Main.myPlayer);
+                Projectile.NewProjectile(entitySource, position, -Vector2.UnitY, ProjectileID.IceBolt, 15, 0f, Main.myPlayer);
             }
         }
     }

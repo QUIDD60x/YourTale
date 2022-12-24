@@ -23,7 +23,7 @@ namespace yourtale.Tiles.Ores
 			//dustType = DustID.Platinum for vanilla, dustType = mod.dustType.Platinum for modded
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Flint");
-			AddMapEntry(new Color(246, 158, 44), name); //or AddMapEntry(Color.Red) or any other colour in the color class
+			AddMapEntry(Color.Gray); //or AddMapEntry(new Color(r, g, b), name) or any other colour in the color class
 
 			MinPick = 0; //will set minimum pick strength
 		}
@@ -72,7 +72,7 @@ namespace yourtale.Tiles.Ores
 
 				// Ores are quite simple, we simply use a for loop and the WorldGen.TileRunner to place splotches of the specified Tile in the world.
 				// "6E-05" is "scientific notation". It simply means 0.00006 but in some ways is easier to read.
-				for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-03); k++)
+				for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-04); k++)
 				{
 					// The inside of this for loop corresponds to one single splotch of our Ore.
 					// First, we randomly choose any coordinate in the world by choosing a random x and y value.

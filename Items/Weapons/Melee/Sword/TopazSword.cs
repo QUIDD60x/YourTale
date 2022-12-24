@@ -10,7 +10,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("A Mediocre, this will inflict confusion on enemies.");
+            Tooltip.SetDefault("A Mediocre blade, this will inflict confusion on enemies.");
         }
 
         public override void SetDefaults()
