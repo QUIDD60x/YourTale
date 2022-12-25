@@ -13,7 +13,7 @@ namespace yourtale.Items.Weapons.Explosives
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Sparkler");
-            Tooltip.SetDefault("A small basic sparkler, that will deal a steady stream of damage.\nWill light enemies on fire.");
+            Tooltip.SetDefault("A small basic sparkler, that will deal a steady stream of damage.\nWill light enemies on fire, but doesn't explode.");
         }
 
         public override void SetDefaults()

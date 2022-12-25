@@ -16,6 +16,7 @@ public class Explosion : ModProjectile // Default explosion, you can use this as
         ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
         ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
     }
+    public override string Texture => "yourtale/Projectiles/Bombs/ExplosionPng"; // Using only 1 texture for most basic explosions, because they don't need any texture.
 
     public override void SetDefaults()
     {

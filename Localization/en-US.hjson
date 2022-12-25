@@ -137,9 +137,9 @@ Mods: {
 				Content: I feel pretty fine right now.
 				NoHome: I'm homeless right now. And no, i'm not sharing a room with you.
 				LoveSpace: It's very... empty. Very pleasing.
-				FarFromHome: I'm far from home right now. No biggie.
+				FarFromHome: I'm far from home right now. No biggie, guess I'll walk.
 				DislikeCrowded: Too many people. Too many weak points, not enough security.
-				HateCrowded: The constant nagging and bickering is getting to me.
+				HateCrowded: The constant nagging and bickering of all these people is getting to me.
 				LikeBiome: "I do like {BiomeName}. It is so mystifying and odd, it's very unique."
 				LoveBiome: "The {BiomeName} is my favorite. It is so cold and beautiful, it takes me back to before the organization."
 				DislikeBiome: "It is too bland in {BiomeName}, however."
@@ -163,28 +163,16 @@ Mods: {
 				StandardDialogue1 : "Sometimes I feel the organization calling me back."
 				StandardDialogue2 : "Why are you talking to me."
 				StandardDialogue3 : "hm."
-				CommonDialogue : "This message has a weight of 5, meaning it appears 5 times more often."
+				CommonDialogue : "check the github sometime."
 				RareDialogue : "Go ask the nurse for a happy ending."
 				TalkALot : "Why are you talking to me so much? Go do something productive, like anything else."
-			}
-			ExampleBoneMerchant: {
-				StandardDialogue1 : "It's relaxing down here in the underground."
-				StandardDialogue2 : "What am I doing down here you may ask? I'm not sure, but leave me be!"
-				StandardDialogue3 : "Huh? What wares do I have? I have no idea! How about you ask?"
-			}
-			ExampleTravelingMerchant: {
-				PartyGirlDialogue : "Can you please tell {0} to stop decorating my cousin's house with colors?"
-				StandardDialogue1 : "Sometimes my cousin feels like they're different from everyone else here."
-				StandardDialogue2 : "What's your favorite color? My cousin's favorite colors are white and black."
-				StandardDialogue3 : "I'm a traveling merchant, and I sell things."
-				HiveBackpackDialogue : "Hey, if you find a [i:HiveBackpack], my cousin can upgrade it for you."
 			}
 		}
 
 		GameTips: {
-			ExampleTip0: "Woah! Example Tip!"
-			ExampleTip1: "This tip was added by Example Mod!"
-			ExampleTip2: "This is yet another tip added by Example Mod!"
+			ExampleTip0: "Just don't die!"
+			ExampleTip1: "Just blame whatever kills you on lag."
+			ExampleTip2: "deez?"
 			DisabledExampleTip: "This tip will be added but then disabled by Example Mod."
 		}
 	}

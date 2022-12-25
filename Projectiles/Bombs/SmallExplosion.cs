@@ -16,6 +16,7 @@ public class SmallExplosion : ModProjectile // Default explosion, you can use th
         ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
         ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
     }
+    public override string Texture => "yourtale/Projectiles/Bombs/ExplosionPng";
 
     public override void SetDefaults()
     {
@@ -23,7 +24,7 @@ public class SmallExplosion : ModProjectile // Default explosion, you can use th
         Projectile.height = 50;
         Projectile.aiStyle = 0;
         Projectile.friendly = true;
-        Projectile.damage = 50;
+        Projectile.damage = 19;
         Projectile.DamageType = ModContent.GetInstance<ExplosiveClass>();
         Projectile.penetrate = -1;
         Projectile.timeLeft = 2;
@@ -32,8 +33,6 @@ public class SmallExplosion : ModProjectile // Default explosion, you can use th
         Projectile.ignoreWater = true;
         Projectile.extraUpdates = 1;
         AIType = ProjectileID.Bullet;
-        //Projectile.usesIDStaticNPCImmunity = true;
-        //Projectile.idStaticNPCHitCooldown = 10;
     }
 
     public override void Kill(int timeLeft)

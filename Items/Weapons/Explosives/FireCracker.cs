@@ -10,7 +10,7 @@ namespace yourtale.Items.Weapons.Explosives
 {
     public class FireCracker : ModItem
     {
-        public override void SetStaticDefaults()
+        public override void SetStaticDefaults() // The sprite I used for this weapon was an unused terraria sprite for firecrackers. 
         {
             DisplayName.SetDefault("Firecrackers");
             Tooltip.SetDefault("A small explosive, to get you started in your boom business.\nThrows a string of 5 explosive firecrackers that explode after a short delay.\nFirecrackers do not destroy blocks.");
@@ -18,7 +18,7 @@ namespace yourtale.Items.Weapons.Explosives
 
         public override void SetDefaults()
         {
-            Item.damage = 50;
+            Item.damage = 18;
             Item.crit = 20;
             Item.noMelee= true;
             Item.DamageType = ModContent.GetInstance<ExplosiveClass>();
