@@ -15,11 +15,6 @@ namespace yourtale.Items.Accessories.Fangs
 {
     public class TopazFang : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("The topaz-imbued fang gives a large amount of mining speed increase, and infinite spelunker!");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 1;

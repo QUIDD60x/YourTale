@@ -15,12 +15,6 @@ namespace yourtale.Items.Armor.Animula
     [AutoloadEquip(EquipType.Legs)] //this doesn't really have anything worth mentioning in it.
     public class AnimulaLeggings : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("I think this fixed that arrow to the knee issue?\n" +
-                "Grants extra fall speed and a higher fall damage threshold.");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 25;

@@ -10,8 +10,6 @@ namespace yourtale.Items.Weapons.Magic
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Staff Of Destruction");
-            Tooltip.SetDefault("Absolutely terrifying!");
             Item.staff[Item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
         }
 

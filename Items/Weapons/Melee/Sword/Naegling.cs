@@ -8,12 +8,6 @@ namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class Naegling : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Nægling");
-            Tooltip.SetDefault("Weilded by an ancient warrior, it has been broken by some giant power.");
-        }
-
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.BeamSword);

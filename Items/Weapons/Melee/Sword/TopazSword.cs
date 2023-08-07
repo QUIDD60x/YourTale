@@ -8,11 +8,6 @@ namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class TopazSword : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("A Mediocre blade, this will inflict confusion on enemies.");
-        }
-
         public override void SetDefaults()
         {
             Item.damage = 4;
@@ -30,9 +25,9 @@ namespace YourTale.Items.Weapons.Melee.Sword
             Item.autoReuse = true;
         }
 
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            base.OnHitNPC(player, target, damage, knockBack, crit);
+            base.OnHitNPC(player, target, hit, damageDone);
             target.AddBuff(BuffID.Confused, 600);
         }
 

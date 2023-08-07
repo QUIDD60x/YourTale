@@ -1,5 +1,5 @@
-﻿using IL.Terraria.ID;
-using Terraria;
+﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace YourTale.Prefixes.Weapons
@@ -7,12 +7,6 @@ namespace YourTale.Prefixes.Weapons
     // This class serves as an example for declaring item 'prefixes', or 'modifiers' in other words.
     public class HighQuality : ModPrefix // This used to be an all-weapons modifier, now it's for ranged weapons only.
     {
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Fine-Tuned");
-        }
-
         // We declare a custom *virtual* property here, so that another type, ExampleDerivedPrefix, could override it and change the effective power for itself.
 
         // Change your category this way, defaults to PrefixCategory.Custom. Affects which items can get this prefix.

@@ -8,12 +8,6 @@ namespace yourtale.Items
 {
     public class AncientShard : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Ancient Shard");
-            Tooltip.SetDefault("It seems really old, what could I make with this?");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 1;

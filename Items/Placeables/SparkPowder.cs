@@ -14,11 +14,6 @@ namespace yourtale.Items.Placeables
 {
     public class SparkPowder : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Spark powder");
-            Tooltip.SetDefault("A primitive ignition agent.");
-        }
         public override void SetDefaults()
         {
             Item.height = 22;

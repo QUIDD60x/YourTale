@@ -7,11 +7,6 @@ namespace yourtale.Items.Consumables.Potions
 {
 	public class MeltingPot : ModItem
 	{
-		public override void SetStaticDefaults() //this is a debug potion, but still usable.
-		{
-			Tooltip.SetDefault("Manual debug for the melting effect.");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 20;

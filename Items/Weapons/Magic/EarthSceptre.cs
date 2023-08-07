@@ -11,8 +11,6 @@ namespace yourtale.Items.Weapons.Magic // Used this to test the explosion projec
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Earth Sceptre");
-            Tooltip.SetDefault("Very strong.");
             Item.staff[Item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
         }
 

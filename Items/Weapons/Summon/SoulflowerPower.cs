@@ -7,6 +7,8 @@ using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.WorldBuilding;
+
 
 #pragma warning disable ChangeMagicNumberToID // Change magic numbers into appropriate ID values
 
@@ -16,9 +18,6 @@ namespace yourtale.Items.Weapons.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Soulflower Power");
-			Description.SetDefault("There's still some effort within it.\nSummons a flower that takes only 1/2 of a minion slot\nThe flower will die after 15 hits.");
-
 			Main.buffNoSave[Type] = true; // This buff won't save when you exit the world
 			Main.buffNoTimeDisplay[Type] = true; // The time remaining won't display on this buff
 		}
@@ -43,9 +42,6 @@ namespace yourtale.Items.Weapons.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Light's delicate bloom");
-			Tooltip.SetDefault("Summons a soul-tapped flower to fight for you");
-
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true; // This lets the player target anywhere on the whole screen while using a controller
 			ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;
@@ -113,7 +109,6 @@ namespace yourtale.Items.Weapons.Summon
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sunflower Minion");
 			// Sets the amount of frames this minion has on its spritesheet
 			Main.projFrames[Projectile.type] = 4;
 			// This is necessary for right-click targeting
@@ -151,9 +146,9 @@ namespace yourtale.Items.Weapons.Summon
 			return true;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			base.OnHitNPC(target, damage, knockback, crit);
+			base.OnHitNPC(target, hit, 70);
 			target.defense /= 2;
 			Dust dust;
 			Vector2 position = Main.LocalPlayer.Center;

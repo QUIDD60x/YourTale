@@ -14,12 +14,6 @@ namespace yourtale.Items
 {
     public class StarShard : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Star Shard");
-            Tooltip.SetDefault("It radiates a small amount of warm energy..."); // \n = new line
-        }
-
         public override void SetDefaults()
         {
             Item.width = 1;

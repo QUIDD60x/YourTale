@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -31,8 +32,7 @@ namespace yourtale.Tiles.Furniture
 			//AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 
 			// Etc
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Ancient Anvil");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(200, 200, 200), name);
 		}
 

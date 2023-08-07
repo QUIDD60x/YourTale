@@ -12,8 +12,6 @@ namespace yourtale.Items.Weapons.Magic
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sky Sceptre");
-            Tooltip.SetDefault("Woosh!");
             Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
         }
 

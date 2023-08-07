@@ -31,7 +31,7 @@ namespace yourtale
             return false;
         }
         [Label("$ToolTweaks")]
-        [Tooltip("$Will disable the copper tools nerf (currently not working).")]
+        [Tooltip("$Will disable the copper tools nerf (you will need to quit to menu and rejoin).")]
         [DefaultValue(true)]
         public bool ToolTweaks;
 
@@ -39,14 +39,14 @@ namespace yourtale
         [Tooltip("$Placeholder slider thingy")]
         [Range(1f, 5f)]
         [DefaultValue(5f)]
-        public float ExtractSpeedMultiplier;
+        public float PlaceholderSlide;
 
         [Label("$Placeholder Button")]
         [Tooltip("$Placeholder button.")]
         [ReloadRequired]
         [Range(0, 100)]
         [DefaultValue(69f)]
-        public int MolotovBlueGelCraft;
+        public int PlaceholderButton;
 
         [Label("$Enable Monet")]
         [Tooltip("$This currently does not do anything yet, but will enable a custom currency once implemented.")]

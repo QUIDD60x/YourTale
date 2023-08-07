@@ -13,13 +13,8 @@ using Terraria.Graphics.Shaders;
 
 namespace yourtale.Items
 {
-    public class CorpseItem : ModItem //You should always capitalise the first letter (grammar is important). I'll leave this though because it's funny.
+    public class CorpseItem : ModItem 
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Red Spider Lily");
-            Tooltip.SetDefault("A flower to represent death and what could come after.");
-        }
 
         public override void SetDefaults()
         {

@@ -13,7 +13,6 @@ namespace yourtale.NPCs.Evil
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dune Golem");
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             {
                 // Influences how the NPC looks in the Bestiary
@@ -56,7 +55,7 @@ namespace yourtale.NPCs.Evil
             return SpawnCondition.OverworldDaySandCritter.Chance * 2f;
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(NPC.HitInfo hit)
         {
             for (int i = 0; i < 10; i++)
             {

@@ -14,11 +14,6 @@ namespace yourtale.Items.Shells
 {
     public class LegMold : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Armor Mold: Leggings");
-            Tooltip.SetDefault("Used as a base for powerful equipment.");
-        }
 
         public override void SetDefaults()
         {

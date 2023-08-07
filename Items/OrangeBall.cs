@@ -14,12 +14,6 @@ namespace yourtale.Items
 {
     public class OrangeBall : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Odd Ball");
-            Tooltip.SetDefault("Some weird sphere. It eminates a fascinating glow.\nI wonder if the guide knows what to do with it?"); // \n = new line
-        }
-
         public override void SetDefaults()
         {
             Item.width = 20;

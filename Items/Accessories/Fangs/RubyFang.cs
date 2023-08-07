@@ -15,11 +15,6 @@ namespace yourtale.Items.Accessories.Fangs
 {
     public class RubyFang : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("The ruby-imbued fang grants faster healing.");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 1;

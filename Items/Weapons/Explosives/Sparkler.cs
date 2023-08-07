@@ -10,11 +10,6 @@ namespace yourtale.Items.Weapons.Explosives
 {
     public class Sparkler : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Sparkler");
-            Tooltip.SetDefault("A small basic sparkler, that will deal a steady stream of damage.\nWill light enemies on fire, but doesn't explode.");
-        }
 
         public override void SetDefaults()
         {
@@ -40,13 +35,13 @@ namespace yourtale.Items.Weapons.Explosives
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(3);
-            recipe.AddIngredient(ItemID.IronBar, 3);
+            recipe.AddIngredient(ItemID.IronBar, 1);
             recipe.AddIngredient(Mod.Find<ModItem>("SparkPowder"), 1);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
 
             recipe = CreateRecipe(3);
-            recipe.AddIngredient(ItemID.LeadBar, 3);
+            recipe.AddIngredient(ItemID.LeadBar, 1);
             recipe.AddIngredient(Mod.Find<ModItem>("SparkPowder"), 1);
             recipe.Register();
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.IO;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using static Terraria.ModLoader.ModContent;
@@ -20,11 +21,8 @@ namespace yourtale.Tiles.Ores
 			Main.tileSpelunker[Type] = true; //will trigger the spelunker potion as an ore.
 			Main.tileShine[Type] = 80; //amount of light produced as a integer.
 
-			ItemDrop = ItemType<Items.Placeables.Cryolite>(); //drop = Item.itemhere for vanilla drops
-
 			DustType = 84; //dustType = DustID.Platinum for vanilla, dustType = mod.dustType.Platinum for modded
-			ModTranslation name = CreateMapEntryName(); //adds a map entry so it will be pointed out on a map.
-			name.SetDefault("Cryolite");
+			LocalizedText name = CreateMapEntryName(); //adds a map entry so it will be pointed out on a map.
 			AddMapEntry(new Color(129, 159, 242), name); //or AddMapEntry(Color.Red) or any other colour in the color class
 			HitSound = SoundID.Tink;
 			MinPick = 35; //will set minimum pick strength
@@ -45,7 +43,7 @@ namespace yourtale.Tiles.Ores
 
 		public class CryoliteOreSystem : ModSystem
 		{
-			public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+			public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
 			{
 				// Because world generation is like layering several images ontop of each other, we need to do some steps between the original world generation steps.
 
@@ -78,7 +76,7 @@ namespace yourtale.Tiles.Ores
 					
 					int x = WorldGen.genRand.Next(0, Main.maxTilesX);
 
-					int y = WorldGen.genRand.Next((int)WorldGen.rockLayer, Main.maxTilesY);
+					int y = WorldGen.genRand.Next((int)GenVars.rockLayer, Main.maxTilesY);
 
 					//WorldGen.TileRunner(x, y, WorldGen.genRand.Next(2, 4), WorldGen.genRand.Next(2, 4), ModContent.TileType<Cryolite>());
 

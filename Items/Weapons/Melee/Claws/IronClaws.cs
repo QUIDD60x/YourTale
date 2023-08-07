@@ -7,11 +7,6 @@ namespace YourTale.Items.Weapons.Melee.Claws
 {
     public class IronClaws : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("A sturdy set of claws, perfect for unrelenting bloodlust.");
-        }
-
         public override void SetDefaults()
         {
             Item.damage = 5;

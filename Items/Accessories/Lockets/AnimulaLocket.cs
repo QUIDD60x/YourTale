@@ -11,11 +11,6 @@ namespace yourtale.Items.Accessories.Lockets
 {
 	public class AnimulaLocket : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			Tooltip.SetDefault("Increased move speed, jump power, and more health.");
-		}
-
 		public override void SetDefaults()
 		{	
 

@@ -20,12 +20,6 @@ namespace yourtale.Items.Consumables.Summoning
             Item.consumable = false;
         }
 
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Bloody Spine");
-            Tooltip.SetDefault("Summons the Brain of Cthulhu.\nNot consumable.");
-        }
-
 
         public override bool CanUseItem(Player player)
         {

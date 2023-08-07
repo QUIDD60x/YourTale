@@ -11,9 +11,6 @@ namespace yourtale.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Torpid spirit shard");
-            Tooltip.SetDefault("A weak piece of manifested consciousness.\nCould be purified?");
-
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(8, 4));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 

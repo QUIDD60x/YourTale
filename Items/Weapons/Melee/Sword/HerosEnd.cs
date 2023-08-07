@@ -9,13 +9,6 @@ namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class HerosEnd : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Hero's End");
-            Tooltip.SetDefault("Once weilded by the feigned hero, it has a small chance to instantly kill an enemy.\n" +
-                "''[c/FF0000:A hero has to win every time, a villan just has to win once.]''");
-        }
-
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.NightsEdge);
@@ -35,10 +28,8 @@ namespace YourTale.Items.Weapons.Melee.Sword
             dust.fadeIn = 1.4302325f;
         }
 
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            base.OnHitNPC(player, target, damage, knockBack, crit);
-
             if (Main.rand.NextBool(50))
             {
                 Item.damage = 25056;

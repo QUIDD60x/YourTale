@@ -9,11 +9,6 @@ namespace yourtale.Projectiles.Swords
 {
 	public class LahatCherebProj : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("FireBall");
-		}
-
 		public override void SetDefaults()
 		{
 			Projectile.CloneDefaults(ProjectileID.ExplosiveBullet);

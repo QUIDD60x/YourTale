@@ -14,11 +14,6 @@ namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class AmberSword : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("A sturdy and powerful blade, this can summon sand tornadoes!");
-        }
-
         public override void SetDefaults()
         {
             Item.damage = 17;

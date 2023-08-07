@@ -14,12 +14,6 @@ namespace yourtale.Items.Shells
 {
     public class BowMold : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Weapon Mold: Bow");
-            Tooltip.SetDefault("Used as a base for powerful equipment.");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 1;

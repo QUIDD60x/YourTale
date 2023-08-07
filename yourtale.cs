@@ -1,7 +1,6 @@
 using Terraria.ModLoader;
 using Terraria.GameContent.UI;
 using yourtale.Items;
-using YourTale.Currencies;
 
 namespace YourTale
 {

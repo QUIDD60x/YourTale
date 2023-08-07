@@ -10,13 +10,6 @@ namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class Chrysaor : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("THESWORD"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            Tooltip.SetDefault("Once weilded by one of the highest Thendra Knights, its age has taken a toll on the magic.\n" +
-                "Shoots a variety of projectiles, some harder to handle than others.");
-        }
-
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.TrueExcalibur);

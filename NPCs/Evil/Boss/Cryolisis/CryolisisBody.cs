@@ -14,7 +14,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System.IO;
-using static Terraria.ModLoader.PlayerDrawLayer;
+using yourtale.Items.Consumables.BossBags;
 
 namespace yourtale.NPCs.Evil.Boss.Cryolisis
 {
@@ -113,7 +113,6 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cryolisis");
             Main.npcFrameCount[Type] = 1;
 
             // Add this in for bosses that have a summon item, requires corresponding code in the item (See MinionBossSummonItem.cs)
@@ -187,49 +186,20 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
         {
             npcLoot.Add(ItemDropRule.Common(ItemID.Shiverthorn, 1, 3, 9));
             npcLoot.Add(ItemDropRule.Common(ItemID.ShiverthornSeeds, 1, 5, 10));
+            npcLoot.Add(ItemDropRule.Common(ItemID.IceBlade, 7, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(ItemID.IceBoomerang, 7, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(ItemID.IceSkates, 7, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(ItemID.SnowballCannon, 4, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(ItemID.BlizzardinaBottle, 7, 1, 1));
+            npcLoot.Add(ItemDropRule.Common(ItemID.FlurryBoots, 5, 1, 1));
             npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("AncientShard").Type, 10, 5, 15));
             npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("CorExitio").Type, 1, 7, 14));
             npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("IceHeart").Type, 1, 1));
             npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("CryoliteLocket").Type, 1, 1));
             npcLoot.Add(ItemDropRule.Common(Mod.Find<ModItem>("LetharvitalicEssence").Type, 1, 3, 9));
 
-            /* Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
-            //npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<MinionBossBag>()));
-
-            // Trophies are spawned with 1/10 chance
-            //npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.Furniture.MinionBossTrophy>(), 10));
-
-            // ItemDropRule.MasterModeCommonDrop for the relic
-            //npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ModContent.ItemType<Items.Placeable.Furniture.MinionBossRelic>()));
-
-            // ItemDropRule.MasterModeDropOnAllPlayers for the pet
-            //npcLoot.Add(ItemDropRule.MasterModeDropOnAllPlayers(ModContent.ItemType<MinionBossPetItem>(), 4));
-
-            // All our drops here are based on "not expert", meaning we use .OnSuccess() to add them into the rule, which then gets added
-            LeadingConditionRule notExpertRule = new(new Conditions.NotExpert());
-
-            // Notice we use notExpertRule.OnSuccess instead of npcLoot.Add so it only applies in normal mode
-            // Boss masks are spawned with 1/7 chance
-            //notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
-
-            // This part is not required for a boss and is just showcasing some advanced stuff you can do with drop rules to control how items spawn
-            // We make 12-15 ExampleItems spawn randomly in all directions, like the lunar pillar fragments. Hereby we need the DropOneByOne rule,
-            // which requires these parameters to be defined
-            int itemType = ModContent.ItemType<CorExitio>();
-            var parameters = new DropOneByOne.Parameters()
-            {
-                ChanceNumerator = 1,
-                ChanceDenominator = 1,
-                MinimumStackPerChunkBase = 1,
-                MaximumStackPerChunkBase = 1,
-                MinimumItemDropsCount = 12,
-                MaximumItemDropsCount = 15,
-            };
-
-            notExpertRule.OnSuccess(new DropOneByOne(itemType, parameters));
-
-            // Finally add the leading rule
-            npcLoot.Add(notExpertRule);*/
+             //Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
+            npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<CryoBossBag>()));
         }
 
         public override void OnKill()
@@ -259,7 +229,7 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
             return true;
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(NPC.HitInfo hit)
         {
             // If the NPC dies, spawn gore and play a sound
             if (Main.netMode == NetmodeID.Server)

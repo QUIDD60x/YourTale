@@ -6,6 +6,7 @@ using yourtale.Items;
 using YourTale.Items.Weapons.Melee.Sword;
 using YourTale.DropConditions;
 using yourtale.Items.Placeables;
+using System.Collections.Generic;
 
 namespace yourtale.NPCs
 {
@@ -58,14 +59,22 @@ namespace yourtale.NPCs
 			{
 				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SpiritShard1>(), 10, 1, 7));
 			}
+			if (npc.type == NPCID.Nymph)
+			{
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Ambrosia>(), 50, 1, 5));
+			}
+            if (npc.type == NPCID.Raven)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RavenFeather>(), 1, 3, 7));
+            }
 
 
-		}
+        }
 
-		public override void SetupShop(int type, Chest shop, ref int nextSlot)
+        /*public override void ModifyActiveShop(NPC npc, string shopName, Item[] items)
 		{
 			// This example does not use the AppliesToEntity hook, as such, we can handle multiple npcs here by using if statements.
-			if (type == NPCID.Dryad)
+			if (npc.type == NPCID.Dryad)
 			{
 				// Adding an item to a vanilla NPC is easy:
 				// This item sells for the normal price.
@@ -73,7 +82,7 @@ namespace yourtale.NPCs
 				shop.item[nextSlot].shopCustomPrice = 550;
 				nextSlot++; // Don't forget this line, it is essential.
 			}
-		}
+		}*/
 
 		// ModifyGlobalLoot allows you to modify loot that every NPC should be able to drop, preferably with a condition.
 		public override void ModifyGlobalLoot(GlobalLoot globalLoot)

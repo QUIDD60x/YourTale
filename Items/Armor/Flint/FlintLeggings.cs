@@ -14,11 +14,6 @@ namespace yourtale.Items.Armor.Flint
     [AutoloadEquip(EquipType.Legs)]
     public class FlintLeggings : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("Will do for now...");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 22;

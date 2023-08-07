@@ -14,8 +14,6 @@ namespace YourTale.Buffs.Good
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Rock Solid");
-            Description.SetDefault("You're stuck between a rock and a... nother rock.");
             Main.debuff[Type] = false; //Debuffs cannot be canceled, buffs can. Make sure to include this
         }
         public override void Update(NPC npc, ref int buffIndex)

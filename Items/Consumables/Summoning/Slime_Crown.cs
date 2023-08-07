@@ -19,12 +19,6 @@ namespace yourtale.Items.Consumables.Summoning
             Item.consumable = false;
         }
 
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Slime Crown");
-            Tooltip.SetDefault("Summons the King Slime.\nNot consumable.");
-        }
-
 
         public override bool CanUseItem(Player player)
         {

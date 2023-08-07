@@ -14,8 +14,6 @@ namespace yourtale.Items.Weapons.Ranged.Bows
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Shoots rapid piercing feathers, that can randomly home.\nWatch your liver.");
-
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 
@@ -50,7 +48,7 @@ namespace yourtale.Items.Weapons.Ranged.Bows
 			// Gun Properties
 			Item.shoot = ProjectileID.PurificationPowder; // For some reason, all the guns in the vanilla source have this.
 			Item.shootSpeed = 12f; // The speed of the projectile (measured in pixels per frame.)
-			Item.useAmmo = ModContent.ItemType<HarpyShot>();  //ModContent.ItemType<HarpyShot>(); // The "ammo Id" of the ammo item that this weapon uses. Ammo IDs are magic numbers that usually correspond to the item id of one item that most commonly represent the ammo type.
+			Item.useAmmo = ItemID.WoodenArrow;  //ModContent.ItemType<HarpyShot>(); // The "ammo Id" of the ammo item that this weapon uses. Ammo IDs are magic numbers that usually correspond to the item id of one item that most commonly represent the ammo type.
 		}
 
 		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.

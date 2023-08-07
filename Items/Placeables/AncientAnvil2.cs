@@ -9,12 +9,6 @@ namespace yourtale.Items.Placeables
 {
     public class AncientAnvil2 : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Thendric Anvil");
-            Tooltip.SetDefault("You somehow repaired this, and can now use it to make weapons beyond mortality.");
-        }
-
         public override void SetDefaults()
         {
             Item.createTile = ModContent.TileType<Tiles.Furniture.AncientAnvil2>(); // This sets the id of the tile that this item should place when used.

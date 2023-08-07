@@ -1,5 +1,5 @@
-﻿using IL.Terraria.ID;
-using Terraria;
+﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace YourTale.Prefixes.Weapons

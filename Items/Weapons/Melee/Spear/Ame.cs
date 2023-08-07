@@ -14,9 +14,6 @@ namespace yourtale.Items.Weapons.Melee.Spear
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ame-no-nuhoko");
-			Tooltip.SetDefault("A legendary spear, responsible for creating the first land.\nIt's a lot less flimsy than it looks.");
-
 			ItemID.Sets.SkipsInitialUseSound[Item.type] = true;
 			ItemID.Sets.Spears[Item.type] = true;
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -67,9 +64,9 @@ namespace yourtale.Items.Weapons.Melee.Spear
 				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<AncientBrownDust>());
 		}
 
-        public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
+        public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
         {
-            base.ModifyHitNPC(player, target, ref damage, ref knockBack, ref crit);
+            base.ModifyHitNPC(player, target, ref modifiers);
 			player.statDefense += 1000;
 			target.wet = true;
         }

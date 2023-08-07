@@ -59,7 +59,7 @@ namespace yourtale.Projectiles.Bombs
             Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, launchVelocity, ModContent.ProjectileType<SmallExplosion>(), 35, Projectile.knockBack, Projectile.owner);
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Projectile.ai[0] += 0.1f;
             Projectile.velocity *= 0.65f;

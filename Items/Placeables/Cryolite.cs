@@ -14,11 +14,6 @@ namespace yourtale.Items.Placeables
 {
     public class Cryolite : ModItem //This is THE ITEM, NOT THE TILE. They are 2 different things, items are what you pickup and tiles are what are placed. YOU NEED BOTH to have a functioning item-to-tile combo. look for cryolite ore in the tile section.
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Cryolite sample");
-            Tooltip.SetDefault("irratates my skin! feels like ice..."); // \n = new line
-        }
         public override void SetDefaults()
         {
             Item.Size = new Vector2(12); //vector2 gives it a 12x12 size instead of having to do item.width and item.height.

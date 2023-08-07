@@ -13,11 +13,6 @@ namespace yourtale.Projectiles.Evil
 	/// </summary>
 	public class IceBolt : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Ice Bolt");
-		}
-
 		public override void SetDefaults()
 		{
 			Projectile.CloneDefaults(ProjectileID.IceBolt);

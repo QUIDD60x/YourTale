@@ -14,9 +14,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
     {
         public override void SetStaticDefaults()
         {
-            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-            Tooltip.SetDefault("test for the banshee class.");
-        }
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;        }
 
         public override void SetDefaults()
         {

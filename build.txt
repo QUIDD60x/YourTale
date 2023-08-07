@@ -2,3 +2,6 @@ displayName = [c/5EAFF1:Y][c/74acda:o][c/82abcc:u][c/96a9b8:r] [c/c1a48d:T][c/c1
 author = QUIDD60x
 version = 0.8.9.2
 homepage = https://github.com/QUIDD60x/YourTale
+hidecode = false
+hideResources = false
+includeSource = true

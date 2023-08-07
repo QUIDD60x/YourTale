@@ -15,11 +15,6 @@ namespace yourtale.Items.Accessories.Fangs
 {
     public class DiamondFang : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("This diamond-imbued fang gives up to 20 defense, minus the defense you have.");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 1;
@@ -38,7 +33,8 @@ namespace yourtale.Items.Accessories.Fangs
         public override void UpdateEquip(Player player)
         {
             base.UpdateEquip(player);
-            player.statDefense += 20 - player.statDefense;
+            player.statDefense += 8;
+            player.endurance *= 1.11f;
 
             if (Main.rand.NextFloat() < 0.4651163f)
             {

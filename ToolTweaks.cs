@@ -22,7 +22,7 @@ namespace yourtale
                 case ItemID.CopperPickaxe:
                         if (GetInstance<ServerConfig>().ToolTweaks)
                         {
-                            item.pick = 15;
+                            item.pick = 6;
                             item.useTime = 20;
                             item.useAnimation = 20;
                         }

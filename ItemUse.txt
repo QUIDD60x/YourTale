@@ -1,0 +1,13 @@
+﻿This file serves as a reminder for me on what items do/craft what, how I want to go forward with them in the future, and small reminders on their purpose, along with possible future uses. This will more than likely be very chaotic, and change frequently.
+
+Items:
+Ambrosia- Used as higher level crafting for spirit shard items. Should be post-plantera/dungeon level? Could use that with most item mold craftings.
+AncientShard- Crafting item used for a variety of modded tools/weapons atm. Doesn't really have a balance issue, dropped commonly enough and can be used at any point in the game without issue.
+Blue/Green/Orange/Yellow Ball- Used for crafting the Peak of Power, nothing else. Probably need to adjust the bosses that drop the balls?
+CorExitio- Explosive-type spirit, crafted with a pretty balanced amount of explosives (but dropped by bosses), currently doesn't craft much yet. May want to adjust bosses that drop it, to a few specific (harder/easier to farm) bosses?
+CorpseItem- Red Spider Lily item. Used in potions, haven't thought of any yet.
+CrackedWolfFang- Shell for imbued wolf fangs, they definitely need some adjustment but atm they're quite good.
+flint- Starter stuff, works fine.
+GiantRavenFeather- Plan on making a pair of wings, along with Raven armor?
+GunParts- Used for crafting modded guns. Currently pretty balanced, but need some way to prevent people from immediately crafting higher guns? AK a lil unbalanced.
+HypervitalicEssence- 

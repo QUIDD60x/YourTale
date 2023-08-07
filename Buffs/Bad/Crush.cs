@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using Terraria.ID;
 
 namespace yourtale.Buffs.Bad
 {
@@ -14,8 +15,15 @@ namespace yourtale.Buffs.Bad
 		public override void Update(NPC npc, ref int buffIndex)
 		{
 			npc.GetGlobalNPC<CrushDebuffNPC>().markedWithCrush = true;
+			npc.velocity = Vector2.Zero;
 			npc.defense /= 2;
-		}
+			npc.defense--;
+
+            Dust dust;
+			Vector2 position = npc.Center; 
+			dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, DustID.DungeonBlue, 0f, -0.4651165f, 160, new Color(255,255,255), 1f)]; 
+			dust.fadeIn = 0.627907f;
+        }
 
         public override void Update(Player player, ref int buffIndex)
         {

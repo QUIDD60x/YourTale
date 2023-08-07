@@ -14,9 +14,6 @@ namespace yourtale.Items.Consumables.Potions
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cracked Boost Stone");
-			Tooltip.SetDefault("**CURRENTLY NOT WORKING (sorry)**Heals the user for 10 health after 10 seconds of use.\nCould this be improved?");
-
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 

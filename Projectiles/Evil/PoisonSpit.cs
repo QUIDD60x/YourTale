@@ -36,7 +36,7 @@ namespace yourtale.Projectiles.Evil
 
 
         }
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             target.AddBuff(Mod.Find<ModBuff>("Melting").Type, 100);
 

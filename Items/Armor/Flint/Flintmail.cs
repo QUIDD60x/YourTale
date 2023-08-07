@@ -14,11 +14,6 @@ namespace yourtale.Items.Armor.Flint
     [AutoloadEquip(EquipType.Body)]
     public class Flintmail : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("It holds together, somehow...");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 22;

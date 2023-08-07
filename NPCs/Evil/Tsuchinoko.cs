@@ -19,8 +19,6 @@ namespace yourtale.NPCs.Evil
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tsuchioko");
-
 			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{ // Influences how the NPC looks in the Bestiary
 				CustomTexturePath = "yourtale/NPCs/Evil/TsuchinokoHead", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
@@ -127,7 +125,6 @@ namespace yourtale.NPCs.Evil
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tsuchinoko");
 
 			NPCID.Sets.NPCBestiaryDrawModifiers value = new(0)
 			{
@@ -152,7 +149,6 @@ namespace yourtale.NPCs.Evil
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tsuchinoko");
 
 			NPCID.Sets.NPCBestiaryDrawModifiers value = new(0)
 			{

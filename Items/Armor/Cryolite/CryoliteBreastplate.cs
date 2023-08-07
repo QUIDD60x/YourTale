@@ -14,10 +14,6 @@ namespace yourtale.Items.Armor.Cryolite
     [AutoloadEquip(EquipType.Body)]
     public class CryoliteBreastplate : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("Reminds me of winter!");
-        }
 
         public override void SetDefaults()
         {

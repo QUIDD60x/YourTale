@@ -9,12 +9,6 @@ namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class LahatChereb : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Lahat Chereb");
-            Tooltip.SetDefault("This extremely powerful flame of the whirling sword was once wielded by an angel.\n" +
-                "'[c/ffa500:Some just want to watch the world burn, some want to burn those.]'");
-        }
 
         public override void SetDefaults()
         {

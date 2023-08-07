@@ -12,7 +12,6 @@ public class Explosion : ModProjectile // Default explosion, you can use this as
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Explosion");
         ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
         ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
     }

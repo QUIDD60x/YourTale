@@ -6,12 +6,6 @@ namespace yourtale.Items.Tools.Flint
 {
     public class FlintAxe : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Flint Axe");
-            Tooltip.SetDefault("NOT good... stronger than a hatchet at least.");
-        }
-
         public override void SetDefaults()
         {
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.IO;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using static Terraria.ModLoader.ModContent;
@@ -20,11 +21,8 @@ namespace yourtale.Tiles.Ores
             Main.tileSpelunker[Type] = true;
             Main.tileShine[Type] = 110;
 
-            ItemDrop = ItemType<Items.Placeables.SparkPowder>();
-
             DustType = 84;
-            ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Sparking Ore");
+            LocalizedText name = CreateMapEntryName();
             AddMapEntry(new Color(255, 265, 0), name);
             HitSound = SoundID.Tink;
             MinPick = 5;
@@ -43,7 +41,7 @@ namespace yourtale.Tiles.Ores
 
         public class SparkOreSystem : ModSystem
         {
-            public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+            public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
             {
                 // Because world generation is like layering several images ontop of each other, we need to do some steps between the original world generation steps.
 
@@ -76,7 +74,7 @@ namespace yourtale.Tiles.Ores
 
                     int x = WorldGen.genRand.Next(0, Main.maxTilesX);
 
-                    int y = WorldGen.genRand.Next((int)WorldGen.rockLayer, Main.maxTilesY);
+                    int y = WorldGen.genRand.Next((int)GenVars.rockLayer, Main.maxTilesY);
                     Tile tile = Framing.GetTileSafely(x, y);
                     WorldGen.TileRunner(x, y, WorldGen.genRand.Next(4, 9), WorldGen.genRand.Next(6, 10), ModContent.TileType<SparkOre>());
                 }

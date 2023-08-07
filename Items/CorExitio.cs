@@ -16,7 +16,6 @@ namespace yourtale.Items
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Essence of destruction, very volatile!"); 
 			ItemID.Sets.ItemNoGravity[Item.type] = true;
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 4));

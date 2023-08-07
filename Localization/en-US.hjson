@@ -10,127 +10,1037 @@ Mods: {
 	YourTale: {
 		Config: {
 			ItemHeader: Items
-			
-			SampleEnumLabels: {
-				Peculiar: Very Peculiar
-			}
-			
+			SampleEnumLabels.Peculiar: Very Peculiar
+
 			ExampleWingsToggle: {
 				Label: ExampleWings Toggle
 				Tooltip: Enables or disables the ExampleWings item
 			}
 		}
-		
+
 		Common: {
 			PaperAirplane: Paper Airplane
 			LocalizedLabel: This Label is from the localization files: {$Mods.ExampleMod.Common.PaperAirplane}
 			LocalizedTooltip: This tooltip is from the localization files.
 			LocalizedHeader: Headers can help organize
 		}
-		
-		Currencies: {
-			ExampleCustomCurrency: example items
+
+		Currencies.ExampleCustomCurrency: example items
+
+		DamageClasses: {
+			BansheeClass.DisplayName: Feral damage
+			ExplosiveClass.DisplayName: Explosive damage
 		}
 
-		DamageClassName: {
-			BansheeClass: Ravaging damage
-			ExplosiveClass: Explosive damage
-		}
+		Keybinds.RandomBuff.DisplayName: Random Buff
 
-		Keybind: {
-			RandomBuff: Random Buff
-		}
-		
-		NPCName: {
-			SisterOfSteel: Sister of steel
+		NPCs: {
+			SisterOfSteel.DisplayName: Sister of steel
 			# Here we see that spaces in translation keys are not allowed. Any space will be replaced with an underscore.
-			Example_Person: Example Person
-			ExampleTravellingMerchant: Example Traveler
+			Example_Person.DisplayName: Example Person
+			ExampleTravellingMerchant.DisplayName: Example Traveler
+			AncientWarrior.DisplayName: Ancient Warrior
+			CryolisisBody.DisplayName: Cryolisis
+			CryoMinion.DisplayName: Cryolisis Minion
+			DuneGolem.DisplayName: Dune Golem
+			IcePixie.DisplayName: Ice Pixie
+			MiniCryo.DisplayName: Ice elemental
+			PrinceSlime.DisplayName: Prince Slime
+			Raven.DisplayName: Raven
+			RavenQueen.DisplayName: Raven Queen
+			TsuchinokoBody.DisplayName: Tsuchinoko
+			TsuchinokoHead.DisplayName: Tsuchioko
+			TsuchinokoTail.DisplayName: Tsuchinoko
+			ZombKing.DisplayName: King Zombie
+			Jackalope.DisplayName: Jackalope
 		}
-		
-		MapObject: {
-			ExampleClock: Example Clock
-			ExamplePylonTile: "{$Mods.ExampleMod.ItemName.ExamplePylonItem}"
-			ExamplePylonTileAdvanced: "{$Mods.ExampleMod.ItemName.ExamplePylonItemAdvanced}"
+
+		Tiles: {
+			ExampleClock.MapEntry: Example Clock
+			ExamplePylonTile.MapEntry: "{$Mods.ExampleMod.ItemName.ExamplePylonItem}"
+			ExamplePylonTileAdvanced.MapEntry: "{$Mods.ExampleMod.ItemName.ExamplePylonItemAdvanced}"
+			AncientAnvil.MapEntry: Ancient Anvil
+			AncientAnvil2.MapEntry: Thendric Anvil
+			AnimanticConvoluter.MapEntry: Animantic Convoluter
+			Athium.MapEntry: Athium
+			Cryolite.MapEntry: Cryolite
+			FlintDeposit.MapEntry: Flint
+			SparkOre.MapEntry: Sparking Ore
+			Vigore.MapEntry: Vigore
+			CorpseFlower.MapEntry: Red Spider Lily
+			Daffodil.MapEntry: Daffodil
+			VoodooBell.MapEntry: Voodoo Bellflower
+			SoulSmithy.MapEntry: Soul Smithy
 		}
-		
-		ItemTooltip: {
+
+		Items: {
 			# These 2 examples show using substitutions. Here we use a vanilla Key and a key from this Mod to generate the text: "Nearby players get a bonus against: Octopus". 
 			# Note that the translation files for other languages don't need to define ItemTooltip.OctopusBanner, they would only need to define NPCName.Octopus, as seen in zh-Hans.hjson file. 
-			OctopusBanner: "{$CommonItemTooltip.BannerBonus}{$Mods.ExampleMod.NPCName.Octopus}"
-			SarcophagusBanner: "{$CommonItemTooltip.BannerBonus}{$Mods.ExampleMod.NPCName.Sarcophagus}"
-			ExamplePetItem:
-				'''
-				Summons a {$Mods.ExampleMod.Common.PaperAirplane} to follow aimlessly behind you
-				Second Line!
-				'''
-			ExampleBugNet:
+			OctopusBanner.Tooltip: "{$CommonItemTooltip.BannerBonus}{$Mods.ExampleMod.NPCName.Octopus}"
+			SarcophagusBanner.Tooltip: "{$CommonItemTooltip.BannerBonus}{$Mods.ExampleMod.NPCName.Sarcophagus}"
+
+			ExamplePetItem: {
+				Tooltip:
+					'''
+					Summons a {$Mods.ExampleMod.Common.PaperAirplane} to follow aimlessly behind you
+					Second Line!
+					'''
+				DisplayName: "{$Mods.ExampleMod.Common.PaperAirplane}"
+			}
+
+			ExampleBugNet.Tooltip:
 				'''
 				Used to catch critters
 				Has a 20% chance to successfully catch lava critters
 				This increases to 50% if the Warmth Potion buff is active
 				Has a 5% chance to duplicate caught critters
 				'''
-			ExampleSpecificAmmoGun:
-				'''
-				Does not accept cursed bullets as ammunition
-				Fires three rounds in rapid succession
-				Each shot consumes ammunition with a different chance
-				The first shot has a 20% chance to not consume bullets
-				The second shot has a 63% chance to not consume bullets
-				The last shot has a 36% chance to not consume bullets
-				Shots that consume ammunition have their damage boosted by 20%
-				'''
-			ExamplePylonItem: 
-			'''
-			Must be within the Example Surface or Underground Biome in order to function.
-			Has no NPC requirements!
-			'''
-			ExamplePylonItemAdvanced: "Will randomly turn on and off, but otherwise can be teleported to without NPCs and in any biome!"
-			ExampleMultiUseItem: Can be used 4 times
-		}
-		
-		ItemName: {
-			ExamplePetItem: "{$Mods.ExampleMod.Common.PaperAirplane}"
-			ExampleSpecificAmmoGun: '''Example Rifle'''
-			ExamplePylonItem: "Example Pylon"
-			ExamplePylonItemAdvanced: "Unstable Pylon"
-		}
-		
-		ProjectileName: {
-			ExamplePetProjectile: "{$Mods.ExampleMod.Common.PaperAirplane}"
-		}
-		
-		BuffName: {
-			ExamplePetBuff: "{$Mods.ExampleMod.Common.PaperAirplane}"
-		}
-		
-		BuffDescription: {
-			ExamplePetBuff: '''"Let this pet be an example to you!"'''
-		}
-		
-		RecipeConditions: {
-			Night: At Low Health
+
+			ExampleSpecificAmmoGun: {
+				Tooltip:
+					'''
+					Does not accept cursed bullets as ammunition
+					Fires three rounds in rapid succession
+					Each shot consumes ammunition with a different chance
+					The first shot has a 20% chance to not consume bullets
+					The second shot has a 63% chance to not consume bullets
+					The last shot has a 36% chance to not consume bullets
+					Shots that consume ammunition have their damage boosted by 20%
+					'''
+				DisplayName: Example Rifle
+			}
+
+			ExamplePylonItem: {
+				Tooltip:
+					'''
+					Must be within the Example Surface or Underground Biome in order to function.
+					Has no NPC requirements!
+					'''
+				DisplayName: Example Pylon
+			}
+
+			ExamplePylonItemAdvanced: {
+				Tooltip: Will randomly turn on and off, but otherwise can be teleported to without NPCs and in any biome!
+				DisplayName: Unstable Pylon
+			}
+
+			ExampleMultiUseItem.Tooltip: Can be used 4 times
+
+			BrokenUmbrella: {
+				Tooltip: Good job, you broke an umbrella. Your rage becomes exactly 15% more melee damage and speed.
+				DisplayName: Broken Umbrella
+			}
+
+			AmethystFang: {
+				Tooltip: The amethyst-imbued fang calms the enemies of this world.
+				DisplayName: Amethyst Fang
+			}
+
+			DiamondFang: {
+				Tooltip: This diamond-imbued fang gives 8 defense, and extra damage reduction.
+				DisplayName: Diamond Fang
+			}
+
+			EmeraldFang: {
+				Tooltip: This emerald fang will vastly invrease your general damage and attack speed.
+				DisplayName: Emerald Fang
+			}
+
+			RubyFang: {
+				Tooltip: The ruby-imbued fang grants faster healing.
+				DisplayName: Ruby Fang
+			}
+
+			SapphireFang: {
+				Tooltip: This sapphire fang increases your maximum running speed and fall distance.
+				DisplayName: Sapphire Fang
+			}
+
+			TopazFang: {
+				Tooltip: The topaz-imbued fang gives a large amount of mining speed increase, and infinite spelunker!
+				DisplayName: Topaz Fang
+			}
+
+			IceHeart: {
+				Tooltip:
+					'''
+					Cold as ice... 
+					decreases overall speed but protects you.
+					'''
+				DisplayName: Frost Heart
+			}
+
+			AnimulaLocket: {
+				Tooltip: Increased move speed, jump power, and more health.
+				DisplayName: Animula Locket
+			}
+
+			CryoliteLocket: {
+				Tooltip: Gives you extra defense, and grants an ice shield.
+				DisplayName: Cryolite Locket
+			}
+
+			EmptyLocket: {
+				Tooltip:
+					'''
+					You could put something in the middle... 
+					No status effects.
+					'''
+				DisplayName: Empty Locket
+			}
+
+			GoldLocket: {
+				Tooltip:
+					'''
+					imbued with unpurified life shards, it feels powerful! 
+					Increased defense and overall damage.
+					'''
+				DisplayName: Gold Locket
+			}
+
+			PlatinumLocket: {
+				Tooltip:
+					'''
+					imbued with unpurified life shards, it feels powerful! 
+					Increased defense and overall damage.
+					'''
+				DisplayName: Platinum Locket
+			}
+
+			MaidCap: {
+				Tooltip:
+					'''
+					Everything seems to slow while wearing this...
+					Increases general speed and damage.
+					'''
+				DisplayName: Maid Cap (Accessory)
+			}
+
+			SpookyHeart: {
+				Tooltip:
+					'''
+					Scarily busted!
+					Grants 15% melee damage, at the cost of 5 defense.
+					'''
+				DisplayName: Melded Heart
+			}
+
+			Ambrosia: {
+				Tooltip:
+					'''
+					The nectar of the gods.
+					Used as a higher level crafting material for the spirit shards.
+					'''
+				DisplayName: Ambrosia
+			}
+
+			AncientShard: {
+				Tooltip: It seems really old, what could I make with this?
+				DisplayName: Ancient Shard
+			}
+
+			AmbrosiaLegs: {
+				Tooltip: 5% increased movement speed and 4% more damage.
+				DisplayName: Ambrosic Leggings
+			}
+
+			AnimulaBreastplate: {
+				Tooltip:
+					'''
+					Almost makes me feel not empty!
+					Grants an extra 40 health.
+					'''
+				DisplayName: Animula Breastplate
+			}
+
+			AnimulaHelmet: {
+				Tooltip:
+					'''
+					Makes me feel smart!
+					That grants extra max movement speed, for some reason.
+					'''
+				DisplayName: Animula Helm
+			}
+
+			AnimulaLeggings: {
+				Tooltip:
+					'''
+					I think this fixed that arrow to the knee issue?
+					Grants extra fall speed and a higher fall damage threshold.
+					'''
+				DisplayName: Animula Leggings
+			}
+
+			CryoliteBreastplate: {
+				Tooltip: Reminds me of winter!
+				DisplayName: Cryolite Breastplate
+			}
+
+			CryoliteHelmet: {
+				Tooltip: Chilly!
+				DisplayName: Cryolite Helmet
+			}
+
+			CryoliteLeggings: {
+				Tooltip: I'm gonna need some hellstone-heated underwear...
+				DisplayName: Cryolite Leggings
+			}
+
+			FlintHelm: {
+				Tooltip: Not good at all...
+				DisplayName: Flint Helmet
+			}
+
+			FlintLeggings: {
+				Tooltip: Will do for now...
+				DisplayName: Flint Leggings
+			}
+
+			Flintmail: {
+				Tooltip: It holds together, somehow...
+				DisplayName: Flintmail
+			}
+
+			RavenlaidChest: {
+				Tooltip: 40% more movement speed and 30% more wing time.
+				DisplayName: Ravenlaid Chestplate
+			}
+
+			RavenlaidHelmet: {
+				Tooltip: 33% more arrow damage and 30% more wing time.
+				DisplayName: Ravenlaid Helmet
+			}
+
+			RavenlaidLeggings: {
+				Tooltip: 45% more movement speed and 8% more arrow damage.
+				DisplayName: Ravenlaid Leggings
+			}
+
+			BlueBall: {
+				Tooltip:
+					'''
+					Some weird sphere. It eminates a fascinating glow.
+					I wonder if the guide knows what to do with it?
+					'''
+				DisplayName: Odd Ball
+			}
+
+			CryoBossBag: {
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+				DisplayName: Treasure Bag
+			}
+
+			LifePot1: {
+				Tooltip:
+					'''
+					**CURRENTLY NOT WORKING (sorry)**Heals the user for 10 health after 10 seconds of use.
+					Could this be improved?
+					'''
+				DisplayName: Cracked Boost Stone
+			}
+
+			MeltingPot: {
+				Tooltip: Manual debug for the melting effect.
+				DisplayName: Melting Pot
+			}
+
+			StoneMan: {
+				Tooltip:
+					'''
+					You're stuck between a rock and a... nother rock. 
+					Freezes you in place for 10 seconds, but heavily increases life regen and defense.
+					'''
+				DisplayName: Bulwark Potion
+			}
+
+			Bloody_Spine: {
+				Tooltip:
+					'''
+					Summons the Brain of Cthulhu.
+					Not consumable.
+					'''
+				DisplayName: Bloody Spine
+			}
+
+			CryoCube: {
+				Tooltip:
+					'''
+					You can almost see a face in there... 
+					Summons Cryolisis
+					'''
+				DisplayName: Cryo Cube
+			}
+
+			CryoCube2: {
+				Tooltip:
+					'''
+					You can almost see a face in there... 
+					Summons Cryolisis 
+					Not consumable
+					'''
+				DisplayName: Cryo Cube
+			}
+
+			Slime_Crown: {
+				Tooltip:
+					'''
+					Summons the King Slime.
+					Not consumable.
+					'''
+				DisplayName: Slime Crown
+			}
+
+			Suspicious_Looking_Eye: {
+				Tooltip:
+					'''
+					Summons the Eye of Cthulhu.
+					Not consumable.
+					'''
+				DisplayName: Suspicious Looking Eye
+			}
+
+			CorExitio: {
+				Tooltip: Essence of destruction, very volatile!
+				DisplayName: Cor Exitio
+			}
+
+			CorpseItem: {
+				Tooltip: A flower to represent death and what could come after.
+				DisplayName: Red Spider Lily
+			}
+
+			CrackedWolfFang: {
+				Tooltip: This wolf fang won't do anything by itself, but the hole could be filled...
+				DisplayName: Cracked Wolf Fang
+			}
+
+			DaffodilItem: {
+				Tooltip: A runious flower that symbolises the power of light, and its tranquility.
+				DisplayName: Pixie Daffodil
+			}
+
+			flint: {
+				Tooltip: I can probably make tools with this if I can find some stone nearby...
+				DisplayName: Flint Shard
+			}
+
+			GiantRavenFeather: {
+				Tooltip: Now THIS is a quill!
+				DisplayName: Giant Raven Feather
+			}
+
+			GreenBall: {
+				Tooltip:
+					'''
+					Some weird sphere. It eminates a fascinating glow.
+					I wonder if the guide knows what to do with it?
+					'''
+				DisplayName: Odd Ball
+			}
+
+			GunParts: {
+				Tooltip:
+					'''
+					Legal in most places.
+					Allows the creation of high-quality guns.
+					'''
+				DisplayName: Gun Parts
+			}
+
+			HypervitalicEssence: {
+				Tooltip: A fast moving particle of consciousness.
+				DisplayName: Hypervitalic Essense
+			}
+
+			KnowledgeBook: {
+				Tooltip: The only legible thing on this says... check the github for a tutorial?
+				DisplayName: Extremely small Book of Knowledge
+			}
+
+			LetharvitalicEssence: {
+				Tooltip: A slow moving particle of consciousness.
+				DisplayName: Hypovitalic Essence
+			}
+
+			ManuscriptBOC: {
+				Tooltip:
+					'''
+					You can use this to make a permanent spawner for the Almagamated Mind. 
+					This crimson hell is truly a wretched place; A living, breathing beating land, with every creatures sole purpose to just spread it's disease.
+					It is crucial that you killed this beast, although I doubt it helped at all.
+					'''
+				DisplayName: Diary Entry: Brain of Cthulhu
+			}
+
+			ManuscriptCryo: {
+				Tooltip:
+					'''
+					You can use this to make a permanent spawner for the Frost Crystal. 
+					and as I watch the ice melt, I am the only one left. I cannot melt. I stay, guard, become the stronghold for those who cannot egress, those who cannot hope to fight the calamity that is...
+					'''
+				DisplayName: Diary Entry: Cryolisis
+			}
+
+			ManuscriptEOW: {
+				Tooltip:
+					'''
+					You can use this to make a permanent spawner for the Corrupted Pet. 
+					It has no brain. Just mindless hunger, compulsion to spread the dark energy of its home. It didn't need a brain to claim the lives of many good adventurers.
+					I doubt killing it had any stop to the corruption.
+					'''
+				DisplayName: Diary Entry: Eater of Worlds
+			}
+
+			ManuscriptEye: {
+				Tooltip:
+					'''
+					You can use this to make a permanent spawner for the Trapped God's Eye. 
+					I've watched you on your journey thus far, and knew you'd pose a threat greater than I amassed. 
+					Go on, fight for me.
+					'''
+				DisplayName: Diary Entry: Eye of Cthulhu
+			}
+
+			ManuscriptSlime: {
+				Tooltip:
+					'''
+					You can use this to make a permanent spawner for the fool's king. 
+					They say slimes are thoughtless; only blobs of goo, mindlessly wandering the world. 
+					Those are the ones who fall victim to this kings tyranny.
+					'''
+				DisplayName: Diary Entry: Slime King
+			}
+
+			OrangeBall: {
+				Tooltip:
+					'''
+					Some weird sphere. It eminates a fascinating glow.
+					I wonder if the guide knows what to do with it?
+					'''
+				DisplayName: Odd Ball
+			}
+
+			AncientAnvil: {
+				Tooltip: Used by dead gods to craft mystical equipment, it can barely continue that tradition.
+				DisplayName: Ancient Anvil
+			}
+
+			AncientAnvil2: {
+				Tooltip: You somehow repaired this, and can now use it to make weapons beyond mortality.
+				DisplayName: Thendric Anvil
+			}
+
+			AnimanticConvoluter: {
+				Tooltip: This odd device has the ability to create items using some unknown power.
+				DisplayName: Animantic Convoluter
+			}
+
+			Athium: {
+				Tooltip:
+					'''
+					A suprisingly spongy ore, unrefined.
+					Can't be turned into bars yet.
+					'''
+				DisplayName: Athium ore
+			}
+
+			Cryolite: {
+				Tooltip: irratates my skin! feels like ice...
+				DisplayName: Cryolite sample
+			}
+
+			LifeShard: {
+				Tooltip:
+					'''
+					An unpurified shard of vigor and vitality. 
+					maybe I could purify this somehow?
+					'''
+				DisplayName: Shard Of Life
+			}
+
+			SparkPowder: {
+				Tooltip: A primitive ignition agent.
+				DisplayName: Spark powder
+			}
+
+			RavenFeather: {
+				Tooltip: It'd make a nice quill!
+				DisplayName: Raven Feather
+			}
+
+			BowMold: {
+				Tooltip: Used as a base for powerful equipment.
+				DisplayName: Weapon Mold: Bow
+			}
+
+			BreastMold: {
+				Tooltip: Used as a base for powerful equipment.
+				DisplayName: Armor Mold: Breastplate
+			}
+
+			HelmMold: {
+				Tooltip: Used as a base for powerful equipment.
+				DisplayName: Armor Mold: Helmet
+			}
+
+			LegMold: {
+				Tooltip: Used as a base for powerful equipment.
+				DisplayName: Armor Mold: Leggings
+			}
+
+			SwordMold: {
+				Tooltip: Used as a base for powerful equipment.
+				DisplayName: Weapon Mold: Sword
+			}
+
+			SpiritShard1: {
+				Tooltip:
+					'''
+					A weak piece of manifested consciousness.
+					Could be purified?
+					'''
+				DisplayName: Torpid spirit shard
+			}
+
+			StarShard: {
+				Tooltip: It radiates a small amount of warm energy...
+				DisplayName: Star Shard
+			}
+
+			FlintAxe: {
+				Tooltip: NOT good... stronger than a hatchet at least.
+				DisplayName: Flint Axe
+			}
+
+			FlintHatchet: {
+				Tooltip: NOT good... swings faster than an axe, but weaker...
+				DisplayName: Flint Hatchet
+			}
+
+			FlintPick: {
+				Tooltip: I used the stones to mine the stones... NOT a good pick.
+				DisplayName: Flint Pickaxe
+			}
+
+			VoodooItem: {
+				Tooltip: From the hellish crags to the brimstone towers, this flower has seen it all.
+				DisplayName: Voodoo Bellflower
+			}
+
+			FireCracker: {
+				Tooltip:
+					'''
+					A small explosive, to get you started in your boom business.
+					Throws a string of 5 explosive firecrackers that explode after a short delay.
+					Firecrackers do not destroy blocks.
+					'''
+				DisplayName: Firecrackers
+			}
+
+			PipeBomb: {
+				Tooltip: Explodes into shrapnel after a delay.
+				DisplayName: Pipe Bomb
+			}
+
+			Sparkler: {
+				Tooltip:
+					'''
+					A small basic sparkler, that will deal a steady stream of damage.
+					Will light enemies on fire, but doesn't explode.
+					'''
+				DisplayName: Sparkler
+			}
+
+			DestructionSceptre: {
+				Tooltip: Absolutely terrifying!
+				DisplayName: Staff Of Destruction
+			}
+
+			FireSceptre: {
+				Tooltip:
+					'''
+					Incredibly hot! 
+					extremely powerful, but can only be used in bursts.
+					'''
+				DisplayName: Fire Sceptre
+			}
+
+			LifeSceptre: {
+				Tooltip:
+					'''
+					Smells nice!
+					 very bouncy and fast, as it is full of life.
+					'''
+				DisplayName: Life Sceptre
+			}
+
+			PineWicker: {
+				Tooltip: Gives a splinter a whole new meaning.
+				DisplayName: Splinter Wicker
+			}
+
+			EmptyClaw: {
+				Tooltip:
+					'''
+					A set of claws with a hole in the middle.
+					Could be filled?
+					'''
+				DisplayName: Empty Claws
+			}
+
+			IronClaws: {
+				Tooltip: A sturdy set of claws, perfect for unrelenting bloodlust.
+				DisplayName: Iron Claws
+			}
+
+			PPunch: {
+				Tooltip:
+					'''
+					On contact with an enemy, shoots a high-velocity bullet, consumes no ammo.
+					Don't ever shake her hand.
+					'''
+				DisplayName: Trix's Knuckle-snub (CURRENTLY DOES NOT WORK)
+			}
+
+			RavenClaw: {
+				Tooltip: Early bird gets the worm?
+				DisplayName: Raven's Claws
+			}
+
+			SeraphClaws: {
+				Tooltip:
+					'''
+					Heavenly claws forged by the Sisterhood of Steel, they swing faster than you can imagine.
+					Grants rapid healing on enemy hits.
+					'''
+				DisplayName: Seraph Claws
+			}
+
+			Ame: {
+				Tooltip:
+					'''
+					A legendary spear, responsible for creating the first land.
+					It's a lot less flimsy than it looks.
+					'''
+				DisplayName: Ame-no-nuhoko
+			}
+
+			Ton: {
+				Tooltip:
+					'''
+					A legendary japanese spear coated in venom.
+					Ported from Old-gen.
+					'''
+				DisplayName: Tonbogiri
+			}
+
+			AbsoluteEnd: {
+				Tooltip: test for the banshee class.
+				DisplayName: Absolute End
+			}
+
+			AmberSword: {
+				Tooltip: A sturdy and powerful blade, this can summon sand tornadoes!
+				DisplayName: Amber Sword
+			}
+
+			AmethystSword: {
+				Tooltip: An average blade.
+				DisplayName: Amethyst Sword
+			}
+
+			BallSword: {
+				Tooltip:
+					'''
+					Shoots a slow-moving sword.
+					Feels like it's missing something...
+					'''
+				DisplayName: Dawn of Power
+			}
+
+			BBallSword: {
+				Tooltip:
+					'''
+					Shoots a lot of swords.
+					This is more complete.
+					'''
+				DisplayName: Peak of Power
+			}
+
+			Chrysaor: {
+				Tooltip:
+					'''
+					Once weilded by one of the highest Thendra Knights, its age has taken a toll on the magic.
+					Shoots a variety of projectiles, some harder to handle than others.
+					'''
+				DisplayName: Chrysaor
+			}
+
+			DiamondSword: {
+				Tooltip: A fast swinging diamond blade, this will break the enemy's defense.
+				DisplayName: Diamond Sword
+			}
+
+			EmeraldSword: {
+				Tooltip: A fast and damaging emerald blade, this will grant speed on enemy hits.
+				DisplayName: Emerald Sword
+			}
+
+			FlintJian: {
+				Tooltip: A Jian with medium range yet fast speed, will do for now...
+				DisplayName: Flint Jian
+			}
+
+			FlintSword: {
+				Tooltip: The flint makes it stronger than wood, but bulkier.
+				DisplayName: Flint Sword
+			}
+
+			GloomSword: {
+				Tooltip: "''Oh the woe! 'Tis quite gloomy indeed, in the fun and games of war. What was once a breaker of hearts is now a broken heart.''"
+				DisplayName: Gloom Sword
+			}
+
+			HerosEnd: {
+				Tooltip:
+					'''
+					Once weilded by the feigned hero, it has a small chance to instantly kill an enemy.
+					''[c/FF0000:A hero has to win every time, a villan just has to win once.]''
+					'''
+				DisplayName: Hero's End
+			}
+
+			LahatChereb: {
+				Tooltip:
+					'''
+					This extremely powerful flame of the whirling sword was once wielded by an angel.
+					'[c/ffa500:Light up the sky, my firefly]'
+					'''
+				DisplayName: Lahat Chereb
+			}
+
+			MCSword: {
+				Tooltip:
+					'''
+					Do you like my sword (sword, sword) my diamond sword (sword)?
+					You could not afford ('ford 'ford) my diamond sword (sword),
+					even if you could (could) I have a patent!
+					'''
+				DisplayName: THE diamond sword
+			}
+
+			Naegling: {
+				Tooltip: Weilded by an ancient warrior, it has been broken by some giant power.
+				DisplayName: Nægling
+			}
+
+			QueenKnife: {
+				Tooltip: Shoots homing feathers at enemies.
+				DisplayName: Raven Plumage dagger
+			}
+
+			RubySword: {
+				Tooltip: A slow but surefire blade, this will grant healing on enemy hits.
+				DisplayName: Ruby Sword
+			}
+
+			SapphireSword: {
+				Tooltip: An extremely fast sapphire blade.
+				DisplayName: Sapphire Sword
+			}
+
+			SusiSword: {
+				Tooltip: "[c/ff0080:Thank you for the great sprites Susi!]"
+				DisplayName: SusiSwinger
+			}
+
+			THESWORD: {
+				Tooltip: Achieve everything.
+				DisplayName: T H E S W O R D
+			}
+
+			Tizona: {
+				Tooltip: This legendary blade has been known to frighten those unworthy of battle.
+				DisplayName: Tizón
+			}
+
+			TopazSword: {
+				Tooltip: A Mediocre blade, this will inflict confusion on enemies.
+				DisplayName: Topaz Sword
+			}
+
+			Aethon: {
+				Tooltip:
+					'''
+					Shoots rapid piercing feathers, that can randomly home.
+					Watch your liver.
+					'''
+				DisplayName: Aethon
+			}
+
+			Gandiva: {
+				Tooltip:
+					'''
+					A giant mythical bow, capable of shooting dozens of leaves at once.
+					Is probably still OP.
+					'''
+				DisplayName: Gandiva
+			}
+
+			AK47: {
+				Tooltip: 7.62 Kalashnikov. Could it ever be improved?
+				DisplayName: AK-47
+			}
+
+			AWM: {
+				Tooltip:
+					'''
+					Let the 360s go wild!
+					Turns bullets into high velocity rounds.
+					'''
+				DisplayName: AWM
+			}
+
+			Mossberg: {
+				Tooltip: From hunters to law enforcement, this will get the job done.
+				DisplayName: Mossberg 500
+			}
+
+			Revolver: {
+				Tooltip: Cowboys unite!
+				DisplayName: Revolver
+			}
+
+			HarpyShot: {
+				Tooltip: Send those bogies to the wind.
+				DisplayName: Harpy Shot
+			}
+
+			FlowerPowerItem: {
+				Tooltip: Summons a flower to fight for you
+				DisplayName: Flower of Power
+			}
+
+			SoulflowerItem: {
+				Tooltip: Summons a soul-tapped flower to fight for you
+				DisplayName: Light's delicate bloom
+			}
+
+			YellowBall: {
+				Tooltip:
+					'''
+					Some weird sphere. It eminates a fascinating glow.
+					I wonder if the guide knows what to do with it?
+					'''
+				DisplayName: Odd Ball
+			}
+
+			AmbrosiaChest.DisplayName: Ambrosic Chestplate
+			AmbrosiaHead.DisplayName: Ambrosic Crown
+			CorpseSeeds.DisplayName: Red Spider Lily Seeds
+			CryoliteBar.DisplayName: Cryolite Bar
+			DaffodilSeeds.DisplayName: Pixie Daffodil Seeds
+			SoulSmithyItem.DisplayName: Soul Smithy
+			VoodooSeeds.DisplayName: Voodoo Bellflower Seeds
+			AmberClaw.DisplayName: Amber-imbued claws
+			AmethystClaw.DisplayName: Amethyst-imbued claws
+			DiamondClaw.DisplayName: Diamond-imbued claws
+			EmeraldClaw.DisplayName: Emerald-imbued claws
+			SapphireClaw.DisplayName: Sapphire-imbued claws
+			TopazClaw.DisplayName: Topaz-imbued claws
+			TestItem.DisplayName: Test Item
 		}
 
-		ResourceDisplaySet: {
-			ExampleReversedBarsDisplay: Swapped Bars
+		Projectiles: {
+			ExamplePetProjectile.DisplayName: "{$Mods.ExampleMod.Common.PaperAirplane}"
+			FlowerMinionProj.DisplayName: Flower minion
+			SoulflowerMinionProj.DisplayName: Sunflower Minion
+			TestProj.DisplayName: Test Proj
+			HarpyShotProj.DisplayName: Harpy Shot
+			HHShot.DisplayName: Homing Harpy Shot
+			Explosion.DisplayName: Explosion
+			FireCrackerProj.DisplayName: Fire Cracker Proj
+			PipeBombProj.DisplayName: Pipe Bomb Proj
+			SmallExplosion.DisplayName: Explosion
+			SparklerProj.DisplayName: Sparkler Proj
+			FreezeFire.DisplayName: Freeze Fire
+			IceBolt.DisplayName: Ice Bolt
+			PoisonSpit.DisplayName: Poison Spit
+			AmeProj.DisplayName: Ame-no-nuhoko
+			TonProj.DisplayName: Tonbogiri
+			FireStaffProj.DisplayName: Fire Staff Proj
+			HealProj.DisplayName: Heal Proj
+			SkySceptreProj.DisplayName: Sky Sceptre Proj
+			SparklingBall.DisplayName: Sparkling Ball
+			CultFireBallClone.DisplayName: FireBall
+			Empty.DisplayName: Empty
+			LahatCherebProj.DisplayName: FireBall
+			Sandnado2.DisplayName: Sandnado
 		}
-		
+
+		Buffs: {
+			ExamplePetBuff: {
+				DisplayName: "{$Mods.ExampleMod.Common.PaperAirplane}"
+				Description: '''"Let this pet be an example to you!"'''
+			}
+
+			Crush: {
+				DisplayName: Mods.YourTale.BuffName.Crush
+				Description: Mods.YourTale.BuffDescription.Crush
+			}
+
+			Melting: {
+				DisplayName: Tsuchinoko Poison
+				Description: Your skin is melting off?!
+			}
+
+			StoneMan: {
+				DisplayName: Rock Solid
+				Description: You're stuck between a rock and a... nother rock.
+			}
+
+			FlowerSummonBuff: {
+				DisplayName: Flower Power
+				Description: It smells nice!
+			}
+
+			SoulflowerSummonBuff: {
+				DisplayName: Soulflower Power
+				Description:
+					'''
+					There's still some effort within it.
+					Summons a flower that takes only 1/2 of a minion slot
+					The flower will die after 15 hits.
+					'''
+			}
+
+			TestBuff: {
+				DisplayName: Mods.YourTale.BuffName.TestBuff
+				Description: Mods.YourTale.BuffDescription.TestBuff
+			}
+		}
+
+		RecipeConditions.Night: At Low Health
+		ResourceDisplaySets.ExampleReversedBarsDisplay.DisplayName: Swapped Bars
+
 		Bestiary: {
 			ExamplePerson: Built of blocks with arms of steel. Pumps iron day and night.
-			ExampleBoneMerchant: Built with bone blocks and arms of steel. Throws bones day and night. 
-		}
-		
-		BiomeName: {
-			ExampleSurfaceBiome: Example Surface
+			ExampleBoneMerchant: Built with bone blocks and arms of steel. Throws bones day and night.
 		}
 
-		Prefix: {
-			ExamplePrefix: Example Prefix
-			ExampleDerivedPrefix: Example Derived Prefix
+		Biomes.ExampleSurfaceBiome.DisplayName: Example Surface
+
+		Prefixes: {
+			ExamplePrefix.DisplayName: Example Prefix
+			ExampleDerivedPrefix.DisplayName: Example Derived Prefix
+			Quidds.DisplayName: Quidds
+			Divine.DisplayName: Divine
+			HighQuality.DisplayName: Fine-Tuned
+			Speedy.DisplayName: Speedy
+			Thendric.DisplayName: Thendric
+			Wrathful.DisplayName: Wrathful
 		}
-		
+
 		#This is what displays during all of an NPC's happiness levels. Note that the localization key for these should always be "TownNPCMood.*NPCName*.*Mood*" or else it won't display properly.
 		TownNPCMood: {
 			SisterOfSteel: {
@@ -140,10 +1050,10 @@ Mods: {
 				FarFromHome: I'm far from home right now. No biggie, guess I'll walk.
 				DislikeCrowded: Too many people. Too many weak points, not enough security.
 				HateCrowded: The constant nagging and bickering of all these people is getting to me.
-				LikeBiome: "I do like {BiomeName}. It is so mystifying and odd, it's very unique."
-				LoveBiome: "The {BiomeName} is my favorite. It is so cold and beautiful, it takes me back to before the organization."
-				DislikeBiome: "It is too bland in {BiomeName}, however."
-				HateBiome: "Its kind of hard to mod while being attacked by monsters in {BiomeName}."
+				LikeBiome: I do like {BiomeName}. It is so mystifying and odd, it's very unique.
+				LoveBiome: The {BiomeName} is my favorite. It is so cold and beautiful, it takes me back to before the organization.
+				DislikeBiome: It is too bland in {BiomeName}, however.
+				HateBiome: Its kind of hard to mod while being attacked by monsters in {BiomeName}.
 				LikeNPC: "{NPCName} is very mystical, and their different ways intrest me."
 				LoveNPC: "{NPCName} is cute, that's for sure. Do you think I could stay here... With them?"
 				DislikeNPC: '''"{NPCName} Is so petty and annoying. It'd be a shame if she got the french treatment..."'''
@@ -152,28 +1062,29 @@ Mods: {
 		}
 
 		MessageInfo: {
-			UnstablePylonIsOff: "That Unstable Pylon is currently inactive."
-			NearbyUnstablePylonIsOff: "The nearby Unstable Pylon is currently inactive."
+			UnstablePylonIsOff: That Unstable Pylon is currently inactive.
+			NearbyUnstablePylonIsOff: The nearby Unstable Pylon is currently inactive.
 		}
-		
+
 		#This is used to display the NPC's dialogues.
 		Dialogue: {
 			SisterOfSteel: {
-				PartyGirlDialogue : "Why is {0} Such a stinker? She has such a killer body but never shows me..."
-				StandardDialogue1 : "Sometimes I feel the organization calling me back."
-				StandardDialogue2 : "Why are you talking to me."
-				StandardDialogue3 : "hm."
-				CommonDialogue : "check the github sometime."
-				RareDialogue : "Go ask the nurse for a happy ending."
-				TalkALot : "Why are you talking to me so much? Go do something productive, like anything else."
+				StandardDialogue1: Sometimes I feel the organization calling me back.
+				StandardDialogue2: Why are you talking to me.
+				StandardDialogue3: hm.
+				CommonDialogue: check the github sometime.
+				RareDialogue: Go ask the nurse for a happy ending.
+				TalkALot: Why are you talking to me so much? Go do something productive, like anything else.
 			}
 		}
 
 		GameTips: {
-			ExampleTip0: "Just don't die!"
-			ExampleTip1: "Just blame whatever kills you on lag."
-			ExampleTip2: "deez?"
-			DisabledExampleTip: "This tip will be added but then disabled by Example Mod."
+			YTTip0: Just don't die!
+			YTTip1: Just blame whatever kills you on lag.
+			YTTip2: deez?
+			YTTip3: You should contribute to the github, NOW!
+			YTTip4: Honestly who reads these
+			YTTip5: Thanks for playing Your Tale!
 		}
 	}
 }

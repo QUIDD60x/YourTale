@@ -18,9 +18,9 @@ using Terraria.DataStructures;
 using System.Collections.Generic;
 using ReLogic.Content;
 using Terraria.ModLoader.IO;
-using YourTale.Items.Weapons.Melee.Sword;
 using YourTale.Items;
 using yourtale.Items.Placeables;
+using yourtale.Items.Weapons.Melee.Claws;
 
 namespace yourtale.NPCs.Nice.Town
 {
@@ -32,8 +32,6 @@ namespace yourtale.NPCs.Nice.Town
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName automatically assigned from localization files, but the commented line below is the normal approach.
-			// DisplayName.SetDefault("Example Person");
 			Main.npcFrameCount[Type] = 23; // The amount of frames the NPC has
 
 			NPCID.Sets.ExtraFramesCount[Type] = 9; // Generally for Town NPCs, but this is how the NPC does extra things such as sitting in a chair and talking to other NPCs.
@@ -120,7 +118,7 @@ namespace yourtale.NPCs.Nice.Town
 			return true;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			int num = NPC.life > 0 ? 1 : 5;
 
@@ -130,7 +128,7 @@ namespace yourtale.NPCs.Nice.Town
 			}
 		}
 
-		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+		public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
 		{ // Requirements for the town NPC to spawn.
 			for (int k = 0; k < 255; k++)
 			{
@@ -224,7 +222,7 @@ namespace yourtale.NPCs.Nice.Town
 			}
 		}
 
-		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+		public override void OnChatButtonClicked(bool firstButton, ref string shopName)
 		{
 			if (firstButton)
 			{
@@ -245,7 +243,6 @@ namespace yourtale.NPCs.Nice.Town
 					return;
 				}
 
-				shop = true;
 			}
 		}
 

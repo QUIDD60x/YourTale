@@ -8,11 +8,6 @@ namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class RubySword : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("A slow but surefire blade, this will grant healing on enemy hits.");
-        }
-
         public override void SetDefaults()
         {
             Item.damage = 35;
@@ -30,9 +25,9 @@ namespace YourTale.Items.Weapons.Melee.Sword
             Item.autoReuse = true;
         }
 
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            base.OnHitNPC(player, target, damage, knockBack, crit);
+            base.OnHitNPC(player, target, hit, 35);
             player.AddBuff(BuffID.RapidHealing, 360);
         }
 

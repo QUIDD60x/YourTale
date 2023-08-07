@@ -14,12 +14,6 @@ namespace yourtale.Items.Armor.Flint
     [AutoloadEquip(EquipType.Head)]
     public class FlintHelm : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Flint Helmet");
-            Tooltip.SetDefault("Not good at all...");
-
-        }
         public override void SetDefaults()
         {
             Item.width = 22;

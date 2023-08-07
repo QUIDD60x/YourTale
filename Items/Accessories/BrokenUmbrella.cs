@@ -11,12 +11,6 @@ namespace yourtale.Items.Accessories
 {
     public class BrokenUmbrella : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Broken Umbrella");
-            Tooltip.SetDefault("Good job, you broke an umbrella. Your rage increases melee damage and speed.");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -30,8 +24,8 @@ namespace yourtale.Items.Accessories
         
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetDamage(DamageClass.Melee) *= 1.18f;
-            player.GetAttackSpeed(DamageClass.Melee) *= 1.11f;
+            player.GetDamage(DamageClass.Melee) *= 1.15f;
+            player.GetAttackSpeed(DamageClass.Melee) *= 1.15f;
         }
 
         public override void AddRecipes()

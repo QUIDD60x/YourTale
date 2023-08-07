@@ -5,6 +5,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using yourtale.Items.Placeables;
@@ -22,8 +23,7 @@ namespace yourtale.Tiles
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2Top);
             TileObjectData.addTile(Type);
 
-            ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Soul Smithy");
+            LocalizedText name = CreateMapEntryName();
             AddMapEntry(new Color(255, 1, 1), name);
 
             // Can't use this since texture is vertical

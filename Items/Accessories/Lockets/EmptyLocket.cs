@@ -11,11 +11,6 @@ namespace yourtale.Items.Accessories.Lockets
 {
 	public class EmptyLocket : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			Tooltip.SetDefault("You could put something in the middle... \nNo status effects.");
-		}
-
 		public override void SetDefaults()
 		{
 

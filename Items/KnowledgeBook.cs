@@ -13,12 +13,6 @@ namespace yourtale.Items
 {
     public class KnowledgeBook : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Extremely small Book of Knowledge");
-            Tooltip.SetDefault("The only legible thing on this says... check the github for a tutorial?"); // \n = new line
-        }
-
         public override void SetDefaults()
         {
             Item.width = 1;

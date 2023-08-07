@@ -8,11 +8,6 @@ namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class SusiSword : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("SusiSwinger");
-            Tooltip.SetDefault("[c/ff0080:Thank you for the great sprites Susi!]");
-        }
 
         public override void SetDefaults()
         {

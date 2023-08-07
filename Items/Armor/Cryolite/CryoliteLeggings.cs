@@ -14,11 +14,6 @@ namespace yourtale.Items.Armor.Cryolite
     [AutoloadEquip(EquipType.Legs)]
     public class CryoliteLeggings : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("I need some nether-heated underwear to wear these...");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 25;

@@ -10,8 +10,6 @@ namespace yourtale.Items.Weapons.Magic
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Fire Sceptre");
-            Tooltip.SetDefault("Incredibly hot! \nextremely powerful, but can only be used in bursts.");
             Item.staff[Item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
         }
 

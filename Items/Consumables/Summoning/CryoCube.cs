@@ -21,14 +21,6 @@ namespace yourtale.Items.Consumables.Summoning
             Item.consumable = true;
         }
 
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Cryo Cube");
-            Tooltip.SetDefault("You can almost see a face in there... \nSummons Cryolisis");
-            
-        }
-
-
         public override bool CanUseItem(Player player)
         {
             return player.ZoneSnow && !NPC.AnyNPCs(Mod.Find<ModNPC>("CryolisisBody").Type);

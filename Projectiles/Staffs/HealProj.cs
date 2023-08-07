@@ -74,7 +74,7 @@ namespace yourtale.Projectiles.Staffs
             SoundEngine.PlaySound(SoundID.Item25, Projectile.position);
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
            
         }

@@ -15,8 +15,6 @@ namespace yourtale.NPCs.Evil
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ice elemental");
-
             NPCID.Sets.NPCBestiaryDrawModifiers value = new(0)
             {
                 Velocity = 1f

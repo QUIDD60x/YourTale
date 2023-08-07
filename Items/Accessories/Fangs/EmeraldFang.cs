@@ -15,10 +15,6 @@ namespace yourtale.Items.Accessories.Fangs
 {
     public class EmeraldFang : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("This emerald fang will vastly invrease your general damage and attack speed.");
-        }
 
         public override void SetDefaults()
         {

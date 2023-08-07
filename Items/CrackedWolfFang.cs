@@ -13,10 +13,6 @@ namespace yourtale.Items
 {
     public class CrackedWolfFang : ModItem
     {
-        public override void SetStaticDefaults() 
-        {
-            Tooltip.SetDefault("This wolf fang won't do anything by itself, but the hole could be filled...");
-        } 
 
         public override void SetDefaults()
         {

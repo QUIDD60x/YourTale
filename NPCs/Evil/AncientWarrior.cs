@@ -12,8 +12,6 @@ namespace yourtale.NPCs.Evil
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ancient Warrior");
-
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             {
                 // Influences how the NPC looks in the Bestiary

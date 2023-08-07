@@ -1,6 +1,6 @@
-﻿using IL.Terraria.DataStructures;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using yourtale.Rarities;
@@ -9,12 +9,6 @@ namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class Tizona : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Tizón");
-            Tooltip.SetDefault("This legendary blade has been known to frighten those unworthy of battle.");
-        }
-
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.Katana);

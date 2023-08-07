@@ -13,12 +13,6 @@ namespace yourtale.Items.Manuscripts
 {
     public class ManuscriptSlime : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Diary Entry: Slime King");
-            Tooltip.SetDefault("You can use this to make a permanent spawner for the fool's king. \nThey say slimes are thoughtless; only blobs of goo, mindlessly wandering the world. \nThose are the ones who fall victim to this kings tyranny."); // \n = new line
-        }
-
         public override void SetDefaults()
         {
             Item.width = 25;

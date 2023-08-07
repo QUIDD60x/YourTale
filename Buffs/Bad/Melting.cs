@@ -14,8 +14,6 @@ namespace yourtale.Buffs.Bad
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Tsuchinoko Poison");
-            Description.SetDefault("Your skin is melting off?!");
             Main.debuff[Type] = true; //Debuffs cannot be canceled, buffs can. Make sure to include this!
         }
         public override void Update(NPC npc, ref int buffIndex)

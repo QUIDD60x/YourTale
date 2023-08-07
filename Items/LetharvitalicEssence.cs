@@ -13,9 +13,6 @@ namespace yourtale.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hypovitalic Essence");
-            Tooltip.SetDefault("A slow moving particle of consciousness.");
-
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(7, 4));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 

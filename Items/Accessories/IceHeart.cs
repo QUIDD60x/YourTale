@@ -11,12 +11,6 @@ namespace yourtale.Items.Accessories
 {
     public class IceHeart : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Frost Heart");
-            Tooltip.SetDefault("Cold as ice... \ndecreases overall speed but protects you."); // \n will add another line, very useful for big text.
-        }
-
         public override void SetDefaults()
         {
             Item.width = 20; //best to leave these the same size as the sprite if possible.

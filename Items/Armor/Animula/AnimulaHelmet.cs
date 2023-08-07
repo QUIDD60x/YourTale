@@ -16,14 +16,6 @@ namespace yourtale.Items.Armor.Animula
     public class AnimulaHelmet : ModItem
     {
         public virtual int Speed => 1;
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Animula Helm");
-            Tooltip.SetDefault("Makes me feel smart!\n" +
-                "That grants extra max movement speed, for some reason.");
-
-        }
         public override void SetDefaults()
         {
             Item.width = 25;

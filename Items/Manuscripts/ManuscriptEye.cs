@@ -13,12 +13,6 @@ namespace yourtale.Items.Manuscripts
 {
     public class ManuscriptEye : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Diary Entry: Eye of Cthulhu");
-            Tooltip.SetDefault("You can use this to make a permanent spawner for the Trapped God's Eye. \nI've watched you on your journey thus far, and knew you'd pose a threat greater than I amassed. \nGo on, fight for me."); // \n = new line
-        }
-
         public override void SetDefaults()
         {
             Item.width = 25;

@@ -1,4 +1,5 @@
-﻿using yourtale.Items;
+﻿using Terraria.Localization;
+using yourtale.Items;
 using yourtale.Items.Placeables;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -49,8 +50,7 @@ namespace yourtale.Tiles.Plants
 			// Do NOT use this, it causes many unintended side effects
 			//Main.tileAlch[Type] = true;
 
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Red Spider Lily");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(new Color(128, 0, 0), name);
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
@@ -124,7 +124,7 @@ namespace yourtale.Tiles.Plants
 			offsetY = -2; // This is -1 for tiles using StyleAlch, but vanilla sets to -2 for herbs, which causes a slight visual offset between the placement preview and the placed tile. 
 		}
 
-		public override bool Drop(int i, int j)
+		public override bool CanDrop(int i, int j)
 		{
 			PlantStage stage = GetStage(i, j);
 

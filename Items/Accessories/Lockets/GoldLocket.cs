@@ -11,11 +11,6 @@ namespace yourtale.Items.Accessories.Lockets
 {
 	public class GoldLocket : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			Tooltip.SetDefault("imbued with unpurified life shards, it feels powerful! \nIncreased defense and overall damage.");
-		}
-
 		public override void SetDefaults()
 		{
 

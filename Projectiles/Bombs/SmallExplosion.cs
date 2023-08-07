@@ -12,7 +12,6 @@ public class SmallExplosion : ModProjectile // Default explosion, you can use th
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Explosion");
         ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
         ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
     }

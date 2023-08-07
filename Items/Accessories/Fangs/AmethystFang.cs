@@ -15,11 +15,6 @@ namespace yourtale.Items.Accessories.Fangs
 {
     public class AmethystFang : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("The amethyst-imbued fang calms the enemies of this world.");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 1;

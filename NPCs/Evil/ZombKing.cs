@@ -13,7 +13,6 @@ namespace yourtale.NPCs.Evil
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("King Zombie");
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             {
                 // Influences how the NPC looks in the Bestiary
@@ -53,7 +52,7 @@ namespace yourtale.NPCs.Evil
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldNightMonster.Chance * 0.3f; //Might have fixed issue with spawns.
+            return SpawnCondition.OverworldNightMonster.Chance; //Might have fixed issue with spawns.
 
             float chance = 0f;
             if (!Main.dayTime)
@@ -61,7 +60,7 @@ namespace yourtale.NPCs.Evil
                 chance += 0;
                 if (spawnInfo.SpawnTileY <= Main.rockLayer && spawnInfo.SpawnTileY >= Main.worldSurface * 0.15)
                 {
-                    chance += .1f;
+                    chance += .09f;
                 }
 
             }

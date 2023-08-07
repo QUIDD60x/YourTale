@@ -15,7 +15,6 @@ namespace yourtale.NPCs.Evil
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ice Pixie");
             NPCID.Sets.NPCBestiaryDrawModifiers value = new(0)
             {
                 // Influences how the NPC looks in the Bestiary
@@ -77,7 +76,7 @@ namespace yourtale.NPCs.Evil
             }
             return chance;
         }
-        public override void HitEffect(int hitDirection, double damage)
+        public override void HitEffect(NPC.HitInfo hit)
         {
             for (int i = 0; i < 10; i++)
             {

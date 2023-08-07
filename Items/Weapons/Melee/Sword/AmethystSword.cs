@@ -6,11 +6,6 @@ namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class AmethystSword : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("An average blade."); // Going to make this summon a minion to help you in combat soon, not rn tho
-        }
-
         public override void SetDefaults()
         {
             Item.damage = 20;

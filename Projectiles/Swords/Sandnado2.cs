@@ -10,10 +10,6 @@ namespace yourtale.Projectiles.Swords
 {
     public class Sandnado2 : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Sandnado");
-        }
 
         public override void SetDefaults()
         {

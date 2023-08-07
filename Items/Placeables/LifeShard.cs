@@ -13,12 +13,6 @@ namespace yourtale.Items.Placeables
 {
     public class LifeShard : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Shard Of Life");
-            Tooltip.SetDefault("An unpurified shard of vigor and vitality. \nmaybe I could purify this somehow?"); // \n = new line
-        }
-
         public override void SetDefaults()
         {
             Item.width = 1;

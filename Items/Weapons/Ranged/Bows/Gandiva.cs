@@ -14,8 +14,6 @@ namespace yourtale.Items.Weapons.Ranged.Bows
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("A giant mythical bow, capable of shooting dozens of leaves at once.");
-
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 
@@ -43,7 +41,7 @@ namespace yourtale.Items.Weapons.Ranged.Bows
 			};*/
 
 			Item.DamageType = DamageClass.Ranged;
-			Item.damage = 75;
+			Item.damage = 40;
 			Item.noMelee = true;
 
 			// Gun Properties

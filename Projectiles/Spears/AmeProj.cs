@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using yourtale.Buffs.Bad;
 using yourtale.Dusts;
 
 namespace yourtale.Projectiles.Spears
@@ -11,11 +12,6 @@ namespace yourtale.Projectiles.Spears
 		// Define the range of the Spear Projectile. These are overrideable properties, in case you'll want to make a class inheriting from this one.
 		protected virtual float HoldoutRangeMin => 85f;
 		protected virtual float HoldoutRangeMax => 150f;
-
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Ame-no-nuhoko");
-		}
 
 		public override void SetDefaults()
 		{
@@ -73,5 +69,10 @@ namespace yourtale.Projectiles.Spears
 
 			return false; // Don't execute vanilla AI.
 		}
-	}
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            base.ModifyHitNPC(target, ref modifiers);
+			target.AddBuff(ModContent.BuffType<Crush>(), 240);
+        }
+    }
 }

@@ -12,11 +12,6 @@ namespace yourtale.Items.Accessories.Lockets
 {
 	public class CryoliteLocket : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			Tooltip.SetDefault("Gives you extra defense, and grants an ice shield.");
-		}
-
 		public override void SetDefaults()
 		{
 

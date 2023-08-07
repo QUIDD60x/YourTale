@@ -6,12 +6,6 @@ namespace yourtale.Items.Tools.Flint
 {
     public class FlintPick : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Flint Pickaxe");
-            Tooltip.SetDefault("I used the stones to mine the stones... NOT a good pick.");
-        }
-
         public override void SetDefaults()
         {
 

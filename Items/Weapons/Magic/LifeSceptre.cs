@@ -10,8 +10,6 @@ namespace yourtale.Items.Weapons.Magic
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Life Sceptre");
-            Tooltip.SetDefault("Smells nice!\n very bouncy and fast, as it is full of life.");
             Item.staff[Item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
         }
 

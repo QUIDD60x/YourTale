@@ -9,12 +9,6 @@ namespace yourtale.Items.Placeables
 {
     public class AncientAnvil : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Ancient Anvil");
-            Tooltip.SetDefault("Used by dead gods to craft mystical equipment, it can barely continue that tradition.");
-        }
-
         public override void SetDefaults()
         {
             Item.createTile = ModContent.TileType<Tiles.Furniture.AncientAnvil>(); // This sets the id of the tile that this item should place when used.

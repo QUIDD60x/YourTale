@@ -13,11 +13,6 @@ namespace yourtale.Items
 {
     public class flint : ModItem //You should always capitalise the first letter (grammar is important). I'll leave this though because it's funny, and the first thing I'd ever made in Tmodloader.
     {
-        public override void SetStaticDefaults() 
-        {
-            DisplayName.SetDefault("Flint Shard");
-            Tooltip.SetDefault("I can probably make tools with this if I can find some stone nearby..."); // \n = new line
-        } 
 
         public override void SetDefaults()
         {

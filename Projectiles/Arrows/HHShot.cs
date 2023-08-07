@@ -12,8 +12,6 @@ namespace yourtale.Projectiles.Arrows
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Homing Harpy Shot"); // Name of the projectile. It can be appear in chat
-
 			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true; // Make the cultist resistant to this projectile, as it's resistant to all homing projectiles.
 		}
 
@@ -21,6 +19,7 @@ namespace yourtale.Projectiles.Arrows
 		// You can check most of Fields and Properties here https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation
 		public override void SetDefaults()
 		{
+			Projectile.damage = 16;
 			Projectile.width = 14; // The width of projectile hitbox
 			Projectile.height = 34; // The height of projectile hitbox
 

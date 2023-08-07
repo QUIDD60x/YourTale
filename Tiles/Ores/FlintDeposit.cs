@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using Terraria.IO;
@@ -17,12 +18,8 @@ namespace yourtale.Tiles.Ores
 			Main.tileMergeDirt[Type] = true; //will merge with dirt
 			Main.tileBlockLight[Type] = false; //will create light (if true)
 			Main.tileLavaDeath[Type] = true; //will be destroyed by lava (if true)
-
-			ItemDrop = ItemType<Items.flint>(); //drop = Item.itemhere for vanilla drops
-
 			//dustType = DustID.Platinum for vanilla, dustType = mod.dustType.Platinum for modded
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Flint");
+			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(Color.Gray); //or AddMapEntry(new Color(r, g, b), name) or any other colour in the color class
 
 			MinPick = 0; //will set minimum pick strength
@@ -41,7 +38,7 @@ namespace yourtale.Tiles.Ores
         }*/
 		public class FlintOreSystem : ModSystem
 		{
-			public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+			public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
 			{
 				// Because world generation is like layering several images ontop of each other, we need to do some steps between the original world generation steps.
 
@@ -79,7 +76,7 @@ namespace yourtale.Tiles.Ores
 					int x = WorldGen.genRand.Next(0, Main.maxTilesX);
 
 					// WorldGen.worldSurfaceLow is actually the highest surface tile. In practice you might want to use WorldGen.rockLayer or other WorldGen values.
-					int y = WorldGen.genRand.Next((int)WorldGen.worldSurfaceLow, Main.maxTilesY);
+					int y = WorldGen.genRand.Next((int)GenVars.worldSurfaceLow, Main.maxTilesY);
 
 					// Then, we call WorldGen.TileRunner with random "strength" and random "steps", as well as the Tile we wish to place.
 					// Feel free to experiment with strength and step to see the shape they generate.

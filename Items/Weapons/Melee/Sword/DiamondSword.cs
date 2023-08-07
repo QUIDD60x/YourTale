@@ -8,10 +8,6 @@ namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class DiamondSword : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("A fast swinging diamond blade, this will break the enemy's defense.");
-        }
 
         public override void SetDefaults()
         {
@@ -30,10 +26,10 @@ namespace YourTale.Items.Weapons.Melee.Sword
             Item.autoReuse = true;
         }
 
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            base.OnHitNPC(player, target, damage, knockBack, crit);
-            target.defense /= 2;
+            base.OnHitNPC(player, target, hit, Item.damage);
+            target.AddBuff(ModContent.BuffType<Crush>(), 240);
         }
 
         public override void AddRecipes()

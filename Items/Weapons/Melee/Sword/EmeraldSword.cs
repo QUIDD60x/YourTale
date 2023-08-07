@@ -8,10 +8,6 @@ namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class EmeraldSword : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("A fast and damaging emerald blade, this will grant speed on enemy hits.");
-        }
 
         public override void SetDefaults()
         {
@@ -30,9 +26,9 @@ namespace YourTale.Items.Weapons.Melee.Sword
             Item.autoReuse = true;
         }
 
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            base.OnHitNPC(player, target, damage, knockBack, crit);
+            base.OnHitNPC(player, target, hit, Item.damage);
             player.AddBuff(BuffID.Swiftness, 360);
             player.AddBuff(BuffID.Lifeforce, 180);
             player.statLife += 60;

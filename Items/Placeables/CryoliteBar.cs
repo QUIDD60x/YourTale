@@ -1,11 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
-using Terraria.ID;
+﻿using Terraria.ID;
+using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace yourtale.Items.Placeables
 {
@@ -13,33 +8,32 @@ namespace yourtale.Items.Placeables
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cryolite Bar");
-            Tooltip.SetDefault("I can barely touch this, it's colder than dry ice!"); // \n = new line
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+            ItemID.Sets.SortingPriorityMaterials[Item.type] = 80; // Influences the inventory sort order. 59 is PlatinumBar, higher is more valuable.
         }
+
         public override void SetDefaults()
         {
-            Item.height = 12;
-            Item.width = 12;
-            Item.rare = ItemRarityID.Blue;
-            Item.value = 300;
-
-            Item.autoReuse = true;
-            Item.useTurn = true;
-            Item.useTime = 10;
-            Item.useAnimation = 12;
+            Item.width = 20;
+            Item.height = 20;
+            Item.maxStack = 99;
+            Item.value = 845; // The cost of the item in copper coins. (1 = 1 copper, 100 = 1 silver, 1000 = 1 gold, 10000 = 1 platinum)
             Item.useStyle = ItemUseStyleID.Swing;
-
+            Item.useTurn = true;
+            Item.useAnimation = 15;
+            Item.useTime = 10;
+            Item.autoReuse = true;
             Item.consumable = true;
-            Item.maxStack = 999;
-
-            Item.createTile = TileType<Tiles.Bars.CryoliteBar>();
+            //Item.createTile = ModContent.TileType<Tiles.ExampleBar>(); // The ID of the wall that this item should place when used. ModContent.TileType<T>() method returns an integer ID of the wall provided to it through its generic type argument (the type in angle brackets)..
+            Item.placeStyle = 0;
         }
+        // Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(Mod.Find<ModItem>("Cryolite").Type, 4);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
+            CreateRecipe()
+                .AddIngredient<Cryolite>(4)
+                .AddTile(TileID.Furnaces)
+                .Register();
         }
     }
 }

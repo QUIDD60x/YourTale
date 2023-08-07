@@ -15,13 +15,6 @@ namespace yourtale.Items.Armor.Cryolite
     public class CryoliteHelmet : ModItem
     {
         public virtual int Speed => 1;
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Cryolite Helmet");
-            Tooltip.SetDefault("Chilly!");
-
-        }
         public override void SetDefaults()
         {
             Item.width = 25;

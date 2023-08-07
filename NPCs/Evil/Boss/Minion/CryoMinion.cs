@@ -45,7 +45,6 @@ namespace yourtale.NPCs.Evil.Boss.Minion
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cryolisis Minion");
 			Main.npcFrameCount[Type] = 1;
 
 			// By default enemies gain health and attack if hardmode is reached. this NPC should not be affected by that
@@ -120,7 +119,7 @@ namespace yourtale.NPCs.Evil.Boss.Minion
 			return true;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
+		public override void HitEffect(NPC.HitInfo hit)
 		{
 			if (NPC.life <= 0)
 			{

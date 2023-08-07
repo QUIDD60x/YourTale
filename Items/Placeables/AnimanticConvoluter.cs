@@ -7,11 +7,6 @@ namespace yourtale.Items.Placeables
 {
     public class AnimanticConvoluter : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Animantic Convoluter");
-            Tooltip.SetDefault("This odd device has the ability to create items using some unknown power.");
-        }
 
         public override void SetDefaults()
         {

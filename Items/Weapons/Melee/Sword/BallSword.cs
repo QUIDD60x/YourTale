@@ -6,12 +6,6 @@ namespace YourTale.Items.Weapons.Melee.Sword
 {
     public class BallSword : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Dawn of Power"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            Tooltip.SetDefault("Shoots a slow-moving sword.\nFeels like it's missing something...");
-        }
-
         public override void SetDefaults()
         {
             Item.damage = 34;

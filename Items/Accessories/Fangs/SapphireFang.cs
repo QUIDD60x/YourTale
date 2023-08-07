@@ -15,11 +15,6 @@ namespace yourtale.Items.Accessories.Fangs
 {
     public class SapphireFang : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("This sapphire fang increases your maximum running speed and fall distance.");
-        }
-
         public override void SetDefaults()
         {
             Item.width = 1;

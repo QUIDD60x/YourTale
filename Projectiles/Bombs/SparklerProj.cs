@@ -40,7 +40,7 @@ namespace yourtale.Projectiles.Bombs
             Projectile.velocity *= 0.95f;
             return false;
         }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Projectile.velocity *= 0.85f;
             target.AddBuff(BuffID.Burning, 5);

@@ -13,7 +13,6 @@ namespace yourtale.Items.Accessories
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Everything seems to slow while wearing this...\nIncreases general speed and damage.");
             ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true;
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
@@ -33,8 +32,8 @@ namespace yourtale.Items.Accessories
             player.moveSpeed *= 1.35f;
             player.maxRunSpeed *= 1.11f;
             player.jumpSpeedBoost *= 1.15f;
-            player.GetDamage(DamageClass.Generic) *= 1.09f;
-            player.GetAttackSpeed(DamageClass.Generic) *= 1.50f;
+            player.GetDamage(DamageClass.Generic) *= 1.1f;
+            player.GetAttackSpeed(DamageClass.Generic) *= 1.1f;
         }
 
         public override void AddRecipes()

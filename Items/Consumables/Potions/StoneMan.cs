@@ -6,12 +6,6 @@ namespace yourtale.Items.Consumables.Potions
 {
     public class StoneMan : ModItem
 	{
-		public override void SetStaticDefaults() //this is a debug potion, but still usable.
-		{
-			DisplayName.SetDefault("Bulwark Potion");
-			Tooltip.SetDefault("You're stuck between a rock and a... nother rock. \nFreezes you in place for 10 seconds, but heavily increases life regen and defense.");
-		}
-
 		public override void SetDefaults()
 		{
 			Item.width = 8;

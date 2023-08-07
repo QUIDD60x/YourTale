@@ -10,8 +10,6 @@ namespace yourtale.Items.Weapons.Ranged.Projectiles.Arrows
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Send those bogies to the wind."); // The item's description, can be set to whatever you want.
-
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
 		}
 

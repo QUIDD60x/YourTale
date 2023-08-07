@@ -15,11 +15,6 @@ namespace yourtale.Items.Armor.Animula
     [AutoloadEquip(EquipType.Body)] // for that function when you can put the armour on in one click.
     public class AnimulaBreastplate : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("Almost makes me feel not empty!\n" +
-                "Grants an extra 40 health.");
-        }
 
         public override void SetDefaults()
         {
