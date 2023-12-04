@@ -24,20 +24,5 @@ namespace YourTale.Items.Weapons.Melee.Claws
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
         }
-
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.PlatinumBar, 7);
-            recipe.AddIngredient(ItemID.Leather, 3);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
-
-            recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.GoldBar, 7);
-            recipe.AddIngredient(ItemID.Leather, 3);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
-        }
     }
 }

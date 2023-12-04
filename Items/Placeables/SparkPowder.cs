@@ -26,9 +26,9 @@ namespace yourtale.Items.Placeables
             Item.useTime = 10;
             Item.useAnimation = 10;
             Item.useStyle = ItemUseStyleID.Swing;
-
             Item.value = Item.buyPrice(0, 0, 1, 15);
             Item.rare = ItemRarityID.Green;
+            Item.createTile = TileType<Tiles.Ores.SparkOre>();
         }
     }
 }

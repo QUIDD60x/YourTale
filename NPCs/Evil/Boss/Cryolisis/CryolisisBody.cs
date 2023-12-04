@@ -129,16 +129,6 @@ namespace yourtale.NPCs.Evil.Boss.Cryolisis
                     BuffID.Confused // Most NPCs have this
 				}
             };
-            NPCID.Sets.DebuffImmunitySets.Add(Type, debuffData);
-
-            // Influences how the NPC looks in the Bestiary
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new(0)
-            {
-                CustomTexturePath = "ExampleMod/Assets/Textures/Bestiary/MinionBoss_Preview",
-                PortraitScale = 0.6f, // Portrait refers to the full picture when clicking on the icon in the bestiary
-                PortraitPositionYOverride = 0f,
-            };
-            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
         }
 
         public override void SetDefaults()

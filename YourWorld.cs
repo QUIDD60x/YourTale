@@ -27,14 +27,24 @@ namespace yourtale
         {
             downedCryolisis = false;
         }
-       
+
+        public override void SaveWorldData(TagCompound tag)
+        {
+            base.SaveWorldData(tag);
+            var downed = tag.GetList<string>("downed");
+            downedCryolisis = downed.Contains("Cryolisis");
+        }
+
         public override void LoadWorldData(TagCompound tag)
         {
             var downed = tag.GetList<string>("downed");
             downedCryolisis = downed.Contains("Cryolisis");
         }
 
-
+        public override void OnWorldUnload()
+        {
+            base.OnWorldUnload();
+        }
 
 
 
@@ -56,7 +66,7 @@ namespace yourtale
             };
         }*/
 
-        
+
 
         /*public override void LoadLegacy(BinaryReader reader)
         {

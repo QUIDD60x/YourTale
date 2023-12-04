@@ -63,7 +63,6 @@ namespace yourtale.NPCs.Evil.Boss.Minion
 					BuffID.Confused // Most NPCs have this
 				}
 			};
-			NPCID.Sets.DebuffImmunitySets.Add(Type, debuffData);
 
 			// Optional: If you don't want this NPC to show on the bestiary (if there is no reason to show a boss minion separately)
 			// Make sure to remove SetBestiary code aswell

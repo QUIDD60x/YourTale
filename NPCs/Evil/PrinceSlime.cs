@@ -23,12 +23,6 @@ namespace yourtale.NPCs.Evil
         {
 
             Main.npcFrameCount[NPC.type] = 2; //the amount of frames the NPC has, 0 if it doesn't change.
-            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-            {
-                // Influences how the NPC looks in the Bestiary
-                Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
-            };
-            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
         }
         public override void SetDefaults()
         {
@@ -36,12 +30,12 @@ namespace yourtale.NPCs.Evil
             NPC.height = 52;
             NPC.width = 32; //best to keep these the same size as the sprite.
             NPC.aiStyle = 1; //I don't know if i have a list of the AIstyles yet, you can google them tho.
-            NPC.damage = Main.rand.Next(1, 100); //lol
+            NPC.damage = 25;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
-            NPC.defense = 100; // the defense of the NPC.
+            NPC.defense = 70; // the defense of the NPC.
             AnimationType = NPCID.BlueSlime;
-            NPC.value = Main.rand.Next(1000, 10000);
+            NPC.value = Main.rand.Next(1500, 10000);
             NPC.knockBackResist = 0.3f;
 
         }

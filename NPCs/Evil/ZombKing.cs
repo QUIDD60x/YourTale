@@ -13,12 +13,6 @@ namespace yourtale.NPCs.Evil
     {
         public override void SetStaticDefaults()
         {
-            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-            {
-                // Influences how the NPC looks in the Bestiary
-                Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
-            };
-            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
         }
 
         public override void SetDefaults()
@@ -26,8 +20,8 @@ namespace yourtale.NPCs.Evil
             NPC.width = 18;
             NPC.height = 40;
             NPC.damage = 12;
-            NPC.defense = 10;
-            NPC.lifeMax = 200;
+            NPC.defense = 4;
+            NPC.lifeMax = 110;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath2;
             NPC.value = 100f;
@@ -58,9 +52,9 @@ namespace yourtale.NPCs.Evil
             if (!Main.dayTime)
             {
                 chance += 0;
-                if (spawnInfo.SpawnTileY <= Main.rockLayer && spawnInfo.SpawnTileY >= Main.worldSurface * 0.15)
+                if (spawnInfo.SpawnTileY <= Main.rockLayer && spawnInfo.SpawnTileY >= Main.worldSurface * 0.08)
                 {
-                    chance += .09f;
+                    chance += .07f;
                 }
 
             }

@@ -1,4 +1,4 @@
-﻿/*using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace yourtale.Items.Weapons.Ranged.Guns
 {
-    public class Tommy : ModItem
+    public class Tommy : ModItem //TODO: Fix sound.
     {
         public override void SetStaticDefaults()
         {
@@ -63,6 +63,7 @@ namespace yourtale.Items.Weapons.Ranged.Guns
             recipe.AddIngredient(ModContent.ItemType<GunParts>(), 3);
             recipe.AddIngredient(ItemID.IllegalGunParts);
             recipe.AddIngredient(ItemID.LeadBar, 9);
+            recipe.AddRecipeGroup(RecipeGroupID.IronBar, 7);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }
@@ -72,4 +73,4 @@ namespace yourtale.Items.Weapons.Ranged.Guns
             return new Vector2(2f, -2f);
         }
     }
-}*/
+}

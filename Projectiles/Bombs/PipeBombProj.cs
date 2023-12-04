@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using yourtale.DamageClasses;
+using System.Security.Cryptography.X509Certificates;
 
 namespace yourtale.Projectiles.Bombs
 {
@@ -39,10 +40,6 @@ namespace yourtale.Projectiles.Bombs
             else
             {
                 Projectile.ai[0] += 0.1f;
-                if (Projectile.velocity.X != oldVelocity.X)
-                {
-                    Projectile.velocity.X = -oldVelocity.X;
-                }
                 if (Projectile.velocity.Y != oldVelocity.Y)
                 {
                     Projectile.velocity.Y = -oldVelocity.Y;
@@ -52,19 +49,14 @@ namespace yourtale.Projectiles.Bombs
             return false;
         }
 
+#pragma warning disable CS0672 // Member overrides obsolete member
         public override void Kill(int timeLeft)
+#pragma warning restore CS0672 // Member overrides obsolete member
         {
-            Vector2 launchVelocity = new(0, 0);
+            Vector2 launchVelocity = new(0, 2);
             launchVelocity = launchVelocity.RotatedBy(MathHelper.PiOver4);
-            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, launchVelocity, ModContent.ProjectileType<SmallExplosion>(), 35, Projectile.knockBack, Projectile.owner);
-            var proj = Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.velocity * 2, ProjectileID.NailFriendly, 40, Projectile.knockBack, Projectile.owner);
-            for (int i = proj; i <= 12; i++)
-            {
-                if (i <= 12)
-                {
-                    i++;                
-                }
-            }
+            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, launchVelocity * 0, ModContent.ProjectileType<SmallExplosion>(), 35, Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, launchVelocity, ProjectileID.WoodenArrowFriendly, 35, Projectile.knockBack, Projectile.owner);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

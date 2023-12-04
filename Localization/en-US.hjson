@@ -35,7 +35,28 @@ Mods: {
 		Keybinds.RandomBuff.DisplayName: Random Buff
 
 		NPCs: {
-			SisterOfSteel.DisplayName: Sister of steel
+			SisterOfSteel: {
+				DisplayName: Sister of steel
+
+				TownNPCMood: {
+					Princess_LovesNPC: I like {NPCName}.
+					LikeNPC_Princess: I like {NPCName}.
+					HateNPC: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.HateNPC}"
+					DislikeNPC: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.DislikeNPC}"
+					LikeNPC: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.LikeNPC}"
+					LoveNPC: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.LoveNPC}"
+					DislikeBiome: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.DislikeBiome}"
+					LikeBiome: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.LikeBiome}"
+					LoveBiome: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.LoveBiome}"
+					HateCrowded: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.HateCrowded}"
+					DislikeCrowded: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.DislikeCrowded}"
+					LoveSpace: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.LoveSpace}"
+					FarFromHome: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.FarFromHome}"
+					NoHome: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.NoHome}"
+					Content: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.Content}"
+				}
+			}
+
 			# Here we see that spaces in translation keys are not allowed. Any space will be replaced with an underscore.
 			Example_Person.DisplayName: Example Person
 			ExampleTravellingMerchant.DisplayName: Example Traveler
@@ -74,8 +95,8 @@ Mods: {
 		}
 
 		Items: {
-			# These 2 examples show using substitutions. Here we use a vanilla Key and a key from this Mod to generate the text: "Nearby players get a bonus against: Octopus". 
-			# Note that the translation files for other languages don't need to define ItemTooltip.OctopusBanner, they would only need to define NPCName.Octopus, as seen in zh-Hans.hjson file. 
+			# These 2 examples show using substitutions. Here we use a vanilla Key and a key from this Mod to generate the text: "Nearby players get a bonus against: Octopus".
+			# Note that the translation files for other languages don't need to define ItemTooltip.OctopusBanner, they would only need to define NPCName.Octopus, as seen in zh-Hans.hjson file.
 			OctopusBanner.Tooltip: "{$CommonItemTooltip.BannerBonus}{$Mods.ExampleMod.NPCName.Octopus}"
 			SarcophagusBanner.Tooltip: "{$CommonItemTooltip.BannerBonus}{$Mods.ExampleMod.NPCName.Sarcophagus}"
 
@@ -125,6 +146,9 @@ Mods: {
 			}
 
 			ExampleMultiUseItem.Tooltip: Can be used 4 times
+			CopperPickaxe.Tooltip: Useless.
+			CopperAxe.Tooltip: Useless.
+			CopperShortsword: Useless.
 
 			BrokenUmbrella: {
 				Tooltip: Good job, you broke an umbrella. Your rage becomes exactly 15% more melee damage and speed.
@@ -935,20 +959,85 @@ Mods: {
 				DisplayName: Odd Ball
 			}
 
-			AmbrosiaChest.DisplayName: Ambrosic Chestplate
-			AmbrosiaHead.DisplayName: Ambrosic Crown
-			CorpseSeeds.DisplayName: Red Spider Lily Seeds
-			CryoliteBar.DisplayName: Cryolite Bar
-			DaffodilSeeds.DisplayName: Pixie Daffodil Seeds
-			SoulSmithyItem.DisplayName: Soul Smithy
-			VoodooSeeds.DisplayName: Voodoo Bellflower Seeds
-			AmberClaw.DisplayName: Amber-imbued claws
-			AmethystClaw.DisplayName: Amethyst-imbued claws
-			DiamondClaw.DisplayName: Diamond-imbued claws
-			EmeraldClaw.DisplayName: Emerald-imbued claws
-			SapphireClaw.DisplayName: Sapphire-imbued claws
-			TopazClaw.DisplayName: Topaz-imbued claws
-			TestItem.DisplayName: Test Item
+			AmbrosiaChest: {
+				DisplayName: Ambrosic Chestplate
+				Tooltip: ""
+			}
+
+			AmbrosiaHead: {
+				DisplayName: Ambrosic Crown
+				Tooltip: ""
+			}
+
+			CorpseSeeds: {
+				DisplayName: Red Spider Lily Seeds
+				Tooltip: ""
+			}
+
+			CryoliteBar: {
+				DisplayName: Cryolite Bar
+				Tooltip: ""
+			}
+
+			DaffodilSeeds: {
+				DisplayName: Pixie Daffodil Seeds
+				Tooltip: ""
+			}
+
+			SoulSmithyItem: {
+				DisplayName: Soul Smithy
+				Tooltip: ""
+			}
+
+			VoodooSeeds: {
+				DisplayName: Voodoo Bellflower Seeds
+				Tooltip: ""
+			}
+
+			AmberClaw: {
+				DisplayName: Amber-imbued claws
+				Tooltip: ""
+			}
+
+			AmethystClaw: {
+				DisplayName: Amethyst-imbued claws
+				Tooltip: ""
+			}
+
+			DiamondClaw: {
+				DisplayName: Diamond-imbued claws
+				Tooltip: ""
+			}
+
+			EmeraldClaw: {
+				DisplayName: Emerald-imbued claws
+				Tooltip: ""
+			}
+
+			SapphireClaw: {
+				DisplayName: Sapphire-imbued claws
+				Tooltip: ""
+			}
+
+			TopazClaw: {
+				DisplayName: Topaz-imbued claws
+				Tooltip: ""
+			}
+
+			TestItem: {
+				DisplayName: Test Item
+				Tooltip: ""
+			}
+
+			RomanCandle: {
+				DisplayName: Roman Candle
+				Tooltip: ""
+			}
+
+			Tommy: {
+				DisplayName: Tommy
+				Tooltip: ""
+			}
 		}
 
 		Projectiles: {
@@ -1085,6 +1174,47 @@ Mods: {
 			YTTip3: You should contribute to the github, NOW!
 			YTTip4: Honestly who reads these
 			YTTip5: Thanks for playing Your Tale!
+		}
+
+		Configs: {
+			ServerConfig: {
+				CoinRecipesAtEndofList: {
+					Tooltip: "{$This currently does not do anything yet, but will enable a custom currency once implemented.}"
+					Label: "{$Enable Monet}"
+				}
+
+				PlaceholderButton: {
+					Tooltip: "{$Placeholder button.}"
+					Label: "{$Placeholder Button}"
+				}
+
+				PlaceholderSlide: {
+					Tooltip: "{$Placeholder slider thingy}"
+					Label: "{$Placeholder Slider}"
+				}
+
+				ToolTweaks: {
+					Tooltip: "{$Will disable the copper tools nerf (you will need to quit to menu and rejoin).}"
+					Label: "{$ToolTweaks}"
+				}
+
+				CopperPickGlobal: {
+					Label: Copper Pick Global
+					Tooltip: ""
+				}
+
+				CopperAxeGlobal: {
+					Label: Copper Axe Global
+					Tooltip: ""
+				}
+
+				CopperSwordGlobal: {
+					Label: Copper Sword Global
+					Tooltip: ""
+				}
+			}
+
+			"sapo asop samslapmsa polm.DisplayName": Yourtale's game configuration.
 		}
 	}
 }

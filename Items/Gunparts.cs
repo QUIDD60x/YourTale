@@ -20,18 +20,5 @@ namespace yourtale.Items
             Item.value = 945;
             Item.rare = ItemRarityID.Orange;
         }
-
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.IronBar, 7);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.Register();
-
-            recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.LeadBar, 7);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.Register();
-        }
     }
 }

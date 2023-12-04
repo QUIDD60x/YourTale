@@ -36,7 +36,7 @@ namespace yourtale.Items.Weapons.Explosives
         {
             Recipe recipe = CreateRecipe(2);
             recipe.AddIngredient(ItemID.Wire, 7);
-            recipe.AddIngredient(ItemID.IronBar, 4);
+            recipe.AddRecipeGroup(RecipeGroupID.IronBar, 4);
             recipe.AddIngredient(Mod.Find<ModItem>("SparkPowder"), 3);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();

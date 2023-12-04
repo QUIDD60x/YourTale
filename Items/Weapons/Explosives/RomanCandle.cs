@@ -5,10 +5,11 @@ using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
+using yourtale.Items.Placeables;
 
-namespace yourtale.Items.Weapons.Ranged.Guns
+namespace yourtale.Items.Weapons.Explosives
 {
-    public class Revolver : ModItem
+    public class RomanCandle : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -18,19 +19,17 @@ namespace yourtale.Items.Weapons.Ranged.Guns
         public override void SetDefaults()
         {
             // Common Properties
-            Item.width = 62;
+            Item.width = 32;
             Item.height = 32;
-            Item.scale = 0.95f;
             Item.rare = ItemRarityID.Orange;
+            Item.maxStack = 999;
 
             // Use Properties
-            Item.useTime = 10; // (60 ticks == 1 second.)
-            Item.useAnimation = 60;
-            Item.reuseDelay = 40;
-            Item.consumeAmmoOnFirstShotOnly= true;
-            Item.useStyle = ItemUseStyleID.Shoot;
-            Item.autoReuse = true;
-            Item.UseSound = new SoundStyle($"{nameof(yourtale)}/Assets/Sounds/Items/Ranged/Revolver");
+            Item.useTime = 20; // (60 ticks == 1 second.)
+            Item.useAnimation = 120;
+            Item.useStyle = ItemUseStyleID.Rapier;
+            Item.UseSound = SoundID.Item20;
+            Item.consumeAmmoOnFirstShotOnly = true;
 
             // Weapon Properties
             Item.DamageType = DamageClass.Ranged;
@@ -39,9 +38,9 @@ namespace yourtale.Items.Weapons.Ranged.Guns
             Item.noMelee = true;
 
             // Gun Properties
-            Item.shoot = ProjectileID.PurificationPowder;
-            Item.shootSpeed = 18f;
-            Item.useAmmo = AmmoID.Bullet;
+            Item.shoot = ProjectileID.Flare;
+            Item.shootSpeed = 12f;
+            Item.consumable = true;
         }
 
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
@@ -49,21 +48,21 @@ namespace yourtale.Items.Weapons.Ranged.Guns
     if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0)) {
         position += muzzleOffset;
     }
-    } // Ignore this awfully copy-pasted code lol
+    }
 
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<GunParts>(), 4);
-            recipe.AddRecipeGroup(RecipeGroupID.IronBar, 7);
+            recipe.AddIngredient(ModContent.ItemType<SparkPowder>(), 4);
+            recipe.AddIngredient(ItemID.Wood, 7);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
         }
 
         // This method lets you adjust position of the gun in the player's hands. Play with these values until it looks good with your graphics.
-        public override Vector2? HoldoutOffset()
+        /*public override Vector2? HoldoutOffset()
         {
             return new Vector2(2f, -2f);
-        }
+        }*/
     }
 }

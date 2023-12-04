@@ -27,7 +27,7 @@ namespace yourtale.Items
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ModContent.ItemType<SpiritShard1>(), 3);
-            recipe.AddIngredient(ItemID.Ichor, 6);
+            recipe.AddIngredient(ItemID.Ichor, 3);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }

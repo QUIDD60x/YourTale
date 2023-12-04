@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.Localization;
+using YourTale.Common;
 using Terraria.ModLoader.Config;
 
 namespace yourtale
@@ -31,9 +32,10 @@ namespace yourtale
             return false;
         }
         [Label("$ToolTweaks")]
-        [Tooltip("$Will disable the copper tools nerf (you will need to quit to menu and rejoin).")]
+        [Tooltip("Will disable the copper tools nerf (you will need to quit to menu and rejoin).")]
         [DefaultValue(true)]
         public bool ToolTweaks;
+
 
         [Label("$Placeholder Slider")]
         [Tooltip("$Placeholder slider thingy")]
