@@ -3,13 +3,13 @@ Welcome to Your Tale!
 Your tale is an open-sourced, free to use mod with lots of custom items, entities, armors, and so much more! And the best part? Completely open source, for you to experiment with!
 --------------------------------------------------------------
 This mod currently includes:
-* 1 boss,
-* 13 different NPCs,
-* 6 prefixes,
+* 2 bosses,
+* 15 different NPCs,
+* 8 prefixes,
 * 10 homemade songs,
 * 13 Accessories,
-* 3 custom ores (that all can spawn naturally),
-And a giant amount of weapons, tools, and armor of course!
+* 6 custom ores (that all can spawn naturally),
+And hundreds of weapons, tools, and armor of course!
 --------------------------------------------------------------
 This mod is 90% homemade, with nearly all coding, music, and art done by just me (Quidd60x). I am not the best, but updates should come weekly, and lots of bigger things are to come.
 --------------------------------------------------------------
