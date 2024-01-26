@@ -17,6 +17,7 @@ namespace yourtale.Items.Accessories.Fangs
     {
         public override void SetDefaults()
         {
+            // Item properties
             Item.width = 1;
             Item.accessory = true;
             Item.height = 1;
@@ -27,6 +28,8 @@ namespace yourtale.Items.Accessories.Fangs
             Item.useTurn = true;
             Item.autoReuse = true;
             Item.UseSound = SoundID.Item1;
+            // Item value
+            Item.value = (0, 0, 25, 15);
             Item.rare = ItemRarityID.Green;
         }
 
