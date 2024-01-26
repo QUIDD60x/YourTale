@@ -39,21 +39,21 @@ Mods: {
 				DisplayName: Sister of steel
 
 				TownNPCMood: {
-					Princess_LovesNPC: I like {NPCName}.
+					Princess_LovesNPC: I like {NPCName}, they make me feel like I have a purpose.
 					LikeNPC_Princess: I like {NPCName}.
-					HateNPC: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.HateNPC}"
-					DislikeNPC: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.DislikeNPC}"
-					LikeNPC: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.LikeNPC}"
-					LoveNPC: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.LoveNPC}"
-					DislikeBiome: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.DislikeBiome}"
-					LikeBiome: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.LikeBiome}"
-					LoveBiome: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.LoveBiome}"
-					HateCrowded: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.HateCrowded}"
-					DislikeCrowded: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.DislikeCrowded}"
-					LoveSpace: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.LoveSpace}"
-					FarFromHome: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.FarFromHome}"
-					NoHome: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.NoHome}"
-					Content: "{$Mods.YourTale.TownNPCMood.SisterOfSteel.Content}"
+					HateNPC: "Get me away from the guide. He's not who he says he is. Let me move immediately."
+					DislikeNPC: "Ew, a robot. what a disgusting amalgamation of flesh and machine."
+					LikeNPC: "The Dryad is nice, she has such a soothing aura."
+					LoveNPC: "I love {NPCName}, she's so creative and unique! I wonder if she'll show me anything new today..."
+					DislikeBiome: "The forest is nice, but I dislike it for... personal reasons."
+					LikeBiome: "Wow, the hallowed is so magical! I like it here."
+					LoveBiome: "The snowy peaks remind me of home. I love it here, thank you."
+					HateCrowded: "Too many people. Too many possible angles of attack."
+					DislikeCrowded: "It's a bit stuffy in here love, why not let me clear it out?"
+					LoveSpace: "Finally, I can hear my thoughts in peace."
+					FarFromHome: "Well, I'm pretty damn far from home right now."
+					NoHome: "I'm homeless you idiot. Build me something nice please."
+					Content: "I'm feeling good, thank you for checking in."
 				}
 			}
 
@@ -101,53 +101,7 @@ Mods: {
 			OctopusBanner.Tooltip: "{$CommonItemTooltip.BannerBonus}{$Mods.ExampleMod.NPCName.Octopus}"
 			SarcophagusBanner.Tooltip: "{$CommonItemTooltip.BannerBonus}{$Mods.ExampleMod.NPCName.Sarcophagus}"
 
-			ExamplePetItem: {
-				Tooltip:
-					'''
-					Summons a {$Mods.ExampleMod.Common.PaperAirplane} to follow aimlessly behind you
-					Second Line!
-					'''
-				DisplayName: "{$Mods.ExampleMod.Common.PaperAirplane}"
-			}
-
-			ExampleBugNet.Tooltip:
-				'''
-				Used to catch critters
-				Has a 20% chance to successfully catch lava critters
-				This increases to 50% if the Warmth Potion buff is active
-				Has a 5% chance to duplicate caught critters
-				'''
-
-			ExampleSpecificAmmoGun: {
-				Tooltip:
-					'''
-					Does not accept cursed bullets as ammunition
-					Fires three rounds in rapid succession
-					Each shot consumes ammunition with a different chance
-					The first shot has a 20% chance to not consume bullets
-					The second shot has a 63% chance to not consume bullets
-					The last shot has a 36% chance to not consume bullets
-					Shots that consume ammunition have their damage boosted by 20%
-					'''
-				DisplayName: Example Rifle
-			}
-
-			ExamplePylonItem: {
-				Tooltip:
-					'''
-					Must be within the Example Surface or Underground Biome in order to function.
-					Has no NPC requirements!
-					'''
-				DisplayName: Example Pylon
-			}
-
-			ExamplePylonItemAdvanced: {
-				Tooltip: Will randomly turn on and off, but otherwise can be teleported to without NPCs and in any biome!
-				DisplayName: Unstable Pylon
-			}
-
-			ExampleMultiUseItem.Tooltip: Can be used 4 times
-			CopperPickaxe.Tooltip: Useless.
+			CopperPickaxe.Tooltip: Useless. Look for a dark gray rock sticking out from the surface, it'll allow you to craft better gear.
 			CopperAxe.Tooltip: Useless.
 			CopperShortsword: Useless.
 
@@ -167,7 +121,7 @@ Mods: {
 			}
 
 			EmeraldFang: {
-				Tooltip: This emerald fang will vastly invrease your general damage and attack speed.
+				Tooltip: This emerald fang will vastly increase your general damage and attack speed.
 				DisplayName: Emerald Fang
 			}
 
@@ -182,7 +136,7 @@ Mods: {
 			}
 
 			TopazFang: {
-				Tooltip: The topaz-imbued fang gives a large amount of mining speed increase, and infinite spelunker!
+				Tooltip: The topaz-imbued fang gives a large amount of mining speed increase and infinite spelunker!
 				DisplayName: Topaz Fang
 			}
 
@@ -457,7 +411,7 @@ Mods: {
 			GreenBall: {
 				Tooltip:
 					'''
-					Some weird sphere. It eminates a fascinating glow.
+					Some weird sphere. It emanates a fascinating glow.
 					I wonder if the guide knows what to do with it?
 					'''
 				DisplayName: Odd Ball
