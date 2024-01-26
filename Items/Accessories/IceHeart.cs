@@ -12,13 +12,14 @@ namespace yourtale.Items.Accessories
     public class IceHeart : ModItem
     {
         public override void SetDefaults()
-        {
+        {    
+            // Item properties
             Item.width = 20; //best to leave these the same size as the sprite if possible.
             Item.height = 20;
-
+            // Item value
             Item.value = Item.sellPrice(gold: 1, silver: 50);
             Item.rare = ItemRarityID.Blue;
-
+            // Etcetera
             Item.accessory = true; //will allow it to be equipped
         }
         
