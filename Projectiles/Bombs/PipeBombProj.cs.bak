@@ -5,10 +5,11 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using yourtale.DamageClasses;
+using System.Security.Cryptography.X509Certificates;
 
 namespace yourtale.Projectiles.Bombs
 {
-    public class FireCrackerProj : ModProjectile
+    public class PipeBombProj : ModProjectile // TODO: fix nails that spawn.
     {
         public override void SetDefaults()
         {
@@ -22,7 +23,7 @@ namespace yourtale.Projectiles.Bombs
 
         public override void AI()
         {
-            Projectile.velocity.Y +=  0.4f + Projectile.ai[0];
+            Projectile.velocity.Y +=  0.7f + Projectile.ai[0];
             Dust dust;
             Vector2 position = Projectile.Center;
             dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, DustID.Torch, 0f, -0.6976738f, 0, new Color(255,255,255), 1f)];
@@ -39,24 +40,23 @@ namespace yourtale.Projectiles.Bombs
             else
             {
                 Projectile.ai[0] += 0.1f;
-                if (Projectile.velocity.X != oldVelocity.X)
-                {
-                    Projectile.velocity.X = -oldVelocity.X;
-                }
                 if (Projectile.velocity.Y != oldVelocity.Y)
                 {
                     Projectile.velocity.Y = -oldVelocity.Y;
                 }
-                Projectile.velocity *= 0.75f;
+                Projectile.velocity *= 0.70f;
             }
             return false;
         }
 
-        public override void OnKill(int timeLeft)
+#pragma warning disable CS0672 // Member overrides obsolete member
+        public override void Kill(int timeLeft)
+#pragma warning restore CS0672 // Member overrides obsolete member
         {
-            Vector2 launchVelocity = new(0, 0);
+            Vector2 launchVelocity = new(0, 2);
             launchVelocity = launchVelocity.RotatedBy(MathHelper.PiOver4);
-            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, launchVelocity, ModContent.ProjectileType<SmallExplosion>(), 35, Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, launchVelocity * 0, ModContent.ProjectileType<SmallExplosion>(), 35, Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, launchVelocity, ProjectileID.WoodenArrowFriendly, 35, Projectile.knockBack, Projectile.owner);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

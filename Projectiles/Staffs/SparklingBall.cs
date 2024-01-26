@@ -52,7 +52,7 @@ namespace yourtale.Projectiles.Staffs
             return false;
         }
 
-        public override void Kill(int timeLeft) //this is what kills the projectile.
+        public override void OnKill(int timeLeft) //this is what kills the projectile.
         {
             for (int k = 0; k < 5; k++)
             {

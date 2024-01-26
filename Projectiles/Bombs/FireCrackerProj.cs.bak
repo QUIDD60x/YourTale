@@ -52,7 +52,7 @@ namespace yourtale.Projectiles.Bombs
             return false;
         }
 
-        public override void OnKill(int timeLeft)
+        public override void Kill(int timeLeft)
         {
             Vector2 launchVelocity = new(0, 0);
             launchVelocity = launchVelocity.RotatedBy(MathHelper.PiOver4);

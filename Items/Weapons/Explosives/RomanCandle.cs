@@ -25,8 +25,8 @@ namespace yourtale.Items.Weapons.Explosives
             Item.maxStack = 999;
 
             // Use Properties
-            Item.useTime = 20; // (60 ticks == 1 second.)
-            Item.useAnimation = 120;
+            Item.useTime = 10; // (60 ticks == 1 second.)
+            Item.useAnimation = 110;
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.UseSound = SoundID.Item20;
             Item.consumeAmmoOnFirstShotOnly = true;
@@ -34,7 +34,7 @@ namespace yourtale.Items.Weapons.Explosives
             // Weapon Properties
             Item.DamageType = DamageClass.Ranged;
             Item.damage = 19;
-            Item.knockBack = 5f;
+            Item.knockBack = 1f;
             Item.noMelee = true;
 
             // Gun Properties

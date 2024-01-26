@@ -22,7 +22,7 @@ namespace yourtale.Tiles.Ores
 			LocalizedText name = CreateMapEntryName();
 			AddMapEntry(Color.Gray); //or AddMapEntry(new Color(r, g, b), name) or any other colour in the color class
 
-			MinPick = 0; //will set minimum pick strength
+			MinPick = -1; //will set minimum pick strength
 		}
 		// Will let you modify the light level and colour, RGB variables are obviously RBG colours.
 		/*public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

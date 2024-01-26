@@ -26,6 +26,11 @@ namespace yourtale
 
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
+        public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref string message)
+        {
+            message = Language.GetTextValue("ServerBlocked");
+            return false;
+        }
         [Label("$ToolTweaks")]
         [Tooltip("Will disable the copper tools nerf (you will need to quit to menu and rejoin).")]
         [DefaultValue(true)]
