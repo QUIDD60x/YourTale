@@ -2,9 +2,9 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Dusts;
+using YourTale.Dusts;
 
-namespace yourtale.Projectiles.Spears
+namespace YourTale.Projectiles.Spears
 {
 	public class TonProj : ModProjectile
 	{

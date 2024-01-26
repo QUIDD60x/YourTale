@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria.ModLoader.IO;
-using yourtale;
+using YourTale;
 using Yourtale;
 using Terraria.Audio;
 using Terraria.DataStructures;

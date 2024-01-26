@@ -3,7 +3,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace yourtale.Items.Consumables.Summoning
+namespace YourTale.Items.Consumables.Summoning
 {
     public class Suspicious_Looking_Eye : ModItem
     {

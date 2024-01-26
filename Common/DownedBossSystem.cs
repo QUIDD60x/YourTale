@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace yourtale.Common
+namespace YourTale.Common
 {
 	// Acts as a container for "downed boss" flags.
 	// Set a flag like this in your bosses OnKill hook:

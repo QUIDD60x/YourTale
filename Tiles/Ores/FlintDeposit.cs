@@ -8,7 +8,7 @@ using Terraria.IO;
 using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
 
-namespace yourtale.Tiles.Ores
+namespace YourTale.Tiles.Ores
 {
 	public class FlintDeposit : ModTile
 	{

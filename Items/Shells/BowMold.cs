@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using yourtale.Dusts;
+using YourTale.Dusts;
 
-namespace yourtale.Items.Shells
+namespace YourTale.Items.Shells
 {
     public class BowMold : ModItem
     {

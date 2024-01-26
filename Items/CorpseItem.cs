@@ -11,7 +11,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Graphics.Shaders;
 
-namespace yourtale.Items
+namespace YourTale.Items
 {
     public class CorpseItem : ModItem 
     {

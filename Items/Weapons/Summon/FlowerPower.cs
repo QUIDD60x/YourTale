@@ -1,4 +1,4 @@
-﻿using yourtale.Tiles.Furniture;
+﻿using YourTale.Tiles.Furniture;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -6,9 +6,9 @@ using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Items.Placeables;
+using YourTale.Items.Placeables;
 
-namespace yourtale.Items.Weapons.Summon
+namespace YourTale.Items.Weapons.Summon
 {
     public class FlowerSummonBuff : ModBuff
 	{

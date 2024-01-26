@@ -1,5 +1,5 @@
-﻿using yourtale.Items;
-using yourtale.Tiles.Furniture;
+﻿using YourTale.Items;
+using YourTale.Tiles.Furniture;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -12,7 +12,7 @@ using Terraria.WorldBuilding;
 
 #pragma warning disable ChangeMagicNumberToID // Change magic numbers into appropriate ID values
 
-namespace yourtale.Items.Weapons.Summon
+namespace YourTale.Items.Weapons.Summon
 {
 	public class SoulflowerSummonBuff : ModBuff
 	{

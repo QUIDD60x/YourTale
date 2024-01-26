@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 
-namespace yourtale.Buffs.Bad
+namespace YourTale.Buffs.Bad
 {
     public class Melting : ModBuff
     {

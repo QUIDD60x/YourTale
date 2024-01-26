@@ -7,9 +7,9 @@ using Terraria.DataStructures;
 using Terraria.GameContent.Bestiary;
 using Microsoft.Xna.Framework;
 using System.IO;
-using yourtale.Projectiles.Evil;
+using YourTale.Projectiles.Evil;
 
-namespace yourtale.NPCs.Evil
+namespace YourTale.NPCs.Evil
 {
     public class MiniCryo : ModNPC
     {

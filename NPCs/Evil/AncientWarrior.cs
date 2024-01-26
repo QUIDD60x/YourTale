@@ -6,7 +6,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 using Terraria.GameContent.Bestiary;
 
-namespace yourtale.NPCs.Evil
+namespace YourTale.NPCs.Evil
 {
     public class AncientWarrior : ModNPC
     {

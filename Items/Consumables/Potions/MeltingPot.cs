@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Buffs.Bad;
+using YourTale.Buffs.Bad;
 
-namespace yourtale.Items.Consumables.Potions
+namespace YourTale.Items.Consumables.Potions
 {
 	public class MeltingPot : ModItem
 	{

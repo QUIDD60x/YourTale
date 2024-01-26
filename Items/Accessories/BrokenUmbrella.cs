@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace yourtale.Items.Accessories
+namespace YourTale.Items.Accessories
 {
     public class BrokenUmbrella : ModItem
     {

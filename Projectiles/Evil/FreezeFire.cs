@@ -4,7 +4,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace yourtale.Projectiles.Evil
+namespace YourTale.Projectiles.Evil
 {
 	public class FreezeFire : ModProjectile
 	{

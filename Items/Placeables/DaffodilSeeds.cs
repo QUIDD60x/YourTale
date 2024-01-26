@@ -1,9 +1,9 @@
 ﻿using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.GameContent.Creative;
-using yourtale.Tiles.Plants;
+using YourTale.Tiles.Plants;
 
-namespace yourtale.Items.Placeables
+namespace YourTale.Items.Placeables
 {
 	public class DaffodilSeeds : ModItem
 	{

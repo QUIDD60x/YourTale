@@ -7,7 +7,7 @@ using Terraria.GameContent.ItemDropRules;
 using System.IO;
 using Terraria.GameContent.Bestiary;
 
-namespace yourtale.NPCs.Evil
+namespace YourTale.NPCs.Evil
 {
     public class DuneGolem : ModNPC // ModNPC is used for Custom NPCs
     {

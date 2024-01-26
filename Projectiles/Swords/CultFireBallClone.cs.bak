@@ -2,10 +2,10 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Items.Weapons.Melee;
+using YourTale.Items.Weapons.Melee;
 using Terraria.Audio;
 
-namespace yourtale.Projectiles.Swords
+namespace YourTale.Projectiles.Swords
 {
 	public class CultFireBallClone : ModProjectile
 	{

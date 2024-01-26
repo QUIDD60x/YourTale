@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Tiles.Furniture;
+using YourTale.Tiles.Furniture;
 
-namespace yourtale.Items.Placeables
+namespace YourTale.Items.Placeables
 {
     public class AnimanticConvoluter : ModItem
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using log4net;
 
-namespace yourtale
+namespace YourTale
 {
     public static class yourtaleUtils
     {
@@ -13,7 +13,7 @@ namespace yourtale
 
         public static void Log(string message)
         {
-            Logger.Debug("[yourtale] " + message);
+            Logger.Debug("[YourTale] " + message);
         }
 
         public static void Log(object message, params object[] formatData)

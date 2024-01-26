@@ -5,7 +5,7 @@ using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace yourtale.Items.Consumables.Potions
+namespace YourTale.Items.Consumables.Potions
 {
 	public class LifePot1 : ModItem
 	{

@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
 
-namespace yourtale.Items.Armor.RavensWing
+namespace YourTale.Items.Armor.RavensWing
 {
     [AutoloadEquip(EquipType.Body)]
     public class RavenlaidChest : ModItem

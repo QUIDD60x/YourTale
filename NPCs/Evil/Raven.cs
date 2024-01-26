@@ -3,12 +3,12 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.GameContent.ItemDropRules;
-using yourtale.Items.Placeables;
-using yourtale.Items.Accessories;
-using yourtale.Dusts;
-using yourtale.Items;
+using YourTale.Items.Placeables;
+using YourTale.Items.Accessories;
+using YourTale.Dusts;
+using YourTale.Items;
 
-namespace yourtale.NPCs.Evil
+namespace YourTale.NPCs.Evil
 {
     public class Raven : ModNPC
     {

@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace yourtale.Rarities
+namespace YourTale.Rarities
 {
 	public class Black2Blue : ModRarity
 	{

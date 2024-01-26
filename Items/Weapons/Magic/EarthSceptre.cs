@@ -1,11 +1,11 @@
-﻿/*using yourtale.Projectiles.Staffs;
-using yourtale.Tiles;
+﻿/*using YourTale.Projectiles.Staffs;
+using YourTale.Tiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Projectiles.Bombs;
+using YourTale.Projectiles.Bombs;
 
-namespace yourtale.Items.Weapons.Magic // Used this to test the explosion projectile, don't get your hopes up of these being added back soon.
+namespace YourTale.Items.Weapons.Magic // Used this to test the explosion projectile, don't get your hopes up of these being added back soon.
 {
     public class EarthSceptre : ModItem
     {

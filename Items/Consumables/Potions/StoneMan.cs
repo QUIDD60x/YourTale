@@ -1,8 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Yourtale.Buffs.Good;
 
-namespace yourtale.Items.Consumables.Potions
+namespace YourTale.Items.Consumables.Potions
 {
     public class StoneMan : ModItem
 	{

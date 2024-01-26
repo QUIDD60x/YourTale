@@ -1,14 +1,14 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Buffs.Bad;
-using yourtale.Rarities;
+using YourTale.Buffs.Bad;
+using YourTale.Rarities;
 using Terraria.DataStructures;
 using static Terraria.ModLoader.PlayerDrawLayer;
 using Microsoft.Xna.Framework;
 using System.Security.Cryptography.X509Certificates;
-using yourtale.Projectiles.Swords;
-using yourtale.Projectiles.Staffs;
+using YourTale.Projectiles.Swords;
+using YourTale.Projectiles.Staffs;
 
 namespace YourTale.Items.Weapons.Melee.Sword
 {

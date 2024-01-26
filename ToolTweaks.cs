@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
 
-namespace yourtale
+namespace YourTale
 {
     public class ToolTweaks : GlobalItem
     { //this allows you to manipulate the defaults for items. This is a little more advanced, just about on the brink of my knowledge so i don't have a tutorial yet, although expect a video on it eventually.

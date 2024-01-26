@@ -4,7 +4,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace yourtale.Projectiles.Evil
+namespace YourTale.Projectiles.Evil
 {
     public class PoisonSpit : ModProjectile
     {

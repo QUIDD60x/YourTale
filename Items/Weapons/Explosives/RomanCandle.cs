@@ -5,9 +5,9 @@ using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Items.Placeables;
+using YourTale.Items.Placeables;
 
-namespace yourtale.Items.Weapons.Explosives
+namespace YourTale.Items.Weapons.Explosives
 {
     public class RomanCandle : ModItem
     {

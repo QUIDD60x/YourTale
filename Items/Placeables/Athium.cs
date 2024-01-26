@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using yourtale.Tiles.Ores;
+using YourTale.Tiles.Ores;
 
-namespace yourtale.Items.Placeables
+namespace YourTale.Items.Placeables
 {
     public class Athium : ModItem
     {

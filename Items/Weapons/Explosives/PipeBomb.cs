@@ -1,12 +1,12 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.DamageClasses;
-using yourtale.Items.Placeables;
-using yourtale.Projectiles.Bombs;
-using yourtale.Projectiles.Staffs;
+using YourTale.DamageClasses;
+using YourTale.Items.Placeables;
+using YourTale.Projectiles.Bombs;
+using YourTale.Projectiles.Staffs;
 
-namespace yourtale.Items.Weapons.Explosives
+namespace YourTale.Items.Weapons.Explosives
 {
     public class PipeBomb : ModItem
     {

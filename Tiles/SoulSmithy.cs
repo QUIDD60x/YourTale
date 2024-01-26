@@ -8,9 +8,9 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using yourtale.Items.Placeables;
+using YourTale.Items.Placeables;
 
-namespace yourtale.Tiles
+namespace YourTale.Tiles
 {
     internal class SoulSmithy : ModTile
     {

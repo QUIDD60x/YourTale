@@ -9,7 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace yourtale.Items.Manuscripts
+namespace YourTale.Items.Manuscripts
 {
     public class ManuscriptBOC : ModItem
     {

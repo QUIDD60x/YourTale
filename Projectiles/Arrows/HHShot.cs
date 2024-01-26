@@ -1,10 +1,10 @@
-﻿using yourtale.Dusts;
+﻿using YourTale.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace yourtale.Projectiles.Arrows
+namespace YourTale.Projectiles.Arrows
 {
 	// This Example show how to implement simple homing projectile
 	// Can be tested with ExampleCustomAmmoGun

@@ -9,7 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace yourtale.Items.Placeables
+namespace YourTale.Items.Placeables
 {
     public class LifeShard : ModItem
     {

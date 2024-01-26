@@ -3,10 +3,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
-using yourtale.Pets.PetBuffs;
-using yourtale.Pets.PetProjectiles;
+using YourTale.Pets.PetBuffs;
+using YourTale.Pets.PetProjectiles;
 
-namespace yourtale.Pets.PetItems
+namespace YourTale.Pets.PetItems
 {
 	public class TestItem : ModItem
 	{

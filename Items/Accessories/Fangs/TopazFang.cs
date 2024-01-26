@@ -9,9 +9,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using rail;
-using yourtale.Items;
+using YourTale.Items;
 
-namespace yourtale.Items.Accessories.Fangs
+namespace YourTale.Items.Accessories.Fangs
 {
     public class TopazFang : ModItem
     {

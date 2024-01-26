@@ -10,7 +10,7 @@ using Terraria.DataStructures;
 using Terraria.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace yourtale.Items
+namespace YourTale.Items
 {
 	public class CorExitio : ModItem
 	{

@@ -2,10 +2,10 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Buffs.Bad;
-using yourtale.Dusts;
+using YourTale.Buffs.Bad;
+using YourTale.Dusts;
 
-namespace yourtale.Projectiles.Spears
+namespace YourTale.Projectiles.Spears
 {
 	public class AmeProj : ModProjectile
 	{

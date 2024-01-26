@@ -2,7 +2,7 @@
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace yourtale.Items.Tools.Flint
+namespace YourTale.Items.Tools.Flint
 {
     public class FlintPick : ModItem
     {

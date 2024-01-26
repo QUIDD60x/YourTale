@@ -6,14 +6,14 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.ID;
 
-namespace yourtale
+namespace YourTale
 {
 	public class YTModMenu : ModMenu
 	{
 		// I'm not going to be using any special textures simply because I can't draw.
-		// private const string menuAssetPath = "yourtale/Assets/Textures/Menu"; // This Creates a constant variable representing the texture path, so we don't have to write it out multiple times
+		// private const string menuAssetPath = "YourTale/Assets/Textures/Menu"; // This Creates a constant variable representing the texture path, so we don't have to write it out multiple times
 
-		public override Asset<Texture2D> Logo => ModContent.Request<Texture2D>($"yourtale/icon");
+		public override Asset<Texture2D> Logo => ModContent.Request<Texture2D>($"YourTale/icon");
 
 		// public override Asset<Texture2D> SunTexture => ModContent.Request<Texture2D>($"{menuAssetPath}/ExampleSun");
 

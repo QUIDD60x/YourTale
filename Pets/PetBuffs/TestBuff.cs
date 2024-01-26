@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using yourtale.Pets.PetProjectiles;
+using YourTale.Pets.PetProjectiles;
 
-namespace yourtale.Pets.PetBuffs
+namespace YourTale.Pets.PetBuffs
 {
 	public class TestBuff : ModBuff
 	{

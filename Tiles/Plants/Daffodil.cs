@@ -1,6 +1,6 @@
 ﻿using Terraria.Localization;
-using yourtale.Items;
-using yourtale.Items.Placeables;
+using YourTale.Items;
+using YourTale.Items.Placeables;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -12,7 +12,7 @@ using Terraria.ObjectData;
 using YourTale.Items;
 using Terraria.Graphics.Shaders;
 
-namespace yourtale.Tiles.Plants
+namespace YourTale.Tiles.Plants
 {
 	public class Daffodil : ModTile
 	{

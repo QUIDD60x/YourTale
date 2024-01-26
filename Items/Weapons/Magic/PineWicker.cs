@@ -1,12 +1,12 @@
-﻿using yourtale.Projectiles.Staffs;
-using yourtale.Tiles;
+﻿using YourTale.Projectiles.Staffs;
+using YourTale.Tiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 
-namespace yourtale.Items.Weapons.Magic
+namespace YourTale.Items.Weapons.Magic
 {
     public class PineWicker : ModItem
     {

@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using static Terraria.ModLoader.ModContent;
 
-namespace yourtale.Tiles.Ores
+namespace YourTale.Tiles.Ores
 {
 	public class Cryolite : ModTile
 	{

@@ -2,7 +2,7 @@
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace yourtale.Items.Armor.Ambrosia
+namespace YourTale.Items.Armor.Ambrosia
 {
     [AutoloadEquip(EquipType.Legs)]
     public class AmbrosiaLegs : ModItem

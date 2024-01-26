@@ -1,14 +1,14 @@
-﻿using yourtale.Projectiles.Spears;
+﻿using YourTale.Projectiles.Spears;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using yourtale.Dusts;
-using yourtale.Buffs.Bad;
+using YourTale.Dusts;
+using YourTale.Buffs.Bad;
 
-namespace yourtale.Items.Weapons.Melee.Spear
+namespace YourTale.Items.Weapons.Melee.Spear
 {
     public class Ton : ModItem
     {

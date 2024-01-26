@@ -2,10 +2,10 @@
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Items;
-using yourtale.Items.Weapons.Ranged.Guns;
+using YourTale.Items;
+using YourTale.Items.Weapons.Ranged.Guns;
 
-namespace yourtale.NPCs;
+namespace YourTale.NPCs;
 
 class NPCShop : GlobalNPC
 {

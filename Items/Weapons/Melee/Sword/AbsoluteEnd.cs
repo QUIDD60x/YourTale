@@ -1,12 +1,12 @@
-using yourtale.DamageClasses;
-using yourtale.Tiles.Furniture;
+using YourTale.DamageClasses;
+using YourTale.Tiles.Furniture;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Rarities;
-using yourtale.Items;
+using YourTale.Rarities;
+using YourTale.Items;
 
 namespace YourTale.Items.Weapons.Melee.Sword
 {
@@ -30,7 +30,7 @@ namespace YourTale.Items.Weapons.Melee.Sword
             Item.crit = 6;
             Item.value = Item.buyPrice(gold: 1);
             Item.rare = ModContent.RarityType<Black2Red>();
-            Item.UseSound = new SoundStyle($"{nameof(yourtale)}/Assets/Sounds/Items/RamielScream"); //Test to see if the modded sounds work (they do!)
+            Item.UseSound = new SoundStyle($"{nameof(YourTale)}/Assets/Sounds/Items/RamielScream"); //Test to see if the modded sounds work (they do!)
         }
 
         public override void AddRecipes()

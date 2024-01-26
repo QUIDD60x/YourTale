@@ -2,8 +2,8 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Rarities;
-using yourtale.Projectiles.Swords;
+using YourTale.Rarities;
+using YourTale.Projectiles.Swords;
 
 namespace YourTale.Items.Weapons.Melee.Sword
 {

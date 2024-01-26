@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Pets.PetBuffs;
+using YourTale.Pets.PetBuffs;
 
-namespace yourtale.Pets.PetProjectiles
+namespace YourTale.Pets.PetProjectiles
 {
 	public class TestProj : ModProjectile
 	{

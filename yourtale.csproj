@@ -8,19 +8,6 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Assets\Sprites\ExampleSoul.png" />
-    <None Remove="Assets\Sprites\Shroomite_Digging_Claw.png" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Sounds\Items\Magic\" />
-    <Folder Include="Items\Banners\" />
-    <Folder Include="Items\Dyes\" />
-    <Folder Include="Items\Misc\" />
-    <Folder Include="Items\Placeables\Furniture\" />
-    <Folder Include="Prefixes\Accessories\" />
-    <Folder Include="Tiles\Bars\" />
   </ItemGroup>
 </Project>

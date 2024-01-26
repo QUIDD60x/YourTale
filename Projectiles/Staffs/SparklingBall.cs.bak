@@ -1,11 +1,11 @@
 ﻿using Terraria.Audio;
-using yourtale.Dusts;
+using YourTale.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace yourtale.Projectiles.Staffs
+namespace YourTale.Projectiles.Staffs
 {
     public class SparklingBall : ModProjectile
     {

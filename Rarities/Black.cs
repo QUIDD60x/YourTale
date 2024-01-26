@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 
-namespace yourtale.Rarities
+namespace YourTale.Rarities
 {
 	public class Black : ModRarity
 	{

@@ -9,15 +9,15 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
-using yourtale.Tiles.Furniture;
+using YourTale.Tiles.Furniture;
 using static Terraria.ModLoader.ModContent;
 using System.IO;
 using Terraria.Localization;
 using Terraria.ModLoader.IO;
-using yourtale.Tiles.Ores;
-using yourtale.NPCs.Evil.Boss;
+using YourTale.Tiles.Ores;
+using YourTale.NPCs.Evil.Boss;
 
-namespace yourtale
+namespace YourTale
 {
     public class YourWorld : ModSystem
     {
@@ -84,7 +84,7 @@ namespace yourtale
 
             /*else
             {
-                mod.Logger.WarnFormat("yourtale: Unknown loadVersion: {0}", loadVersion);
+                mod.Logger.WarnFormat("YourTale: Unknown loadVersion: {0}", loadVersion);
             }
         }
 
@@ -106,12 +106,12 @@ namespace yourtale
             int shiniesIndex = tasks.FindIndex(x => x.Name.Equals("Shinies"));
             if (shiniesIndex != -1)
             {
-                tasks.Insert(shiniesIndex + 1, new PassLegacy("yourtale ore generation", OreGeneration));
+                tasks.Insert(shiniesIndex + 1, new PassLegacy("YourTale ore generation", OreGeneration));
             }
             int buriedChestIndex = tasks.FindIndex(x => x.Name.Equals("TestChest"));
             if (buriedChestIndex != -1)
             {
-                tasks.Insert(buriedChestIndex + 1, new PassLegacy("yourtale chest generation", ChestGeneration));
+                tasks.Insert(buriedChestIndex + 1, new PassLegacy("YourTale chest generation", ChestGeneration));
             }
         }
 

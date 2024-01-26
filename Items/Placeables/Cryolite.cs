@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using yourtale.Tiles.Ores;
+using YourTale.Tiles.Ores;
 
-namespace yourtale.Items.Placeables
+namespace YourTale.Items.Placeables
 {
     public class Cryolite : ModItem //This is THE ITEM, NOT THE TILE. They are 2 different things, items are what you pickup and tiles are what are placed. YOU NEED BOTH to have a functioning item-to-tile combo. look for cryolite ore in the tile section.
     {

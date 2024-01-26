@@ -1,5 +1,5 @@
-﻿using yourtale.Items;
-using yourtale.Projectiles.Evil;
+﻿using YourTale.Items;
+using YourTale.Projectiles.Evil;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System.IO;
-namespace yourtale.NPCs.Evil
+namespace YourTale.NPCs.Evil
 {
         public class RavenQueen : ModNPC
         {

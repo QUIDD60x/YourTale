@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Items;
+using YourTale.Items;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 

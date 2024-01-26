@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using static Terraria.ModLoader.ModContent;
 
-namespace yourtale.Tiles.Ores
+namespace YourTale.Tiles.Ores
 {								//TODO: ore generation, make actual tile, debugging.
 	public class Athium : ModTile
 	{

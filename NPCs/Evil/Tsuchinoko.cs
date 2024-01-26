@@ -1,4 +1,4 @@
-﻿using yourtale.NPCs;
+﻿using YourTale.NPCs;
 using Microsoft.Xna.Framework;
 using System.IO;
 using Terraria;
@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader.Utilities;
 
-namespace yourtale.NPCs.Evil
+namespace YourTale.NPCs.Evil
 {
 	// These three class showcase usage of the WormHead, WormBody and WormTail classes from Worm.cs
 	internal class TsuchinokoHead : WormHead
@@ -21,7 +21,7 @@ namespace yourtale.NPCs.Evil
 		{
 			var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{ // Influences how the NPC looks in the Bestiary
-				CustomTexturePath = "yourtale/NPCs/Evil/TsuchinokoHead", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
+				CustomTexturePath = "YourTale/NPCs/Evil/TsuchinokoHead", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
 				Position = new Vector2(0f, 0f),
 				PortraitPositionXOverride = 0f,
 				PortraitPositionYOverride = 0f

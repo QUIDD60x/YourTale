@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Projectiles.Arrows;
-using yourtale.Items;
-using yourtale.Projectiles.Spears;
+using YourTale.Projectiles.Arrows;
+using YourTale.Items;
+using YourTale.Projectiles.Spears;
 
 namespace YourTale.Items.Weapons.Melee.Sword
 {

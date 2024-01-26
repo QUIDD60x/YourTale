@@ -2,12 +2,12 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
-using yourtale.Rarities;
+using YourTale.Rarities;
 using Microsoft.Xna.Framework;
-using yourtale.Items.Shells;
-using yourtale.DamageClasses;
+using YourTale.Items.Shells;
+using YourTale.DamageClasses;
 
-namespace yourtale.Items.Weapons.Melee.Claws
+namespace YourTale.Items.Weapons.Melee.Claws
 {
     public class SeraphClaws : ModItem
     {

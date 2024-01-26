@@ -4,10 +4,10 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
-using yourtale.Items.Placeables;
-using yourtale.Tiles.Furniture;
+using YourTale.Items.Placeables;
+using YourTale.Tiles.Furniture;
 
-namespace yourtale.Items
+namespace YourTale.Items
 {
     public class HypervitalicEssence : ModItem
     {

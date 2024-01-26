@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace yourtale
+namespace YourTale
 {
     public static class Debugger
     {

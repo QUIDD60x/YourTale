@@ -5,9 +5,9 @@ using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Items;
+using YourTale.Items;
 
-namespace yourtale.Items.Weapons.Ranged.Guns
+namespace YourTale.Items.Weapons.Ranged.Guns
 {
     public class Mossberg : ModItem
     {
@@ -33,7 +33,7 @@ namespace yourtale.Items.Weapons.Ranged.Guns
             Item.autoReuse = true;
 
             // The sound that this item plays when used.
-            Item.UseSound = new SoundStyle($"{nameof(yourtale)}/Assets/Sounds/Items/Ranged/Moss500")
+            Item.UseSound = new SoundStyle($"{nameof(YourTale)}/Assets/Sounds/Items/Ranged/Moss500")
             {
                 Volume = 1.3f,
                 PitchVariance = 0.5f,

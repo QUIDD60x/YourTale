@@ -4,7 +4,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.Graphics.Shaders;
 
-namespace yourtale.Items.Armor.Ambrosia
+namespace YourTale.Items.Armor.Ambrosia
 {
     [AutoloadEquip(EquipType.Head)]
     public class AmbrosiaHead : ModItem

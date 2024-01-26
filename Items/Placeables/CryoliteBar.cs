@@ -2,7 +2,7 @@
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 
-namespace yourtale.Items.Placeables
+namespace YourTale.Items.Placeables
 {
     public class CryoliteBar : ModItem
     {

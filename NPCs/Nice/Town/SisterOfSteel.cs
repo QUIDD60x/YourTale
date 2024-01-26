@@ -1,5 +1,5 @@
-﻿using yourtale.Dusts;
-using yourtale.Items;
+﻿using YourTale.Dusts;
+using YourTale.Items;
 using Microsoft.Xna.Framework;
 using System;
 using System.Linq;
@@ -19,10 +19,10 @@ using System.Collections.Generic;
 using ReLogic.Content;
 using Terraria.ModLoader.IO;
 using YourTale.Items;
-using yourtale.Items.Placeables;
-using yourtale.Items.Weapons.Melee.Claws;
+using YourTale.Items.Placeables;
+using YourTale.Items.Weapons.Melee.Claws;
 
-namespace yourtale.NPCs.Nice.Town
+namespace YourTale.NPCs.Nice.Town
 {
     // [AutoloadHead] and NPC.townNPC are extremely important and absolutely both necessary for any Town NPC to work at all.
     [AutoloadHead]
@@ -292,7 +292,7 @@ namespace yourtale.NPCs.Nice.Town
 			if (Main.netMode == NetmodeID.Server)
 			{
 				ModPacket packet = Mod.GetPacket();
-				packet.Write((byte)yourtale.MessageType.ExampleTeleportToStatue);
+				packet.Write((byte)YourTale.MessageType.ExampleTeleportToStatue);
 				packet.Write((byte)NPC.whoAmI);
 				packet.Send();
 			}
@@ -364,14 +364,14 @@ namespace yourtale.NPCs.Nice.Town
 		public Asset<Texture2D> GetTextureNPCShouldUse(NPC npc)
 		{
 			if (npc.IsABestiaryIconDummy && !npc.ForcePartyHatOn)
-				return ModContent.Request<Texture2D>("yourtale/NPCs/Nice/Town/SisterOfSteel");
+				return ModContent.Request<Texture2D>("YourTale/NPCs/Nice/Town/SisterOfSteel");
 
 			if (npc.altTexture == 1)
-				return ModContent.Request<Texture2D>("yourtale/NPCs/Nice/Town/SisterOfSteel_Party");
+				return ModContent.Request<Texture2D>("YourTale/NPCs/Nice/Town/SisterOfSteel_Party");
 
-			return ModContent.Request<Texture2D>("yourtale/NPCs/Nice/Town/SisterOfSteel");
+			return ModContent.Request<Texture2D>("YourTale/NPCs/Nice/Town/SisterOfSteel");
 		}
 
-		public int GetHeadTextureIndex(NPC npc) => ModContent.GetModHeadSlot("yourtale/NPCs/Nice/Town/SisterOfSteel_Head");
+		public int GetHeadTextureIndex(NPC npc) => ModContent.GetModHeadSlot("YourTale/NPCs/Nice/Town/SisterOfSteel_Head");
 	}
 }

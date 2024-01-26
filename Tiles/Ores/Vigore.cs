@@ -6,10 +6,10 @@ using Terraria.IO;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
-using yourtale.Items.Placeables;
+using YourTale.Items.Placeables;
 using static Terraria.ModLoader.ModContent;
 
-namespace yourtale.Tiles.Ores
+namespace YourTale.Tiles.Ores
 {
     public class Vigore : ModTile
     {

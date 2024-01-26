@@ -1,14 +1,14 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.NPCs.Evil.Boss;
+using YourTale.NPCs.Evil.Boss;
 using Terraria.GameContent.Creative;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using Terraria.GameContent.ItemDropRules;
 
-namespace yourtale.Items.Consumables.BossBags
+namespace YourTale.Items.Consumables.BossBags
 {
     // Basic code for a boss treasure bag
     public class CryoBossBag : ModItem

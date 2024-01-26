@@ -1,6 +1,6 @@
 ﻿using Terraria.ModLoader;
 
-namespace yourtale.Tiles
+namespace YourTale.Tiles
 {
     public class YTGlobalTile : GlobalTile
     {

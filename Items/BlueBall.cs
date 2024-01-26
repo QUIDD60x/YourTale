@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Dusts;
+using YourTale.Dusts;
 
-namespace yourtale.Items
+namespace YourTale.Items
 {
     public class BlueBall : ModItem
     {

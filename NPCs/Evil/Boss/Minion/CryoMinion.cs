@@ -5,10 +5,10 @@ using Terraria.DataStructures;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.NPCs.Evil.Boss.Cryolisis;
-using yourtale.Projectiles.Evil;
+using YourTale.NPCs.Evil.Boss.Cryolisis;
+using YourTale.Projectiles.Evil;
 
-namespace yourtale.NPCs.Evil.Boss.Minion
+namespace YourTale.NPCs.Evil.Boss.Minion
 {
 	// The minions spawned when the body spawns
 	// Please read MinionBossBody.cs first for important comments, they won't be explained here again

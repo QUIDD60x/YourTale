@@ -1,8 +1,8 @@
 ﻿#pragma warning disable CA2211 // Non-constant fields should not be visible
-using yourtale.Common;
-using yourtale.NPCs.Evil.Boss.Minion;
-using yourtale.Items;
-using yourtale.Projectiles.Evil;
+using YourTale.Common;
+using YourTale.NPCs.Evil.Boss.Minion;
+using YourTale.Items;
+using YourTale.Projectiles.Evil;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -14,9 +14,9 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System.IO;
-using yourtale.Items.Consumables.BossBags;
+using YourTale.Items.Consumables.BossBags;
 
-namespace yourtale.NPCs.Evil.Boss.Cryolisis
+namespace YourTale.NPCs.Evil.Boss.Cryolisis
 {
     // The main part of the boss, usually refered to as "body"
     [AutoloadBossHead] // This attribute looks for a texture called "ClassName_Head_Boss" and automatically registers it as the NPC boss head icon

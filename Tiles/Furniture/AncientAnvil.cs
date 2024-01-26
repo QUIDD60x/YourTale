@@ -6,7 +6,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace yourtale.Tiles.Furniture
+namespace YourTale.Tiles.Furniture
 {
     public class AncientAnvil : ModTile
 	{

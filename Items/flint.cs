@@ -9,7 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace yourtale.Items
+namespace YourTale.Items
 {
     public class flint : ModItem //You should always capitalise the first letter (grammar is important). I'll leave this though because it's funny, and the first thing I'd ever made in Tmodloader.
     {

@@ -9,7 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace yourtale.Items
+namespace YourTale.Items
 {
     public class GiantRavenFeather : ModItem
     {

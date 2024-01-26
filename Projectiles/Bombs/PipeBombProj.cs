@@ -1,13 +1,13 @@
 ﻿using Terraria.Audio;
-using yourtale.Dusts;
+using YourTale.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.DamageClasses;
+using YourTale.DamageClasses;
 using System.Security.Cryptography.X509Certificates;
 
-namespace yourtale.Projectiles.Bombs
+namespace YourTale.Projectiles.Bombs
 {
     public class PipeBombProj : ModProjectile // TODO: fix nails that spawn.
     {

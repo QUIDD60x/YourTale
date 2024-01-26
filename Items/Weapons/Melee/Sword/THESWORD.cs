@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Prefixes;
+using YourTale.Prefixes;
 
 namespace YourTale.Items.Weapons.Melee.Sword
 {

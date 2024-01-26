@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
-using yourtale.Items.Shells;
+using YourTale.Items.Shells;
 
-namespace yourtale.Items.Armor.Animula
+namespace YourTale.Items.Armor.Animula
 {
     [AutoloadEquip(EquipType.Head)] //helmets are where I (and most other mod creators) put the set bonus feature at, although you can put it anywhere it doesn't matter that much.
     public class AnimulaHelmet : ModItem

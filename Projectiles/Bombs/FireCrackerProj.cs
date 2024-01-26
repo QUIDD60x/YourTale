@@ -1,12 +1,12 @@
 ﻿using Terraria.Audio;
-using yourtale.Dusts;
+using YourTale.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.DamageClasses;
+using YourTale.DamageClasses;
 
-namespace yourtale.Projectiles.Bombs
+namespace YourTale.Projectiles.Bombs
 {
     public class FireCrackerProj : ModProjectile
     {

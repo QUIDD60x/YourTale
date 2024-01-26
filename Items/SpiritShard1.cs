@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 
-namespace yourtale.Items
+namespace YourTale.Items
 {
     public class SpiritShard1 : ModItem
     {

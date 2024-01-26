@@ -4,9 +4,9 @@ using Terraria.ID;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Xna.Framework.Graphics;
-using yourtale.Items;
+using YourTale.Items;
 
-namespace yourtale
+namespace YourTale
 {
 	public class Ytplayer : ModPlayer
 	{

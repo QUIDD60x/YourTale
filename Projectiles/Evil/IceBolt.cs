@@ -2,10 +2,10 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Items.Weapons;
+using YourTale.Items.Weapons;
 using Terraria.Audio;
 
-namespace yourtale.Projectiles.Evil
+namespace YourTale.Projectiles.Evil
 {
 	/// <summary>
 	/// This the class that clones the vanilla Meowmere projectile using CloneDefaults().

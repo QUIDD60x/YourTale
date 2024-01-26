@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.DamageClasses;
+using YourTale.DamageClasses;
 
 namespace YourTale.Items.Weapons.Melee.Claws
 {

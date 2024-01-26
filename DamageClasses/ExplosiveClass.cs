@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace yourtale.DamageClasses
+namespace YourTale.DamageClasses
 {
     public class ExplosiveClass : DamageClass
     {

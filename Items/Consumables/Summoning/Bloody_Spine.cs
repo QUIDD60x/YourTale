@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace yourtale.Items.Consumables.Summoning
+namespace YourTale.Items.Consumables.Summoning
 {
     public class Bloody_Spine : ModItem
     {

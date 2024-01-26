@@ -1,10 +1,11 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace yourtale.Prefixes.Weapons
+namespace YourTale.Prefixes
 {
-	public class Thendric : ModPrefix // This isn't really achievable in-game, but it's a learning experience?
+	public class Quidds : ModPrefix // This prefix cannot be achieved in-game.
 	{
+		public virtual float Power => 1f;
 
 		public override PrefixCategory Category => PrefixCategory.Melee;
 
@@ -20,21 +21,20 @@ namespace yourtale.Prefixes.Weapons
 
 		public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
 		{
-			damageMult *= 1.3f;
-			knockbackMult /= 2;
-			useTimeMult -= 5;
-			shootSpeedMult -= 5;
+			damageMult *= 10000f * Power;
+			knockbackMult *= 10000f * Power;
+			useTimeMult /= 10000f * Power;
+			scaleMult *= 10f;
 		}
 
 		public override void ModifyValue(ref float valueMult)
 		{
-			valueMult *= 30f;
+			valueMult /= 2;
 		}
 
 		public override void Apply(Item item)
 		{
-			item.shoot = Mod.Find<ModProjectile>("LahatCherebProj").Type;
-			item.shootSpeed = 10;
+			//
 		}
 	}
 }

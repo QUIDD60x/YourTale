@@ -10,7 +10,7 @@ using Terraria.Localization;
 using YourTale.Common;
 using Terraria.ModLoader.Config;
 
-namespace yourtale
+namespace YourTale
 {
     [Label("Yourtale's game configuration.")]
     class ServerConfig : ModConfig

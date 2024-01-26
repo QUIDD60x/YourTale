@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace yourtale.Items.Accessories.Lockets
+namespace YourTale.Items.Accessories.Lockets
 {
 	public class CryoliteLocket : ModItem
 	{

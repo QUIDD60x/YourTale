@@ -3,10 +3,10 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.DamageClasses;
+using YourTale.DamageClasses;
 #pragma warning disable ChangeMagicNumberToID // Change magic numbers into appropriate ID values
 
-namespace yourtale.Projectiles.Bombs;
+namespace YourTale.Projectiles.Bombs;
 
 public class SmallExplosion : ModProjectile // Default explosion, you can use this as a base to create different kinds of explosives (which is what i'm using it for aswell).
 {
@@ -15,7 +15,7 @@ public class SmallExplosion : ModProjectile // Default explosion, you can use th
         ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
         ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
     }
-    public override string Texture => "yourtale/Projectiles/Bombs/ExplosionPng";
+    public override string Texture => "YourTale/Projectiles/Bombs/ExplosionPng";
 
     public override void SetDefaults()
     {

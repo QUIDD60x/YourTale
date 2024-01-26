@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 
-namespace yourtale.Buffs.Bad
+namespace YourTale.Buffs.Bad
 {
 	public class Crush : ModBuff
 	{

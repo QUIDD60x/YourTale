@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
-using yourtale.Items.Shells;
+using YourTale.Items.Shells;
 
-namespace yourtale.Items.Armor.Ambrosia
+namespace YourTale.Items.Armor.Ambrosia
 {
     [AutoloadEquip(EquipType.Body)]
     public class AmbrosiaChest : ModItem

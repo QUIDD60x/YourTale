@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.DataStructures;
 
-namespace yourtale.Items
+namespace YourTale.Items
 {
     public class Ambrosia : ModItem
     {

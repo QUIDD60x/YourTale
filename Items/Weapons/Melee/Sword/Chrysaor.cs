@@ -2,8 +2,8 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Projectiles.Swords;
-using yourtale.Rarities;
+using YourTale.Projectiles.Swords;
+using YourTale.Rarities;
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 namespace YourTale.Items.Weapons.Melee.Sword

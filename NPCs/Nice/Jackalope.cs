@@ -6,7 +6,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 using Terraria.GameContent.Bestiary;
 
-namespace yourtale.NPCs.Nice
+namespace YourTale.NPCs.Nice
 {
     public class Jackalope : ModNPC
     {

@@ -14,7 +14,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader.Utilities;
 using Terraria.DataStructures;
 
-namespace yourtale.NPCs.Evil
+namespace YourTale.NPCs.Evil
 {
     public class PrinceSlime : ModNPC
     {

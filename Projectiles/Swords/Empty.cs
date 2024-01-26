@@ -1,11 +1,11 @@
 ﻿using Terraria.Audio;
-using yourtale.Dusts;
+using YourTale.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace yourtale.Projectiles.Swords
+namespace YourTale.Projectiles.Swords
 {
     public class Empty : ModProjectile // I use this to have an empty projectile, mainly for using random shoot chances for projectiles. (I don't know any other way atm lol)
     {

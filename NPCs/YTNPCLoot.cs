@@ -2,13 +2,13 @@
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Items;
+using YourTale.Items;
 using YourTale.Items.Weapons.Melee.Sword;
 using YourTale.DropConditions;
-using yourtale.Items.Placeables;
+using YourTale.Items.Placeables;
 using System.Collections.Generic;
 
-namespace yourtale.NPCs
+namespace YourTale.NPCs
 {
     // This file shows numerous examples of what you can do with the extensive NPC Loot lootable system.
     // You can find more info on the wiki: https://github.com/tModLoader/tModLoader/wiki/Basic-NPC-Drops-and-Loot-1.4

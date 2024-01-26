@@ -7,7 +7,7 @@ using Terraria.GameContent.Bestiary;
 using Terraria.DataStructures;
 #pragma warning disable CS0162
 
-namespace yourtale.NPCs.Evil
+namespace YourTale.NPCs.Evil
 {
     public class ZombKing : ModNPC // ModNPC is used for Custom NPCs
     {

@@ -7,7 +7,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace yourtale.Projectiles.Arrows
+namespace YourTale.Projectiles.Arrows
 {
 	public class HarpyShotProj : ModProjectile
 	{

@@ -1,5 +1,5 @@
-﻿using yourtale.Items.Weapons.Ranged.Projectiles.Arrows;
-using yourtale.Projectiles.Arrows;
+﻿using YourTale.Items.Weapons.Ranged.Projectiles.Arrows;
+using YourTale.Projectiles.Arrows;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -8,7 +8,7 @@ using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace yourtale.Items.Weapons.Ranged.Bows
+namespace YourTale.Items.Weapons.Ranged.Bows
 {
 	public class Gandiva : ModItem
 	{
@@ -33,7 +33,7 @@ namespace yourtale.Items.Weapons.Ranged.Bows
 			Item.autoReuse = true; // Whether or not you can hold click to automatically use it again.
 
 			// The sound that this item plays when used.
-			/*Item.UseSound = new SoundStyle($"{nameof(yourtale)}/Assets/Sounds/Items/Guns/ExampleGun")
+			/*Item.UseSound = new SoundStyle($"{nameof(YourTale)}/Assets/Sounds/Items/Guns/ExampleGun")
 			{
 				Volume = 0.9f,
 				PitchVariance = 0.2f,

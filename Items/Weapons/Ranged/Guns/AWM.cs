@@ -6,7 +6,7 @@ using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace yourtale.Items.Weapons.Ranged.Guns
+namespace YourTale.Items.Weapons.Ranged.Guns
 {
     public class AWM : ModItem
     {
@@ -30,7 +30,7 @@ namespace yourtale.Items.Weapons.Ranged.Guns
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.autoReuse = false;
 
-            Item.UseSound = new SoundStyle($"{nameof(yourtale)}/Assets/Sounds/Items/Ranged/awm")
+            Item.UseSound = new SoundStyle($"{nameof(YourTale)}/Assets/Sounds/Items/Ranged/awm")
             {
                 Volume = 1.2f,
                 PitchVariance = 0.4f,

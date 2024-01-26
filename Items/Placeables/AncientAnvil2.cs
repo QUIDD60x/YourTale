@@ -2,10 +2,10 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using yourtale.Tiles.Furniture;
-using yourtale.Rarities;
+using YourTale.Tiles.Furniture;
+using YourTale.Rarities;
 
-namespace yourtale.Items.Placeables
+namespace YourTale.Items.Placeables
 {
     public class AncientAnvil2 : ModItem
     {

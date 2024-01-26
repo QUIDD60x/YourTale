@@ -2,9 +2,9 @@
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.Tiles;
+using YourTale.Tiles;
 
-namespace yourtale.Items.Placeables
+namespace YourTale.Items.Placeables
 {
     internal class SoulSmithyItem : ModItem
     {

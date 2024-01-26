@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using yourtale.DamageClasses;
+using YourTale.DamageClasses;
 using Terraria.DataStructures;
 
 namespace YourTale.Items.Weapons.Melee.Claws

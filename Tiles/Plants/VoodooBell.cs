@@ -7,8 +7,8 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using yourtale.Items.Placeables;
-using yourtale.Items;
+using YourTale.Items.Placeables;
+using YourTale.Items;
 
 namespace Yourtale.Tiles.Plants
 {

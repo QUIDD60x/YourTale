@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace yourtale.Items
+namespace YourTale.Items
 {
     public class ytGlobalItem : GlobalItem
     {

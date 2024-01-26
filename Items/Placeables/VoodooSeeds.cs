@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Yourtale.Tiles.Plants;
 
-namespace yourtale.Items.Placeables
+namespace YourTale.Items.Placeables
 {
 	public class VoodooSeeds : ModItem
 	{

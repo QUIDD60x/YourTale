@@ -1,10 +1,10 @@
-﻿using yourtale.Tiles.Furniture;
+﻿using YourTale.Tiles.Furniture;
 using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
-using yourtale.Projectiles.Arrows;
+using YourTale.Projectiles.Arrows;
 
-namespace yourtale.Items.Weapons.Ranged.Projectiles.Arrows
+namespace YourTale.Items.Weapons.Ranged.Projectiles.Arrows
 {
 	public class HarpyShot : ModItem
 	{
