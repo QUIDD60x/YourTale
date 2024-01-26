@@ -17,13 +17,13 @@ namespace yourtale.Items.Armor.Ambrosia
     {
         public override void SetDefaults()
         {
+            // Item properties
             Item.width = 25;
             Item.height = 700;
-
+            Item.defense = 11;
+            // Item value
             Item.value = 25000;
             Item.rare = ItemRarityID.LightRed;
-
-            Item.defense = 11;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
