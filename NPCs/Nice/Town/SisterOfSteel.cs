@@ -61,7 +61,7 @@ namespace yourtale.NPCs.Nice.Town
 				.SetBiomeAffection<SnowBiome>(AffectionLevel.Love)
 				.SetNPCAffection(NPCID.Steampunker, AffectionLevel.Love)
 				.SetNPCAffection(NPCID.Dryad, AffectionLevel.Like)
-				.SetNPCAffection(NPCID.Princess, AffectionLevel.Dislike)
+				.SetNPCAffection(NPCID.Cyborg, AffectionLevel.Dislike)
 				.SetNPCAffection(NPCID.Guide, AffectionLevel.Hate)
 			; // < Mind the semicolon!
 		}
