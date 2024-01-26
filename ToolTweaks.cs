@@ -17,6 +17,7 @@ namespace yourtale
                     {
                         item.axe = -1;
                         item.useTime = 100;
+                        item.damage = 0;
                     }
                     return;
                 case ItemID.CopperPickaxe:
@@ -30,7 +31,7 @@ namespace yourtale
                 case ItemID.CopperShortsword:
                     if (GetInstance<ServerConfig>().ToolTweaks)
                     {
-                        item.damage = 1;
+                        item.damage = 0;
                     }
                     return;
             }
