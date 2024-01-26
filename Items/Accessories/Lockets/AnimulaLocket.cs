@@ -13,13 +13,13 @@ namespace yourtale.Items.Accessories.Lockets
 	{
 		public override void SetDefaults()
 		{	
-
+			// Item properties
 			Item.width = 40;
 			Item.height = 40;
-
-			Item.rare = ItemRarityID.Green;
-
 			Item.accessory = true;
+			// Item value
+			Item.value = (0, 0, 33, 12);
+			Item.rare = ItemRarityID.Green;
 			
 		}
 
