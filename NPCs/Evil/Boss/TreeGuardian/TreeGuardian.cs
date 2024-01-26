@@ -19,6 +19,7 @@ using YourTale.Projectiles.Evil;
 
 namespace YourTale.NPCs.Evil.Boss.TreeGuardian
 {
+    [AutoloadBossHead]
     public class TreeGuardian : ModNPC
     {
         // These are seperate values used for the AI, on how to give a warning sign before the attack. This was too much work.
@@ -58,6 +59,15 @@ namespace YourTale.NPCs.Evil.Boss.TreeGuardian
             {
                 Music = MusicLoader.GetMusicSlot(Mod, "Assets/Music/BadPianoFight");
             }
+        }
+
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            // Sets the description of this NPC that is listed in the bestiary
+            bestiaryEntry.Info.AddRange(new List<IBestiaryInfoElement> {
+                new MoonLordPortraitBackgroundProviderBestiaryInfoElement(), // Plain black background
+                new FlavorTextBestiaryInfoElement("A protector of trees. Not the lorax!")
+            });
         }
         // set the NPC's loot
         /*

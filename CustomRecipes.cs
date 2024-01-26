@@ -9,8 +9,10 @@ namespace YourTale
     {
         public override void AddRecipeGroups()
         {
-            RecipeGroup group = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.GoldBar)}", ItemID.PlatinumBar, ItemID.GoldBar);
-            RecipeGroup.RegisterGroup(nameof(ItemID.GoldBar), group);
+            RecipeGroup goldBarGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.GoldBar)}", ItemID.PlatinumBar, ItemID.GoldBar);
+            RecipeGroup.RegisterGroup(nameof(ItemID.GoldBar), goldBarGroup);
+            RecipeGroup ironBarGroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.IronBar)}", ItemID.LeadBar, ItemID.IronBar);
+            RecipeGroup.RegisterGroup(nameof(ItemID.IronBar), ironBarGroup);
         }
 
         public override void AddRecipes()

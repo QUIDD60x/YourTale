@@ -20,8 +20,8 @@ namespace yourtale.NPCs.Evil
                 NPC.width = 95;
                 NPC.height = 80;
                 NPC.damage = 20;
-                NPC.defense = 2;
-                NPC.lifeMax = 90;
+                NPC.defense = 9;
+                NPC.lifeMax = 250;
                 NPC.HitSound = SoundID.NPCHit1;
                 NPC.DeathSound = SoundID.NPCDeath1;
                 NPC.value = 2200;
@@ -60,7 +60,7 @@ namespace yourtale.NPCs.Evil
                     Vector2 direction = (target.Center - NPC.Center).SafeNormalize(Vector2.UnitX);
                     direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-                    int projectile = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 16, ProjectileID.HarpyFeather, 5, 0, Main.myPlayer);
+                    int projectile = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, direction * 16, ModContent.ProjectileType<RavenFeatherProj>(), 5, 0, Main.myPlayer);
                     Main.projectile[projectile].timeLeft = 300;
                     attackCounter = 50;
                     NPC.netUpdate = true;
