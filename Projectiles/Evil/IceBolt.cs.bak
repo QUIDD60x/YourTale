@@ -24,7 +24,7 @@ namespace yourtale.Projectiles.Evil
 
 		// While there are several different ways to change how our projectile could behave differently, lets make it so
 		// when our projectile finally dies, it will explode into 4 regular Meowmere projectiles.
-		public override void OnKill(int timeLeft)
+		public override void Kill(int timeLeft)
 		{
 			Vector2 launchVelocity = new(-4, 0); // Create a velocity moving the left.
 			for (int i = 0; i < 4; i++)

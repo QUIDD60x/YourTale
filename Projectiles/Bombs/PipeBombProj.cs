@@ -50,7 +50,7 @@ namespace yourtale.Projectiles.Bombs
         }
 
 #pragma warning disable CS0672 // Member overrides obsolete member
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 #pragma warning restore CS0672 // Member overrides obsolete member
         {
             Vector2 launchVelocity = new(0, 2);

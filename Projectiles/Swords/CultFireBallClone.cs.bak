@@ -16,7 +16,7 @@ namespace yourtale.Projectiles.Swords
 			Projectile.friendly = true;
 		}
 
-		public override void OnKill(int timeLeft)
+		public override void Kill(int timeLeft)
 		{
 			Vector2 launchVelocity = new Vector2(-4, 0); // Create a velocity moving the left.
 			for (int i = 0; i < 4; i++)

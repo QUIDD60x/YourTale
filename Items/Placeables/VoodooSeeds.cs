@@ -1,7 +1,7 @@
 ﻿using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.GameContent.Creative;
-using yourtale.Tiles.Plants;
+using Yourtale.Tiles.Plants;
 
 namespace yourtale.Items.Placeables
 {

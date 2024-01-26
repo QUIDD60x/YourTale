@@ -38,7 +38,7 @@ namespace yourtale.Items.Consumables.Summoning
             SoundEngine.PlaySound(SoundID.Roar, player.position);
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                NPC.SpawnOnPlayer(player.whoAmI, NPCID.EyeofCthulhu);
+                NPC.SpawnOnPlayer(player.whoAmI, Mod.Find<ModNPC>("TreeGuardian").Type);
             }
             return true;
         }

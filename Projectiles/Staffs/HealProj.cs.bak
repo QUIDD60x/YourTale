@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace yourtale.Projectiles.Staffs
 {
-    public class FireStaffProj : ModProjectile
+    public class HealProj : ModProjectile
     {
         public override void SetDefaults()
         {
@@ -15,21 +15,19 @@ namespace yourtale.Projectiles.Staffs
             Projectile.height = 16;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Magic;
-            Projectile.penetrate = 1;
-            Projectile.timeLeft = 300;
+            Projectile.penetrate = 3;
+            Projectile.timeLeft = 600;
         }
 
         public override void AI()
         {
             Projectile.velocity.Y += Projectile.ai[0];
-            Dust dust;
-            // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-            Vector2 position = Main.LocalPlayer.Center;
-            dust = Main.dust[Terraria.Dust.NewDust(Projectile.position + Projectile.velocity, 30, 30, DustID.Flare, 0f, 3.953488f, 5, new Color(255, 255, 255), 1f)];
-            dust.noGravity = true;
-            dust.fadeIn = 1.151163f;
-
-
+            if (Main.rand.NextBool(3))
+            {
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<LifeStaffDust>(), Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
+            }
+            Projectile.rotation += Projectile.velocity.X * 0.01f;
+            return;
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -56,20 +54,21 @@ namespace yourtale.Projectiles.Staffs
             return false;
         }
 
-        public override void OnKill(int timeLeft)
+        public override void Kill(int timeLeft)
         {
             for (int k = 0; k < 5; k++)
             {
                 //Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, ModContent.DustType<Sparkle>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
-                if (Main.rand.NextFloat() < 0.6162791f)
+                if (Main.rand.NextFloat() < 0.755814f)
                 {
                     Dust dust;
                     // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
                     Vector2 position = Main.LocalPlayer.Center;
-                    dust = Terraria.Dust.NewDustDirect(Projectile.position + Projectile.velocity, 30, 30, DustID.Torch, 0f, 0f, 0, new Color(255, 255, 255), 1f);
-                    dust.fadeIn = 1.534884f;
+                    dust = Terraria.Dust.NewDustDirect(Projectile.position + Projectile.velocity, 30, 30, DustID.Ichor, -0.2325583f, 0f, 0, new Color(22, 255, 0), 1f);
+                    dust.noGravity = true;
+                    dust.noLight = true;
+                    dust.fadeIn = 2.60075f;
                 }
-
 
             }
             SoundEngine.PlaySound(SoundID.Item25, Projectile.position);
@@ -77,7 +76,7 @@ namespace yourtale.Projectiles.Staffs
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(BuffID.OnFire, 60);
+           
         }
     }
 }

@@ -74,6 +74,7 @@ Mods: {
 			TsuchinokoTail.DisplayName: Tsuchinoko
 			ZombKing.DisplayName: King Zombie
 			Jackalope.DisplayName: Jackalope
+			TreeGuardian.DisplayName: Tree Guardian
 		}
 
 		Tiles: {
@@ -1038,6 +1039,20 @@ Mods: {
 				DisplayName: Tommy
 				Tooltip: ""
 			}
+
+			Firecracker: {
+				DisplayName: Firecracker
+				Tooltip: ""
+			}
+
+			SummonWood: {
+				DisplayName: Summon Wood
+				Tooltip:
+					'''
+					A couple slabs of wood, carved with an inscription you faintly remember...
+					Summons the Tree Guardian.
+					'''
+			}
 		}
 
 		Projectiles: {
@@ -1065,6 +1080,7 @@ Mods: {
 			Empty.DisplayName: Empty
 			LahatCherebProj.DisplayName: FireBall
 			Sandnado2.DisplayName: Sandnado
+			TreeBlast.DisplayName: Tree Blast
 		}
 
 		Buffs: {

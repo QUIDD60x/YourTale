@@ -8,7 +8,7 @@ using yourtale.Projectiles.Staffs;
 
 namespace yourtale.Items.Weapons.Explosives
 {
-    public class FireCracker : ModItem
+    public class Firecracker : ModItem
     {
 
         public override void SetDefaults()

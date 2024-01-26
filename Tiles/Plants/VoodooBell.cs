@@ -1,194 +1,208 @@
-﻿using Terraria.Localization;
-using yourtale.Items;
-using yourtale.Items.Placeables;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.GameContent.Metadata;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using YourTale.Items;
-using Terraria.Graphics.Shaders;
+using yourtale.Items.Placeables;
+using yourtale.Items;
 
-namespace yourtale.Tiles.Plants
+namespace Yourtale.Tiles.Plants
 {
-	public class VoodooBell : ModTile
-	{
-		private const int FrameWidth = 26; // A constant for readability and to kick out those magic numbers
+    // An enum for the 3 stages of herb growth
+    public enum PlantStage : byte
+    {
+        Planted,
+        Growing,
+        Grown
+    }
 
-		public override void SetStaticDefaults()
-		{
-			Main.tileFrameImportant[Type] = true;
-			Main.tileObsidianKill[Type] = true;
-			Main.tileCut[Type] = true;
-			Main.tileNoFail[Type] = true;
-			TileID.Sets.ReplaceTileBreakUp[Type] = true;
-			TileID.Sets.IgnoredInHouseScore[Type] = true;
-			TileID.Sets.IgnoredByGrowingSaplings[Type] = true;
-			TileMaterials.SetForTileId(Type, TileMaterials._materialsByName["Plant"]);
+    // A plant with 3 stages, planted, growing and grown
+    // Sadly, modded plants are unable to be grown by the flower boots
+    //TODO smart cursor support for herbs, see SmartCursorHelper.Step_AlchemySeeds
+    //TODO Staff of Regrowth:
+    //- Player.PlaceThing_Tiles_BlockPlacementForAssortedThings: check where type == 84 (grown herb)
+    //- Player.ItemCheck_GetTileCutIgnoreList: maybe generalize?
+    //TODO vanilla seeds to replace fully grown herb
+    public class VoodooBell : ModTile
+    {
+        private const int FrameWidth = 18; // A constant for readability and to kick out those magic numbers
 
-			LocalizedText name = CreateMapEntryName();
-			AddMapEntry(new Color(128, 20, 20), name);
+        public override void SetStaticDefaults()
+        {
+            Main.tileFrameImportant[Type] = true;
+            Main.tileObsidianKill[Type] = true;
+            Main.tileCut[Type] = true;
+            Main.tileNoFail[Type] = true;
+            TileID.Sets.ReplaceTileBreakUp[Type] = true;
+            TileID.Sets.IgnoredInHouseScore[Type] = true;
+            TileID.Sets.IgnoredByGrowingSaplings[Type] = true;
+            TileMaterials.SetForTileId(Type, TileMaterials._materialsByName["Plant"]); // Make this tile interact with golf balls in the same way other plants do
 
-			TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
-			TileObjectData.newTile.AnchorValidTiles = new int[] {
-				TileID.Grass,
-				TileID.Mud,
-				TileID.Ash
-			};
-			TileObjectData.newTile.AnchorAlternateTiles = new int[] {
-				TileID.ClayPot,
-				TileID.PlanterBox
-			};
-			TileObjectData.addTile(Type);
+            // We do not use this because our tile should only be spelunkable when it's fully grown. That's why we use the IsTileSpelunkable hook instead
+            //Main.tileSpelunker[Type] = true;
 
-			HitSound = SoundID.Grass;
-			DustType = DustID.RedMoss;
-		}
+            // Do NOT use this, it causes many unintended side effects
+            //Main.tileAlch[Type] = true;
 
-		public override bool CanPlace(int i, int j)
-		{
-			Tile tile = Framing.GetTileSafely(i, j); // Safe way of getting a tile instance
+            LocalizedText name = CreateMapEntryName();
+            AddMapEntry(new Color(128, 0, 0), name);
 
-			if (tile.HasTile)
-			{
-				int tileType = tile.TileType;
-				if (tileType == Type)
-				{
-					PlantStage stage = GetStage(i, j); // The current stage of the herb
+            TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
+            TileObjectData.newTile.AnchorValidTiles = new int[] {
+                TileID.Grass,
+                TileID.HallowedGrass,
+               // ModContent.TileType<blockhere>() //For example, if you wanted to make it placeable on your custom block
+            };
+            TileObjectData.newTile.AnchorAlternateTiles = new int[] {
+                TileID.ClayPot,
+                TileID.PlanterBox
+            };
+            TileObjectData.addTile(Type);
 
-					// Can only place on the same herb again if it's grown already
-					return stage == PlantStage.Grown;
-				}
-				else
-				{
-					// Support for vanilla herbs/grasses:
-					if (Main.tileCut[tileType] || TileID.Sets.BreakableWhenPlacing[tileType] || tileType == TileID.WaterDrip || tileType == TileID.LavaDrip || tileType == TileID.HoneyDrip || tileType == TileID.SandDrip)
-					{
-						bool foliageGrass = tileType == TileID.Plants || tileType == TileID.Plants2;
-						bool moddedFoliage = tileType >= TileID.Count && (Main.tileCut[tileType] || TileID.Sets.BreakableWhenPlacing[tileType]);
-						bool harvestableVanillaHerb = Main.tileAlch[tileType] && WorldGen.IsHarvestableHerbWithSeed(tileType, tile.TileFrameX / 18);
+            HitSound = SoundID.Grass;
+            DustType = DustID.Ambient_DarkBrown;
+        }
 
-						if (foliageGrass || moddedFoliage || harvestableVanillaHerb)
-						{
-							WorldGen.KillTile(i, j);
-							if (!tile.HasTile && Main.netMode == NetmodeID.MultiplayerClient)
-							{
-								NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 0, i, j);
-							}
+        public override bool CanPlace(int i, int j)
+        {
+            Tile tile = Framing.GetTileSafely(i, j); // Safe way of getting a tile instance
 
-							return true;
-						}
-					}
+            if (tile.HasTile)
+            {
+                int tileType = tile.TileType;
+                if (tileType == Type)
+                {
+                    PlantStage stage = GetStage(i, j); // The current stage of the herb
 
-					return false;
-				}
-			}
+                    // Can only place on the same herb again if it's grown already
+                    return stage == PlantStage.Grown;
+                }
+                else
+                {
+                    // Support for vanilla herbs/grasses:
+                    if (Main.tileCut[tileType] || TileID.Sets.BreakableWhenPlacing[tileType] || tileType == TileID.WaterDrip || tileType == TileID.LavaDrip || tileType == TileID.HoneyDrip || tileType == TileID.SandDrip)
+                    {
+                        bool foliageGrass = tileType == TileID.Plants || tileType == TileID.Plants2;
+                        bool moddedFoliage = tileType >= TileID.Count && (Main.tileCut[tileType] || TileID.Sets.BreakableWhenPlacing[tileType]);
+                        bool harvestableVanillaHerb = Main.tileAlch[tileType] && WorldGen.IsHarvestableHerbWithSeed(tileType, tile.TileFrameX / 18);
 
-			return true;
-		}
+                        if (foliageGrass || moddedFoliage || harvestableVanillaHerb)
+                        {
+                            WorldGen.KillTile(i, j);
+                            if (!tile.HasTile && Main.netMode == NetmodeID.MultiplayerClient)
+                            {
+                                NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 0, i, j);
+                            }
 
-		public override void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects)
-		{
-			if (i % 2 == 0)
-			{
-				spriteEffects = SpriteEffects.FlipHorizontally;
-			}
-		}
+                            return true;
+                        }
+                    }
 
-		public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
-		{
-			offsetY = -2; // This is -1 for tiles using StyleAlch, but vanilla sets to -2 for herbs, which causes a slight visual offset between the placement preview and the placed tile. 
-		}
+                    return false;
+                }
+            }
 
-		public override bool CanDrop(int i, int j)/* tModPorter Note: Removed. Use CanDrop to decide if an item should drop. Use GetItemDrops to decide which item drops. Item drops based on placeStyle are handled automatically now, so this method might be able to be removed altogether. */
-		{
-			PlantStage stage = GetStage(i, j);
+            return true;
+        }
 
-			if (stage == PlantStage.Planted)
-			{
-				// Do not drop anything when just planted
-				return false;
-			}
+        public override void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects)
+        {
+            if (i % 2 == 0)
+            {
+                spriteEffects = SpriteEffects.FlipHorizontally;
+            }
+        }
 
-			Vector2 worldPosition = new Vector2(i, j).ToWorldCoordinates();
-			Player nearestPlayer = Main.player[Player.FindClosest(worldPosition, 16, 16)];
+        public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
+        {
+            offsetY = -2; // This is -1 for tiles using StyleAlch, but vanilla sets to -2 for herbs, which causes a slight visual offset between the placement preview and the placed tile. 
+        }
 
-			int herbItemType = ModContent.ItemType<VoodooItem>();
-			int herbItemStack = 1;
+        public override bool CanDrop(int i, int j)
+        {
+            PlantStage stage = GetStage(i, j);
 
-			int seedItemType = ModContent.ItemType<VoodooSeeds>();
-			int seedItemStack = 1;
+            if (stage == PlantStage.Planted)
+            {
+                // Do not drop anything when just planted
+                return false;
+            }
+            return true;
+        }
 
-			if (nearestPlayer.active && nearestPlayer.HeldItem.type == ItemID.StaffofRegrowth)
-			{
-				// Increased yields with Staff of Regrowth, even when not fully grown
-				herbItemStack = Main.rand.Next(1, 3);
-				seedItemStack = Main.rand.Next(1, 6);
-			}
-			else if (stage == PlantStage.Grown)
-			{
-				// Default yields, only when fully grown
-				herbItemStack = 1;
-				seedItemStack = Main.rand.Next(1, 4);
-			}
+        public override IEnumerable<Item> GetItemDrops(int i, int j)
+        {
+            PlantStage stage = GetStage(i, j);
 
-			var source = new EntitySource_TileBreak(i, j);
+            Vector2 worldPosition = new Vector2(i, j).ToWorldCoordinates();
+            Player nearestPlayer = Main.player[Player.FindClosest(worldPosition, 16, 16)];
 
-			if (herbItemType > 0 && herbItemStack > 0)
-			{
-				Item.NewItem(source, worldPosition, herbItemType, herbItemStack);
-			}
+            int herbItemType = ModContent.ItemType<VoodooItem>();;
+            int herbItemStack = 1;
 
-			if (seedItemType > 0 && seedItemStack > 0)
-			{
-				Item.NewItem(source, worldPosition, seedItemType, seedItemStack);
-			}
+            int seedItemType = ModContent.ItemType<VoodooSeeds>();
+            int seedItemStack = 1;
 
-			// Custom drop code, so return false
-			return false;
-		}
+            if (nearestPlayer.active && (nearestPlayer.HeldItem.type == ItemID.StaffofRegrowth || nearestPlayer.HeldItem.type == ItemID.AcornAxe))
+            {
+                // Increased yields with Staff of Regrowth, even when not fully grown
+                herbItemStack = Main.rand.Next(1, 3);
+                seedItemStack = Main.rand.Next(1, 6);
+            }
+            else if (stage == PlantStage.Grown)
+            {
+                // Default yields, only when fully grown
+                herbItemStack = 1;
+                seedItemStack = Main.rand.Next(1, 4);
+            }
 
-		public override bool IsTileSpelunkable(int i, int j)
-		{
-			PlantStage stage = GetStage(i, j);
+            if (herbItemType > 0 && herbItemStack > 0)
+            {
+                yield return new Item(herbItemType, herbItemStack);
+            }
 
-			// Only glow if the herb is grown
-			return stage == PlantStage.Grown;
-		}
+            if (seedItemType > 0 && seedItemStack > 0)
+            {
+                yield return new Item(seedItemType, seedItemStack);
+            }
+        }
 
-		public override void RandomUpdate(int i, int j)
-		{
-			Dust dust;
-			Vector2 position = Main.LocalPlayer.Center;
-			dust = Main.dust[Dust.NewDust(position, 30, 30, DustID.RedsWingsRun, 0f, 0f, 0, new Color(255, 0, 0), 1f)];
-			dust.shader = GameShaders.Armor.GetSecondaryShader(111, Main.LocalPlayer);
-			dust.fadeIn = 0.69767445f;
+        public override bool IsTileSpelunkable(int i, int j)
+        {
+            PlantStage stage = GetStage(i, j);
 
-			Tile tile = Framing.GetTileSafely(i, j);
-			PlantStage stage = GetStage(i, j);
+            // Only glow if the herb is grown
+            return stage == PlantStage.Grown;
+        }
 
-			// Only grow to the next stage if there is a next stage. We don't want our tile turning pink!
-			if (stage != PlantStage.Grown)
-			{
-				// Increase the x frame to change the stage
-				tile.TileFrameX += FrameWidth;
+        public override void RandomUpdate(int i, int j)
+        {
+            Tile tile = Framing.GetTileSafely(i, j);
+            PlantStage stage = GetStage(i, j);
 
-				// If in multiplayer, sync the frame change
-				if (Main.netMode != NetmodeID.SinglePlayer)
-				{
-					NetMessage.SendTileSquare(-1, i, j, 1);
-				}
-			}
-		}
+            // Only grow to the next stage if there is a next stage. We don't want our tile turning pink!
+            if (stage != PlantStage.Grown)
+            {
+                // Increase the x frame to change the stage
+                tile.TileFrameX += FrameWidth;
 
-		// A helper method to quickly get the current stage of the herb (assuming the tile at the coordinates is our herb)
-		private static PlantStage GetStage(int i, int j)
-		{
-			Tile tile = Framing.GetTileSafely(i, j);
-			return (PlantStage)(tile.TileFrameX / FrameWidth);
-		}
-	}
+                // If in multiplayer, sync the frame change
+                if (Main.netMode != NetmodeID.SinglePlayer)
+                {
+                    NetMessage.SendTileSquare(-1, i, j, 1);
+                }
+            }
+        }
+
+        // A helper method to quickly get the current stage of the herb (assuming the tile at the coordinates is our herb)
+        private static PlantStage GetStage(int i, int j)
+        {
+            Tile tile = Framing.GetTileSafely(i, j);
+            return (PlantStage)(tile.TileFrameX / FrameWidth);
+        }
+    }
 }
