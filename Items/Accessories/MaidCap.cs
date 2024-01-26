@@ -19,13 +19,18 @@ namespace yourtale.Items.Accessories
 
         public override void SetDefaults()
         {
+            // Item properties
             Item.width = 18;
             Item.height = 14;
             Item.maxStack = 1;
+
+            // Item value
             Item.value = Item.sellPrice(0, 1);
+            Item.rare = ItemRarityID.Orange;
+
+            // Etcetera
             Item.accessory = true;
             Item.vanity = true;
-            Item.rare = ItemRarityID.Orange;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
