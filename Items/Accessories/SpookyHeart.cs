@@ -13,12 +13,13 @@ namespace yourtale.Items.Accessories
     {
         public override void SetDefaults()
         {
+            // Item properties
             Item.width = 20;
             Item.height = 31;
-
+            // Item value
             Item.value = Item.sellPrice(gold: 1, silver: 27);
             Item.rare = ItemRarityID.Yellow;
-
+            // Etcetera
             Item.accessory = true;
             Item.vanity = true;
         }
