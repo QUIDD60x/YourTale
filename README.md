@@ -2,7 +2,9 @@
 ![broken image link](https://github.com/QUIDD60x/Your-Tale/blob/master/icon.png?raw=true)
 [![Build Status](https://travis-ci.org/tModLoader/tModLoader.svg?branch=master)](https://quiddcorp.com/my-creations/your-tale) 
 
-**Your Tale**- A Terraria mod thing I update weekly-ish, and completely open for you to use!
+## **Your Tale** - **Open Source, Open Imagination; YourTale Awaits Your Touch.**
+
+A Terraria mod thing I update weekly-ish, and completely open for you to use!
 Cloning straight from this github and not downloading it from the releases tab (or from TmodLoader's official mod downloader) may result in some bugs or errors, so I would recommend looking into either previously mentioned option.
 
 ## This currently includes:
